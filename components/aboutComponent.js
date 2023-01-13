@@ -1,35 +1,20 @@
-import { Fragment } from 'react'
-import { Popover, Transition } from '@headlessui/react'
-import {
-  ArrowPathIcon,
-  Bars3Icon,
-  BookmarkSquareIcon,
-  CalendarIcon,
-  ChartBarIcon,
-  CursorArrowRaysIcon,
-  LifebuoyIcon,
-  PhoneIcon,
-  PlayIcon,
-  ShieldCheckIcon,
-  Squares2X2Icon,
-  XMarkIcon,
-} from '@heroicons/react/24/outline'
-import { ChevronRightIcon } from '@heroicons/react/20/solid'
+
 import Image from 'next/image'
-import p1 from '../assets/img/product1.svg'
-import p2 from '../assets/img/product2.svg'
-import p3 from '../assets/img/product3.svg'
-import p4 from '../assets/img/product4.svg'
-import p5 from '../assets/img/product5.svg'
-import p6 from '../assets/img/product6.svg'
-import p7 from '../assets/img/product7.png'
-import p8 from '../assets/img/product8.png'
+import p1 from '../assets/landing/scroll/Archaic Warden Sample.png'
+import p2 from '../assets/landing/scroll/Archangel Sample.png'
+import p3 from '../assets/landing/scroll/Commander Sample.png'
+import p4 from '../assets/landing/scroll/Disciple Sample.png'
+import p5 from '../assets/landing/scroll/EOD Specialist Sample.png'
+import p6 from '../assets/landing/scroll/Guard Sample.png'
+import p7 from '../assets/landing/scroll/Nightmare Hunter Sample.png'
+import p8 from '../assets/landing/scroll/Qilin Sample.png'
+import p9 from '../assets/landing/scroll/Sheriff Sample.png'
+import p10 from '../assets/landing/scroll/Shimmering Samuarai Sample.png'
+import about from '../assets/landing/about.png'
 export default function AboutComponent() {
 
 
   const posts = [
-
-
     {
       title: 'Dynamic Art',
       href: '#',
@@ -91,117 +76,133 @@ export default function AboutComponent() {
   }
 
   return (
-    <main className="mx-auto max-w-7xl px-4 bg-[#100d0a]  ">
-          <div className="lg:grid lg:grid-cols-2 lg:gap-8">
-            <div className="mx-auto max-w-md sm:max-w-2xl sm:px-6 sm:text-center lg:flex lg:items-center lg:px-0 lg:text-left">
-              <div className="lg:py-24">
+    <main className="mx-auto max-w-7xl px-4 bg-gradient-to-b from-[#0D0A08] to-[#100d0a]">
+      <div className="lg:grid lg:grid-cols-2 lg:gap-8">
+        <div className="mx-auto max-w-md sm:max-w-2xl sm:px-6 sm:text-center lg:flex lg:items-center lg:px-0 lg:text-left">
+          <div className="lg:py-24">
 
-                <h1 className="text-4xl font-semibold tracking-tight text-white  sm:text-6xl lg:mt-6 xl:text-6xl">
-                  <span className="block">ABOUT US</span>
-                </h1>
-                <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg">
-                Iron Hills was founded in January 2022 by a team of friends with the goal of acquiring and continuing the development of Spiral Knights. With that goal not being within reach at this time, we have positioned ourselves to focus on our strength: innovation within web3. Each member of our team has different backgrounds, come from different places, and carry a wide variety of skills. We believe that these different perspectives are crucial to long-term innovation. 
-                </p>
-                <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
-                  <div className="">
-                    <a
-                      href="#"
-                      className="flex w-full items-center justify-center  border-solid border-2 border-orange-900 bg-orange-900 px-8 py-3 text-base font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 md:text-lg"
-                    >
-                     ENLIST NOW
-                    </a>
-                  </div>
+            <h1 className="text-4xl font-semibold tracking-tight text-white  sm:text-6xl lg:mt-6 xl:text-6xl">
+              <span className="block">ABOUT US</span>
+            </h1>
+            <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg">
+              Iron Hills was founded in January 2022 by a team of friends with the goal of acquiring and continuing the development of Spiral Knights. With that goal not being within reach at this time, we have positioned ourselves to focus on our strength: innovation within web3. Each member of our team has different backgrounds, come from different places, and carry a wide variety of skills. We believe that these different perspectives are crucial to long-term innovation.
+            </p>
+            <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
+              <div className="">
+                <a
+                  href="#"
+                  className="flex w-full items-center justify-center  border-solid border-2 border-orange-900 bg-orange-900 px-8 py-3 text-base font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 md:text-lg"
+                >
+                  ENLIST NOW
+                </a>
+              </div>
 
-                </div>
-              </div>
-            </div>
-            <div className="mt-12 mb-16 sm:-mb-48 lg:relative lg:m-0">
-              <div className="mx-auto max-w-md   sm:max-w-2xl sm:px-6 lg:max-w-none lg:px-0">
-              
-                <img
-                  className="w-full lg:absolute lg:inset-y-0 lg:left-0 lg:h-full lg:w-auto lg:max-w-none"
-                  src="https://tailwindui.com/img/component-images/cloud-illustration-indigo-400.svg"
-                  alt=""
-                />
-              </div>
             </div>
           </div>
-        
-        
+        </div>
+        <div className="mt-12 mb-16 sm:-mb-48 lg:relative lg:m-0">
+          <div className="mx-auto h-40 m-12">
+
+          <Image
+              className="w-full "
+              src={about}
+              alt=""
+              
+            />
+          </div>
+        </div>
+      </div>
+
+
       <div className="relative mx-auto max-w-7xl ">
 
-<div className="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
-  {posts.map((post) => (
-    <div key={post.title} className="flex flex-col overflow-hidden">
-      <div className="flex flex-1 flex-col justify-between bg-orange-900/20 p-6">
-        <div className="flex-1">
-          <a href={post.href} className="mt-2 block">
-            <p className="text-2xl font-semibold text-white">{post.title}</p>
-            <p className="mt-3 sm:text-lg text-gray-500">{post.description}</p>
-          </a>
+        <div className="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
+          {posts.map((post) => (
+            <div key={post.title} className="flex flex-col overflow-hidden">
+              <div className="flex flex-1 flex-col justify-between bg-orange-900/20 p-6">
+                <div className="flex-1">
+                  <a href={post.href} className="mt-2 block">
+                    <p className="text-2xl font-semibold text-white">{post.title}</p>
+                    <p className="mt-3 sm:text-lg text-gray-500">{post.description}</p>
+                  </a>
+                </div>
+
+              </div>
+            </div>
+          ))}
         </div>
-
       </div>
-    </div>
-  ))}
-</div>
-</div>
-<div className="mx-auto max-w-7xl  mt-24">
-<div className="slider">
-	<div className="slide-track gap-2">
-  <div className="h-80 flex items-center bg-orange-900/20 justify-center">
-  <Image src={p1} className="object-fill h-full"/>
-</div>
-		    <div className="h-80 w-56 flex items-center bg-orange-900/20 justify-center">
-  <Image src={p2} className="object-fill h-full"/>
-</div>
-  <div className="h-80 w-56 flex items-center bg-orange-900/20 justify-center">
-  <Image src={p3} className="object-fill h-full"/>
-</div>
-  <div className="h-80 w-56 flex items-center bg-orange-900/20 justify-center">
-  <Image src={p4} className="object-fill h-full"/>
-</div>
-		    <div className="h-80 w-56 flex items-center bg-orange-900/20 justify-center">
-  <Image src={p5} className="object-fill h-full"/>
-</div>
-		    <div className="h-80 w-56 flex items-center bg-orange-900/20 justify-center">
-  <Image src={p1} className="object-fill h-full"/>
-</div>
-		    <div className="h-80 w-56 flex items-center bg-orange-900/20 justify-center">
-  <Image src={p2} className="object-fill h-full"/>
-</div>
-		    <div className="h-80 w-56 flex items-center bg-orange-900/20 justify-center">
-  <Image src={p3} className="object-fill h-full"/>
-</div>
-		    <div className="h-80 w-56 flex items-center bg-orange-900/20 justify-center">
-  <Image src={p4} className="object-fill h-full"/>
-</div>
-  <div className="h-80 w-56 flex items-center bg-orange-900/20 justify-center">
-  <Image src={p5} className="object-fill h-full"/>
-</div>
-  <div className="h-80 w-56 flex items-center bg-orange-900/20 justify-center">
-  <Image src={p1} className="object-fill h-full"/>
-</div>
-		    <div className="h-80 w-56 flex items-center bg-orange-900/20 justify-center">
-  <Image src={p2} className="object-fill h-full"/>
-</div>
-		    <div className="h-80 w-56 flex items-center bg-orange-900/20 justify-center">
-  <Image src={p3} className="object-fill h-full"/>
-</div>
-		    <div className="h-80 w-56 flex items-center bg-orange-900/20 justify-center">
-  <Image src={p4} className="object-fill h-full"/>
-</div>
-		    <div className="h-80 w-56 flex items-center bg-orange-900/20 justify-center">
-  <Image src={p5} className="object-fill h-full"/>
-</div>
-	</div>
-</div>
-</div>
+      <div className="mx-auto max-w-7xl  mt-24">
+        <div className="slider">
+          <div className="slide-track gap-2">
+            <div className="h-80 flex items-center bg-orange-900/20 justify-center">
+              <Image src={p1} className="object-fill h-full" />
+            </div>
+            <div className="h-80 flex items-center bg-orange-900/20 justify-center">
+              <Image src={p2} className="object-fill  h-full" />
+            </div>
+            <div className="h-80 flex items-center bg-orange-900/20 justify-center">
+              <Image src={p3} className="object-fill  h-full" />
+            </div>
+            <div className="h-80 flex items-center bg-orange-900/20 justify-center">
+              <Image src={p4} className="object-fill  h-full" />
+            </div>
+            <div className="h-80 flex items-center bg-orange-900/20 justify-center">
+              <Image src={p5} className="object-fill  h-full" />
+            </div>
+            <div className="h-80 flex items-center bg-orange-900/20 justify-center">
+              <Image src={p6} className="object-fill  h-full" />
+            </div>
+            <div className="h-80 flex items-center bg-orange-900/20 justify-center">
+              <Image src={p7} className="object-fill  h-full" />
+            </div>
+            <div className="h-80 flex items-center bg-orange-900/20 justify-center">
+              <Image src={p8} className="object-fill  h-full" />
+            </div>
+            <div className="h-80 flex items-center bg-orange-900/20 justify-center">
+              <Image src={p9} className="object-fill  h-full" />
+            </div>
+            <div className="h-80 flex items-center bg-orange-900/20 justify-center">
+              <Image src={p10} className="object-fill  h-full" />
+            </div>
+            <div className="h-80 flex items-center bg-orange-900/20 justify-center">
+              <Image src={p1} className="object-fill h-full" />
+            </div>
+            <div className="h-80 flex items-center bg-orange-900/20 justify-center">
+              <Image src={p2} className="object-fill  h-full" />
+            </div>
+            <div className="h-80 flex items-center bg-orange-900/20 justify-center">
+              <Image src={p3} className="object-fill  h-full" />
+            </div>
+            <div className="h-80 flex items-center bg-orange-900/20 justify-center">
+              <Image src={p4} className="object-fill  h-full" />
+            </div>
+            <div className="h-80 flex items-center bg-orange-900/20 justify-center">
+              <Image src={p5} className="object-fill  h-full" />
+            </div>
+            <div className="h-80 flex items-center bg-orange-900/20 justify-center">
+              <Image src={p6} className="object-fill  h-full" />
+            </div>
+            <div className="h-80 flex items-center bg-orange-900/20 justify-center">
+              <Image src={p7} className="object-fill  h-full" />
+            </div>
+            <div className="h-80 flex items-center bg-orange-900/20 justify-center">
+              <Image src={p8} className="object-fill  h-full" />
+            </div>
+            <div className="h-80 flex items-center bg-orange-900/20 justify-center">
+              <Image src={p9} className="object-fill  h-full" />
+            </div>
+            <div className="h-80 flex items-center bg-orange-900/20 justify-center">
+              <Image src={p10} className="object-fill  h-full" />
+            </div>
+          </div>
+        </div>
+      </div>
 
-      
-    
 
-      
+
+
+
 
 
     </main>

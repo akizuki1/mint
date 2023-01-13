@@ -47,7 +47,7 @@ export default function ProcessComponent() {
   }
 
   return (
-    <div id="roadmap" className="bg-[#100d0a]  lg:overflow-hidden  lg:pb-14">
+    <div id="roadmap" className="  lg:overflow-hidden  lg:pb-14">
 
 
 

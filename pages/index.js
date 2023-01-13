@@ -9,7 +9,7 @@ import FaqComponent from "../components/faqComponent";
 
 export default function Home() {
   return (
-    <div className="bg-[#100d0a] min-h-screen">
+    <div className="bg-gradient-to-b from-[#0D0A08] to-[#100d0a]">
       <NavBarComponent/>
       <HeroComponent/>
       <AboutComponent/>

@@ -6,7 +6,7 @@ import logoIco from "../assets/img/iron_ico.png";
 
 export default function NavBarComponent() {
   return (
-    <Disclosure as="nav" className="bg-[#100d0a] ">
+    <Disclosure as="nav" className=" bg-gradient-to-b from-[#100d0a] to-[#0D0A08] ">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

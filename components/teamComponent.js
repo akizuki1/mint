@@ -1,10 +1,19 @@
+
+import t1 from '../assets/landing/team/Lego pfp.png'
+import t2 from '../assets/landing/team/Fangel pfp.png'
+import t3 from '../assets/landing/team/Poly pfp.png'
+import t4 from '../assets/landing/team/Ragga pfp.png'
+import t5 from '../assets/landing/team/Seraph_pfp.png'
+import t6 from '../assets/landing/team/sample.png'
+import Image from 'next/image'
+
+
 const team1 = [
   {
     name: 'Erik Levin',
     role: 'Co-Owner',
     nick: 'Lego2build',
-    imageUrl:
-      'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80',
+    imageUrl:t1,
     twitterUrl: '#',
     linkedinUrl: '#',
   },
@@ -12,8 +21,7 @@ const team1 = [
     name: 'Luke Lindsay',
     nick: 'RaggaPrince',
     role: 'Co-Owner',
-    imageUrl:
-      'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80',
+    imageUrl:t4,
     twitterUrl: '#',
     linkedinUrl: '#',
   },
@@ -21,8 +29,7 @@ const team1 = [
     name: 'Esther Chu',
     role: 'Graphic Designer & Illustrator',
     nick: 'Fighting Polygon',
-    imageUrl:
-      'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80',
+    imageUrl:t3,
     twitterUrl: '#',
     linkedinUrl: '#',
   },
@@ -35,8 +42,7 @@ const team2 = [
     name: 'David Girshner II',
     role: 'Creative Design',
     nick: 'SeraphofAsh',
-    imageUrl:
-      'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80',
+    imageUrl:t5,
     twitterUrl: '#',
     linkedinUrl: '#',
   },
@@ -44,8 +50,7 @@ const team2 = [
     name: 'Toby Frimoth	',
     role: 'Senior Designer',
     nick: 'Fangel',
-    imageUrl:
-      'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80',
+    imageUrl:t2,
     twitterUrl: '#',
     linkedinUrl: '#',
   },
@@ -53,8 +58,7 @@ const team2 = [
     name: 'Zeneca',
     role: 'Project Advisor',
     nick: '',
-    imageUrl:
-      'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80',
+    imageUrl:t6,
     twitterUrl: '#',
     linkedinUrl: '#',
   },
@@ -62,8 +66,7 @@ const team2 = [
     name: 'Kfish n Chips',
     role: 'Developer Team',
     nick: '',
-    imageUrl:
-      'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80',
+    imageUrl:t6,
     twitterUrl: '#',
     linkedinUrl: '#',
   },
@@ -86,7 +89,7 @@ export default function TeamComponent() {
             {team1.map((person) => (
               <li key={person.name} className=" bg-orange-900/20 py-10 text-center  ">
                 <div className="space-y-6 xl:space-y-10 ">
-                  <img className="mx-auto h-40 w-40 rounded-full " src={person.imageUrl} alt="" />
+                  <Image className="mx-auto h-40 w-40 rounded-full " src={person.imageUrl} alt="" />
                   <div className=" mx-auto items-center justify-between">
                     <div className=" mx-auto  text-md font-medium ">
                       <h3 className="text-lg text-white">{person.name}</h3>
@@ -104,7 +107,7 @@ export default function TeamComponent() {
             {team2.map((person) => (
               <li key={person.name} className=" bg-orange-900/20 py-10 text-center  ">
                 <div className="space-y-6 xl:space-y-10 ">
-                  <img className="mx-auto h-40 w-40 rounded-full " src={person.imageUrl} alt="" />
+                  <Image className="mx-auto h-40 w-40 rounded-full " src={person.imageUrl} alt="" />
                   <div className="space-y-2 xl:flex  mx-auto xl:items-center xl:justify-between">
                     <div className="mx-auto text-md font-medium ">
                     <h3 className="text-lg text-white">{person.name}</h3>
