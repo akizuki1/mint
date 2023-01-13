@@ -27,13 +27,13 @@ export default function HeroComponent() {
   }
 
   return (
-    <main className="lg:relative bg-black">
+    <main className="lg:relative bg-black min-h-[600px]">
 
 
       <div className="absolute inset-0">
 
         <Image
-          className="h-full w-full object-cover"
+          className="h-full w-full object-fill"
           src={heroBack}
           alt="back iron hills"
         />
@@ -56,31 +56,15 @@ export default function HeroComponent() {
                     <div className="">
                       <a
                         href="#"
-                        className="flex w-full items-center justify-center  border-solid border-2 border-blue-500 bg-blue-500 px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+                        className="flex w-full items-center justify-center  border-solid border-2 border-amber-700 bg-amber-700 px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
                       >
                         ENLIST NOW
                       </a>
                     </div>
 
-                    <div className="  sm:mt-0 sm:ml-3">
-                      <a
-                        href="#"
-                        className="flex w-full items-center justify-center  border-solid border-2 border-blue-900 bg-blue-900 px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
-                      >
-                        JOIN WAITLIST NOW
-                      </a>
-                    </div>
-                  </div>
-                  <p className="mt-8 text-base font-bold tracking-tight ">
-                    <span className="text-white">Max 3 NFTs Per Wallet. PRICE</span>{' '}
-                    <span className="text-blue-500"> 0.02</span>
-                    <span className="text-white"> ETH</span>
-                  </p>
-                  <p className="text-base font-bold tracking-tight ">
-                    <span className="text-white">Mint is Live Until</span>{' '}
-                    <span className="text-blue-500"> 22 July</span>
-                  </p>
 
+                  </div>
+                
                 </div>
               </div>
             </div>

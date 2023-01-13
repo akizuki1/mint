@@ -31,11 +31,11 @@ export default function AboutComponent() {
 
 
     {
-      title: 'Stunning Art',
+      title: 'Dynamic Art',
       href: '#',
       category: { name: '01.', href: '#' },
       description:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, ut atque fuga culpa, similique sequi cum eos quis dolorum.',
+        'With 79 unique base models and well over 100 personalizing traits, the art behind Knights is some of the most dynamic and complex of any NFT project ever created.',
       date: 'Mar 16, 2020',
       datetime: '2020-03-16',
       imageUrl:
@@ -49,11 +49,11 @@ export default function AboutComponent() {
       },
     },
     {
-      title: 'Community Engagement',
+      title: 'Evolving Blockchain Technology',
       href: '#',
       category: { name: '02.', href: '#' },
       description:
-        'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.',
+        'Iron Hills is committed to pushing the boundaries of what is possible with web3 technology and setting new standards for safety, education, and accountability within this emerging industry.',
       date: 'Mar 10, 2020',
       datetime: '2020-03-10',
       imageUrl:
@@ -67,11 +67,11 @@ export default function AboutComponent() {
       },
     },
     {
-      title: 'Evolving Blockchain Technology',
+      title: 'Every Knight Has A Voice',
       href: '#',
       category: { name: '03.', href: '#' },
       description:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint harum rerum voluptatem quo recusandae magni placeat saepe molestiae, sed excepturi cumque corporis perferendis hic.',
+        'Communication, transparency, and accessibility are among the most important values at Iron Hills. From the greenest Guard to the highest ranking Grand Marshall, all Knights have a say in the development of the Knights Task Force.',
       date: 'Feb 12, 2020',
       datetime: '2020-02-12',
       imageUrl:
@@ -91,48 +91,32 @@ export default function AboutComponent() {
   }
 
   return (
-    <main className="mx-auto max-w-7xl px-4 bg-slate-900 ">
+    <main className="mx-auto max-w-7xl px-4 bg-[#100d0a]  ">
           <div className="lg:grid lg:grid-cols-2 lg:gap-8">
             <div className="mx-auto max-w-md sm:max-w-2xl sm:px-6 sm:text-center lg:flex lg:items-center lg:px-0 lg:text-left">
               <div className="lg:py-24">
-                <a
-                  href="#"
-                  className="inline-flex items-center rounded-full  p-1 pr-2 text-white hover:text-gray-200 sm:text-base lg:text-sm xl:text-base"
-                >
-                  <p className="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-blue-500 to-blue-900">
-                    SIMPLE STEPS
-                  </p>
 
-                </a>
                 <h1 className="text-4xl font-semibold tracking-tight text-white  sm:text-6xl lg:mt-6 xl:text-6xl">
                   <span className="block">ABOUT US</span>
                 </h1>
                 <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg">
-                  As of January 2012, there were more than 21,000 ERC20 token contracts. We Built this Template because Ethereum ECO system is the most popular Platform. Among the most successful ERC20 token sales are EOS, Bancor, Qash and Bankex raising over $70 Million each.
+                Iron Hills was founded in January 2022 by a team of friends with the goal of acquiring and continuing the development of Spiral Knights. With that goal not being within reach at this time, we have positioned ourselves to focus on our strength: innovation within web3. Each member of our team has different backgrounds, come from different places, and carry a wide variety of skills. We believe that these different perspectives are crucial to long-term innovation. 
                 </p>
                 <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
                   <div className="">
                     <a
                       href="#"
-                      className="flex w-full items-center justify-center  border-solid border-2 border-blue-900 bg-blue-900 px-8 py-3 text-base font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 md:text-lg"
+                      className="flex w-full items-center justify-center  border-solid border-2 border-orange-900 bg-orange-900 px-8 py-3 text-base font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 md:text-lg"
                     >
                      ENLIST NOW
                     </a>
                   </div>
 
-                  <div className="  sm:mt-0 sm:ml-3">
-                    <a
-                      href="#"
-                      className="flex w-full items-center justify-center  border-solid border-2 border-blue-900 bg-blue-900 px-8 py-3 text-base font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 md:text-lg"
-                    >
-                      WAITLIST NOW
-                    </a>
-                  </div>
                 </div>
               </div>
             </div>
-            <div className="mt-12 -mb-16 sm:-mb-48 lg:relative lg:m-0">
-              <div className="mx-auto max-w-md  sm:max-w-2xl sm:px-6 lg:max-w-none lg:px-0">
+            <div className="mt-12 mb-16 sm:-mb-48 lg:relative lg:m-0">
+              <div className="mx-auto max-w-md   sm:max-w-2xl sm:px-6 lg:max-w-none lg:px-0">
               
                 <img
                   className="w-full lg:absolute lg:inset-y-0 lg:left-0 lg:h-full lg:w-auto lg:max-w-none"
@@ -149,12 +133,12 @@ export default function AboutComponent() {
 <div className="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
   {posts.map((post) => (
     <div key={post.title} className="flex flex-col overflow-hidden">
-      <div className="flex flex-1 flex-col justify-between bg-blue-900/20 p-6">
+      <div className="flex flex-1 flex-col justify-between bg-orange-900/20 p-6">
         <div className="flex-1">
-          <a href={post.href} className="mt-2 block">
+          <div className="mt-2 block">
             <p className="text-2xl font-semibold text-white">{post.title}</p>
             <p className="mt-3 sm:text-lg text-gray-500">{post.description}</p>
-          </a>
+          </div >
         </div>
 
       </div>
@@ -163,78 +147,58 @@ export default function AboutComponent() {
 </div>
 </div>
 <div className="mx-auto max-w-7xl  mt-24">
-<div class="slider">
-	<div class="slide-track gap-2">
-  <div class="h-80 flex items-center bg-blue-900/20 justify-center">
+<div className="slider">
+	<div className="slide-track gap-2">
+  <div className="h-80 flex items-center bg-orange-900/20 justify-center">
   <Image src={p1} className="object-fill h-full"/>
 </div>
-		    <div class="h-80 w-56 flex items-center bg-blue-900/20 justify-center">
+		    <div className="h-80 w-56 flex items-center bg-orange-900/20 justify-center">
   <Image src={p2} className="object-fill h-full"/>
 </div>
-  <div class="h-80 w-56 flex items-center bg-blue-900/20 justify-center">
+  <div className="h-80 w-56 flex items-center bg-orange-900/20 justify-center">
   <Image src={p3} className="object-fill h-full"/>
 </div>
-  <div class="h-80 w-56 flex items-center bg-blue-900/20 justify-center">
+  <div className="h-80 w-56 flex items-center bg-orange-900/20 justify-center">
   <Image src={p4} className="object-fill h-full"/>
 </div>
-		    <div class="h-80 w-56 flex items-center bg-blue-900/20 justify-center">
+		    <div className="h-80 w-56 flex items-center bg-orange-900/20 justify-center">
   <Image src={p5} className="object-fill h-full"/>
 </div>
-		    <div class="h-80 w-56 flex items-center bg-blue-900/20 justify-center">
+		    <div className="h-80 w-56 flex items-center bg-orange-900/20 justify-center">
   <Image src={p1} className="object-fill h-full"/>
 </div>
-		    <div class="h-80 w-56 flex items-center bg-blue-900/20 justify-center">
+		    <div className="h-80 w-56 flex items-center bg-orange-900/20 justify-center">
   <Image src={p2} className="object-fill h-full"/>
 </div>
-		    <div class="h-80 w-56 flex items-center bg-blue-900/20 justify-center">
+		    <div className="h-80 w-56 flex items-center bg-orange-900/20 justify-center">
   <Image src={p3} className="object-fill h-full"/>
 </div>
-		    <div class="h-80 w-56 flex items-center bg-blue-900/20 justify-center">
+		    <div className="h-80 w-56 flex items-center bg-orange-900/20 justify-center">
   <Image src={p4} className="object-fill h-full"/>
 </div>
-  <div class="h-80 w-56 flex items-center bg-blue-900/20 justify-center">
+  <div className="h-80 w-56 flex items-center bg-orange-900/20 justify-center">
   <Image src={p5} className="object-fill h-full"/>
 </div>
-  <div class="h-80 w-56 flex items-center bg-blue-900/20 justify-center">
+  <div className="h-80 w-56 flex items-center bg-orange-900/20 justify-center">
   <Image src={p1} className="object-fill h-full"/>
 </div>
-		    <div class="h-80 w-56 flex items-center bg-blue-900/20 justify-center">
+		    <div className="h-80 w-56 flex items-center bg-orange-900/20 justify-center">
   <Image src={p2} className="object-fill h-full"/>
 </div>
-		    <div class="h-80 w-56 flex items-center bg-blue-900/20 justify-center">
+		    <div className="h-80 w-56 flex items-center bg-orange-900/20 justify-center">
   <Image src={p3} className="object-fill h-full"/>
 </div>
-		    <div class="h-80 w-56 flex items-center bg-blue-900/20 justify-center">
+		    <div className="h-80 w-56 flex items-center bg-orange-900/20 justify-center">
   <Image src={p4} className="object-fill h-full"/>
 </div>
-		    <div class="h-80 w-56 flex items-center bg-blue-900/20 justify-center">
+		    <div className="h-80 w-56 flex items-center bg-orange-900/20 justify-center">
   <Image src={p5} className="object-fill h-full"/>
 </div>
 	</div>
 </div>
 </div>
 
-      <div className="mx-auto max-w-7xl py-12 px-4 sm:py-16 sm:px-6 lg:px-8 lg:py-20">
-
-        <dl className="mt-10 text-center sm:mx-auto sm:grid sm:max-w-3xl sm:grid-cols-4 sm:gap-8">
-          <div className="flex flex-col">
-            <dt className="order-2 mt-2 text-lg font-medium leading-6 text-gray-500">Total Items</dt>
-            <dd className="order-1 text-5xl font-bold tracking-tight text-white">387</dd>
-          </div>
-          <div className="flex flex-col">
-            <dt className="order-2 mt-2 text-lg font-medium leading-6 text-gray-500">Total Owners</dt>
-            <dd className="order-1 text-5xl font-bold tracking-tight text-white">1.356</dd>
-          </div>
-          <div className="mt-10 flex flex-col sm:mt-0">
-            <dt className="order-2 mt-2 text-lg font-medium leading-6 text-gray-500">Floor Price</dt>
-            <dd className="order-1 text-5xl font-bold tracking-tight text-white">1.72</dd>
-          </div>
-          <div className="mt-10 flex flex-col sm:mt-0">
-            <dt className="order-2 mt-2 text-lg font-medium leading-6 text-gray-500">Volume Traded</dt>
-            <dd className="order-1 text-5xl font-bold tracking-tight text-white">42.5k</dd>
-          </div>
-        </dl>
-      </div>
+      
     
 
       

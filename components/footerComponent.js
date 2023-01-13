@@ -21,11 +21,10 @@ export default function FooterComponent() {
 
 
     main: [
-      { name: 'ABOUT', href: '#' },
-      { name: 'ROADMAP', href: '#' },
-      { name: 'TEAM', href: '#' },
-      { name: 'FAQ', href: '#' },
-      { name: 'COMMUNITY', href: '#' },
+      { name: 'Twitter', href: '#' },
+      { name: 'Twitch', href: '#' },
+      { name: 'Discord', href: '#' },
+      { name: 'Youtube', href: '#' },
      
     ],
     social: [
@@ -98,9 +97,9 @@ export default function FooterComponent() {
 
   return (
     <main>
-<footer className="bg-[#283645]">
+<footer className="bg-[#100d0a]">
       <div className="mx-auto max-w-7xl overflow-hidden py-12 px-4 sm:px-6 lg:px-8">
-        <nav className="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
+        <nav className="-mx-5 -my-2 max-w-m flex flex-wrap justify-center" aria-label="Footer">
           {navigation.main.map((item) => (
             <div key={item.name} className="px-5 py-2">
               <a href={item.href} className="text-base text-white hover:text-gray-900">
@@ -109,15 +108,9 @@ export default function FooterComponent() {
             </div>
           ))}
         </nav>
-        <div className="mt-8 flex justify-center space-x-6">
-          {navigation.social.map((item) => (
-            <a key={item.name} href={item.href} className="text-gray-400 hover:text-white">
-              <span className="sr-only">{item.name}</span>
-              <item.icon className="h-6 w-6" aria-hidden="true" />
-            </a>
-          ))}
-        </div>
-        <p className="mt-8 text-center text-base text-gray-400">&copy; 2022 KFNC, Inc. All rights reserved.</p>
+      
+        <p className="mt-8 text-center text-base text-gray-400">Privacy Policy - Terms of Service
+</p>
       </div>
     </footer>
     </main>

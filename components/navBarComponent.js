@@ -6,7 +6,7 @@ import logoIco from "../assets/img/iron_ico.png";
 
 export default function NavBarComponent() {
   return (
-    <Disclosure as="nav" className="bg-slate-900">
+    <Disclosure as="nav" className="bg-[#100d0a] ">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -27,31 +27,31 @@ export default function NavBarComponent() {
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
                     <a
-                      href="#"
+                      href="#about"
                       className=" px-3 py-2 text-sm font-medium text-gray-500 hover:bg-gray-700 hover:text-white"
                     >
                       ABOUT
                     </a>
                     <a
-                      href="#"
+                      href="#roadmap"
                       className=" px-3 py-2 text-sm font-medium text-gray-500 hover:bg-gray-700 hover:text-white"
                     >
                       ROADMAP
                     </a>
                     <a
-                      href="#"
+                      href="#team"
                       className=" px-3 py-2 text-sm font-medium text-gray-500 hover:bg-gray-700 hover:text-white"
                     >
                       TEAM
                     </a>
                     <a
-                      href="#"
+                      href="#faq"
                       className=" px-3 py-2 text-sm font-medium text-gray-500 hover:bg-gray-700 hover:text-white"
                     >
                       FAQ
                     </a>
                     <a
-                      href="#"
+                      href="#community"
                       className=" px-3 py-2 text-sm font-medium text-gray-500 hover:bg-gray-700 hover:text-white"
                     >
                       COMMUNITY

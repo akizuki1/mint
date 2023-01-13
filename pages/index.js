@@ -9,7 +9,7 @@ import FaqComponent from "../components/faqComponent";
 
 export default function Home() {
   return (
-    <div className="bg-slate-900 h-full">
+    <div className="bg-[#100d0a] min-h-screen">
       <NavBarComponent/>
       <HeroComponent/>
       <AboutComponent/>

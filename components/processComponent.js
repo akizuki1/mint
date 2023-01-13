@@ -21,96 +21,47 @@ export default function ProcessComponent() {
     {
       id: "01",
       name: "Within the next year",
-      description: "<ul className='list-none'><li><span >Knights NFT</span><ul  className='list-none'><li><span >Art</span></li></ul></li><li><span >Part of Community</span></li><li><span >The Altar Interface/Website</span></li><li><span >Knights Essence NFT</span><ul  className='list-none'><li><span >From holding Knight</span></li></ul></li><li><span >Knights Blessing NFT</span><ul  className='list-none'><li><span >Obtained through Altar interaction using Essence</span></li></ul></li></ul>",
+      description: "<ul className='list-none'><li><span >Knights NFT</span></li><li><span >The Altar</span></li><li><span >Knights Essence NFT</span></li><li><span >Knights Blessing NFT</span></li></ul>",
       href: "#",
       status: "upcoming",
     },
     {
       id: "02",
       name: "Down the road",
-      description: "<ul className='list-none'><li><span >Trait swapping</span></li><li><span >Other Holder Benefits</span></li></ul>",
+      description: "<ul className='list-none'><li><span >Trait swapping</span></li><li><span >Wallet security tools</span></li><li><span ><li><span >Wallet security tools</span></li></span></li></ul>",
       href: "#",
       status: "upcoming",
     },
     {
       id: "03",
       name: "Pie in the sky",
-      description: "<ul className='list-none'><li><span >Acquire/continue development of Spiral Knights</span></li></ul>",
+      description: "<ul className='list-none'><li><span >Development of Spiral Knights</span></li><li><span >Explore the intersection of blockchain technology and video games</span></li></ul>",
       href: "#",
       status: "upcoming",
     },
   ];
 
-  const callsToAction = [
-    { name: "Watch Demo", href: "#", icon: PlayIcon },
-    { name: "Contact Sales", href: "#", icon: PhoneIcon },
-  ];
-  const resources = [
-    {
-      name: "Help Center",
-      description:
-        "Get all of your questions answered in our forums or contact support.",
-      href: "#",
-      icon: LifebuoyIcon,
-    },
-    {
-      name: "Guides",
-      description:
-        "Learn how to maximize our platform to get the most out of it.",
-      href: "#",
-      icon: BookmarkSquareIcon,
-    },
-    {
-      name: "Events",
-      description:
-        "See what meet-ups and other events we might be planning near you.",
-      href: "#",
-      icon: CalendarIcon,
-    },
-    {
-      name: "Security",
-      description: "Understand how we take your privacy seriously.",
-      href: "#",
-      icon: ShieldCheckIcon,
-    },
-  ];
-  const recentPosts = [
-    { id: 1, name: "Boost your conversion rate", href: "#" },
-    {
-      id: 2,
-      name: "How to use search engine optimization to drive traffic to your site",
-      href: "#",
-    },
-    { id: 3, name: "Improve your customer experience", href: "#" },
-  ];
 
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
   }
 
   return (
-    <div className="bg-slate-900 lg:overflow-hidden  lg:pb-14">
+    <div id="roadmap" className="bg-[#100d0a]  lg:overflow-hidden  lg:pb-14">
 
 
 
       <div className="mx-auto max-w-7xl px-4">
     
             <div className="lg:py-12">
-              <a
-                href="#"
-                className="inline-flex items-center rounded-full  p-1 pr-2 text-white hover:text-gray-200 sm:text-base lg:text-sm xl:text-base"
-              >
-                <p className="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-blue-500 to-blue-900">
-                  SIMPLE STEPS
-                </p>
-              </a>
+              
               <h1 className="text-4xl font-semibold tracking-tight text-white  sm:text-6xl lg:mt-6 xl:text-6xl">
                 <span className="block">ROADMAP</span>
               </h1>
             </div>
           
         <nav aria-label="Progress">
-          <ol role="list" className="     md:flex  bg-blue-900/20">
+          <ol role="list" className="     md:flex  bg-orange-900/20">
             {steps.map((step, stepIdx) => (
               <li key={step.name} className="relative md:flex md:flex-1">
                 {step.status === "complete" ? (
