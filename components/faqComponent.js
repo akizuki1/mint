@@ -1,11 +1,8 @@
-import { Disclosure } from '@headlessui/react'
-import { ChevronDownIcon } from '@heroicons/react/24/outline'
+import { Disclosure } from "@headlessui/react";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
 export default function FaqComponent() {
-
   const faqs = [
-
-
     {
       question: "What is Knights?",
       answer:
@@ -19,12 +16,12 @@ export default function FaqComponent() {
     {
       question: "What is the supply of Knights?",
       answer:
-        "Knight is a 5,000 piece collection. 4,000 will be sold through a combination of an allowlist, a waitlist, and a public sale. 730 will be sold over a course of two years through a daily auction of 1 Knight per day. 260 will be kept for the Iron Hills team, Knights moderators, and other contributors",
+        "Knights is a 5,000 piece collection. 4,000 will be sold through a combination of an allowlist, a waitlist, and a public sale. 730 will be sold over a course of two years through a daily auction of 1 Knight per day. 260 will be kept for the Iron Hills team, Knights moderators, and other contributors",
     },
     {
       question: "What distinguishes Knights’ art from that of other projects?",
       answer:
-        "In the case of most PFP projects, they will use a single, static base model and then layer different attributes and traits on top of that model. There are some projects who have gone a step further by adding multiple base models into the equation. The base shape of a model being different than another model adds a huge level of complexity to the collection. Because some traits might not “fit” on a certain base model, each base model needs specific traits that only work with that base model. Knight is what we believe to be the most dynamic and complex PFP art collection ever created with 79 distinct base models. Each base model is completely unique and has a specific set of attributes that go with it. We believe this solves the all too common problem of rare pieces looking incredible and floor pieces looking boring.",
+        "In the case of most PFP projects, they will use a single, static base model and then layer different attributes and traits on top of that model. There are some projects who have gone a step further by adding multiple base models into the equation. The base shape of a model being different than another model adds a huge level of complexity to the collection. Because some traits might not “fit” on a certain base model, each base model needs specific traits that only work with that base model. Knights is what we believe to be the most dynamic and complex PFP art collection ever created with 79 distinct base models. Each base model is completely unique and has a specific set of attributes that go with it. We believe this solves the all too common problem of rare pieces looking incredible and floor pieces looking boring.",
     },
     {
       question: "What is your relation to the online game Spiral Knights?",
@@ -57,23 +54,24 @@ export default function FaqComponent() {
         "No worries - we are happy to answer any further questions in our Discord.",
     },
     // More questions...
-  ]
-  
+  ];
+
   function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
+    return classes.filter(Boolean).join(" ");
   }
 
   return (
-   
-    <div id="faq" className="mx-auto max-w-7xl py-12 px-4 lg:py-24">
-    <div className="space-y-12">
-<div className="space-y-5 sm:space-y-4">
-
-                <h1 className="text-4xl font-semibold tracking-tight text-white  sm:text-6xl lg:mt-6 xl:text-6xl">
-                  <span className=" block"> FREQUENTLY ASKED QUESTIONS</span>
-                </h1>
-          </div>
-      <div className="mx-auto max-w-7xl ">
+    <div
+      id="faq"
+      className="mx-auto max-w-7xl py-12 px-4 lg:py-24 bg-[#100d0a]"
+    >
+      <div className="space-y-12">
+        <div className="space-y-5 sm:space-y-4">
+          <h1 className="text-4xl font-semibold tracking-tight text-white  sm:text-6xl lg:mt-6 xl:text-6xl">
+            <span className=" block"> FREQUENTLY ASKED QUESTIONS</span>
+          </h1>
+        </div>
+        <div className="mx-auto max-w-7xl ">
           <dl className="mt-6 space-y-6 divide-y divide-gray-800">
             {faqs.map((faq) => (
               <Disclosure as="div" key={faq.question} className="pt-6">
@@ -81,17 +79,22 @@ export default function FaqComponent() {
                   <>
                     <dt className="text-lg">
                       <Disclosure.Button className="flex w-full items-start justify-between text-left">
-                        <span className="font-medium text-white">{faq.question}</span>
+                        <span className="font-medium text-white">
+                          {faq.question}
+                        </span>
                         <span className="ml-6 flex h-7 items-center">
                           <ChevronDownIcon
-                            className={classNames(open ? '-rotate-180' : 'rotate-0', 'h-6 w-6 transform')}
+                            className={classNames(
+                              open ? "-rotate-180" : "rotate-0",
+                              "h-6 w-6 transform"
+                            )}
                             aria-hidden="true"
                           />
                         </span>
                       </Disclosure.Button>
                     </dt>
                     <Disclosure.Panel as="dd" className="mt-2 pr-12">
-                      <p className="text-md text-gray-500">{faq.answer}</p>
+                      <p className="text-md text-gray-200">{faq.answer}</p>
                     </Disclosure.Panel>
                   </>
                 )}
@@ -99,9 +102,7 @@ export default function FaqComponent() {
             ))}
           </dl>
         </div>
-   
+      </div>
     </div>
-    </div>
-   
-  )
+  );
 }

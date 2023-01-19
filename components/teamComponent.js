@@ -1,119 +1,109 @@
-
-import t1 from '../assets/landing/team/Lego pfp.png'
-import t2 from '../assets/landing/team/Fangel pfp.png'
-import t3 from '../assets/landing/team/Poly pfp.png'
-import t4 from '../assets/landing/team/Ragga pfp.png'
-import t5 from '../assets/landing/team/Seraph_pfp.png'
-import t6 from '../assets/landing/team/sample.png'
-import Image from 'next/image'
-
+import t1 from "../assets/landing/team/Lego pfp.png";
+import t2 from "../assets/landing/team/Fangel pfp.png";
+import t3 from "../assets/landing/team/Poly pfp.png";
+import t4 from "../assets/landing/team/Ragga pfp.png";
+import t5 from "../assets/landing/team/Seraph_pfp.png";
+import t6 from "../assets/landing/team/sample.png";
+import Image from "next/image";
 
 const team1 = [
   {
-    name: 'Erik Levin',
-    role: 'Co-Owner',
-    nick: 'Lego2build',
-    imageUrl:t1,
-    twitterUrl: '#',
-    linkedinUrl: '#',
+    name: "Erik Levin",
+    role: "Co-Owner",
+    nick: "Lego2build",
+    imageUrl: t1,
+    twitterUrl: "#",
+    linkedinUrl: "#",
   },
   {
-    name: 'Luke Lindsay',
-    nick: 'RaggaPrince',
-    role: 'Co-Owner',
-    imageUrl:t4,
-    twitterUrl: '#',
-    linkedinUrl: '#',
+    name: "Luke Lindsay",
+    nick: "RaggaPrince",
+    role: "Co-Owner",
+    imageUrl: t4,
+    twitterUrl: "#",
+    linkedinUrl: "#",
   },
   {
-    name: 'Esther Chu',
-    role: 'Graphic Designer & Illustrator',
-    nick: 'Fighting Polygon',
-    imageUrl:t3,
-    twitterUrl: '#',
-    linkedinUrl: '#',
+    name: "Esther Chu",
+    role: "Graphic Designer & Illustrator",
+    nick: "Fighting Polygon",
+    imageUrl: t3,
+    twitterUrl: "#",
+    linkedinUrl: "#",
   },
-  
+
   // More people...
-]
+];
 
 const team2 = [
   {
-    name: 'David Girshner II',
-    role: 'Creative Design',
-    nick: 'SeraphofAsh',
-    imageUrl:t5,
-    twitterUrl: '#',
-    linkedinUrl: '#',
+    name: "David Girshner II",
+    role: "Creative Design",
+    nick: "SeraphofAsh",
+    imageUrl: t5,
+    twitterUrl: "#",
+    linkedinUrl: "#",
   },
   {
-    name: 'Toby Frimoth	',
-    role: 'Senior Designer',
-    nick: 'Fangel',
-    imageUrl:t2,
-    twitterUrl: '#',
-    linkedinUrl: '#',
+    name: "Toby Frimoth	",
+    role: "Senior Designer",
+    nick: "Fangel",
+    imageUrl: t2,
+    twitterUrl: "#",
+    linkedinUrl: "#",
   },
   {
-    name: 'Zeneca',
-    role: 'Project Advisor',
-    nick: '',
-    imageUrl:t6,
-    twitterUrl: '#',
-    linkedinUrl: '#',
+    name: "Zeneca",
+    role: "Project Advisor",
+    nick: "",
+    imageUrl: t6,
+    twitterUrl: "#",
+    linkedinUrl: "#",
   },
   {
-    name: 'Kfish n Chips',
-    role: 'Developer Team',
-    nick: '',
-    imageUrl:t6,
-    twitterUrl: '#',
-    linkedinUrl: '#',
+    name: "Kfish n Chips",
+    role: "Developer Team",
+    nick: "",
+    imageUrl: t6,
+    twitterUrl: "#",
+    linkedinUrl: "#",
   },
-  
+
   // More people...
-]
+];
 
 export default function TeamComponent() {
   return (
-   
-      <div id="team" className="mx-auto max-w-7xl py-12 px-4 lg:py-24">
-        <div className="space-y-12">
-          <div className="space-y-5 sm:space-y-4">
-                <h1 className="text-4xl font-semibold tracking-tight text-white  sm:text-6xl lg:mt-6 xl:text-6xl">
-                  <span className="block">MEET THE TEAM</span>
-                </h1>
-          </div>
-          <div className="max-w-4xl mx-auto">
+    <div
+      id="team"
+      className="mx-auto max-w-7xl py-12 px-4 lg:py-24 bg-[#100d0a]"
+    >
+      <div className="space-y-12">
+        <div className="space-y-5 sm:space-y-4">
+          <h1 className="text-4xl font-semibold tracking-tight text-white  sm:text-6xl lg:mt-6 xl:text-6xl">
+            <span className="block">MEET THE TEAM</span>
+          </h1>
+        </div>
+        <div className="max-w-4xl mx-auto">
           <ul className=" -ml-5 content-between list-none grid sm:grid-cols-2 md:grid-cols-3  gap-3  ">
             {team1.map((person) => (
-              <li key={person.name} className=" bg-orange-900/20 py-10 text-center  ">
+              <li
+                key={person.name}
+                className=" bg-orange-900/20 py-10 text-center  "
+              >
                 <div className="space-y-6 xl:space-y-10 ">
-                  <Image className="mx-auto h-40 w-40 rounded-full " src={person.imageUrl} alt="" />
+                  <Image
+                    className="mx-auto h-40 w-40 rounded-full "
+                    src={person.imageUrl}
+                    alt=""
+                  />
                   <div className=" mx-auto items-center justify-between">
                     <div className=" mx-auto  text-md font-medium ">
                       <h3 className="text-lg text-white">{person.name}</h3>
-                      <h5 className="text-sm -mt-4  text-white">{person.nick}</h5>
+                      <h5 className="text-sm -mt-4  text-white">
+                        {person.nick}
+                      </h5>
                       <p className="text-amber-700">{person.role}</p>
-                     
-                    </div>
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ul>
-          </div>
-          <ul className=" -ml-5 content-between list-none grid sm:grid-cols-2 md:grid-cols-4  gap-3  ">
-            {team2.map((person) => (
-              <li key={person.name} className=" bg-orange-900/20 py-10 text-center  ">
-                <div className="space-y-6 xl:space-y-10 ">
-                  <Image className="mx-auto h-40 w-40 rounded-full " src={person.imageUrl} alt="" />
-                  <div className="space-y-2 xl:flex  mx-auto xl:items-center xl:justify-between">
-                    <div className="mx-auto text-md font-medium ">
-                    <h3 className="text-lg text-white">{person.name}</h3>
-                      <h5 className="text-sm -mt-4  text-white">{person.nick}</h5>
-                      <p className="text-amber-700">{person.role}</p>
-                     
                     </div>
                   </div>
                 </div>
@@ -121,7 +111,30 @@ export default function TeamComponent() {
             ))}
           </ul>
         </div>
+        <ul className=" -ml-5 content-between list-none grid sm:grid-cols-2 md:grid-cols-4  gap-3  ">
+          {team2.map((person) => (
+            <li
+              key={person.name}
+              className=" bg-orange-900/20 py-10 text-center  "
+            >
+              <div className="space-y-6 xl:space-y-10 ">
+                <Image
+                  className="mx-auto h-40 w-40 rounded-full "
+                  src={person.imageUrl}
+                  alt=""
+                />
+                <div className="space-y-2 xl:flex  mx-auto xl:items-center xl:justify-between">
+                  <div className="mx-auto text-md font-medium ">
+                    <h3 className="text-lg text-white">{person.name}</h3>
+                    <h5 className="text-sm -mt-4  text-white">{person.nick}</h5>
+                    <p className="text-amber-700">{person.role}</p>
+                  </div>
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
       </div>
-   
-  )
+    </div>
+  );
 }
