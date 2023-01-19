@@ -3,7 +3,8 @@ import t2 from "../assets/landing/team/Fangel pfp.png";
 import t3 from "../assets/landing/team/Poly pfp.png";
 import t4 from "../assets/landing/team/Ragga pfp.png";
 import t5 from "../assets/landing/team/Seraph_pfp.png";
-import t6 from "../assets/landing/team/sample.png";
+import t6 from "../assets/landing/team/Zeneca pfp.png";
+import t7 from "../assets/landing/team/KfnC.png";
 import Image from "next/image";
 
 const team1 = [
@@ -64,7 +65,7 @@ const team2 = [
     name: "Kfish n Chips",
     role: "Developer Team",
     nick: "",
-    imageUrl: t6,
+    imageUrl: t7,
     twitterUrl: "#",
     linkedinUrl: "#",
   },
