@@ -1,6 +1,6 @@
 export default function ProcessComponent() {
   return (
-    <div id="roadmap" className="  lg:overflow-hidden bg-[#100d0a] lg:pb-14">
+    <div id="roadmap" className="  lg:overflow-hidden pb-14">
       <div className="mx-auto max-w-7xl px-4">
         <div className="pt-24 flex">
           <h1 className="text-4xl font-semibold tracking-tight text-white  sm:text-6xl lg:mt-6 xl:text-6xl">

@@ -8,10 +8,10 @@ export default function HeroComponent() {
     return classes.filter(Boolean).join(" ");
   }
   return (
-    <main className="relative  pb-12 pt-12">
-      <div className="absolute inset-0">
+    <main className="relative bg-[#0a0908] pb-12 pt-12">
+      <div className="absolute inset-0 mx-auto  max-w-7xl">
         <Image
-          className="h-full w-full object-fit  "
+          className="h-full w-full object-cover "
           src={heroBack}
           alt="back iron hills"
         />

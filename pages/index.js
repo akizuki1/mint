@@ -16,7 +16,7 @@ export default function Home() {
   }
 
   return (
-    <div className="bg-gradient-to-b from-[#0D0A08] to-[#100d0a] h-screen">
+    <div className="bg-gradient-to-b from-[#0a0908] via-[#0D0A08] to-[#100d0a] only:min-h-screen min-w-full w-screen">
       <NavBarComponent />
       <HeroComponent />
       <AboutComponent />

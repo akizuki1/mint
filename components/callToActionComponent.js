@@ -1,6 +1,6 @@
 export default function CallToActionComponent() {
   return (
-    <div id="community" className="bg-[#100d0a]">
+    <div id="community">
       <div className="mx-auto max-w-7xl py-16 px-4 text-center sm:py-20 sm:px-6 lg:px-8">
         <div className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
           <div className="text-4xl font-semibold tracking-tight text-white  sm:text-6xl lg:mt-6 xl:text-6xl">

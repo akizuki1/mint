@@ -61,10 +61,7 @@ export default function FaqComponent() {
   }
 
   return (
-    <div
-      id="faq"
-      className="mx-auto max-w-7xl py-12 px-4 lg:py-24 bg-[#100d0a]"
-    >
+    <div id="faq" className="mx-auto max-w-7xl py-12 px-4 lg:py-24 ">
       <div className="space-y-12">
         <div className="space-y-5 sm:space-y-4">
           <h1 className="text-4xl font-semibold tracking-tight text-white  sm:text-6xl lg:mt-6 xl:text-6xl">
