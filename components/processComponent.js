@@ -15,10 +15,10 @@ export default function ProcessComponent() {
                 <div className="flex flex-1 flex-col justify-between bg-orange-900/20 p-6">
                   <div className="flex-1">
                     <div className="mt-2 block">
-                      <p className="text-2xl font-semibold text-white">
+                      <div className="text-2xl font-semibold text-white">
                         Establish the Foundation
-                      </p>
-                      <p className="mt-3 sm:text-lg text-gray-200">
+                      </div>
+                      <div className="mt-3 sm:text-lg text-white">
                         <ul className="list-none">
                           <li>
                             <span>Knights</span>
@@ -33,7 +33,7 @@ export default function ProcessComponent() {
                             <span>Knights’ Blessings</span>
                           </li>
                         </ul>
-                      </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -42,10 +42,10 @@ export default function ProcessComponent() {
                 <div className="flex flex-1 flex-col justify-between bg-orange-900/20 p-6">
                   <div className="flex-1">
                     <div className="mt-2 block">
-                      <p className="text-2xl font-semibold text-white">
+                      <div className="text-2xl font-semibold text-white">
                         Develop, Educate, and Empower
-                      </p>
-                      <p className="mt-3 sm:text-lg text-gray-200">
+                      </div>
+                      <div className="mt-3 sm:text-lg text-white">
                         <ul className="list-none">
                           <li>
                             <span>Trait based utility</span>
@@ -57,7 +57,7 @@ export default function ProcessComponent() {
                             <span>Dynamic royalties</span>
                           </li>
                         </ul>
-                      </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -66,10 +66,10 @@ export default function ProcessComponent() {
                 <div className="flex flex-1 flex-col justify-between bg-orange-900/20 p-6">
                   <div className="flex-1">
                     <div className="mt-2 block">
-                      <p className="text-2xl font-semibold text-white">
+                      <div className="text-2xl font-semibold text-white">
                         Charge Into the Unknown
-                      </p>
-                      <p className="mt-3 sm:text-lg text-gray-200">
+                      </div>
+                      <div className="mt-3 sm:text-lg text-white">
                         <ul className="list-none">
                           <li>
                             <span>
@@ -78,7 +78,7 @@ export default function ProcessComponent() {
                             </span>
                           </li>
                         </ul>
-                      </p>
+                      </div>
                     </div>
                   </div>
                 </div>
