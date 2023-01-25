@@ -207,8 +207,8 @@ export default function ModalQuestionsComponent(props) {
                                     htmlFor="email"
                                     className="block text-sm font-medium text-gray-300"
                                   >
-                                    How would you define "success" for Knights 6
-                                    months from now?
+                                    How would you define &quot;success&quot; for
+                                    Knights 6 months from now?
                                   </label>
 
                                   <div className="mt-2">
@@ -434,8 +434,8 @@ export default function ModalQuestionsComponent(props) {
                                     htmlFor="email"
                                     className="block text-sm font-medium text-gray-300"
                                   >
-                                    How would you define "success" for Knights 6
-                                    months from now?
+                                    How would you define &quot;success&quot; for
+                                    Knights 6 months from now?
                                   </label>
 
                                   <div className="mt-2">
