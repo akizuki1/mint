@@ -6,15 +6,13 @@ import NavBarComponent from "../components/navBarComponent";
 import ProcessComponent from "../components/processComponent";
 import TeamComponent from "../components/teamComponent";
 import FaqComponent from "../components/faqComponent";
-import ModalQuestionsComponent from "../components/modalQuestionscomponent";
-import { useState } from "react";
+import ModalQuestionsComponent from "../components/modalQuestionsComponent";
+import { useSelector } from "react-redux";
 
 export default function Home() {
-  const [questionsModal, setQuestionsModal] = useState(true);
-  function handleChangeModal(status) {
-    setQuestionsModal(status);
-  }
-
+  const applicationStatus = useSelector(
+    (store) => store.web3Data.applicationStatus
+  );
   return (
     <div className="bg-gradient-to-b from-[#0a0908] via-[#0D0A08] to-[#100d0a] only:min-h-screen min-w-full w-screen">
       <NavBarComponent />
@@ -25,12 +23,7 @@ export default function Home() {
       <FaqComponent />
       <CallToActionComponent />
       <FooterComponent />
-      {questionsModal === true ? (
-        <ModalQuestionsComponent
-          handleModal={handleChangeModal}
-          status={questionsModal}
-        />
-      ) : null}
+      <ModalQuestionsComponent />
     </div>
   );
 }

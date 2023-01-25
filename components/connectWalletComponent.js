@@ -1,13 +1,27 @@
 import { useConnectWallet, useSetChain } from "@web3-onboard/react";
 import { ethers } from "ethers";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { AuthService } from "../services/authService";
+import useLocalStorage from "../hooks/useLocalStorage";
+import {
+  getUserData,
+  modalApplication,
+} from "../redux/actions/web3DataActions";
 
 export default function ConnectWalletComponent(props) {
   const dispatch = useDispatch();
   const [{ wallet, connecting, connected }, connect, disconnect] =
     useConnectWallet();
+  const applicationStatus = useSelector(
+    (store) => store.web3Data.applicationStatus
+  );
+  const applicationStatusBk = useSelector(
+    (store) => store.web3Data.applicationStatusBk
+  );
   const [ethersProvider, setProvider] = useState(undefined);
+  const [user, setUser] = useLocalStorage("user", null);
+  const [accessToken, setAccessToken] = useLocalStorage("jwtToken", null);
   const [
     {
       chains, // the list of chains that web3-onboard was initialized with
@@ -16,17 +30,28 @@ export default function ConnectWalletComponent(props) {
     },
     setChain, // function to call to initiate user to switch chains in their wallet
   ] = useSetChain();
-  function authAccount() {
+
+  async function authAccount(provider) {
     const message =
       "Hail Fellow KnightsWe want YOU to enlist in the Knights Task Force!";
-    ethersProvider
+
+    const signature = await provider
       .getSigner(wallet.accounts[0].address)
-      .signMessage(message)
-      .catch((err) => {
-        window.alert(
-          `Failure!${err && err.message ? `\n\n${err.message}` : ""}`
-        );
-      });
+      .signMessage(message);
+
+    if (signature) {
+      const res = await AuthService(
+        wallet.accounts[0].address,
+        signature,
+        message
+      );
+      if (res) {
+        console.log("terminmo el AUTH");
+        setUser(res.user);
+        setAccessToken(res.accessToken);
+        dispatch(getUserData(wallet.accounts[0].address, res.accessToken));
+      }
+    }
   }
 
   useEffect(() => {
@@ -35,7 +60,8 @@ export default function ConnectWalletComponent(props) {
         wallet.provider,
         "any"
       );
-      setProvider(provider);
+
+      authAccount(provider);
     }
   }, [wallet]);
 
@@ -48,16 +74,6 @@ export default function ConnectWalletComponent(props) {
       });
     }
   }, [connectedChain, wallet, setChain, chains]);
-
-  useEffect(() => {
-    if (
-      ethersProvider !== undefined &&
-      ethersProvider !== null &&
-      !connecting
-    ) {
-      authAccount();
-    }
-  }, [ethersProvider]);
 
   const Connect = () => {
     return (
@@ -89,11 +105,25 @@ export default function ConnectWalletComponent(props) {
     );
   };
 
-  const Disconnect = () => {
+  const Done = () => {
     return (
       <div>
         <div className="flex w-full items-center justify-center  border-solid border-2 border-amber-700 px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 ">
-          ALREADY ENLISTss
+          ENLISTED
+        </div>
+      </div>
+    );
+  };
+  const Application = () => {
+    return (
+      <div>
+        <div
+          onClick={() =>
+            dispatch(getUserData(wallet.accounts[0].address, accessToken))
+          }
+          className="flex cursor-pointer w-full items-center justify-center  border-solid border-2 border-amber-700 px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+        >
+          APPLICATION
         </div>
       </div>
     );
@@ -155,9 +185,14 @@ export default function ConnectWalletComponent(props) {
     return <Connecting />;
   }
 
-  if (wallet) {
-    return <Disconnect />;
+  if (wallet && applicationStatus !== "mint done") {
+    return <Application />;
   }
 
-  return <Connect />;
+  if (wallet && applicationStatus === "mint done") {
+    return <Done />;
+  }
+  if (!wallet) {
+    return <Connect />;
+  }
 }

@@ -1,12 +1,12 @@
+import { useConnectWallet } from "@web3-onboard/react";
 import Image from "next/image";
+import { useDispatch, useSelector } from "react-redux";
 import heroImg from "../assets/landing/badge.png";
 import heroBack from "../assets/landing/banner.png";
+import { modalApplication } from "../redux/actions/web3DataActions";
 import ConnectWalletComponent from "./connectWalletComponent";
 
 export default function HeroComponent() {
-  function classNames(...classes) {
-    return classes.filter(Boolean).join(" ");
-  }
   return (
     <main className="relative bg-[#0a0908] pb-12 pt-12">
       <div className="absolute inset-0 mx-auto  max-w-7xl">
@@ -29,7 +29,7 @@ export default function HeroComponent() {
               </h1>
 
               <div className="mt-10 sm:mt-12">
-                <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
+                <div className="mt-10 sm:flex sm:justify-center lg:justify-start gap-3">
                   <div className="">
                     <ConnectWalletComponent />
                   </div>

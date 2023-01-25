@@ -1,43 +1,39 @@
 import { HYDRATE } from "next-redux-wrapper";
 
 const dataInicial = {
-  subscription: false,
-  buyProcess: false,
-  buyStatus: 0,
-  totalWallets: 0,
-  inUseWallets: 0
+  mintProcess: false,
+  mintStatus: 0,
+  applicationStatus: "none",
+  userData: {}
 };
 
-export const PURCHASE_SUBSCRIPTION = "PURCHASE_SUBSCRIPTION";
-export const BUY_PROCESS = "BUY_PROCESS";
-export const COUNTER_WALLETS = "COUNTER_WALLETS";
+export const GET_DATA_USER = "GET_DATA_USER";
+export const APPLICATION_STATUS = "APPLICATION_STATUS";
+export const MINT_PROCESS = "MINT_PROCESS";
 
 export const web3DataReducer = (state = dataInicial, action) => {
   switch (action.type) {
     case HYDRATE:
       return {
         ...state,
-        ...action.payload
+        ...action.payload,
       };
-    case PURCHASE_SUBSCRIPTION:
+    case APPLICATION_STATUS:
       return {
         ...state,
-        subscription: action.payload
+        applicationStatus: action.payload,
       };
-    case BUY_PROCESS:
+    case GET_DATA_USER:
       return {
         ...state,
-        buyProcess: action.payload[0],
-        buyStatus: action.payload[1]
+        userData: action.payload,
       };
-
-    case COUNTER_WALLETS:
+    case MINT_PROCESS:
       return {
         ...state,
-        inUseWallets: action.payload[1],
-        totalWallets: action.payload[0]
-      };
-
+        mintProcess: action.payload[0],
+        mintStatus: action.payload[1]
+      }
     default:
       return state;
   }
