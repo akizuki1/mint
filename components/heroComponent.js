@@ -22,9 +22,11 @@ export default function HeroComponent() {
           <div className="sm:text-center md:mx-auto md:max-w-2xl flex    lg:col-span-6 lg:text-left">
             <div className="my-auto ">
               <h1 className="mt-4 uppercase text-2xl font-bold tracking-tight my-auto text-white sm:mt-5 sm:text-3xl lg:mt-6 xl:text-3xl">
-                <span className="block text-gray-200">Hail Fellow Knights</span>
+                <span className="block text-gray-200">
+                  Hail fellow Knights!
+                </span>
                 <span className="block text-white">
-                  We want YOU to enlist in the Knights Task Force!
+                  Apply now to join the Knights Task Force!
                 </span>
               </h1>
 

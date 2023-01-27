@@ -83,22 +83,7 @@ export default function ConnectWalletComponent(props) {
             onClick={() => connect()}
             className="flex w-full items-center justify-center  border-solid border-2 border-amber-700 bg-amber-700 px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
           >
-            ENLIST NOW
-          </button>
-        </div>
-      </div>
-    );
-  };
-
-  const ConnectBuy = () => {
-    return (
-      <div>
-        <div>
-          <button
-            onClick={() => connect()}
-            className="inline-block rounded-md bg-gray-800 px-3 py-2 text-md font-semibold leading-7 text-white shadow-sm ring-1 ring-gray-900 hover:bg-gray-900 hover:ring-gray-900 text-center w-full mt-8"
-          >
-            Connect to buy pack
+            APPLY NOW
           </button>
         </div>
       </div>
@@ -109,7 +94,7 @@ export default function ConnectWalletComponent(props) {
     return (
       <div>
         <div className="flex w-full items-center justify-center  border-solid border-2 border-amber-700 px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 ">
-          ENLISTED
+          ALREADY APPLIED
         </div>
       </div>
     );
@@ -121,9 +106,9 @@ export default function ConnectWalletComponent(props) {
           onClick={() =>
             dispatch(getUserData(wallet.accounts[0].address, accessToken))
           }
-          className="flex cursor-pointer w-full items-center justify-center  border-solid border-2 border-amber-700 px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+          className="flex cursor-pointer w-full items-center justify-center  border-solid bg-amber-700 border-2 border-amber-700 px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
         >
-          APPLICATION
+          CONTINUE APPLICATION
         </div>
       </div>
     );

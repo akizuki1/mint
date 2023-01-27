@@ -6,6 +6,7 @@ import t5 from "../assets/landing/team/Seraph_pfp.png";
 import t6 from "../assets/landing/team/Zeneca pfp.png";
 import t7 from "../assets/landing/team/KfnC.png";
 import Image from "next/image";
+import Link from "next/link";
 
 const team1 = [
   {
@@ -13,7 +14,7 @@ const team1 = [
     role: "Co-Owner",
     nick: "Lego2build",
     imageUrl: t1,
-    twitterUrl: "#",
+    linkUrl: "",
     linkedinUrl: "#",
   },
   {
@@ -21,7 +22,7 @@ const team1 = [
     nick: "RaggaPrince",
     role: "Co-Owner",
     imageUrl: t4,
-    twitterUrl: "#",
+    linkUrl: "",
     linkedinUrl: "#",
   },
   {
@@ -29,7 +30,7 @@ const team1 = [
     role: "Graphic Designer & Illustrator",
     nick: "Fighting Polygon",
     imageUrl: t3,
-    twitterUrl: "#",
+    linkUrl: "",
     linkedinUrl: "#",
   },
 
@@ -42,7 +43,7 @@ const team2 = [
     role: "Creative Design",
     nick: "SeraphofAsh",
     imageUrl: t5,
-    twitterUrl: "#",
+    linkUrl: "",
     linkedinUrl: "#",
   },
   {
@@ -50,7 +51,7 @@ const team2 = [
     role: "Senior Designer",
     nick: "Fangel",
     imageUrl: t2,
-    twitterUrl: "#",
+    linkUrl: "",
     linkedinUrl: "#",
   },
   {
@@ -58,7 +59,7 @@ const team2 = [
     role: "Project Advisor",
     nick: "",
     imageUrl: t6,
-    twitterUrl: "#",
+    linkUrl: "https://zeneca.xyz/",
     linkedinUrl: "#",
   },
   {
@@ -66,7 +67,7 @@ const team2 = [
     role: "Developer Team",
     nick: "",
     imageUrl: t7,
-    twitterUrl: "#",
+    linkUrl: "https://www.kfishnchips.com/",
     linkedinUrl: "#",
   },
 
@@ -126,6 +127,14 @@ export default function TeamComponent() {
                     <h3 className="text-lg text-white">{person.name}</h3>
                     <h5 className="text-sm -mt-4  text-white">{person.nick}</h5>
                     <p className="text-amber-700">{person.role}</p>
+                    {person.linkUrl !== "" ? (
+                      <Link
+                        href={person.linkUrl}
+                        className="text-white cursor-pointer"
+                      >
+                        More of us
+                      </Link>
+                    ) : null}
                   </div>
                 </div>
               </div>

@@ -6,17 +6,17 @@ export default function FaqComponent() {
     {
       question: "What is Knights?",
       answer:
-        "Knights, created by Iron Hills, is the culmination of nearly a year’s worth of trying to push the boundaries of NFT art and technology. Knights art is inspired by the online game Spiral Knights. By owning a Knight, you have enlisted as part of the Knights Task Force, an elite squad established to solve the mystery of The Altar.",
+        "Knights, created by Iron Hills, is the culmination of over a year's worth of trying to push the boundaries of NFT art and technology. Knights art is inspired by the online game Spiral Knights. By owning a Knight, you have enlisted as part of the Knights Task Force, an elite squad established to solve the mystery of The Altar.",
     },
     {
       question: "How do I get allowlisted for Knights?",
       answer:
-        "We will be using an application system to give out allowlist spots for Knights- however, there is a novel twist. In order to submit your application, you must mint a free soulbound token (SBT). This soulbound token cannot be sold or traded and acts as proof of your submitted application. As Iron Hills accepts applications, your SBT will dynamically update to show whether or not you have been accepted. At the time of mint, those with accepted SBTs may burn their SBT in order to mint. The gas fees paid to mint the original SBT will be refunded to you during the burning and minting of Knights.",
+        "We will be using an application system to give out allowlist spots for Knights- however, there is a novel twist. In order to submit your application, you must mint a free soulbound token (SBT). This soulbound token cannot be sold or traded and acts as on-chain proof of your submitted application. As Iron Hills approves applications, your SBT will dynamically update to show whether or not you have been accepted. At the time of mint, those with accepted SBTs may burn their SBT in order to mint. The gas fees paid to mint the SBT will be refunded to you during the burning of the SBT and minting of Knights.",
     },
     {
       question: "What is the supply of Knights?",
       answer:
-        "Knights is a 5,000 piece collection. 4,000 will be sold through a combination of an allowlist, a waitlist, and a public sale. 730 will be sold over a course of two years through a daily auction of 1 Knight per day. 260 will be kept for the Iron Hills team, Knights moderators, and other contributors",
+        "Knights is a 5,000 piece collection. 4,000 will be sold through a combination of an allowlist, a waitlist, and a public sale. 730 will be sold over a course of two years through a daily auction of one Knight per day. 270 will be kept for giveaways, the Iron Hills team, Knights moderators, and other contributors.",
     },
     {
       question: "What distinguishes Knights’ art from that of other projects?",
@@ -42,11 +42,6 @@ export default function FaqComponent() {
       question: "Where can I buy and sell Knights?",
       answer:
         "Iron Hills is happy to make Knights tradeable on any marketplace that respects creator royalties.",
-    },
-    {
-      question: "I want to know more!",
-      answer:
-        "We plan to release a White paper which will contain much more detail and background about the project.",
     },
     {
       question: "My questions isn’t answered here!",

@@ -74,7 +74,10 @@ export default function AboutComponent() {
   }
 
   return (
-    <main className="mx-auto max-w-7xl px-4 bg-gradient-to-b from-[#0a0908] via-[#0D0A08] to-[#100d0a]">
+    <main
+      id="about"
+      className="mx-auto max-w-7xl px-4 bg-gradient-to-b from-[#0a0908] via-[#0D0A08] to-[#100d0a]"
+    >
       <main className=" relative mx-auto  max-w-7xl">
         <div className="lg:grid lg:grid-cols-12 lg:gap-8">
           <div className="sm:text-center md:mx-auto md:max-w-2xl flex    lg:col-span-6 lg:text-left">
@@ -88,10 +91,11 @@ export default function AboutComponent() {
                   with the goal of acquiring and continuing the development of
                   Spiral Knights. With that goal not being within reach at this
                   time, we have positioned ourselves to focus on our strength:
-                  innovation within web3. Each member of our team has different
-                  backgrounds, come from different places, and carry a wide
-                  variety of skills. We believe that these different
-                  perspectives are crucial to long-term innovation.
+                  innovation within web3. <br />
+                  <br /> Each member of our team has different backgrounds, come
+                  from different places, and carry a wide variety of skills. We
+                  believe that these different perspectives are crucial to
+                  long-term innovation.
                 </p>
               </div>
             </div>

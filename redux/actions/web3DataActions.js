@@ -86,7 +86,7 @@ export const launchApplication =
 
       dispatch({
         type: APPLICATION_STATUS,
-        payload: "application failed"
+        payload: "application failed",
       });
     }
   };

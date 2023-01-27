@@ -7,7 +7,10 @@ import {
   launchApplication,
   modalApplication,
   mintToken,
+  updateUserData,
+  getUserData,
 } from "../redux/actions/web3DataActions";
+import Link from "next/link";
 
 export default function ModalQuestionsComponent(props) {
   const [{ wallet }] = useConnectWallet();
@@ -32,6 +35,7 @@ export default function ModalQuestionsComponent(props) {
   }, [applicationStatus]);
 
   const [process, setProcess] = useState(1);
+  const [tryAgain, setTryAgain] = useState(false);
   const [discordID, setDiscordID] = useState();
   const [twitterUrl, setTwitterUrl] = useState();
   const [valueLife, setValueLife] = useState();
@@ -62,6 +66,19 @@ export default function ModalQuestionsComponent(props) {
       setProcess(mintStatus);
     }
   }, [mintStatus]);
+
+  function updateDataUser() {
+    dispatch(getUserData(wallet, accessToken));
+    setTryAgain(true);
+  }
+
+  useEffect(() => {
+    if (process === 8) {
+      setTimeout(function () {
+        updateDataUser();
+      }, 3000);
+    }
+  }, [process]);
 
   const sendApplication = async () => {
     setProcess(2);
@@ -102,7 +119,7 @@ export default function ModalQuestionsComponent(props) {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-[#100d0a] bg-opacity-75 transition-opacity" />
+          <div className="fixed inset-0 bg-[#626067] bg-opacity-75 transition-opacity" />
         </Transition.Child>
 
         <div className="fixed inset-0 z-10 overflow-y-auto">
@@ -116,7 +133,7 @@ export default function ModalQuestionsComponent(props) {
               leaveFrom="opacity-100 translate-y-0 sm:scale-100"
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
-              <Dialog.Panel className="relative transform   bg-[#100d0a] px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-3xl sm:p-6">
+              <Dialog.Panel className="relative transform   bg-[#626067] px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-3xl sm:p-6">
                 <div>
                   <div className="mt-3 fel sm:mt-5">
                     <Dialog.Title
@@ -142,7 +159,7 @@ export default function ModalQuestionsComponent(props) {
                                     What is your Discord username (User#0001)?
                                   </label>
 
-                                  <div className="mt-2">
+                                  <div>
                                     <input
                                       rows={4}
                                       name="Q1"
@@ -151,7 +168,7 @@ export default function ModalQuestionsComponent(props) {
                                       onChange={(e) => [
                                         setDiscordID(e.target.value),
                                       ]}
-                                      className="block w-full h-10 bg-black sm:text-sm"
+                                      className="block w-full h-10 text-gray-800 bg-gray-400 sm:text-sm"
                                       required={true}
                                     />
                                   </div>
@@ -164,7 +181,7 @@ export default function ModalQuestionsComponent(props) {
                                     What is your Twitter URL?
                                   </label>
 
-                                  <div className="mt-2">
+                                  <div>
                                     <input
                                       rows={4}
                                       name="Q2"
@@ -173,7 +190,7 @@ export default function ModalQuestionsComponent(props) {
                                       onChange={(e) => [
                                         setTwitterUrl(e.target.value),
                                       ]}
-                                      className="block w-full h-10  bg-black sm:text-sm"
+                                      className="block w-full h-10  text-gray-800 bg-gray-400 sm:text-sm"
                                       required={true}
                                     />
                                   </div>
@@ -183,12 +200,12 @@ export default function ModalQuestionsComponent(props) {
                                     htmlFor="email"
                                     className="block text-sm font-medium text-gray-300"
                                   >
-                                    As a Knights holder, what is one thing that
-                                    Iron Hills can do that would add the most
-                                    value to your life?
+                                    As a Knights holder, what is the one thing
+                                    that you would like to see Iron Hills do
+                                    that would add the most value to your life?
                                   </label>
 
-                                  <div className="mt-2">
+                                  <div>
                                     <textarea
                                       rows={4}
                                       name="Q1"
@@ -197,7 +214,7 @@ export default function ModalQuestionsComponent(props) {
                                       onChange={(e) => [
                                         setValueLife(e.target.value),
                                       ]}
-                                      className="block w-full  bg-black sm:text-sm"
+                                      className="block w-full  text-gray-800 bg-gray-400 sm:text-sm"
                                       required={true}
                                     />
                                   </div>
@@ -211,7 +228,7 @@ export default function ModalQuestionsComponent(props) {
                                     Knights 6 months from now?
                                   </label>
 
-                                  <div className="mt-2">
+                                  <div>
                                     <textarea
                                       rows={4}
                                       name="Q1"
@@ -220,7 +237,7 @@ export default function ModalQuestionsComponent(props) {
                                       onChange={(e) => [
                                         setSuccessKnights(e.target.value),
                                       ]}
-                                      className="block w-full  bg-black sm:text-sm"
+                                      className="block w-full  text-gray-800 bg-gray-400 sm:text-sm"
                                       required={true}
                                     />
                                   </div>
@@ -237,7 +254,7 @@ export default function ModalQuestionsComponent(props) {
                                     type="submit"
                                     className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-amber-700 bg-amber-700 px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
                                   >
-                                    SEND
+                                    SUBMIT
                                   </button>
                                 </div>
                               </form>
@@ -324,17 +341,11 @@ export default function ModalQuestionsComponent(props) {
                                 </div>
                                 <div className="flex justify-center ">
                                   <p className="mx-auto justify-self-center text-white text-2xl font-semibold">
-                                    Application submitted correctly
+                                    Knights application successfully.
                                   </p>
                                 </div>
                                 <div className="flex max-w-sm mx-auto mt-8">
-                                  <button
-                                    type="button"
-                                    className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-amber-700 bg-amber-700 px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
-                                    onClick={mint}
-                                  >
-                                    MINT TO FINISH
-                                  </button>
+                                  {mint()}
                                 </div>
                               </>
                             );
@@ -359,7 +370,7 @@ export default function ModalQuestionsComponent(props) {
                                 </div>
                                 <div className="flex justify-center ">
                                   <p className="mx-auto justify-self-center text-white text-2xl font-semibold">
-                                    Application failed
+                                    Knights application failed
                                   </p>
                                 </div>
                                 <div className="flex max-w-sm mx-auto mt-8">
@@ -384,10 +395,10 @@ export default function ModalQuestionsComponent(props) {
                                     What is your Discord username?
                                   </label>
 
-                                  <div className="mt-2">
+                                  <div>
                                     <label
                                       htmlFor="email"
-                                      className="block text-sm font-medium text-gray-500"
+                                      className="block text-sm font-medium bg-[#626067] text-gray-800"
                                     >
                                       {discordID}
                                     </label>
@@ -401,10 +412,10 @@ export default function ModalQuestionsComponent(props) {
                                     What is your Twitter URL?
                                   </label>
 
-                                  <div className="mt-2">
+                                  <div>
                                     <label
                                       htmlFor="email"
-                                      className="block text-sm font-medium text-gray-500"
+                                      className="block text-sm font-medium bg-[#626067] text-gray-800"
                                     >
                                       {twitterUrl}
                                     </label>
@@ -420,10 +431,10 @@ export default function ModalQuestionsComponent(props) {
                                     value to your life?
                                   </label>
 
-                                  <div className="mt-2">
+                                  <div>
                                     <label
                                       htmlFor="email"
-                                      className="block text-sm font-medium text-gray-500"
+                                      className="block text-sm font-medium bg-[#626067] text-gray-800"
                                     >
                                       {valueLife}
                                     </label>
@@ -438,10 +449,10 @@ export default function ModalQuestionsComponent(props) {
                                     Knights 6 months from now?
                                   </label>
 
-                                  <div className="mt-2">
+                                  <div>
                                     <label
                                       htmlFor="email"
-                                      className="block text-sm font-medium text-gray-500"
+                                      className="block text-sm font-medium bg-[#626067] text-gray-800"
                                     >
                                       {successKnights}
                                     </label>
@@ -520,12 +531,12 @@ export default function ModalQuestionsComponent(props) {
                                 </div>
                                 <div className="flex justify-center ">
                                   <p className="mx-auto justify-self-center text-white text-2xl font-semibold">
-                                    Minting...
+                                    Soulbound token minting...
                                   </p>
                                 </div>
                               </>
                             );
-                          case 7:
+                          case 8:
                             return (
                               <>
                                 <div className="flex justify-center mt-12 p-8 ">
@@ -546,23 +557,81 @@ export default function ModalQuestionsComponent(props) {
                                 </div>
                                 <div className="flex justify-center ">
                                   <p className="mx-auto justify-self-center text-white text-2xl font-semibold">
-                                    Success!
+                                    Soulbound Token minted successfully
                                   </p>
                                 </div>
                                 <div className="flex max-w-sm mx-auto mt-8">
-                                  <button
-                                    type="button"
-                                    className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-amber-700 bg-amber-700 px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
-                                    onClick={() =>
-                                      changeStatusModal("mint done")
-                                    }
-                                  >
-                                    CLOSE
-                                  </button>
+                                  {userData.token ? (
+                                    <button
+                                      type="button"
+                                      className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-amber-700 bg-amber-700 px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+                                      onClick={() => alert("opensea")}
+                                    >
+                                      VIEW ON OPENSEA
+                                    </button>
+                                  ) : !userData.token && tryAgain === true ? (
+                                    <button
+                                      type="button"
+                                      className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-amber-700 bg-amber-700 px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+                                      onClick={() => updateUserData()}
+                                    >
+                                      RELOAD TOKEN
+                                    </button>
+                                  ) : (
+                                    <button className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-amber-700 bg-amber-700 px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 ">
+                                      <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="2em"
+                                        height="2em"
+                                        preserveAspectRatio="xMidYMid meet"
+                                        viewBox="0 0 24 24"
+                                      >
+                                        <g
+                                          fill="none"
+                                          stroke="white"
+                                          strokeLinecap="round"
+                                          strokeWidth="2"
+                                        >
+                                          <path
+                                            strokeDasharray="60"
+                                            strokeDashoffset="60"
+                                            strokeOpacity=".3"
+                                            d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3Z"
+                                          >
+                                            <animate
+                                              fill="freeze"
+                                              attributeName="stroke-dashoffset"
+                                              dur="1.3s"
+                                              values="60;0"
+                                            />
+                                          </path>
+                                          <path
+                                            strokeDasharray="15"
+                                            strokeDashoffset="15"
+                                            d="M12 3C16.9706 3 21 7.02944 21 12"
+                                          >
+                                            <animate
+                                              fill="freeze"
+                                              attributeName="stroke-dashoffset"
+                                              dur="0.3s"
+                                              values="15;0"
+                                            />
+                                            <animateTransform
+                                              attributeName="transform"
+                                              dur="1.5s"
+                                              repeatCount="indefinite"
+                                              type="rotate"
+                                              values="0 12 12;360 12 12"
+                                            />
+                                          </path>
+                                        </g>
+                                      </svg>
+                                    </button>
+                                  )}
                                 </div>
                               </>
                             );
-                          case 8:
+                          case 7:
                             return (
                               <>
                                 <div className="flex justify-center mt-12 p-8 ">
@@ -583,7 +652,7 @@ export default function ModalQuestionsComponent(props) {
                                 </div>
                                 <div className="flex justify-center ">
                                   <p className="mx-auto justify-self-center text-white text-2xl font-semibold">
-                                    Mint failed
+                                    Soulbound token minted failed
                                   </p>
                                 </div>
                                 <div className="flex max-w-sm mx-auto mt-8">
