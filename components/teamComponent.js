@@ -132,7 +132,7 @@ export default function TeamComponent() {
                         href={person.linkUrl}
                         className="text-white cursor-pointer"
                       >
-                        More of us
+                        Learn more
                       </Link>
                     ) : null}
                   </div>
