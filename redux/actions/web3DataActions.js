@@ -7,11 +7,11 @@ import { GetUserService } from "../../services/getUserService";
 import { ApplicationService } from "../../services/applicationService";
 import { Mint } from "../../services/mintService";
 
-export const getUserData = (wallet, token) => async (dispatch) => {
+export const getUserData = (address, token) => async (dispatch) => {
   let status = "";
 
   try {
-    const user = await GetUserService(wallet, token);
+    const user = await GetUserService(address, token);
 
     if (user.token === undefined) {
       if (user.application === undefined) {

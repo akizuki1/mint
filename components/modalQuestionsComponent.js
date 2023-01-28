@@ -68,7 +68,7 @@ export default function ModalQuestionsComponent(props) {
   }, [mintStatus]);
 
   function updateDataUser() {
-    dispatch(getUserData(wallet, accessToken));
+    dispatch(getUserData(wallet.accounts[0].address, accessToken));
     setTryAgain(true);
   }
 
@@ -95,7 +95,6 @@ export default function ModalQuestionsComponent(props) {
   };
 
   function mint() {
-    console.log(userData);
     dispatch(mintToken(wallet, userData));
   }
 
@@ -136,128 +135,131 @@ export default function ModalQuestionsComponent(props) {
               <Dialog.Panel className="relative transform   bg-[#626067] px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-3xl sm:p-6">
                 <div>
                   <div className="mt-3 fel sm:mt-5">
-                    <Dialog.Title
-                      as="h3"
-                      className="text-2xl font-semibold text-white"
-                    >
-                      Knights Application
-                    </Dialog.Title>
                     <div className="mt-8  ">
                       {(() => {
                         switch (process) {
                           case 1:
                             return (
-                              <form
-                                className="space-y-6"
-                                onSubmit={() => [sendApplication()]}
-                              >
-                                <div>
-                                  <label
-                                    htmlFor="email"
-                                    className="block text-sm ont-medium text-gray-300"
-                                  >
-                                    What is your Discord username (User#0001)?
-                                  </label>
-
+                              <>
+                                <Dialog.Title
+                                  as="h3"
+                                  className="text-2xl font-semibold text-white"
+                                >
+                                  Knights Application
+                                </Dialog.Title>
+                                <form
+                                  className="space-y-6"
+                                  onSubmit={() => [sendApplication()]}
+                                >
                                   <div>
-                                    <input
-                                      rows={4}
-                                      name="Q1"
-                                      id="Q1"
-                                      value={discordID}
-                                      onChange={(e) => [
-                                        setDiscordID(e.target.value),
-                                      ]}
-                                      className="block w-full h-10 text-gray-800 bg-gray-400 sm:text-sm"
-                                      required={true}
-                                    />
-                                  </div>
-                                </div>
-                                <div>
-                                  <label
-                                    htmlFor="email"
-                                    className="block text-sm font-medium text-gray-300"
-                                  >
-                                    What is your Twitter URL?
-                                  </label>
+                                    <label
+                                      htmlFor="email"
+                                      className="block text-sm ont-medium text-gray-300"
+                                    >
+                                      What is your Discord username (User#0001)?
+                                    </label>
 
-                                  <div>
-                                    <input
-                                      rows={4}
-                                      name="Q2"
-                                      id="Q2"
-                                      value={twitterUrl}
-                                      onChange={(e) => [
-                                        setTwitterUrl(e.target.value),
-                                      ]}
-                                      className="block w-full h-10  text-gray-800 bg-gray-400 sm:text-sm"
-                                      required={true}
-                                    />
+                                    <div>
+                                      <input
+                                        rows={4}
+                                        name="Q1"
+                                        id="Q1"
+                                        value={discordID}
+                                        onChange={(e) => [
+                                          setDiscordID(e.target.value)
+                                        ]}
+                                        className="block w-full h-10 text-gray-800 bg-gray-400 sm:text-sm pl-2"
+                                        required={true}
+                                      />
+                                    </div>
                                   </div>
-                                </div>
-                                <div>
-                                  <label
-                                    htmlFor="email"
-                                    className="block text-sm font-medium text-gray-300"
-                                  >
-                                    As a Knights holder, what is the one thing
-                                    that you would like to see Iron Hills do
-                                    that would add the most value to your life?
-                                  </label>
+                                  <div>
+                                    <label
+                                      htmlFor="email"
+                                      className="block text-sm font-medium text-gray-300"
+                                    >
+                                      What is your Twitter URL?
+                                    </label>
 
-                                  <div>
-                                    <textarea
-                                      rows={4}
-                                      name="Q1"
-                                      id="Q1"
-                                      value={valueLife}
-                                      onChange={(e) => [
-                                        setValueLife(e.target.value),
-                                      ]}
-                                      className="block w-full  text-gray-800 bg-gray-400 sm:text-sm"
-                                      required={true}
-                                    />
+                                    <div>
+                                      <input
+                                        rows={4}
+                                        name="Q2"
+                                        id="Q2"
+                                        value={twitterUrl}
+                                        onChange={(e) => [
+                                          setTwitterUrl(e.target.value)
+                                        ]}
+                                        className="block w-full h-10  text-gray-800 bg-gray-400 sm:text-sm pl-2"
+                                        required={true}
+                                      />
+                                    </div>
                                   </div>
-                                </div>
-                                <div>
-                                  <label
-                                    htmlFor="email"
-                                    className="block text-sm font-medium text-gray-300"
-                                  >
-                                    How would you define &quot;success&quot; for
-                                    Knights 6 months from now?
-                                  </label>
+                                  <div>
+                                    <label
+                                      htmlFor="email"
+                                      className="block text-sm font-medium text-gray-300"
+                                    >
+                                      As a Knights holder, what is the one thing
+                                      that you would like to see Iron Hills do
+                                      that would add the most value to your
+                                      life?
+                                    </label>
 
-                                  <div>
-                                    <textarea
-                                      rows={4}
-                                      name="Q1"
-                                      id="Q1"
-                                      value={successKnights}
-                                      onChange={(e) => [
-                                        setSuccessKnights(e.target.value),
-                                      ]}
-                                      className="block w-full  text-gray-800 bg-gray-400 sm:text-sm"
-                                      required={true}
-                                    />
+                                    <div>
+                                      <textarea
+                                        rows={4}
+                                        name="Q1"
+                                        id="Q1"
+                                        value={valueLife}
+                                        onChange={(e) => [
+                                          setValueLife(e.target.value)
+                                        ]}
+                                        className="block w-full  text-gray-800 bg-gray-400 sm:text-sm pl-2 pt-2"
+                                        required={true}
+                                      />
+                                    </div>
                                   </div>
-                                </div>
-                                <div className="flex max-w-sm mx-auto mt-56">
-                                  <button
-                                    type="button"
-                                    className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-amber-700  px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
-                                    onClick={() => changeStatusModal("none")}
-                                  >
-                                    BACK
-                                  </button>
-                                  <button
-                                    type="submit"
-                                    className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-amber-700 bg-amber-700 px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
-                                  >
-                                    SUBMIT
-                                  </button>
-                                </div>
-                              </form>
+                                  <div>
+                                    <label
+                                      htmlFor="email"
+                                      className="block text-sm font-medium text-gray-300"
+                                    >
+                                      How would you define &quot;success&quot;
+                                      for Knights 6 months from now?
+                                    </label>
+
+                                    <div>
+                                      <textarea
+                                        rows={4}
+                                        name="Q1"
+                                        id="Q1"
+                                        value={successKnights}
+                                        onChange={(e) => [
+                                          setSuccessKnights(e.target.value)
+                                        ]}
+                                        className="block w-full  text-gray-800 bg-gray-400 sm:text-sm pl-2 pt-2"
+                                        required={true}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="flex max-w-sm mx-auto mt-56">
+                                    <button
+                                      type="button"
+                                      className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-amber-700  px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+                                      onClick={() => changeStatusModal("none")}
+                                    >
+                                      BACK
+                                    </button>
+                                    <button
+                                      type="submit"
+                                      className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-amber-700 bg-amber-700 px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+                                    >
+                                      SUBMIT
+                                    </button>
+                                  </div>
+                                </form>
+                              </>
                             );
                           case 2:
                             return (
@@ -340,9 +342,7 @@ export default function ModalQuestionsComponent(props) {
                                   </p>
                                 </div>
                                 <div className="flex justify-center ">
-                                  <p className="mx-auto justify-self-center text-white text-2xl font-semibold">
-                                    Knights application successfully.
-                                  </p>
+                                  <p className="mx-auto justify-self-center text-white text-2xl font-semibold">Application submitted successfully.</p>
                                 </div>
                                 <div className="flex max-w-sm mx-auto mt-8">
                                   {mint()}
@@ -536,7 +536,7 @@ export default function ModalQuestionsComponent(props) {
                                 </div>
                               </>
                             );
-                          case 8:
+                          case 7:
                             return (
                               <>
                                 <div className="flex justify-center mt-12 p-8 ">
@@ -557,23 +557,28 @@ export default function ModalQuestionsComponent(props) {
                                 </div>
                                 <div className="flex justify-center ">
                                   <p className="mx-auto justify-self-center text-white text-2xl font-semibold">
-                                    Soulbound Token minted successfully
+                                    Knights Application Soulbound Token minted
+                                    successfully.
                                   </p>
                                 </div>
                                 <div className="flex max-w-sm mx-auto mt-8">
                                   {userData.token ? (
-                                    <button
-                                      type="button"
-                                      className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-amber-700 bg-amber-700 px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
-                                      onClick={() => alert("opensea")}
+                                    <Link
+                                      className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-amber-700 bg-amber-700 px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10"
+                                      href={
+                                        'https://testnets.opensea.io/assets/goerli/0x5e86316bb7ead571af3caff7e3396ea38e6d0973/' +
+                                        userData.token
+                                      }
                                     >
-                                      VIEW ON OPENSEA
-                                    </button>
+                                      <span className="bg-amber-700 px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10">
+                                        View on OpenSea
+                                      </span>
+                                    </Link>
                                   ) : !userData.token && tryAgain === true ? (
                                     <button
                                       type="button"
                                       className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-amber-700 bg-amber-700 px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
-                                      onClick={() => updateUserData()}
+                                      onClick={updateUserData}
                                     >
                                       RELOAD TOKEN
                                     </button>
@@ -631,7 +636,7 @@ export default function ModalQuestionsComponent(props) {
                                 </div>
                               </>
                             );
-                          case 7:
+                          case 8:
                             return (
                               <>
                                 <div className="flex justify-center mt-12 p-8 ">
