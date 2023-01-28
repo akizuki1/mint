@@ -82,7 +82,7 @@ export const launchApplication =
         });
       }
     } catch (error) {
-      console.log("Application failed");
+      console.log("application failed");
 
       dispatch({
         type: APPLICATION_STATUS,
