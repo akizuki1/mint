@@ -8,6 +8,7 @@ import {
   getUserData,
   modalApplication,
 } from "../redux/actions/web3DataActions";
+import Link from "next/link";
 
 export default function ConnectWalletComponent(props) {
   const dispatch = useDispatch();
@@ -16,9 +17,8 @@ export default function ConnectWalletComponent(props) {
   const applicationStatus = useSelector(
     (store) => store.web3Data.applicationStatus
   );
-  const applicationStatusBk = useSelector(
-    (store) => store.web3Data.applicationStatusBk
-  );
+  const userData = useSelector((store) => store.web3Data.userData);
+
   const [ethersProvider, setProvider] = useState(undefined);
   const [user, setUser] = useLocalStorage("user", null);
   const [accessToken, setAccessToken] = useLocalStorage("jwtToken", null);
@@ -92,9 +92,24 @@ export default function ConnectWalletComponent(props) {
 
   const Done = () => {
     return (
-      <div>
-        <div className="flex w-full items-center justify-center  border-solid border-2 border-amber-700 px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 ">
-          ALREADY APPLIED
+      <div className="flex">
+        <div className=" ">
+          <div className="flex w-full items-center justify-center  px-8 py-3 text-md font-medium text-white  ">
+            ALREADY APPLIED
+          </div>
+        </div>
+        <div className=" ">
+          <div className="flex w-full items-center justify-center bg-amber-700  px-8 py-3 text-md font-medium  ">
+            <Link
+              className="text-white hover:text-white"
+              href={
+                "https://testnets.opensea.io/assets/goerli/0x5e86316bb7ead571af3caff7e3396ea38e6d0973/" +
+                userData.token
+              }
+            >
+              VIEW ON OPENSEA
+            </Link>
+          </div>
         </div>
       </div>
     );

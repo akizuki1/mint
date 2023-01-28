@@ -28,7 +28,8 @@ export default function ModalQuestionsComponent(props) {
       applicationStatus === "mint pending" ||
       applicationStatus === "application success" ||
       applicationStatus === "application failed" ||
-      applicationStatus === "minting"
+      applicationStatus === "minting" ||
+      applicationStatus === "mint done"
     ) {
       setOpen(true);
     } else setOpen(false);
@@ -168,7 +169,7 @@ export default function ModalQuestionsComponent(props) {
                                         id="Q1"
                                         value={discordID}
                                         onChange={(e) => [
-                                          setDiscordID(e.target.value)
+                                          setDiscordID(e.target.value),
                                         ]}
                                         className="block w-full h-10 text-gray-800 bg-gray-400 sm:text-sm pl-2"
                                         required={true}
@@ -190,7 +191,7 @@ export default function ModalQuestionsComponent(props) {
                                         id="Q2"
                                         value={twitterUrl}
                                         onChange={(e) => [
-                                          setTwitterUrl(e.target.value)
+                                          setTwitterUrl(e.target.value),
                                         ]}
                                         className="block w-full h-10  text-gray-800 bg-gray-400 sm:text-sm pl-2"
                                         required={true}
@@ -215,7 +216,7 @@ export default function ModalQuestionsComponent(props) {
                                         id="Q1"
                                         value={valueLife}
                                         onChange={(e) => [
-                                          setValueLife(e.target.value)
+                                          setValueLife(e.target.value),
                                         ]}
                                         className="block w-full  text-gray-800 bg-gray-400 sm:text-sm pl-2 pt-2"
                                         required={true}
@@ -238,7 +239,7 @@ export default function ModalQuestionsComponent(props) {
                                         id="Q1"
                                         value={successKnights}
                                         onChange={(e) => [
-                                          setSuccessKnights(e.target.value)
+                                          setSuccessKnights(e.target.value),
                                         ]}
                                         className="block w-full  text-gray-800 bg-gray-400 sm:text-sm pl-2 pt-2"
                                         required={true}
@@ -344,13 +345,14 @@ export default function ModalQuestionsComponent(props) {
                                   </p>
                                 </div>
                                 <div className="flex justify-center ">
-                                  <p className="mx-auto justify-self-center text-white text-2xl font-semibold">Application submitted successfully.</p>
+                                  <p className="mx-auto justify-self-center text-white text-2xl font-semibold">
+                                    Application submitted successfully.
+                                  </p>
                                 </div>
                                 <div className="flex max-w-sm mx-auto mt-8">
-                                  {!isMinting ? [
-                                    setIsMinting(true),
-                                    mint(),
-                                  ] : null}
+                                  {!isMinting
+                                    ? [setIsMinting(true), mint()]
+                                    : null}
                                 </div>
                               </>
                             );
@@ -571,11 +573,11 @@ export default function ModalQuestionsComponent(props) {
                                     <Link
                                       className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-amber-700 bg-amber-700 px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10"
                                       href={
-                                        'https://testnets.opensea.io/assets/goerli/0x5e86316bb7ead571af3caff7e3396ea38e6d0973/' +
+                                        "https://testnets.opensea.io/assets/goerli/0x5e86316bb7ead571af3caff7e3396ea38e6d0973/" +
                                         userData.token
                                       }
                                     >
-                                        VIEW ON OPENSEA
+                                      VIEW ON OPENSEA
                                     </Link>
                                   ) : !userData.token && tryAgain === true ? (
                                     <button
