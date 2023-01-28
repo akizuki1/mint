@@ -569,7 +569,7 @@ export default function ModalQuestionsComponent(props) {
                                   </p>
                                 </div>
                                 <div className="flex max-w-sm mx-auto mt-8">
-                                  {!userData.token ? (
+                                  {userData.token ? (
                                     <div className="flex gap-2 mx-auto">
                                       <button
                                         type="button"
