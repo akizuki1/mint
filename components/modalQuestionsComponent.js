@@ -34,6 +34,7 @@ export default function ModalQuestionsComponent(props) {
     } else setOpen(false);
   }, [applicationStatus]);
 
+  const [isMinting, setIsMinting] = useState(false);
   const [process, setProcess] = useState(1);
   const [tryAgain, setTryAgain] = useState(false);
   const [discordID, setDiscordID] = useState();
@@ -63,6 +64,7 @@ export default function ModalQuestionsComponent(props) {
 
   useEffect(() => {
     if (mintStatus !== 0) {
+      console.log(mintStatus);
       setProcess(mintStatus);
     }
   }, [mintStatus]);
@@ -73,10 +75,10 @@ export default function ModalQuestionsComponent(props) {
   }
 
   useEffect(() => {
-    if (process === 8) {
-      setTimeout(function () {
+    if (process === 7) {
+      setTimeout(() => {
         updateDataUser();
-      }, 3000);
+      }, 1500);
     }
   }, [process]);
 
@@ -345,7 +347,10 @@ export default function ModalQuestionsComponent(props) {
                                   <p className="mx-auto justify-self-center text-white text-2xl font-semibold">Application submitted successfully.</p>
                                 </div>
                                 <div className="flex max-w-sm mx-auto mt-8">
-                                  {mint()}
+                                  {!isMinting ? [
+                                    setIsMinting(true),
+                                    mint(),
+                                  ] : null}
                                 </div>
                               </>
                             );
@@ -468,7 +473,7 @@ export default function ModalQuestionsComponent(props) {
                                   </button>
                                   <button
                                     className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-amber-700 bg-amber-700 px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
-                                    onClick={mint}
+                                    onClick={() => mint()}
                                   >
                                     MINT TO FINISH
                                   </button>
@@ -570,15 +575,13 @@ export default function ModalQuestionsComponent(props) {
                                         userData.token
                                       }
                                     >
-                                      <span className="bg-amber-700 px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10">
-                                        View on OpenSea
-                                      </span>
+                                        VIEW ON OPENSEA
                                     </Link>
                                   ) : !userData.token && tryAgain === true ? (
                                     <button
                                       type="button"
                                       className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-amber-700 bg-amber-700 px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
-                                      onClick={updateUserData}
+                                      onClick={() => updateUserData()}
                                     >
                                       RELOAD TOKEN
                                     </button>
@@ -664,7 +667,7 @@ export default function ModalQuestionsComponent(props) {
                                   <button
                                     type="button"
                                     className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-amber-700 bg-amber-700 px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
-                                    onClick={mint}
+                                    onClick={() => mint()}
                                   >
                                     TRY AGAIN
                                   </button>
