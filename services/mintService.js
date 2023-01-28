@@ -1,6 +1,6 @@
 import Web3 from "web3";
 
-const CONTRACT_ADDRESS = "0x5E86316Bb7EaD571AF3cAfF7e3396EA38e6d0973";
+const CONTRACT_ADDRESS = "0x46Db79ad52f4AB71A7176C011Ec9C79172873fE8";
 const ABI = require("./abi.json");
 
 export async function Mint(
