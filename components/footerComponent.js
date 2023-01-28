@@ -1,6 +1,6 @@
 import { useState } from "react";
 import ModalPolicyTermsComponent from "./modalPolicyTermsComponent";
-
+import Link from "next/link";
 export default function FooterComponent() {
   const navigation = {
     main: [
@@ -36,14 +36,14 @@ export default function FooterComponent() {
           >
             {navigation.main.map((item) => (
               <div key={item.name} className="px-5 py-2">
-                <a
+                <Link
                   href={item.href}
                   target="_blank"
                   rel="noreferrer"
                   className="text-base text-white hover:text-gray-900"
                 >
                   {item.name}
-                </a>
+                </Link>
               </div>
             ))}
           </nav>

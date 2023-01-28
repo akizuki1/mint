@@ -571,6 +571,8 @@ export default function ModalQuestionsComponent(props) {
                                 <div className="flex max-w-sm mx-auto mt-8">
                                   {userData.token ? (
                                     <Link
+                                    target={"_blank"}
+                                    referrerPolicy="no-referrer"
                                       className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-amber-700 bg-amber-700 px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10"
                                       href={
                                         "https://testnets.opensea.io/assets/goerli/0x5e86316bb7ead571af3caff7e3396ea38e6d0973/" +

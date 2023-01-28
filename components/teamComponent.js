@@ -131,6 +131,8 @@ export default function TeamComponent() {
                       <Link
                         href={person.linkUrl}
                         className="text-white cursor-pointer"
+                        target={"_blank"}
+                        referrerPolicy="no-referrer"
                       >
                         Learn more
                       </Link>
