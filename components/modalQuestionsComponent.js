@@ -29,7 +29,7 @@ export default function ModalQuestionsComponent(props) {
       applicationStatus === "application success" ||
       applicationStatus === "application failed" ||
       applicationStatus === "minting" ||
-      applicationStatus === "mint done"
+      process === 7
     ) {
       setOpen(true);
     } else setOpen(false);
