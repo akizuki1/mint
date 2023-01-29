@@ -44,15 +44,15 @@ const team2 = [
     nick: "SeraphofAsh",
     imageUrl: t5,
     linkUrl: "",
-    linkedinUrl: "#",
+    linkedinUrl: "#"
   },
   {
     name: "Toby Frimoth	",
-    role: "Senior Designer",
+    role: "Community Outreach",
     nick: "Fangel",
     imageUrl: t2,
     linkUrl: "",
-    linkedinUrl: "#",
+    linkedinUrl: "#"
   },
   {
     name: "Zeneca",
@@ -60,7 +60,7 @@ const team2 = [
     nick: "",
     imageUrl: t6,
     linkUrl: "https://zeneca.xyz/",
-    linkedinUrl: "#",
+    linkedinUrl: "#"
   },
   {
     name: "Kfish n Chips",
@@ -68,8 +68,8 @@ const team2 = [
     nick: "",
     imageUrl: t7,
     linkUrl: "https://www.kfishnchips.com/",
-    linkedinUrl: "#",
-  },
+    linkedinUrl: "#"
+  }
 
   // More people...
 ];
