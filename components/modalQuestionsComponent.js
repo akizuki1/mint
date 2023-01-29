@@ -135,8 +135,16 @@ export default function ModalQuestionsComponent(props) {
               leaveFrom="opacity-100 translate-y-0 sm:scale-100"
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
-              <Dialog.Panel className="relative transform   bg-[#626067] px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-3xl sm:p-6">
+              <Dialog.Panel className="relative transform bg-application-background px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-3xl sm:p-6">
                 <div>
+                  {process === 1 ? (
+                    <Dialog.Title
+                      as="h3"
+                      className="text-2xl font-semibold text-white"
+                    >
+                      Knights Application
+                    </Dialog.Title>
+                  ) : null}
                   <div className="mt-3 fel sm:mt-5">
                     <div className="mt-8  ">
                       {(() => {
@@ -144,12 +152,6 @@ export default function ModalQuestionsComponent(props) {
                           case 1:
                             return (
                               <>
-                                <Dialog.Title
-                                  as="h3"
-                                  className="text-2xl font-semibold text-white"
-                                >
-                                  Knights Application
-                                </Dialog.Title>
                                 <form
                                   className="space-y-6"
                                   onSubmit={() => [sendApplication()]}
@@ -157,7 +159,7 @@ export default function ModalQuestionsComponent(props) {
                                   <div>
                                     <label
                                       htmlFor="email"
-                                      className="block text-sm ont-medium text-gray-300"
+                                      className="block text-sm font-medium text-white"
                                     >
                                       What is your Discord username (User#0001)?
                                     </label>
@@ -169,9 +171,9 @@ export default function ModalQuestionsComponent(props) {
                                         id="Q1"
                                         value={discordID}
                                         onChange={(e) => [
-                                          setDiscordID(e.target.value),
+                                          setDiscordID(e.target.value)
                                         ]}
-                                        className="block w-full h-10 text-gray-800 bg-gray-400 sm:text-sm pl-2"
+                                        className="block w-full h-10 text-white bg-application-text-bg sm:text-sm pl-2"
                                         required={true}
                                       />
                                     </div>
@@ -179,7 +181,7 @@ export default function ModalQuestionsComponent(props) {
                                   <div>
                                     <label
                                       htmlFor="email"
-                                      className="block text-sm font-medium text-gray-300"
+                                      className="block text-sm font-medium text-white"
                                     >
                                       What is your Twitter URL?
                                     </label>
@@ -191,9 +193,9 @@ export default function ModalQuestionsComponent(props) {
                                         id="Q2"
                                         value={twitterUrl}
                                         onChange={(e) => [
-                                          setTwitterUrl(e.target.value),
+                                          setTwitterUrl(e.target.value)
                                         ]}
-                                        className="block w-full h-10  text-gray-800 bg-gray-400 sm:text-sm pl-2"
+                                        className="block w-full h-10  text-white bg-application-text-bg sm:text-sm pl-2"
                                         required={true}
                                       />
                                     </div>
@@ -201,7 +203,7 @@ export default function ModalQuestionsComponent(props) {
                                   <div>
                                     <label
                                       htmlFor="email"
-                                      className="block text-sm font-medium text-gray-300"
+                                      className="block text-sm font-medium text-white"
                                     >
                                       As a Knights holder, what is the one thing
                                       that you would like to see Iron Hills do
@@ -216,9 +218,9 @@ export default function ModalQuestionsComponent(props) {
                                         id="Q1"
                                         value={valueLife}
                                         onChange={(e) => [
-                                          setValueLife(e.target.value),
+                                          setValueLife(e.target.value)
                                         ]}
-                                        className="block w-full  text-gray-800 bg-gray-400 sm:text-sm pl-2 pt-2"
+                                        className="block w-full  text-white bg-application-text-bg sm:text-sm pl-2 pt-2"
                                         required={true}
                                       />
                                     </div>
@@ -226,7 +228,7 @@ export default function ModalQuestionsComponent(props) {
                                   <div>
                                     <label
                                       htmlFor="email"
-                                      className="block text-sm font-medium text-gray-300"
+                                      className="block text-sm font-medium text-white"
                                     >
                                       How would you define &quot;success&quot;
                                       for Knights 6 months from now?
@@ -239,9 +241,9 @@ export default function ModalQuestionsComponent(props) {
                                         id="Q1"
                                         value={successKnights}
                                         onChange={(e) => [
-                                          setSuccessKnights(e.target.value),
+                                          setSuccessKnights(e.target.value)
                                         ]}
-                                        className="block w-full  text-gray-800 bg-gray-400 sm:text-sm pl-2 pt-2"
+                                        className="block w-full  text-white bg-application-text-bg sm:text-sm pl-2 pt-2"
                                         required={true}
                                       />
                                     </div>
@@ -249,14 +251,14 @@ export default function ModalQuestionsComponent(props) {
                                   <div className="flex max-w-sm mx-auto mt-56">
                                     <button
                                       type="button"
-                                      className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-amber-700  px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+                                      className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-buttons  px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
                                       onClick={() => changeStatusModal("none")}
                                     >
                                       BACK
                                     </button>
                                     <button
                                       type="submit"
-                                      className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-amber-700 bg-amber-700 px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+                                      className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
                                     >
                                       SUBMIT
                                     </button>
@@ -383,7 +385,7 @@ export default function ModalQuestionsComponent(props) {
                                 <div className="flex max-w-sm mx-auto mt-8">
                                   <button
                                     type="button"
-                                    className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-amber-700 bg-amber-700 px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+                                    className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
                                     onClick={() => setProcess(1)}
                                   >
                                     TRY AGAIN
@@ -468,13 +470,13 @@ export default function ModalQuestionsComponent(props) {
                                 <div className="flex max-w-sm mx-auto mt-56">
                                   <button
                                     type="button"
-                                    className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-amber-700  px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+                                    className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-buttons  px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
                                     onClick={() => changeStatusModal("none")}
                                   >
                                     BACK
                                   </button>
                                   <button
-                                    className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-amber-700 bg-amber-700 px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+                                    className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
                                     onClick={() => mint()}
                                   >
                                     MINT TO FINISH
@@ -573,7 +575,7 @@ export default function ModalQuestionsComponent(props) {
                                     <div className="flex gap-2 mx-auto">
                                       <button
                                         type="button"
-                                        className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-amber-700  px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+                                        className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-buttons  px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
                                         onClick={() => [
                                           changeStatusModal("none"),
                                           setProcess(9)
@@ -584,7 +586,7 @@ export default function ModalQuestionsComponent(props) {
                                       <Link
                                         target={"_blank"}
                                         referrerPolicy="no-referrer"
-                                        className="flex w-md mx-auto items-center  justify-center  border-solid border-2 border-amber-700 bg-amber-700 px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10"
+                                        className="flex w-md mx-auto items-center  justify-center  border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10"
                                         href={
                                           "https://testnets.opensea.io/assets/goerli/0x46Db79ad52f4AB71A7176C011Ec9C79172873fE8/" +
                                           userData.token
@@ -596,13 +598,13 @@ export default function ModalQuestionsComponent(props) {
                                   ) : !userData.token && tryAgain === true ? (
                                     <button
                                       type="button"
-                                      className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-amber-700 bg-amber-700 px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+                                      className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
                                       onClick={() => updateUserData()}
                                     >
                                       RELOAD TOKEN
                                     </button>
                                   ) : (
-                                    <button className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-amber-700 bg-amber-700 px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 ">
+                                    <button className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 ">
                                       <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="2em"
@@ -682,7 +684,7 @@ export default function ModalQuestionsComponent(props) {
                                 <div className="flex max-w-sm mx-auto mt-8">
                                   <button
                                     type="button"
-                                    className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-amber-700 bg-amber-700 px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+                                    className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
                                     onClick={() => mint()}
                                   >
                                     TRY AGAIN

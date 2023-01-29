@@ -60,7 +60,7 @@ export default function FaqComponent() {
       <div className="space-y-12">
         <div className="space-y-5 sm:space-y-4">
           <h1 className="text-4xl font-semibold tracking-tight text-white  sm:text-6xl lg:mt-6 xl:text-6xl">
-            <span className=" block"> FREQUENTLY ASKED QUESTIONS</span>
+            <span className="block text-titles">FREQUENTLY ASKED QUESTIONS</span>
           </h1>
         </div>
         <div className="mx-auto max-w-7xl ">

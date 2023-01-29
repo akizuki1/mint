@@ -17,7 +17,7 @@ export default function ProcessComponent() {
           <div className="relative mx-auto max-w-7xl ">
             <div className="mx-auto mt-12 grid max-w-xl gap-5 lg:max-w-none lg:grid-cols-3">
               <div className="flex flex-col overflow-hidden">
-                <div className="flex flex-1 flex-col justify-between bg-orange-900/20 p-6">
+                <div className="flex flex-1 flex-col justify-between bg-panel-boxes p-6">
                   <div className="flex-1">
                     <div className="mt-2 block relative h-96">
                       <div className="text-2xl font-semibold text-white">
@@ -49,7 +49,7 @@ export default function ProcessComponent() {
                 </div>
               </div>
               <div className="flex flex-col overflow-hidden">
-                <div className="flex flex-1 flex-col justify-between bg-orange-900/20 p-6">
+                <div className="flex flex-1 flex-col justify-between bg-panel-boxes p-6">
                   <div className="flex-1">
                     <div className="mt-2 block relative h-96">
                       <div className="text-2xl font-semibold text-white">
@@ -78,7 +78,7 @@ export default function ProcessComponent() {
                 </div>
               </div>
               <div className="flex flex-col overflow-hidden">
-                <div className="flex flex-1 flex-col justify-between bg-orange-900/20 p-6">
+                <div className="flex flex-1 flex-col justify-between bg-panel-boxes p-6">
                   <div className="flex-1">
                     <div className="mt-2 block relative h-96">
                       <div className="text-2xl font-semibold text-white">

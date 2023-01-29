@@ -33,7 +33,7 @@ export default function ConnectWalletComponent(props) {
 
   async function authAccount(provider) {
     const message =
-      "Hail Fellow KnightsWe want YOU to enlist in the Knights Task Force!";
+      "Let those who would seek admission gaze deep within the glass, for therein lies the revelation of their fate.";
 
     const signature = await provider
       .getSigner(wallet.accounts[0].address)
@@ -46,7 +46,6 @@ export default function ConnectWalletComponent(props) {
         message
       );
       if (res) {
-        console.log("terminmo el AUTH");
         setUser(res.user);
         setAccessToken(res.accessToken);
         dispatch(getUserData(wallet.accounts[0].address, res.accessToken));
@@ -81,7 +80,7 @@ export default function ConnectWalletComponent(props) {
         <div>
           <button
             onClick={() => connect()}
-            className="flex w-full items-center justify-center  border-solid border-2 border-amber-700 bg-amber-700 px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+            className="flex w-full items-center justify-center  border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
           >
             APPLY NOW
           </button>
@@ -99,7 +98,7 @@ export default function ConnectWalletComponent(props) {
           </div>
         </div> */}
         <div className=" ">
-          <div className="flex w-full items-center justify-center bg-amber-700  px-8 py-3 text-md font-medium  ">
+          <div className="flex w-full items-center justify-center bg-buttons  px-8 py-3 text-md font-medium  ">
             <Link
               className="text-white hover:text-white"
               href={
@@ -123,7 +122,7 @@ export default function ConnectWalletComponent(props) {
           onClick={() =>
             dispatch(getUserData(wallet.accounts[0].address, accessToken))
           }
-          className="flex cursor-pointer w-full items-center justify-center  border-solid bg-amber-700 border-2 border-amber-700 px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+          className="flex cursor-pointer w-full items-center justify-center  border-solid bg-buttons border-2 border-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
         >
           CONTINUE APPLICATION
         </div>

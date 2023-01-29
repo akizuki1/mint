@@ -88,7 +88,7 @@ export default function TeamComponent() {
             {team1.map((person) => (
               <li
                 key={person.name}
-                className=" bg-orange-900/20 py-10 text-center  "
+                className=" bg-panel-boxes py-10 text-center  "
               >
                 <div className="space-y-6 xl:space-y-10 ">
                   <Image
@@ -102,7 +102,7 @@ export default function TeamComponent() {
                       <h5 className="text-sm -mt-4  text-white">
                         {person.nick}
                       </h5>
-                      <p className="text-amber-700">{person.role}</p>
+                      <p className="text-team-titles">{person.role}</p>
                     </div>
                   </div>
                 </div>
@@ -114,7 +114,7 @@ export default function TeamComponent() {
           {team2.map((person) => (
             <li
               key={person.name}
-              className=" bg-orange-900/20 py-10 text-center  "
+              className=" bg-panel-boxes py-10 text-center  "
             >
               <div className="space-y-6 xl:space-y-10 ">
                 <Image
@@ -126,7 +126,7 @@ export default function TeamComponent() {
                   <div className="mx-auto text-md font-medium ">
                     <h3 className="text-lg text-white">{person.name}</h3>
                     <h5 className="text-sm -mt-4  text-white">{person.nick}</h5>
-                    <p className="text-amber-700">{person.role}</p>
+                    <p className="text-team-titles">{person.role}</p>
                     {person.linkUrl !== "" ? (
                       <Link
                         href={person.linkUrl}

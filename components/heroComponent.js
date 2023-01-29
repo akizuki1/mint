@@ -8,7 +8,7 @@ import ConnectWalletComponent from "./connectWalletComponent";
 
 export default function HeroComponent() {
   return (
-    <main className="relative bg-[#0a0908] pb-12 pt-12">
+    <main className="relative bg-background pb-12 pt-12">
       <div className="absolute inset-0 mx-auto  max-w-7xl">
         <Image
           className="h-full w-full object-cover "
@@ -26,7 +26,7 @@ export default function HeroComponent() {
                   Hail fellow Knights!
                 </span>
                 <span className="block text-white">
-                  Apply now to join the Knights Task Force!
+                  Join the Knights Task Force!
                 </span>
               </h1>
 

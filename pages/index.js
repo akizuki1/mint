@@ -14,7 +14,7 @@ export default function Home() {
     (store) => store.web3Data.applicationStatus
   );
   return (
-    <div className="bg-gradient-to-b from-[#0a0908] via-[#0D0A08] to-[#100d0a] only:min-h-screen min-w-full w-screen">
+    <div className="bg-background only:min-h-screen min-w-full w-screen">
       <NavBarComponent />
       <HeroComponent />
       <AboutComponent />
