@@ -82,7 +82,22 @@ export default function ConnectWalletComponent(props) {
             onClick={() => connect()}
             className="flex w-full items-center justify-center  border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
           >
-            APPLY NOW
+            {props.nav === true ? "CONNECT" : "APPLY NOW"}
+          </button>
+        </div>
+      </div>
+    );
+  };
+
+  const ConnectNav = () => {
+    return (
+      <div>
+        <div>
+          <button
+            onClick={() => connect()}
+            className="flex w-full items-center justify-center  border-solid border-2 border-buttons bg-buttons px-4 py-1 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+          >
+            {props.nav === true ? "CONNECT" : "APPLY NOW"}
           </button>
         </div>
       </div>
@@ -130,6 +145,30 @@ export default function ConnectWalletComponent(props) {
     );
   };
 
+  const Disconnect = () => {
+    return (
+      <div>
+        <button
+          onClick={() => disconnect({ label: wallet.label })}
+          className="flex cursor-pointer w-full items-center justify-center  border-solid bg-buttons border-2 border-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+        >
+          DISCONNECT
+        </button>
+      </div>
+    );
+  };
+  const DisconnectNav = () => {
+    return (
+      <div>
+        <button
+          onClick={() => disconnect({ label: wallet.label })}
+          className="flex cursor-pointer w-full items-center justify-center  border-solid bg-buttons border-2 border-buttons px-4 py-1 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+        >
+          DISCONNECT
+        </button>
+      </div>
+    );
+  };
   const Connecting = () => {
     return (
       <div>
@@ -184,6 +223,13 @@ export default function ConnectWalletComponent(props) {
 
   if (connecting) {
     return <Connecting />;
+  }
+  if (props.nav == true) {
+    if (!wallet) {
+      return <ConnectNav />;
+    } else {
+      return <DisconnectNav />;
+    }
   }
 
   if (wallet && applicationStatus !== "mint done") {

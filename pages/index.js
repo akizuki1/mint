@@ -10,8 +10,7 @@ import ModalQuestionsComponent from "../components/modalQuestionsComponent";
 
 export default function Home() {
   return (
-    <div className="bg-gradient-to-b from-[#0C0A08] via-[#090A0E] to-[#090A0E] only:min-h-screen  w-screen">
-      <NavBarComponent />
+    <div className="bg-background only:min-h-screen z-0 w-screen">
       <HeroComponent />
       <AboutComponent />
       <ProcessComponent />

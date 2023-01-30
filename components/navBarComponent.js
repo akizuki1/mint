@@ -4,13 +4,11 @@ import Image from "next/image";
 import logo from "../assets/img/Iron_Hills_Title.png";
 import logoIco from "../assets/img/iron_ico.png";
 import Link from "next/link";
+import ConnectWalletComponent from "./connectWalletComponent";
 
 export default function NavBarComponent() {
   return (
-    <Disclosure
-      as="nav"
-      className=" bg-gradient-to-b from-[#100d0a] to-[#0D0A08] "
-    >
+    <Disclosure as="nav" className=" z-10">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-4 sm:px-6  lg:px-8">
@@ -106,6 +104,7 @@ export default function NavBarComponent() {
                       />
                     </svg>
                   </Link>
+                  <ConnectWalletComponent nav={true} />
                 </div>
               </div>
               <div className="-mr-2 flex sm:hidden">
