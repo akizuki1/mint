@@ -1,8 +1,4 @@
 import "../styles/globals.css";
-import "../assets/css/plugins/bootstrap.min.css";
-import "../assets/css/plugins/slick.css";
-import "../assets/css/plugins/animate.css";
-import "../assets/css/style.css";
 import { wrapper } from "../redux/store";
 import { Web3OnboardProvider } from "@web3-onboard/react";
 import web3Onboard from "../config/web3/web3Provider";

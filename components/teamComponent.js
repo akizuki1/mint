@@ -99,7 +99,7 @@ export default function TeamComponent() {
                   <div className=" mx-auto items-center justify-between">
                     <div className=" mx-auto  text-md font-medium ">
                       <h3 className="text-lg text-white">{person.name}</h3>
-                      <h5 className="text-sm -mt-4  text-white">
+                      <h5 className="text-sm mt-4  text-white">
                         {person.nick}
                       </h5>
                       <p className="text-team-titles">{person.role}</p>
@@ -125,7 +125,7 @@ export default function TeamComponent() {
                 <div className="space-y-2 xl:flex  mx-auto xl:items-center xl:justify-between">
                   <div className="mx-auto text-md font-medium ">
                     <h3 className="text-lg text-white">{person.name}</h3>
-                    <h5 className="text-sm -mt-4  text-white">{person.nick}</h5>
+                    <h5 className="text-sm mt-4  text-white">{person.nick}</h5>
                     <p className="text-team-titles">{person.role}</p>
                     {person.linkUrl !== "" ? (
                       <Link
