@@ -211,6 +211,7 @@ export default function NavBarComponent() {
                   </button>
                 </Disclosure.Button>
               </div>
+              <ConnectWalletComponent nav={true} />
             </div>
           </Disclosure.Panel>
         </>

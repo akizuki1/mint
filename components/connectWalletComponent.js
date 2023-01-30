@@ -95,7 +95,7 @@ export default function ConnectWalletComponent(props) {
         <div>
           <button
             onClick={() => connect()}
-            className="flex w-full items-center justify-center  border-solid border-2 border-buttons bg-buttons px-4 py-1 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+            className="flex w-full items-center justify-center  border-solid border-2 border-buttons bg-buttons px-4 py-1 text-md font-medium text-white hover:bg-blues-600  "
           >
             {props.nav === true ? "CONNECT" : "APPLY NOW"}
           </button>
@@ -162,7 +162,7 @@ export default function ConnectWalletComponent(props) {
       <div>
         <button
           onClick={() => disconnect({ label: wallet.label })}
-          className="flex cursor-pointer w-full items-center justify-center  border-solid bg-buttons border-2 border-buttons px-4 py-1 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+          className="flex cursor-pointer w-full items-center justify-center  border-solid bg-buttons border-2 border-buttons px-4 py-1 text-md font-medium text-white hover:bg-blues-600  "
         >
           DISCONNECT
         </button>
@@ -224,7 +224,7 @@ export default function ConnectWalletComponent(props) {
   if (connecting) {
     return <Connecting />;
   }
-  if (props.nav == true) {
+  if (props.nav === true) {
     if (!wallet) {
       return <ConnectNav />;
     } else {
