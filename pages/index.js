@@ -7,14 +7,10 @@ import ProcessComponent from "../components/processComponent";
 import TeamComponent from "../components/teamComponent";
 import FaqComponent from "../components/faqComponent";
 import ModalQuestionsComponent from "../components/modalQuestionsComponent";
-import { useSelector } from "react-redux";
 
 export default function Home() {
-  const applicationStatus = useSelector(
-    (store) => store.web3Data.applicationStatus
-  );
   return (
-    <div className="bg-background only:min-h-screen min-w-full w-screen">
+    <div className="bg-gradient-to-b from-[#0C0A08] via-[#090A0E] to-[#090A0E] only:min-h-screen  w-screen">
       <NavBarComponent />
       <HeroComponent />
       <AboutComponent />

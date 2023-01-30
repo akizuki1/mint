@@ -1574,7 +1574,7 @@ export default function ModalPolicyTermsComponent(props) {
                   <div className="mt-5 sm:mt-6">
                     <button
                       type="button"
-                      className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-amber-700 bg-amber-700 px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+                      className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
                       onClick={() => changeStatusModal(false)}
                     >
                       BACK
@@ -3557,7 +3557,7 @@ export default function ModalPolicyTermsComponent(props) {
                   <div className="mt-5 sm:mt-6">
                     <button
                       type="button"
-                      className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-amber-700 bg-amber-700 px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+                      className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
                       onClick={() => changeStatusModal(false)}
                     >
                       BACK

@@ -19,7 +19,7 @@ body {
   }
 
   100% {
-    transform: translateX(calc(-250px * 7))
+    transform: translateX(calc(-250px * 9))
   }
 }
 
@@ -38,9 +38,9 @@ body {
 }
 
 .slide-track {
-  animation: scroll 35s linear infinite;
+  animation: scroll 50s linear infinite;
   display: flex;
-  width: calc(500px * 14);
+  width: calc(1100px * 14);
 }
 
 
@@ -64,3 +64,5 @@ slider::before {
   left: 0;
   top: 0;
 }
+
+

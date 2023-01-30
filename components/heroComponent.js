@@ -8,8 +8,8 @@ import ConnectWalletComponent from "./connectWalletComponent";
 
 export default function HeroComponent() {
   return (
-    <main className="relative bg-background pb-12 pt-12">
-      <div className="absolute inset-0 mx-auto  max-w-7xl">
+    <main className="relative pb-12  min-w-screen min-h-screen  ">
+      <div className="absolute inset-0  ">
         <Image
           className="h-full w-full object-cover "
           src={heroBack}
@@ -17,7 +17,8 @@ export default function HeroComponent() {
         />
         <div className="absolute inset-0 bg-neutral-900/30 mix-blend-multiply" />
       </div>
-      <main className=" relative mx-auto  max-w-7xl px-4 ">
+
+      <main className=" relative mx-auto grid place-items-center h-screen my-auto max-w-7xl px-4 -pt-24 ">
         <div className="lg:grid lg:grid-cols-12 lg:gap-8">
           <div className="sm:text-center md:mx-auto md:max-w-2xl flex    lg:col-span-6 lg:text-left">
             <div className="my-auto ">
