@@ -104,7 +104,6 @@ export default function NavBarComponent() {
                       />
                     </svg>
                   </Link>
-                  <ConnectWalletComponent nav={true} />
                 </div>
               </div>
               <div className="-mr-2 flex sm:hidden">
@@ -211,7 +210,6 @@ export default function NavBarComponent() {
                   </button>
                 </Disclosure.Button>
               </div>
-              <ConnectWalletComponent nav={true} />
             </div>
           </Disclosure.Panel>
         </>
