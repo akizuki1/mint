@@ -42,7 +42,7 @@ export default function HeroComponent() {
                 />
                 <div className="mt-10 sm:mt-12">
                   <div className="mt-10 sm:flex sm:justify-center lg:justify-start gap-3">
-                    <div className="">APPLY SOON</div>
+                    <div className=""></div>
                   </div>
                 </div>
               </div>
