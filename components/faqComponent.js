@@ -11,7 +11,12 @@ export default function FaqComponent() {
     {
       question: "How do I get allowlisted for Knights?",
       answer:
-        "We will be using an application system to give out allowlist spots for Knights- however, there is a novel twist. In order to submit your application, you must mint a free soulbound token (SBT). This soulbound token cannot be sold or traded and acts as on-chain proof of your submitted application. As Iron Hills approves applications, your SBT will dynamically update to show whether or not you have been accepted. At the time of mint, those with accepted SBTs may burn their SBT in order to mint. The gas fees paid to mint the SBT will be refunded to you during the burning of the SBT and minting of Knights.",
+        "We will be using an application system to give out allowlist spots for Knights- however, there is a novel twist. In order to submit your application, you must mint a free soulbound token (SBT). This SBT cannot be sold or traded and acts as on-chain proof of your submitted application. As Iron Hills approves applications, your SBT will dynamically update to show whether or not you have been accepted. At the time of mint, only those with approved SBTs may mint their Knight. The gas fees paid to mint the SBT will be refunded to you during the minting of Knights.",
+    },
+    {
+      question: "How do I know if my application has been accepted?",
+      answer:
+        "As Iron Hills goes through the process of reading and accepting applications, those whose applications have been accepted will have their Knights Application soulbound tokens automatically change to reflect their new status. Each variation of the Knights Application has different art to make it apparent whether or not you’ve been accepted. No having to ask around in Discord or worry that your allowlist isn’t on the contract; if you have an approved trait on your Knights Application SBT, then you are good to go!",
     },
     {
       question: "What is the supply of Knights?",
@@ -44,9 +49,9 @@ export default function FaqComponent() {
         "Iron Hills is happy to make Knights tradeable on any marketplace that respects creator royalties.",
     },
     {
-      question: "My questions isn’t answered here!",
+      question: "I still have more questions!",
       answer:
-        "No worries - we are happy to answer any further questions in our Discord.",
+        "No worries- we’re happy to answer any questions you have over in our Discord server. You can join our Discord server here.",
     },
     // More questions...
   ];
@@ -60,7 +65,9 @@ export default function FaqComponent() {
       <div className="space-y-12">
         <div className="space-y-5 sm:space-y-4">
           <h1 className="text-4xl font-semibold tracking-tight text-white  sm:text-6xl lg:mt-6 xl:text-6xl">
-            <span className="block text-titles">FREQUENTLY ASKED QUESTIONS</span>
+            <span className="block text-titles">
+              FREQUENTLY ASKED QUESTIONS
+            </span>
           </h1>
         </div>
         <div className="mx-auto max-w-7xl ">
@@ -78,7 +85,7 @@ export default function FaqComponent() {
                           <ChevronDownIcon
                             className={classNames(
                               open ? "-rotate-180" : "rotate-0",
-                              "h-6 w-6 transform"
+                              "h-6 w-6 transform text-white"
                             )}
                             aria-hidden="true"
                           />

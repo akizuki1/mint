@@ -80,7 +80,7 @@ export default function AboutComponent() {
         <div className="mx-auto mt-12 grid max-w-xl gap-5 lg:max-w-none lg:grid-cols-3">
           {features.map((feature) => (
             <div key={feature.title} className="flex flex-col overflow-hidden">
-              <div className="flex flex-1 flex-col justify-between bg-panel-boxes p-6">
+              <div className="flex flex-1 flex-col justify-between bg-panel-boxes rounded-sm p-6">
                 <div className="flex-1">
                   <div className="mt-2 block">
                     <p className="text-2xl font-semibold text-white">
@@ -100,64 +100,144 @@ export default function AboutComponent() {
         <div className="slider">
           <div className="slide-track gap-2">
             <div className="h-80 flex items-center bg-orange-900/20 justify-center">
-              <Image src={p1} alt="nftItem" className="object-fill h-full" />
+              <Image
+                src={p1}
+                alt="nftItem"
+                className="object-fill h-full rounded-sm"
+              />
             </div>
             <div className="h-80 flex items-center bg-orange-900/20 justify-center">
-              <Image src={p2} alt="nftItem" className="object-fill h-full" />
+              <Image
+                src={p2}
+                alt="nftItem"
+                className="object-fill h-full rounded-sm"
+              />
             </div>
             <div className="h-80 flex items-center bg-orange-900/20 justify-center">
-              <Image src={p3} alt="nftItem" className="object-fill h-full" />
+              <Image
+                src={p3}
+                alt="nftItem"
+                className="object-fill h-full rounded-sm"
+              />
             </div>
             <div className="h-80 flex items-center bg-orange-900/20 justify-center">
-              <Image src={p4} alt="nftItem" className="object-fill h-full" />
+              <Image
+                src={p4}
+                alt="nftItem"
+                className="object-fill h-full rounded-sm"
+              />
             </div>
             <div className="h-80 flex items-center bg-orange-900/20 justify-center">
-              <Image src={p5} alt="nftItem" className="object-fill h-full" />
+              <Image
+                src={p5}
+                alt="nftItem"
+                className="object-fill h-full rounded-sm"
+              />
             </div>
             <div className="h-80 flex items-center bg-orange-900/20 justify-center">
-              <Image src={p6} alt="nftItem" className="object-fill h-full" />
+              <Image
+                src={p6}
+                alt="nftItem"
+                className="object-fill h-full rounded-sm"
+              />
             </div>
             <div className="h-80 flex items-center bg-orange-900/20 justify-center">
-              <Image src={p7} alt="nftItem" className="object-fill h-full" />
+              <Image
+                src={p7}
+                alt="nftItem"
+                className="object-fill h-full rounded-sm"
+              />
             </div>
             <div className="h-80 flex items-center bg-orange-900/20 justify-center">
-              <Image src={p8} alt="nftItem" className="object-fill h-full" />
+              <Image
+                src={p8}
+                alt="nftItem"
+                className="object-fill h-full rounded-sm"
+              />
             </div>
             <div className="h-80 flex items-center bg-orange-900/20 justify-center">
-              <Image src={p9} alt="nftItem" className="object-fill h-full" />
+              <Image
+                src={p9}
+                alt="nftItem"
+                className="object-fill h-full rounded-sm"
+              />
             </div>
             <div className="h-80 flex items-center bg-orange-900/20 justify-center">
-              <Image src={p10} alt="nftItem" className="object-fill h-full" />
+              <Image
+                src={p10}
+                alt="nftItem"
+                className="object-fill h-full rounded-sm"
+              />
             </div>
             <div className="h-80 flex items-center bg-orange-900/20 justify-center">
-              <Image src={p1} alt="nftItem" className="object-fill h-full" />
+              <Image
+                src={p1}
+                alt="nftItem"
+                className="object-fill h-full rounded-sm"
+              />
             </div>
             <div className="h-80 flex items-center bg-orange-900/20 justify-center">
-              <Image src={p2} alt="nftItem" className="object-fill h-full" />
+              <Image
+                src={p2}
+                alt="nftItem"
+                className="object-fill h-full rounded-sm"
+              />
             </div>
             <div className="h-80 flex items-center bg-orange-900/20 justify-center">
-              <Image src={p3} alt="nftItem" className="object-fill h-full" />
+              <Image
+                src={p3}
+                alt="nftItem"
+                className="object-fill h-full rounded-sm"
+              />
             </div>
             <div className="h-80 flex items-center bg-orange-900/20 justify-center">
-              <Image src={p4} alt="nftItem" className="object-fill h-full" />
+              <Image
+                src={p4}
+                alt="nftItem"
+                className="object-fill h-full rounded-sm"
+              />
             </div>
             <div className="h-80 flex items-center bg-orange-900/20 justify-center">
-              <Image src={p5} alt="nftItem" className="object-fill h-full" />
+              <Image
+                src={p5}
+                alt="nftItem"
+                className="object-fill h-full rounded-sm"
+              />
             </div>
             <div className="h-80 flex items-center bg-orange-900/20 justify-center">
-              <Image src={p6} alt="nftItem" className="object-fill h-full" />
+              <Image
+                src={p6}
+                alt="nftItem"
+                className="object-fill h-full rounded-sm"
+              />
             </div>
             <div className="h-80 flex items-center bg-orange-900/20 justify-center">
-              <Image src={p7} alt="nftItem" className="object-fill h-full" />
+              <Image
+                src={p7}
+                alt="nftItem"
+                className="object-fill h-full rounded-sm"
+              />
             </div>
             <div className="h-80 flex items-center bg-orange-900/20 justify-center">
-              <Image src={p8} alt="nftItem" className="object-fill h-full" />
+              <Image
+                src={p8}
+                alt="nftItem"
+                className="object-fill h-full rounded-sm"
+              />
             </div>
             <div className="h-80 flex items-center bg-orange-900/20 justify-center">
-              <Image src={p9} alt="nftItem" className="object-fill h-full" />
+              <Image
+                src={p9}
+                alt="nftItem"
+                className="object-fill h-full rounded-sm"
+              />
             </div>
             <div className="h-80 flex items-center bg-orange-900/20 justify-center">
-              <Image src={p10} alt="nftItem" className="object-fill h-full" />
+              <Image
+                src={p10}
+                alt="nftItem"
+                className="object-fill h-full rounded-sm"
+              />
             </div>
           </div>
         </div>

@@ -15,7 +15,7 @@ export default function CallToActionComponent() {
           href="https://discord.gg/knightsbyironhills"
           target="_blank"
           rel="noreferrer"
-          className="flex w-56 mt-12 mb-24 mx-auto items-center justify-center  border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+          className="flex w-56 mt-12 mb-24 mx-auto items-center rounded-sm justify-center  border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
         >
           DISCORD
         </a>

@@ -25,7 +25,7 @@ export default function ModalPolicyTermsComponent(props) {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-[#100d0a] bg-opacity-90 transition-opacity" />
+          <div className="fixed inset-0 bg-background bg-opacity-90 transition-opacity" />
         </Transition.Child>
 
         <div className="fixed inset-0 z-10 overflow-y-auto">
@@ -40,7 +40,7 @@ export default function ModalPolicyTermsComponent(props) {
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
               {props.type === 1 ? (
-                <Dialog.Panel className="relative transform overflow-hidden  bg-[#100d0a] px-4 pt-5 pb-4 text-left  transition-all sm:my-8 max-w-7xl  sm:p-6">
+                <Dialog.Panel className="relative transform overflow-hidden  bg-background px-4 pt-5 pb-4 text-left  transition-all sm:my-8 max-w-7xl  sm:p-6">
                   <div>
                     <div className="mt-3 fel sm:mt-5">
                       <Dialog.Title
@@ -1574,7 +1574,7 @@ export default function ModalPolicyTermsComponent(props) {
                   <div className="mt-5 sm:mt-6">
                     <button
                       type="button"
-                      className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+                      className="flex w-md mx-auto items-center justify-center rounded-sm border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
                       onClick={() => changeStatusModal(false)}
                     >
                       BACK
@@ -3557,7 +3557,7 @@ export default function ModalPolicyTermsComponent(props) {
                   <div className="mt-5 sm:mt-6">
                     <button
                       type="button"
-                      className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+                      className="flex w-md mx-auto items-center justify-center rounded-sm border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
                       onClick={() => changeStatusModal(false)}
                     >
                       BACK

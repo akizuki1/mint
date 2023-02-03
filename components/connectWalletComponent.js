@@ -33,7 +33,7 @@ export default function ConnectWalletComponent(props) {
 
   async function authAccount(provider) {
     const message =
-      "Let those who would seek admission gaze deep within the glass, for therein lies the revelation of their fate.";
+      "Let those who would seek admission gaze deep within the glass, for therein lies the revelation of their fate.  This signature does not cost any gas. By signing, you are agreeing to Iron Hills’ Terms of Service";
 
     const signature = await provider
       .getSigner(wallet.accounts[0].address)
@@ -80,7 +80,7 @@ export default function ConnectWalletComponent(props) {
         <div>
           <button
             onClick={() => connect()}
-            className="flex w-full items-center justify-center  border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+            className="flex w-full items-center justify-center rounded-sm  border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
           >
             {props.nav === true ? "CONNECT" : "APPLY NOW"}
           </button>
@@ -95,7 +95,7 @@ export default function ConnectWalletComponent(props) {
         <div>
           <button
             onClick={() => connect()}
-            className="flex w-full items-center justify-center  border-solid border-2 border-buttons bg-buttons px-4 py-1 text-md font-medium text-white hover:bg-blues-600  "
+            className="flex w-full items-center justify-center rounded-sm  border-solid border-2 border-buttons bg-buttons px-4 py-1 text-md font-medium text-white hover:bg-blues-600  "
           >
             {props.nav === true ? "CONNECT" : "APPLY NOW"}
           </button>
@@ -108,12 +108,12 @@ export default function ConnectWalletComponent(props) {
     return (
       <div className="flex">
         {/* <div className=" ">
-          <div className="flex w-full items-center justify-center  px-8 py-3 text-md font-medium text-white  ">
+          <div className="flex w-full items-center justify-center rounded-sm  px-8 py-3 text-md font-medium text-white  ">
             ALREADY APPLIED
           </div>
         </div> */}
         <div className=" ">
-          <div className="flex w-full items-center justify-center bg-buttons  px-8 py-3 text-md font-medium  ">
+          <div className="flex w-full items-center justify-center rounded-sm bg-buttons  px-8 py-3 text-md font-medium  ">
             <Link
               className="text-white hover:text-white"
               href={
@@ -137,7 +137,7 @@ export default function ConnectWalletComponent(props) {
           onClick={() =>
             dispatch(getUserData(wallet.accounts[0].address, accessToken))
           }
-          className="flex cursor-pointer w-full items-center justify-center  border-solid bg-buttons border-2 border-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+          className="flex cursor-pointer w-full items-center justify-center rounded-sm  border-solid bg-buttons border-2 border-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
         >
           CONTINUE APPLICATION
         </div>
@@ -150,7 +150,7 @@ export default function ConnectWalletComponent(props) {
       <div>
         <button
           onClick={() => disconnect({ label: wallet.label })}
-          className="flex cursor-pointer w-full items-center justify-center  border-solid bg-buttons border-2 border-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+          className="flex cursor-pointer w-full items-center justify-center rounded-sm  border-solid bg-buttons border-2 border-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
         >
           DISCONNECT
         </button>
@@ -162,7 +162,7 @@ export default function ConnectWalletComponent(props) {
       <div>
         <button
           onClick={() => disconnect({ label: wallet.label })}
-          className="flex cursor-pointer w-full items-center justify-center  border-solid bg-buttons border-2 border-buttons px-4 py-1 text-md font-medium text-white hover:bg-blues-600  "
+          className="flex cursor-pointer w-full items-center justify-center rounded-sm  border-solid bg-buttons border-2 border-buttons px-4 py-1 text-md font-medium text-white hover:bg-blues-600  "
         >
           DISCONNECT
         </button>
@@ -172,7 +172,7 @@ export default function ConnectWalletComponent(props) {
   const Connecting = () => {
     return (
       <div>
-        <div className="flex gap-1 w-full items-center justify-center    px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 ">
+        <div className="flex gap-1 w-full items-center justify-center rounded-sm    px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 ">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="1em"
