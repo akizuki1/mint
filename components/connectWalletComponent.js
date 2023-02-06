@@ -54,7 +54,7 @@ export default function ConnectWalletComponent(props) {
   }
 
   useEffect(() => {
-    if (wallet?.provider) {
+    if (wallet?.provider && !connecting) {
       const provider = new ethers.providers.Web3Provider(
         wallet.provider,
         "any"
