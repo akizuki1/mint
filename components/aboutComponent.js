@@ -21,7 +21,7 @@ export default function AboutComponent() {
     {
       title: "Dynamic Art",
       description:
-        "With 79 unique base models and well over 100 personalizing traits, the art behind Knights is some of the most dynamic and complex of any NFT project ever created.",
+        "With 79 unique base models and well over 100 personalizing traits, the art behind Invictus Order is some of the most dynamic and complex of any NFT project ever created.",
     },
     {
       title: "Evolving Blockchain Technology",
@@ -29,9 +29,9 @@ export default function AboutComponent() {
         "Iron Hills is committed to pushing the boundaries of what is possible with web3 technology and setting new standards for safety, education, and accountability within this emerging industry.",
     },
     {
-      title: "Every Knight Has A Voice",
+      title: "Every Holder Has a Voice",
       description:
-        "Communication, transparency, and accessibility are among the most important values at Iron Hills. From the greenest Guard to the highest ranking Grand Marshall, all Knights have a say in the development of the Knights Task Force.",
+        "Communication, transparency, and accessibility are among the most important values at Iron Hills. From the greenest Guard to the highest ranking Grand Marshall, all holders have a say in the evolution of the Sector Task Force.",
     },
   ];
 
@@ -52,12 +52,13 @@ export default function AboutComponent() {
                 <p className="mt-3 text-base text-gray-200 sm:mt-5 sm:text-lg">
                   Iron Hills was founded in January 2022 by a team of friends
                   with the goal of acquiring and continuing the development of
-                  Spiral Knights. While that goal is out of reach at this time,
+                  Spiral Knights. Though that goal is out of reach at this time,
                   that doesn&apos;t stop us from putting ourselves in a position
                   to be able to continue the development of Spiral Knights if
-                  that day comes. In the meantime, we will continue to innovate
-                  and develop tools to improve education, safety, and user
-                  experiences within web3. <br />
+                  that day comes. In the meantime, we will continue to push the
+                  boundaries of tech to improve education, safety, and user
+                  experiences within web3.
+                  <br />
                   <br /> Each member of our team has different backgrounds, come
                   from different places, and carry a wide variety of skills. We
                   believe that these different perspectives are crucial to

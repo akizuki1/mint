@@ -26,16 +26,16 @@ export default function ProcessComponent() {
                       <div className="mt-3 sm:text-lg text-white">
                         <ul className="list-disc ml-3">
                           <li>
-                            <span>Knights</span>
+                            <span>Invictus Order</span>
                           </li>
                           <li>
                             <span>The Altar</span>
                           </li>
                           <li>
-                            <span>Knights’ Essences</span>
+                            <span>Alterians Essences</span>
                           </li>
                           <li>
-                            <span>Knights’ Blessings</span>
+                            <span>Alterians Blessings</span>
                           </li>
                         </ul>
                       </div>

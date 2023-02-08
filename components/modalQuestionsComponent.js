@@ -3,6 +3,7 @@ import { Fragment, useEffect, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocalStorage } from "../hooks/useLocalStorage";
+import { useForm } from "react-hook-form";
 import {
   launchApplication,
   modalApplication,
@@ -11,8 +12,16 @@ import {
   getUserData,
 } from "../redux/actions/web3DataActions";
 import Link from "next/link";
+import Image from "next/image";
+import mirror from "../assets/landing/mirror.png";
 
 export default function ModalQuestionsComponent(props) {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
   const [{ wallet }] = useConnectWallet();
   const [open, setOpen] = useState(false);
   const [accessToken] = useLocalStorage("jwtToken", null);
@@ -53,13 +62,13 @@ export default function ModalQuestionsComponent(props) {
       setTwitterUrl(content.twitterUrl);
       setValueLife(content.valueLife);
       setSuccessKnights(content.successKnights);
-      setProcess(5);
+      setProcess(6);
     }
     if (applicationStatus === "application success") {
-      setProcess(3);
+      setProcess(4);
     }
     if (applicationStatus === "application failed") {
-      setProcess(4);
+      setProcess(5);
     }
   }, [applicationStatus]);
 
@@ -76,23 +85,23 @@ export default function ModalQuestionsComponent(props) {
   }
 
   useEffect(() => {
-    if (process === 7) {
+    if (process === 8) {
       setTimeout(() => {
         updateDataUser();
       }, 1500);
     }
   }, [process]);
 
-  const sendApplication = async () => {
-    setProcess(2);
+  const sendApplication = async (data) => {
+    setProcess(3);
     dispatch(
       launchApplication(
         wallet.accounts[0].address,
         accessToken,
-        discordID,
-        twitterUrl,
-        valueLife,
-        successKnights
+        data.discordId,
+        data.twitterId,
+        data.valueLife,
+        data.successInvictus
       )
     );
   };
@@ -137,14 +146,13 @@ export default function ModalQuestionsComponent(props) {
             >
               <Dialog.Panel className="relative transform bg-application-background px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-3xl sm:p-6">
                 <div>
-                  {process === 1 ? (
-                    <Dialog.Title
-                      as="h3"
-                      className="text-2xl font-semibold text-white"
-                    >
-                      Knights Application
-                    </Dialog.Title>
-                  ) : null}
+                  <Dialog.Title
+                    as="h3"
+                    className="text-2xl font-semibold text-white"
+                  >
+                    Invictus Order Application
+                  </Dialog.Title>
+
                   <div className="mt-3 fel sm:mt-5">
                     <div className="mt-8  ">
                       {(() => {
@@ -152,9 +160,65 @@ export default function ModalQuestionsComponent(props) {
                           case 1:
                             return (
                               <>
+                                <div className="">
+                                  <div className="text-xl font-semibold tracking-tight text-white">
+                                    <span className="block">
+                                      What is the Invictus Order Application?
+                                    </span>
+                                  </div>
+                                  <p className="mt-3 text-base text-gray-200 sm:mt-5 sm:text-lg">
+                                    Iron Hills was founded in January 2022 by a
+                                    team of friends with the goal of acquiring
+                                    and continuing the development of Spiral
+                                    Knights. Though that goal is out of reach at
+                                    this time, that doesn&apos;t stop us from
+                                    putting ourselves in a position to be able
+                                    to continue the development of Spiral
+                                    Knights if that day comes. In the meantime,
+                                    we will continue to push the boundaries of
+                                    tech to improve education, safety, and user
+                                    experiences within web3.
+                                    <br />
+                                    <br /> Each member of our team has different
+                                    backgrounds, come from different places, and
+                                    carry a wide variety of skills. We believe
+                                    that these different perspectives are
+                                    crucial to long-term innovation.
+                                  </p>
+                                  <div className="sm:text-center md:mx-auto md:max-w-2xl flex p-8   lg:col-span-6 lg:text-left">
+                                    <div className="my-auto ">
+                                      <Image
+                                        className="h-full w-full object-fit"
+                                        src={mirror}
+                                        alt="Picture of the author"
+                                      />
+                                    </div>
+                                  </div>
+
+                                  <div className="flex max-w-sm mx-auto mt-12">
+                                    <button
+                                      type="button"
+                                      className="flex w-md mx-auto items-center justify-center rounded-sm border-solid border-2 border-buttons  px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+                                      onClick={() => changeStatusModal("none")}
+                                    >
+                                      BACK
+                                    </button>
+                                    <button
+                                      onClick={() => setProcess(4)}
+                                      className="flex w-md mx-auto items-center justify-center rounded-sm border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+                                    >
+                                      CONTINUE
+                                    </button>
+                                  </div>
+                                </div>
+                              </>
+                            );
+                          case 2:
+                            return (
+                              <>
                                 <form
                                   className="space-y-6"
-                                  onSubmit={() => [sendApplication()]}
+                                  onSubmit={handleSubmit(sendApplication)}
                                 >
                                   <div>
                                     <label
@@ -166,18 +230,25 @@ export default function ModalQuestionsComponent(props) {
 
                                     <div>
                                       <input
-                                        rows={4}
-                                        name="Q1"
-                                        id="Q1"
-                                        value={discordID}
-                                        pattern="^.{3,32}#[0-9]{4}$"
-                                        onChange={(e) => [
-                                          setDiscordID(e.target.value),
-                                        ]}
+                                        name="discordId"
+                                        {...register("discordId", {
+                                          required: true,
+                                          pattern: /^.{3,32}#[0-9]{4}$/i,
+                                        })}
                                         className="block w-full h-10 text-white bg-application-text-bg sm:text-sm pl-2"
-                                        required={true}
                                       />
                                     </div>
+                                    {errors.discordId?.type === "pattern" && (
+                                      <small className="text text-blue-400">
+                                        Please use the correct format for
+                                        discordID
+                                      </small>
+                                    )}
+                                    {errors.discordId?.type === "required" && (
+                                      <small className="text text-blue-400">
+                                        The field cannot be empty
+                                      </small>
+                                    )}
                                   </div>
                                   <div>
                                     <label
@@ -190,43 +261,53 @@ export default function ModalQuestionsComponent(props) {
 
                                     <div>
                                       <input
-                                        rows={4}
-                                        name="Q2"
-                                        id="Q2"
-                                        value={twitterUrl}
-                                        pattern="((https?://)?(www\.)?twitter\.com/)?(@|#!/)?([A-Za-z0-9_]{1,15})(/([-a-z]{1,20}))?"
-                                        onChange={(e) => [
-                                          setTwitterUrl(e.target.value),
-                                        ]}
+                                        name="twitterId"
+                                        {...register("twitterId", {
+                                          required: true,
+                                          pattern:
+                                            /(https:\/\/twitter.com\/(?![a-zA-Z0-9_]+\/)([a-zA-Z0-9_]+))/i,
+                                        })}
                                         className="block w-full h-10  text-white bg-application-text-bg sm:text-sm pl-2"
-                                        required={true}
                                       />
                                     </div>
+                                    {errors.twitterId?.type === "required" && (
+                                      <small className="text text-blue-400">
+                                        The field cannot be empty
+                                      </small>
+                                    )}
+                                    {errors.twitterId?.type === "pattern" && (
+                                      <small className="text text-blue-400">
+                                        Please use the correct format for url
+                                        and twitterId
+                                      </small>
+                                    )}
                                   </div>
                                   <div>
                                     <label
                                       htmlFor="email"
                                       className="block text-sm font-medium text-white"
                                     >
-                                      As a Knights holder, what is the one thing
-                                      that you would like to see Iron Hills do
-                                      that would add the most value to your
-                                      life?
+                                      As an Invictus Order holder, what is the
+                                      one thing that you would like to see Iron
+                                      Hills do that would add the most value to
+                                      your life?
                                     </label>
 
                                     <div>
                                       <textarea
                                         rows={4}
-                                        name="Q1"
-                                        id="Q1"
-                                        value={valueLife}
-                                        onChange={(e) => [
-                                          setValueLife(e.target.value),
-                                        ]}
+                                        name="valueLife"
+                                        {...register("valueLife", {
+                                          required: true,
+                                        })}
                                         className="block w-full  text-white bg-application-text-bg sm:text-sm pl-2 pt-2"
-                                        required={true}
                                       />
                                     </div>
+                                    {errors.valueLife?.type === "required" && (
+                                      <small className="text text-blue-400">
+                                        The field cannot be empty
+                                      </small>
+                                    )}
                                   </div>
                                   <div>
                                     <label
@@ -234,22 +315,25 @@ export default function ModalQuestionsComponent(props) {
                                       className="block text-sm font-medium text-white"
                                     >
                                       How would you define &quot;success&quot;
-                                      for Knights 6 months from now?
+                                      for Invictus Order 3 months from now? What
+                                      about a year from now?
                                     </label>
 
                                     <div>
                                       <textarea
-                                        rows={4}
-                                        name="Q1"
-                                        id="Q1"
-                                        value={successKnights}
-                                        onChange={(e) => [
-                                          setSuccessKnights(e.target.value),
-                                        ]}
+                                        name="successInvictus"
+                                        {...register("successInvictus", {
+                                          required: true,
+                                        })}
                                         className="block w-full  text-white bg-application-text-bg sm:text-sm pl-2 pt-2"
-                                        required={true}
                                       />
                                     </div>
+                                    {errors.successInvictus?.type ===
+                                      "required" && (
+                                      <small className="text text-blue-400">
+                                        The field cannot be empty
+                                      </small>
+                                    )}
                                   </div>
                                   <div className="flex max-w-sm mx-auto mt-56">
                                     <button
@@ -269,7 +353,7 @@ export default function ModalQuestionsComponent(props) {
                                 </form>
                               </>
                             );
-                          case 2:
+                          case 3:
                             return (
                               <>
                                 <div className="flex justify-center mt-12 p-8 ">
@@ -330,7 +414,7 @@ export default function ModalQuestionsComponent(props) {
                                 </div>
                               </>
                             );
-                          case 3:
+                          case 4:
                             return (
                               <>
                                 <div className="flex justify-center mt-12 p-8 ">
@@ -361,7 +445,7 @@ export default function ModalQuestionsComponent(props) {
                                 </div>
                               </>
                             );
-                          case 4:
+                          case 5:
                             return (
                               <>
                                 <div className="flex justify-center mt-12 p-8 ">
@@ -382,7 +466,7 @@ export default function ModalQuestionsComponent(props) {
                                 </div>
                                 <div className="flex justify-center ">
                                   <p className="mx-auto justify-self-center text-white text-2xl font-semibold">
-                                    Knights application failed
+                                    Invictus Order application failed
                                   </p>
                                 </div>
                                 <div className="flex max-w-sm mx-auto mt-8">
@@ -396,7 +480,7 @@ export default function ModalQuestionsComponent(props) {
                                 </div>
                               </>
                             );
-                          case 5:
+                          case 6:
                             return (
                               <div className="space-y-6">
                                 <div>
@@ -438,9 +522,10 @@ export default function ModalQuestionsComponent(props) {
                                     htmlFor="email"
                                     className="block text-sm font-medium text-gray-300"
                                   >
-                                    As a Knights holder, what is one thing that
-                                    Iron Hills can do that would add the most
-                                    value to your life?
+                                    As an Invictus Order holder, what is the one
+                                    thing that you would like to see Iron Hills
+                                    do that would add the most value to your
+                                    life?
                                   </label>
 
                                   <div>
@@ -458,7 +543,8 @@ export default function ModalQuestionsComponent(props) {
                                     className="block text-sm font-medium text-gray-300"
                                   >
                                     How would you define &quot;success&quot; for
-                                    Knights 6 months from now?
+                                    Invictus Order 3 months from now? What about
+                                    a year from now?
                                   </label>
 
                                   <div>
@@ -487,7 +573,7 @@ export default function ModalQuestionsComponent(props) {
                                 </div>
                               </div>
                             );
-                          case 6:
+                          case 7:
                             return (
                               <>
                                 <div className="flex justify-center mt-12 p-8 ">
@@ -548,7 +634,7 @@ export default function ModalQuestionsComponent(props) {
                                 </div>
                               </>
                             );
-                          case 7:
+                          case 8:
                             return (
                               <>
                                 <div className="flex justify-center mt-12 p-8 ">
@@ -569,8 +655,8 @@ export default function ModalQuestionsComponent(props) {
                                 </div>
                                 <div className="flex justify-center ">
                                   <p className="mx-auto justify-self-center text-white text-2xl font-semibold">
-                                    Knights Application Soulbound Token minted
-                                    successfully.
+                                    You have successfully minted your Invictus
+                                    Order soulbound token!
                                   </p>
                                 </div>
                                 <div className="flex max-w-sm mx-auto mt-8">
@@ -660,7 +746,7 @@ export default function ModalQuestionsComponent(props) {
                                 </div>
                               </>
                             );
-                          case 8:
+                          case 9:
                             return (
                               <>
                                 <div className="flex justify-center mt-12 p-8 ">

@@ -48,8 +48,9 @@ export const modalApplication = (status) => async (dispatch) => {
 };
 
 export const launchApplication =
-  (wallet, jwtToken, discordID, twitterUrl, valueLife, successKnights) =>
+  (wallet, jwtToken, discordID, twitterUrl, valueLife, successInvictus) =>
   async (dispatch) => {
+    console.log(successInvictus);
     try {
       const data = await ApplicationService(
         wallet,
@@ -57,7 +58,7 @@ export const launchApplication =
         discordID,
         twitterUrl,
         valueLife,
-        successKnights
+        successInvictus
       );
       if (data) {
         const userData = {
@@ -65,7 +66,7 @@ export const launchApplication =
             discordID: discordID,
             twitterUrl: twitterUrl,
             valueLife: valueLife,
-            successKnights: successKnights,
+            successInvictus: successInvictus,
             v: data.v,
             r: data.r,
             s: data.s,
@@ -102,19 +103,19 @@ export const mintToken = (wallet, userData) => async (dispatch) => {
       () => {
         dispatch({
           type: MINT_PROCESS,
-          payload: ["pending", 6],
+          payload: ["pending", 7],
         });
       },
       () => {
         dispatch({
           type: MINT_PROCESS,
-          payload: ["success", 7],
+          payload: ["success", 8],
         });
       },
       () => {
         dispatch({
           type: MINT_PROCESS,
-          payload: ["error", 8],
+          payload: ["error", 9],
         });
       }
     );
@@ -122,7 +123,7 @@ export const mintToken = (wallet, userData) => async (dispatch) => {
     console.log("error minting");
     dispatch({
       type: MINT_PROCESS,
-      payload: ["error", 2],
+      payload: ["error", 3],
     });
   }
 };

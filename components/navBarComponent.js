@@ -64,7 +64,7 @@ export default function NavBarComponent() {
               <div className="hidden sm:ml-6 sm:block">
                 <div className="flex items-center gap-3">
                   <Link
-                    href="https://discord.gg/knightsbyironhills"
+                    href="https://discord.gg/invictusorder"
                     target="_blank"
                     rel="noreferrer"
                     className="rounded-full bg-[#626067] p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
@@ -84,7 +84,7 @@ export default function NavBarComponent() {
                     </svg>{" "}
                   </Link>
                   <Link
-                    href="https://twitter.com/knightsbyih"
+                    href="https://twitter.com/invictusorder"
                     target="_blank"
                     rel="noreferrer"
                     className="rounded-full bg-[#626067] p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
@@ -160,7 +160,7 @@ export default function NavBarComponent() {
             <div className="border-t border-gray-700 pt-4 pb-3">
               <div className="mt-3 space-y-1 px-2">
                 <Link
-                  href="https://discord.gg/knightsbyironhills"
+                  href="https://discord.gg/invictusorder"
                   target="_blank"
                   rel="noreferrer"
                   className="rounded-full bg-[#626067] p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
@@ -180,7 +180,7 @@ export default function NavBarComponent() {
                   </svg>{" "}
                 </Link>
                 <Link
-                  href="https://twitter.com/knightsbyih"
+                  href="https://twitter.com/invictusorder"
                   target="_blank"
                   rel="noreferrer"
                   className="rounded-full bg-[#626067] p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"

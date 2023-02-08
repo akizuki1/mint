@@ -35,7 +35,7 @@ const wallets = [injectedModule(), walletConnect, coinbaseWalletSdk];
 const appMetadata = {
   name: "Iron Hills",
   icon: "/badge.png",
-  description: "We want YOU to enlist in the Knights Task Force!",
+  description: "We want YOU to enlist in the Invictus Order!",
   recommendedInjectedWallets: [
     { name: "MetaMask", url: "https://metamask.io" },
     { name: "Coinbase", url: "https://wallet.coinbase.com/" },

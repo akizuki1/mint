@@ -8,13 +8,6 @@ import heroBack from "../assets/landing/bgHero.png";
 
 import heroMessage from "../assets/landing/message.png";
 
-const navigation = [
-  { name: "Product", href: "#" },
-  { name: "Features", href: "#" },
-  { name: "Marketplace", href: "#" },
-  { name: "Company", href: "#" },
-];
-
 export default function HeroComponent() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
