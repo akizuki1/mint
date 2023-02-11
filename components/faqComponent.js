@@ -9,17 +9,37 @@ export default function FaqComponent() {
     {
       question: "What is Invictus Order?",
       answer:
-        "Invictus Order, created by Iron Hills, is the culmination of over a year's worth of trying to push the boundaries of NFT art and technology. The art of Invictus Order is inspired by the online game Spiral Knights. As a part of the Invictus Order, you have enlisted as part of the Sector Task Force, an elite squad established to solve the mystery of The Altar.",
+        "Invictus Order, created by Iron Hills, is the culmination of over a year's worth of trying to push the boundaries of NFT art and technology. The art of Invictus Order is inspired by the online game Spiral Knights. As a part of the Invictus Order, you have enlisted to join the Sector Task Force, an elite squad established to solve the mystery of The Altar.",
     },
     {
       question: "How do I get allowlisted for Invictus Order?",
       answer:
-        "We will be using an application system to give out allowlist spots for Invictus Order- however, there is a novel twist. In order to submit your application, you must mint a free soulbound token (SBT). This SBT cannot be sold or traded and acts as on-chain proof of your submitted application. As Iron Hills approves applications, your SBT will dynamically update to show whether or not you have been accepted. At the time of mint, only those with approved SBTs may mint their Alterian and join the Invictus Order. The gas fees paid to mint the SBT will be refunded to you during the minting of Invictus Order.",
+        "We will be using an application system to give out allowlist spots for Invictus Order- however, there is a novel twist. In order to submit your application, you must mint a free soulbound token (SBT): Invictus Order Application. Your Invictus Order Application cannot be sold or traded and acts as on-chain proof of your submitted application. As Iron Hills approves applications, your SBT will dynamically update to show whether or not you have been accepted. At the time of mint, only those with approved SBTs may mint their Invictus Order. The gas fees paid to mint the SBT will be refunded to you during the minting of Invictus Order.",
+    },
+    {
+      question: "What is the difference between the Invictus Order Application and the Invictus Order?",
+      answer:"The Invictus Order Application is the SBT that is minted when submitting your application. The Invictus Order Application determines during which period you can mint the main collection, Invictus Order."
+    },
+    {
+      question: "If I mint the Invictus Order Application SBT with one wallet, can I mint my Invictus Order with a different wallet?",
+      answer:"No, your allowlist status is tied to your Invictus Order Application. You must use the same wallet that owns the Invictus Order Application to mint your Invictus Order. We recommend minting the Invictus Order Application SBT with the wallet you intend to mint your Invictus Order with."
     },
     {
       question: "How do I know if my application has been accepted?",
       answer:
-        "If your application has been approved, your Invictus Order Application SBT will automatically change to reflect your new status. Each of the three variations of the Invictus Order Application has different art and metadata to make it apparent whether or not you’ve been accepted. No having to ask around in Discord, fill out forms, or worry that your address isn’t on the contract; if you have an “Allowlist”  trait on your Invictus Order Application SBT, then you are good to go!</br><div className='sm:text-center md:mx-auto md:max-w-2xl flex p-8   lg:col-span-6 lg:text-left'> <div className='my-auto'> <img className='h-full w-full object-fit'src='/mirror.png' alt='Picture of the author'/>  </div></div>",
+        "If your application has been approved, your Invictus Order Application SBT will automatically change to reflect your new status. Each of the three variations of the Invictus Order Application has different art and metadata to make it apparent whether or not you’ve been accepted. No having to ask around in Discord, fill out forms, or worry that your address isn’t on the contract; if you have an “Allowlist”  trait on your Invictus Order Application SBT, then you are good to go!",
+    },
+    {
+      question: "What will the Invictus Order Application SBT do after the Invictus Order mint?",
+      answer:"Maybe nothing. Maybe something. We’re not sure yet. <br/><br/>  Having the Invictus Order Application creates an interesting mechanism for us to engage holders of those particular tokens in specific ways if we want to. We might never do anything with them but it would certainly be interesting to use them in some way…"
+    },
+    {
+      question: "Is there a supply limit on the Invictus Order Applications?",
+      answer:"No, the Invictus Order Applications are completely open edition during the application submission window. The application submission window will last no more than a few weeks. You can only mint one Invictus Order Application per wallet."
+    },
+    {
+      question: "What will you do about the gas fees for the Invictus Order Application?",
+      answer:"Minting the Invictus Order Application SBT is completely free, however, you will still have to pay gas to mint it. Gas fees from minting the Invictus Order Application will be refunded during the mint of Invictus Order up to 0.01 ETH. The minting of your Invictus Order and the refund of the gas fees for your Invictus Order Application will all be done in the same transaction to minimize gas usage"
     },
     {
       question: "What is the supply of Invictus Order?",
@@ -30,12 +50,12 @@ export default function FaqComponent() {
       question:
         "What distinguishes Invictus Order’s art from that of other projects?",
       answer:
-        "In the case of most PFP projects, they will use a single, static base model and then layer different attributes and traits on top of that model. There are some projects, like ours, who have gone a step further by adding multiple base models into the equation; this makes the collection as a whole significantly more complex. Because some traits might not “fit” on a certain base model, each base model needs specific traits that only work with that particular base model. Invictus Order is what we believe to be the one of the most dynamic and complex collections ever created with 79 distinct base models. Each base model is completely unique and has a specific set of traits that go with it. Though the process of creating the art of Invictus Order went far beyond that of a typical NFT project, we believe that the extra time and effort has been well worth it to make every single piece in the collection feel unique and special.",
+        "In the case of most PFP projects, they will use a single, static base model and then layer different attributes and traits on top of that model. There are some projects, like ours, who have gone a step further by adding multiple base models into the equation; this makes the collection as a whole significantly more complex. Because some traits might not “fit” on a certain base model, each base model needs specific traits that only work with that particular base model. Invictus Order is what we believe to be one of the most dynamic and complex collections ever created with 79 distinct base models. Each base model is completely unique and has a specific set of traits that go with it. Though the process of creating the art of Invictus Order went far beyond that of a typical NFT project, we believe that the extra time and effort has been well worth it to make every single piece in the collection feel unique and special. "
     },
     {
-      question: "What is the ideation behind the Knights art?",
+      question: "What is your relation to the online game Spiral Knights?",
       answer:
-        "Knights is inspired by Spiral Knights but all of the art behind it was created with care by Iron Hills. All of the art used within the Knights collection is hand drawn by our team's artist and doesn’t use any in-game models. The complexity in layering, bespoke art generation systems, and extremely thorough auditing processes that we have undergone have all taken an immense amount of time and effort from our team. The steps that we have taken to make Knights our own while honoring Spiral Knights sets Knights clearly apart from taking a screenshot of the game and slapping it onto an NFT. Artists within the Spiral Knights community have long sold commissions inspired by the art of the game for real money and we see this as no different.",
+        "Our team met each other long ago through the Spiral Knights community and we all share a deep passion for it. While the art of Invictus Order is inspired by Spiral Knights, Iron Hills has no official relationship to the owners of Spiral Knights and Invictus Order has no planned interoperability with the game at this time. That being said, the ultimate goal of Iron Hills is to continue the development of Spiral Knights and explore how NFT technology can be thoughtfully applied to video games. We will continue to put ourselves in a position where we can acquire Spiral Knights or be involved with it in an official capacity but we never want to promise something that we can’t guarantee.",
     },
     {
       question: "How will Invictus Order’s royalties be structured?",
@@ -52,7 +72,7 @@ export default function FaqComponent() {
       answer:
         "No worries- we’re happy to answer any questions you have over in our Discord server. You can join our Discord server <a className='text-blue-400' href='https://discord.gg/invictusorder' target='_blank' rel='noreferrer' >here</a>.",
     },
-    // More questions...
+
   ];
 
   function classNames(...classes) {
