@@ -14,6 +14,7 @@ import {
   IdentificationIcon,
 } from "@heroicons/react/20/solid";
 import { GetApplicationBystatusService } from "../services/getApplicationByStatusService";
+import { GetAllApplicationService } from "../services/getAllApplicationService";
 
 export default function Terms() {
   const [statusLogin, setStatusLogin] = useState(false);
@@ -24,6 +25,17 @@ export default function Terms() {
     setStatusLogin(true);
   }
 
+  async function getApplicationsByWallet(wallet) {
+    const { status, message, data } = await GetApplicationBystatusService(
+      estado
+    );
+
+    if (status === "success") {
+      setApplications(data);
+    } else {
+      alert(status + "  " + message);
+    }
+  }
   async function getApplicationsBystatus(estado) {
     const { status, message, data } = await GetApplicationBystatusService(
       estado
@@ -36,8 +48,29 @@ export default function Terms() {
     }
   }
 
+  async function getAllApplication() {
+    const { status, message, data } = await GetAllApplicationService();
+
+    if (status === "success") {
+      setApplications(data);
+    } else {
+      alert(status + "  " + message);
+    }
+  }
+
+  function filterByStatus(data) {
+    if (data.status === "all") {
+      getAllApplication();
+    } else {
+      getApplicationsBystatus(data.status);
+    }
+  }
+  function filterByWallet(data) {
+    getApplicationsBystatus(data.wallet);
+  }
+
   useEffect(() => {
-    getApplicationsBystatus("pending");
+    getApplicationsBystatus("accepted");
   }, []);
 
   function classNames(...classes) {
@@ -51,7 +84,7 @@ export default function Terms() {
     formState: { errors },
   } = useForm();
 
-  return statusLogin === false ? (
+  return statusLogin !== false ? (
     <div className="relative isolate overflow-hidden h-screen bg-gray-900">
       <Image
         className="absolute inset-0 -z-10 h-full w-full object-cover"
@@ -154,28 +187,46 @@ export default function Terms() {
         ) : (
           <div className="z-50">
             <div className="flex gap-8 w-2xl bg-background p-4 mt-12 ">
-              <form className=" sm:flex sm:items-center">
+              <form
+                onSubmit={handleSubmit(filterByWallet)}
+                className=" sm:flex sm:items-center"
+              >
                 <div className="w-full h-8 sm:max-w-xs">
                   <input
                     type="text"
                     name="wallet"
-                    className="block w-full h-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                    {...register("wallet")}
+                    className="block w-full h-8 text-white bg-application-text-bg sm:text-sm pl-2"
                     placeholder="Find wallet"
                   />
                 </div>
-                <MagnifyingGlassIcon
-                  onClick={() => alert("gg")}
-                  className="ml-1.5 h-8 w-8 flex-shrink-0 hover:text-white text-buttons"
-                  aria-hidden="true"
-                />
+                {errors.wallet?.type === "required" && (
+                  <small className="text text-blue-400">
+                    The field cannot be empty
+                  </small>
+                )}
+                {errors.wallet?.type === "pattern" && (
+                  <small className="text text-blue-400">
+                    Wallet format error
+                  </small>
+                )}
+                <button type="submit">
+                  <MagnifyingGlassIcon
+                    className="ml-1.5 h-8 w-8 flex-shrink-0 hover:text-white text-buttons"
+                    aria-hidden="true"
+                  />
+                </button>
               </form>
-              <form className=" sm:flex sm:items-center">
+              <form
+                onSubmit={handleSubmit(filterByStatus)}
+                className=" sm:flex sm:items-center"
+              >
                 <div className="w-full h-8 sm:max-w-xs">
                   <select
-                    id="location"
-                    name="location"
-                    className=" block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                    defaultValue="Canada"
+                    name="status"
+                    {...register("status")}
+                    className="block w-full   text-white bg-application-text-bg sm:text-sm pl-2 rounded-sm border-gray-300 py-2 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 "
+                    defaultValue="pending"
                   >
                     <option>pending</option>
                     <option>accepted</option>
@@ -183,11 +234,13 @@ export default function Terms() {
                     <option>all</option>
                   </select>
                 </div>
-                <FunnelIcon
-                  onClick={() => alert("gg")}
-                  className="ml-1.5 h-8 w-8 flex-shrink-0 hover:text-white text-buttons"
-                  aria-hidden="true"
-                />
+
+                <button type="submit">
+                  <FunnelIcon
+                    className="ml-1.5 h-8 w-8 flex-shrink-0 hover:text-white text-buttons"
+                    aria-hidden="true"
+                  />
+                </button>
               </form>{" "}
             </div>
 
@@ -210,7 +263,7 @@ export default function Terms() {
                               aplication.status === "pending"
                                 ? "bg-yellow-400 text-gray-900"
                                 : "",
-                              aplication.status === "acepted"
+                              aplication.status === "accepted"
                                 ? "bg-green-400 text-gray-900"
                                 : "",
                               aplication.status === "refused"

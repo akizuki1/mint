@@ -1,4 +1,4 @@
-export async function GetApplicationBystatusService(estado) {
+export async function GetAllApplicationService(estado) {
   try {
     console.log(estado);
     const applications = [
@@ -39,14 +39,10 @@ export async function GetApplicationBystatusService(estado) {
       },
     ];
 
-    const filter = applications.filter(
-      (application) => application.status == estado
-    );
-
     return {
       status: "success",
       message: "All application loaded",
-      data: filter,
+      data: applications,
     };
   } catch (error) {
     console.log(error);
