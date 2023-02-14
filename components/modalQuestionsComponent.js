@@ -45,6 +45,7 @@ export default function ModalQuestionsComponent(props) {
   }, [applicationStatus]);
 
   const [isMinting, setIsMinting] = useState(false);
+  const [agreeTyC, setAgreeTyC] = useState(false);
   const [process, setProcess] = useState(1);
   const [tryAgain, setTryAgain] = useState(false);
   const [discordID, setDiscordID] = useState();
@@ -194,6 +195,49 @@ export default function ModalQuestionsComponent(props) {
                                       />
                                     </div>
                                   </div>
+                                  <div className="mx-auto max-w-7xl overflow-hidden py-12 px-4 sm:px-6 lg:px-8">
+                                    <div className="mt-8 text-center text-base gap-5">
+                                      <div className="relative flex justify-center">
+                                        <div className="flex h-5 items-center">
+                                          <input
+                                            aria-describedby="comments-description"
+                                            name="comments"
+                                            type="checkbox"
+                                            value={agreeTyC}
+                                            onChange={() =>
+                                              setAgreeTyC(!agreeTyC)
+                                            }
+                                            className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                                          />
+                                        </div>
+                                        <div className="ml-3 text-md flex">
+                                          <span
+                                            id="comments-description"
+                                            className="text-white mx-auto"
+                                          >
+                                            I agree to the{" "}
+                                            <Link
+                                              className="cursor-pointer text-buttons"
+                                              href={"/policy"}
+                                              target="_blank"
+                                              rel="noreferrer"
+                                            >
+                                              Privacy Policy
+                                            </Link>{" "}
+                                            &{" "}
+                                            <Link
+                                              className="cursor-pointer text-buttons"
+                                              href={"/terms"}
+                                              target="_blank"
+                                              rel="noreferrer"
+                                            >
+                                              Terms of Service
+                                            </Link>
+                                          </span>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
 
                                   <div className="flex max-w-sm mx-auto mt-12">
                                     <button
@@ -203,12 +247,18 @@ export default function ModalQuestionsComponent(props) {
                                     >
                                       BACK
                                     </button>
-                                    <button
-                                      onClick={() => setProcess(4)}
-                                      className="flex w-md mx-auto items-center justify-center rounded-sm border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
-                                    >
-                                      CONTINUE
-                                    </button>
+                                    {agreeTyC === true ? (
+                                      <button
+                                        onClick={() => setProcess(4)}
+                                        className="flex w-md mx-auto items-center justify-center rounded-sm border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+                                      >
+                                        CONTINUE
+                                      </button>
+                                    ) : (
+                                      <button className="flex w-md mx-auto items-center cursor-default justify-center rounded-sm border-solid border-2 border-gray-500/40 bg-gray-500/40 px-8 py-3 text-md font-medium text-white/50 hover:bg-blues-600 md:py-4 md:px-10 ">
+                                        CONTINUE
+                                      </button>
+                                    )}
                                   </div>
                                 </div>
                               </>

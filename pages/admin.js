@@ -1,4 +1,4 @@
-import { func } from "joi";
+import { CSVLink, CSVDownload } from "react-csv";
 import Image from "next/image";
 import Link from "next/link";
 import { ethers } from "ethers";
@@ -13,7 +13,11 @@ import {
   FunnelIcon,
   MagnifyingGlassIcon,
   IdentificationIcon,
+  ChevronDownIcon,
+  ChevronUpIcon,
+  DocumentArrowDownIcon,
 } from "@heroicons/react/20/solid";
+import { Disclosure } from "@headlessui/react";
 import { GetApplicationBystatusService } from "../services/getApplicationByStatusService";
 import { GetAllApplicationService } from "../services/getAllApplicationService";
 import { GetApplicationByWalletService } from "../services/getApplicationByWalletservice";
@@ -201,91 +205,158 @@ export default function Terms() {
                   />
                 </button>
               </form>{" "}
+              <CSVLink
+                data={applications}
+                filename={"Invictus Order Applications.csv"}
+                className=" text-white"
+              >
+                <div className="flex">
+                  <p className="my-auto align-middle"> Download csv</p>
+
+                  <DocumentArrowDownIcon
+                    className="ml-1.5 h-8 w-8 flex-shrink-0 hover:text-white text-buttons"
+                    aria-hidden="true"
+                  />
+                </div>
+              </CSVLink>
+              ;
             </div>
 
-            <ul
-              role="list"
-              className="divide-y divide-gray-800 mt-24  px-4 bg-background"
-            >
-              {applications.map((application) => (
-                <li key={application._id}>
-                  <div className="block py-4 ">
-                    <div className="px-4 py-4 sm:px-6">
-                      <div className="flex items-center mb-4 justify-between">
-                        <p className="truncate text-xl font-medium text-white">
-                          {application.wallet}
-                        </p>
-                        <div className="ml-2 flex flex-shrink-0">
-                          <p
-                            className={classNames(
-                              "inline-flex py-1 rounded-md  px-2 text-md font-semibold leading-5",
-                              application.state === undefined
-                                ? "bg-yellow-400 text-gray-900"
-                                : "",
-                              application.state === "accepted"
-                                ? "bg-green-400 text-gray-900"
-                                : "",
-                              application.state === "refused"
-                                ? "bg-red-400 text-gray-900"
-                                : ""
-                            )}
+            <div className="divide-y divide-gray-800 mt-24   bg-background">
+              <div className="mx-auto  divide-y divide-white/10">
+                <dl className="mt-10 space-y-6 divide-y divide-white/10">
+                  {applications.map((application) => (
+                    <Disclosure as="div" key={application._id} className="pt-6">
+                      {({ open }) => (
+                        <>
+                          <dt>
+                            <Disclosure.Button className="flex w-full items-start justify-between text-left text-white">
+                              <div className="px-4 py-4 w-full sm:px-6 ">
+                                <div className="flex items-center mb-4 justify-between ">
+                                  <p className="truncate text-xl font-medium text-white">
+                                    {application.wallet}
+                                  </p>
+                                  <div className="ml-2 flex flex-shrink-0">
+                                    <p
+                                      className={classNames(
+                                        "inline-flex py-1 rounded-md  px-2 text-md font-semibold leading-5",
+                                        application.state === "pending"
+                                          ? "bg-yellow-400 text-gray-900"
+                                          : "",
+                                        application.state === "accepted"
+                                          ? "bg-green-400 text-gray-900"
+                                          : "",
+                                        application.state === "refused"
+                                          ? "bg-red-400 text-gray-900"
+                                          : ""
+                                      )}
+                                    >
+                                      {application.state}
+                                    </p>
+                                  </div>
+                                </div>
+                                <div className="mt-2 sm:flex  sm:justify-between">
+                                  <div className="sm:flex">
+                                    <a
+                                      href={
+                                        "https://discord.com/users/" +
+                                        application.content.discordId
+                                      }
+                                      target="_blank"
+                                      rel="noreferrer"
+                                      className="flex items-center cursor-pointer text-xl text-gray-400 hover:text-white "
+                                    >
+                                      <UserIcon
+                                        className="mr-1.5 h-8 w-8 flex-shrink-0 "
+                                        aria-hidden="true"
+                                      />
+                                      {application.content.discordId}
+                                    </a>
+                                    <a
+                                      href={application.content.twitterUrl}
+                                      target="_blank"
+                                      rel="noreferrer"
+                                      className="mt-2 flex items-center  cursor-pointer text-xl text-gray-400 hover:text-white sm:mt-0 sm:ml-6"
+                                    >
+                                      <IdentificationIcon
+                                        className="mr-1.5 h-8 w-8 flex-shrink-0"
+                                        aria-hidden="true"
+                                      />
+                                      {application.content.twitterUrl}
+                                    </a>
+                                  </div>
+                                  {application.status === "pending" ? (
+                                    <div className="mt-2 flex items-center text-xl text-white sm:mt-0">
+                                      <div className="flex gap-3">
+                                        Application:
+                                        <HandThumbDownIcon
+                                          onClick={() =>
+                                            updateApplication(
+                                              application,
+                                              false
+                                            )
+                                          }
+                                          className="mr-1.5 h-8 w-8 flex-shrink-0 hover:text-white text-buttons"
+                                          aria-hidden="true"
+                                        />
+                                        <HandThumbUpIcon
+                                          onClick={() =>
+                                            updateApplication(
+                                              application,
+                                              true
+                                            )
+                                          }
+                                          className="mr-1.5 h-8 w-8 flex-shrink-0 hover:text-white text-buttons"
+                                          aria-hidden="true"
+                                        />
+                                      </div>
+                                    </div>
+                                  ) : null}
+                                </div>
+                              </div>
+                              <div className="my-auto align-middle  mr-2  flex-shrink-0">
+                                {!open ? (
+                                  <ChevronDownIcon
+                                    className="h-8 w-8 animate-bounce"
+                                    aria-hidden="true"
+                                  />
+                                ) : (
+                                  <ChevronUpIcon
+                                    className="h-8 w-8"
+                                    aria-hidden="true"
+                                  />
+                                )}
+                              </div>
+                            </Disclosure.Button>
+                          </dt>
+                          <Disclosure.Panel
+                            as="dd"
+                            className="mt-2 pr-12 px-4 py-4 w-full sm:px-6 "
                           >
-                            {application.state === undefined ? "pending" : application.state }
-                          </p>
-                        </div>
-                      </div>
-                      <div className="mt-2 sm:flex  sm:justify-between">
-                        <div className="sm:flex">
-                          <a
-                            href={
-                              "https://discord.com/users/" + application.content.discordId
-                            }
-                            target="_blank"
-                            rel="noreferrer"
-                            className="flex items-center cursor-pointer text-xl text-gray-400 hover:text-white "
-                          >
-                            <UserIcon
-                              className="mr-1.5 h-8 w-8 flex-shrink-0 "
-                              aria-hidden="true"
-                            />
-                            {application.content.discordId}
-                          </a>
-                          <a
-                            href={application.content.twitterUrl}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="mt-2 flex items-center  cursor-pointer text-xl text-gray-400 hover:text-white sm:mt-0 sm:ml-6"
-                          >
-                            <IdentificationIcon
-                              className="mr-1.5 h-8 w-8 flex-shrink-0"
-                              aria-hidden="true"
-                            />
-                            {application.content.twitterUrl}
-                          </a>
-                        </div>
-                        {application.state === "pending" ? (
-                          <div className="mt-2 flex items-center text-xl text-white sm:mt-0">
-                            <div className="flex gap-3">
-                              Application:
-                              <HandThumbDownIcon
-                                onClick={() => updateApplication(application, false)}
-                                className="mr-1.5 h-8 w-8 flex-shrink-0 hover:text-white text-buttons"
-                                aria-hidden="true"
-                              />
-                              <HandThumbUpIcon
-                                onClick={() => updateApplication(application, true)}
-                                className="mr-1.5 h-8 w-8 flex-shrink-0 hover:text-white text-buttons"
-                                aria-hidden="true"
-                              />
-                            </div>
-                          </div>
-                        ) : null}
-                      </div>
-                    </div>
-                  </div>
-                </li>
-              ))}
-            </ul>
+                            <dt className="text-base  leading-7 text-white">
+                              As an Invictus Order holder, what is the one thing
+                              that you would like to see Iron Hills do that
+                              would add the most value to your life?
+                            </dt>
+                            <dd className="mt-2 ml-4 text-base leading-7 text-gray-400">
+                              {application.valueLife}
+                            </dd>
+                            <dt className="text-base mt-8  leading-7 text-white">
+                              How would you define &quot;success&quot; for
+                              Invictus Order 3 months from now? What about a
+                              year from now?
+                            </dt>
+                            <dd className="mt-2 ml-4 text-base leading-7 text-gray-400">
+                              {application.successKnights}
+                            </dd>
+                          </Disclosure.Panel>
+                        </>
+                      )}
+                    </Disclosure>
+                  ))}
+                </dl>
+              </div>
+            </div>
           </div>
         )}
       </div>
