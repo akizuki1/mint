@@ -8,6 +8,10 @@ export async function GetApplicationBystatusService(estado) {
         status: "pending",
         twitterId: "https://twitter.com/Akizuki230",
         discorId: "user#0001",
+        valueLife:
+          "We will be using an application system to give out allowlist spots for Invictus Order- however, there is a novel twist. In order to submit your application, you must mint a free soulbound token (SBT): Invictus Order Application. Your Invictus Order Application acts as on-chain proof of your submitted application. As Iron Hills approves applications, your SBT will dynamically update to show whether or not you have been accepted. At the time of mint, only those with approved SBTs may mint their Invictus Order. To submit an application for allowlist, click “Apply Now” above. For a deep dive on how the SBT and allowlist process works,",
+        successInvictus:
+          "nvictus Order is the culmination of over a year's worth of trying to push the boundaries of NFT art and technology. As a part of the Invictus Order, you have enlisted to join the Sector Task Force, an elite squad established to solve the mystery of The Altar.",
       },
       {
         id: 2,
@@ -15,6 +19,10 @@ export async function GetApplicationBystatusService(estado) {
         status: "pending",
         twitterId: "https://twitter.com/Akizuki230",
         discorId: "user#0001",
+        valueLife:
+          "We will be using an application system to give out allowlist spots for Invictus Order- however, there is a novel twist. In order to submit your application, you must mint a free soulbound token (SBT): Invictus Order Application. Your Invictus Order Application acts as on-chain proof of your submitted application. As Iron Hills approves applications, your SBT will dynamically update to show whether or not you have been accepted. At the time of mint, only those with approved SBTs may mint their Invictus Order. To submit an application for allowlist, click “Apply Now” above. For a deep dive on how the SBT and allowlist process works,",
+        successInvictus:
+          "nvictus Order is the culmination of over a year's worth of trying to push the boundaries of NFT art and technology. As a part of the Invictus Order, you have enlisted to join the Sector Task Force, an elite squad established to solve the mystery of The Altar.",
       },
       {
         id: 3,
@@ -22,6 +30,10 @@ export async function GetApplicationBystatusService(estado) {
         status: "refused",
         twitterId: "https://twitter.com/Akizuki230",
         discorId: "user#0001",
+        valueLife:
+          "We will be using an application system to give out allowlist spots for Invictus Order- however, there is a novel twist. In order to submit your application, you must mint a free soulbound token (SBT): Invictus Order Application. Your Invictus Order Application acts as on-chain proof of your submitted application. As Iron Hills approves applications, your SBT will dynamically update to show whether or not you have been accepted. At the time of mint, only those with approved SBTs may mint their Invictus Order. To submit an application for allowlist, click “Apply Now” above. For a deep dive on how the SBT and allowlist process works,",
+        successInvictus:
+          "nvictus Order is the culmination of over a year's worth of trying to push the boundaries of NFT art and technology. As a part of the Invictus Order, you have enlisted to join the Sector Task Force, an elite squad established to solve the mystery of The Altar.",
       },
       {
         id: 4,
@@ -29,6 +41,10 @@ export async function GetApplicationBystatusService(estado) {
         status: "accepted",
         twitterId: "https://twitter.com/Akizuki230",
         discorId: "user#0001",
+        valueLife:
+          "We will be using an application system to give out allowlist spots for Invictus Order- however, there is a novel twist. In order to submit your application, you must mint a free soulbound token (SBT): Invictus Order Application. Your Invictus Order Application acts as on-chain proof of your submitted application. As Iron Hills approves applications, your SBT will dynamically update to show whether or not you have been accepted. At the time of mint, only those with approved SBTs may mint their Invictus Order. To submit an application for allowlist, click “Apply Now” above. For a deep dive on how the SBT and allowlist process works,",
+        successInvictus:
+          "nvictus Order is the culmination of over a year's worth of trying to push the boundaries of NFT art and technology. As a part of the Invictus Order, you have enlisted to join the Sector Task Force, an elite squad established to solve the mystery of The Altar.",
       },
       {
         id: 5,
@@ -36,6 +52,10 @@ export async function GetApplicationBystatusService(estado) {
         status: "refused",
         twitterId: "https://twitter.com/Akizuki230",
         discorId: "user#0001",
+        valueLife:
+          "We will be using an application system to give out allowlist spots for Invictus Order- however, there is a novel twist. In order to submit your application, you must mint a free soulbound token (SBT): Invictus Order Application. Your Invictus Order Application acts as on-chain proof of your submitted application. As Iron Hills approves applications, your SBT will dynamically update to show whether or not you have been accepted. At the time of mint, only those with approved SBTs may mint their Invictus Order. To submit an application for allowlist, click “Apply Now” above. For a deep dive on how the SBT and allowlist process works,",
+        successInvictus:
+          "nvictus Order is the culmination of over a year's worth of trying to push the boundaries of NFT art and technology. As a part of the Invictus Order, you have enlisted to join the Sector Task Force, an elite squad established to solve the mystery of The Altar.",
       },
     ];
 
