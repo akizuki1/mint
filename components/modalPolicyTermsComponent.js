@@ -72,7 +72,7 @@ export default function ModalPolicyTermsComponent(props) {
                             <li aria-level="1">
                               <span>
                                 Visit our website at
-                                http://www.knightsbyironhills.com, or any
+                                https://www.invictusorder.com, or any
                                 website of ours that links to this privacy
                                 notice&nbsp;
                               </span>
@@ -1614,7 +1614,7 @@ export default function ModalPolicyTermsComponent(props) {
                               Iron Hills LLC ( &ldquo;Company, &ldquo;
                               &ldquo;we, &ldquo; &ldquo;us, &ldquo; or
                               &ldquo;our&rdquo;), concerning your access to and
-                              use of the http://www.knightsbyironhills.com
+                              use of the https://www.invictusorder.com
                               website as well as any other media form, media
                               channel, mobile website or mobile application
                               related, linked, or otherwise connected thereto
@@ -2555,7 +2555,7 @@ export default function ModalPolicyTermsComponent(props) {
                               Iron Hills LLC ( &ldquo;Company, &ldquo;
                               &ldquo;we, &ldquo; &ldquo;us, &ldquo; or
                               &ldquo;our&rdquo;), concerning your access to and
-                              use of the http://www.knightsbyironhills.com
+                              use of the https://www.invictusorder.com
                               website as well as any other media form, media
                               channel, mobile website or mobile application
                               related, linked, or otherwise connected thereto

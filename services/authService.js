@@ -2,7 +2,7 @@ import axios from "axios";
 
 export async function AuthService(account, signature, message) {
   try {
-    const res = await axios.post("https://knights.kfnc.net/auth/login", {
+    const res = await axios.post("https://invictus.kfnc.net/auth/login", {
       message,
       wallet: account,
       signature,
@@ -24,7 +24,7 @@ export async function AuthService(account, signature, message) {
 
 export async function AdminAuthService(account, signature, message) {
   try {
-    const res = await axios.post("http://localhost:7000/auth/admin/login", {
+    const res = await axios.post("https://invictus.kfnc.net/auth/admin/login", {
       message,
       wallet: account,
       signature

@@ -6,7 +6,7 @@ export async function UpdateApplicationService(
 ) {
   try {
     const res = await axios.post(
-      "http://localhost:7000/admin/application",
+      "https://invictus.kfnc.net/admin/application",
       {
         application,
       },

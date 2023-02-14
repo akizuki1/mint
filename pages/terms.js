@@ -45,7 +45,7 @@ export default function Terms() {
                         LLC ( &ldquo;Company, &ldquo; &ldquo;we, &ldquo;
                         &ldquo;us, &ldquo; or &ldquo;our&rdquo;), concerning
                         your access to and use of the
-                        http://www.knightsbyironhills.com website as well as any
+                        https://www.invictusorder.com website as well as any
                         other media form, media channel, mobile website or
                         mobile application related, linked, or otherwise
                         connected thereto (collectively, the
@@ -932,7 +932,7 @@ export default function Terms() {
                         LLC ( &ldquo;Company, &ldquo; &ldquo;we, &ldquo;
                         &ldquo;us, &ldquo; or &ldquo;our&rdquo;), concerning
                         your access to and use of the
-                        http://www.knightsbyironhills.com website as well as any
+                        https://www.invictusorder.com website as well as any
                         other media form, media channel, mobile website or
                         mobile application related, linked, or otherwise
                         connected thereto (collectively, the

@@ -85,7 +85,7 @@ export default function Terms() {
     for (const application of applications) {
       const content = JSON.parse(JSON.stringify(application.content));
       const state = application.state === undefined ? "pending" : application.state ? "approved" : "rejected";
-      const row = [application.wallet,content.discordID,content.twitterUrl,content.valueLife,content.successKnights,application.createdAt,state]
+      const row = [application.wallet,content.discordID,content.twitterUrl,content.valueLife,content.successInvictus,application.createdAt,state]
       csv.push(row);
     }
     return csv;
@@ -363,7 +363,7 @@ export default function Terms() {
                               year from now?
                             </dt>
                             <dd className="mt-2 ml-4 text-base leading-7 text-gray-400">
-                              {application.content.successKnights}
+                              {application.content.successInvictus}
                             </dd>
                           </Disclosure.Panel>
                         </>
