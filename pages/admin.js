@@ -35,6 +35,7 @@ export default function Terms() {
   const [statusLogin, setStatusLogin] = useState(false);
   const [countApplications, setCountApplications] = useState(0);
   const [filter, setFilter] = useState(undefined);
+  const [aliasFilter, setAliasFilter] = useState("pending");
   const [sort, setSort] = useState("asc");
   const [applications, setApplications] = useState([]);
   const [accessToken, setAccessToken] = useLocalStorage("jwtToken", null);
@@ -135,6 +136,21 @@ export default function Terms() {
   function filterByWallet(data) {
     setFilter(data.wallet);
   }
+  function filterByState(value) {
+    if (value === "rejected") {
+      setFilter(false);
+    }
+    if (value === "approved") {
+      setFilter(true);
+    }
+    if (value === "all") {
+      setFilter("all");
+    }
+    if (value === "pending") {
+      setFilter(undefined);
+    }
+  }
+
   function sortDate() {
     if (sort === "asc") {
       let buffer = [...applications];
@@ -163,11 +179,7 @@ export default function Terms() {
     if (filter === "all") {
       setCountApplications(applications.length);
     } else {
-      if (
-        filter === true ||
-        filter === false ||
-        filter === undefined
-      ) {
+      if (filter === true || filter === false || filter === undefined) {
         setCountApplications(
           applications.filter((x) => x.state === filter).length
         );
@@ -281,18 +293,20 @@ export default function Terms() {
               >
                 <div className="w-full h-8 sm:max-w-xs">
                   <select
-                    value={filter}
-                    onChange={(e) => setFilter(e.target.value)}
+                    value={aliasFilter}
+                    onChange={(e) => [
+                      filterByState(e.target.value),
+                      setAliasFilter(e.target.value),
+                    ]}
                     className="block w-full text-white bg-application-text-bg
                     sm:text-sm pl-2 rounded-sm border-gray-300 py-2 pr-10
                     text-base focus:border-indigo-500 focus:outline-none
                     focus:ring-indigo-500 "
-                    defaultValue={undefined}
                   >
-                    <option value={undefined}>pending</option>
-                    <option value={true}>approved</option>
-                    <option value={false}>rejected</option>
-                    <option value="all">all</option>
+                    <option>pending</option>
+                    <option>approved</option>
+                    <option>rejected</option>
+                    <option>all</option>
                   </select>
                 </div>
 
@@ -387,7 +401,11 @@ export default function Terms() {
                                             : ""
                                         )}
                                       >
-                                        {application.state === undefined ? "pending" : application.state ? "approved" : "rejected"}
+                                        {application.state === undefined
+                                          ? "pending"
+                                          : application.state
+                                          ? "approved"
+                                          : "rejected"}
                                       </p>
                                     </div>
                                   </div>
@@ -445,10 +463,7 @@ export default function Terms() {
                                         />
                                         <HandThumbUpIcon
                                           onClick={() =>
-                                            updateApplication(
-                                              application,
-                                              true
-                                            )
+                                            updateApplication(application, true)
                                           }
                                           className="mr-1.5 h-6 w-6 flex-shrink-0 hover:text-white text-buttons"
                                           aria-hidden="true"
