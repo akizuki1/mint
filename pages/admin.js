@@ -33,8 +33,8 @@ export default function Terms() {
   const [{ wallet, connecting, connected }, connect, disconnect] =
     useConnectWallet();
   const [statusLogin, setStatusLogin] = useState(false);
-  const [countApplications, setCountApllications] = useState(0);
-  const [filter, setFilter] = useState("pending");
+  const [countApplications, setCountApplications] = useState(0);
+  const [filter, setFilter] = useState(undefined);
   const [sort, setSort] = useState("asc");
   const [applications, setApplications] = useState([]);
   const [accessToken, setAccessToken] = useLocalStorage("jwtToken", null);
@@ -56,13 +56,13 @@ export default function Terms() {
         setAccessToken(res.accessToken);
         for (const app of res.applications) {
           app.content = JSON.parse(app.content);
-          if (app.state === undefined) {
-            app.state = "pending";
-          } else if (app.state) {
-            app.state = "approved";
-          } else {
-            app.state = "rejected";
-          }
+          // if (app.state === undefined) {
+          //   app.state = "pending";
+          // } else if (app.state) {
+          //   app.state = "approved";
+          // } else {
+          //   app.state = "rejected";
+          // }
         }
         setApplications(res.applications);
         setStatusLogin(true);
@@ -161,18 +161,18 @@ export default function Terms() {
 
   useEffect(() => {
     if (filter === "all") {
-      setCountApllications(applications.length);
+      setCountApplications(applications.length);
     } else {
       if (
-        filter === "approved" ||
-        filter === "rejected" ||
-        filter === "pending"
+        filter === true ||
+        filter === false ||
+        filter === undefined
       ) {
-        setCountApllications(
+        setCountApplications(
           applications.filter((x) => x.state === filter).length
         );
       } else {
-        setCountApllications(
+        setCountApplications(
           applications.filter((x) => x.wallet === filter).length
         );
       }
@@ -287,12 +287,12 @@ export default function Terms() {
                     sm:text-sm pl-2 rounded-sm border-gray-300 py-2 pr-10
                     text-base focus:border-indigo-500 focus:outline-none
                     focus:ring-indigo-500 "
-                    defaultValue="pending"
+                    defaultValue={undefined}
                   >
-                    <option>pending</option>
-                    <option>approved</option>
-                    <option>rejected</option>
-                    <option>all</option>
+                    <option value={undefined}>pending</option>
+                    <option value={true}>approved</option>
+                    <option value={false}>rejected</option>
+                    <option value="all">all</option>
                   </select>
                 </div>
 
@@ -354,7 +354,7 @@ export default function Terms() {
               </div>
             </div>
 
-            <div className="divide-y divide-gray-800 mt-14 overflow-scroll  min-h-full h-4/6  bg-background">
+            <div className="divide-y divide-gray-800 mt-14 overflow-scroll overflow-x-hidden  min-h-screen h-4/6  bg-background">
               <div className="mx-auto  divide-y divide-white/10">
                 <dl className=" space-y-3 divide-y divide-white/10">
                   {applications.map((application) =>
@@ -376,18 +376,18 @@ export default function Terms() {
                                       <p
                                         className={classNames(
                                           "inline-flex py-1 rounded-md  px-2 text-md font-semibold leading-5",
-                                          application.state === "pending"
+                                          application.state === undefined
                                             ? "bg-yellow-400 text-gray-900"
                                             : "",
-                                          application.state === "approved"
+                                          application.state === true
                                             ? "bg-green-400 text-gray-900"
                                             : "",
-                                          application.state === "rejected"
+                                          application.state === false
                                             ? "bg-red-400 text-gray-900"
                                             : ""
                                         )}
                                       >
-                                        {application.state}
+                                        {application.state === undefined ? "pending" : application.state ? "approved" : "rejected"}
                                       </p>
                                     </div>
                                   </div>
@@ -437,7 +437,7 @@ export default function Terms() {
                                           onClick={() =>
                                             updateApplication(
                                               application,
-                                              "rejected"
+                                              false
                                             )
                                           }
                                           className="mr-1.5 h-6 w-6 flex-shrink-0 hover:text-white text-buttons"
@@ -447,7 +447,7 @@ export default function Terms() {
                                           onClick={() =>
                                             updateApplication(
                                               application,
-                                              "approved"
+                                              true
                                             )
                                           }
                                           className="mr-1.5 h-6 w-6 flex-shrink-0 hover:text-white text-buttons"
