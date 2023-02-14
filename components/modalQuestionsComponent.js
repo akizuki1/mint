@@ -716,7 +716,7 @@ export default function ModalQuestionsComponent(props) {
                                         className="flex w-md mx-auto items-center justify-center rounded-sm border-solid border-2 border-buttons  px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
                                         onClick={() => [
                                           changeStatusModal("none"),
-                                          setProcess(9),
+                                          setProcess(9)
                                         ]}
                                       >
                                         CLOSE
@@ -726,7 +726,7 @@ export default function ModalQuestionsComponent(props) {
                                         referrerPolicy="no-referrer"
                                         className="flex w-md mx-auto items-center  justify-center  border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10"
                                         href={
-                                          "https://testnets.opensea.io/assets/goerli/0x46Db79ad52f4AB71A7176C011Ec9C79172873fE8/" +
+                                          "https://testnets.opensea.io/assets/goerli/0x247d10Dd34457f1920f50DF43F7b6488767b7392/" +
                                           userData.token
                                         }
                                       >
