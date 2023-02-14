@@ -54,6 +54,10 @@ export default function Terms() {
           app.content = JSON.parse(app.content);
           if(app.state === undefined) {
             app.state = "pending";
+          } else if (app.state) {
+            app.state = "approved";
+          } else {
+            app.state = "rejected";
           }
         }
         console.log(res.applications);
@@ -192,8 +196,8 @@ export default function Terms() {
                     defaultValue="pending"
                   >
                     <option>pending</option>
-                    <option>accepted</option>
-                    <option>refused</option>
+                    <option>approved</option>
+                    <option>rejected</option>
                     <option>all</option>
                   </select>
                 </div>
@@ -243,10 +247,10 @@ export default function Terms() {
                                         application.state === "pending"
                                           ? "bg-yellow-400 text-gray-900"
                                           : "",
-                                        application.state === "accepted"
+                                        application.state === "approved"
                                           ? "bg-green-400 text-gray-900"
                                           : "",
-                                        application.state === "refused"
+                                        application.state === "rejected"
                                           ? "bg-red-400 text-gray-900"
                                           : ""
                                       )}
@@ -339,7 +343,7 @@ export default function Terms() {
                               would add the most value to your life?
                             </dt>
                             <dd className="mt-2 ml-4 text-base leading-7 text-gray-400">
-                              {application.valueLife}
+                              {application.content.valueLife}
                             </dd>
                             <dt className="text-base mt-8  leading-7 text-white">
                               How would you define &quot;success&quot; for
@@ -347,7 +351,7 @@ export default function Terms() {
                               year from now?
                             </dt>
                             <dd className="mt-2 ml-4 text-base leading-7 text-gray-400">
-                              {application.successKnights}
+                              {application.content.successKnights}
                             </dd>
                           </Disclosure.Panel>
                         </>
