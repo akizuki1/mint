@@ -14,15 +14,19 @@ export default function FaqComponent() {
     {
       question: "How do I get allowlisted for Invictus Order?",
       answer:
-        "We will be using an application system to give out allowlist spots for Invictus Order- however, there is a novel twist. In order to submit your application, you must mint a free soulbound token (SBT): Invictus Order Application. Your Invictus Order Application cannot be sold or traded and acts as on-chain proof of your submitted application. As Iron Hills approves applications, your SBT will dynamically update to show whether or not you have been accepted. At the time of mint, only those with approved SBTs may mint their Invictus Order. The gas fees paid to mint the SBT will be refunded to you during the minting of Invictus Order.",
+        "We will be using an application system to give out allowlist spots for Invictus Order- however, there is a novel twist. In order to submit your application, you must mint a free soulbound token (SBT): Invictus Order Application. Your Invictus Order Application acts as on-chain proof of your submitted application. As Iron Hills approves applications, your SBT will dynamically update to show whether or not you have been accepted. At the time of mint, only those with approved SBTs may mint their Invictus Order. To submit an application for allowlist, click “Apply Now” above. For a deep dive on how the SBT and allowlist process works,click <a className='text-blue-400' href='https://mirror.xyz/ironhills.eth/tI53g0xxPiaYu_3Vp8oZIqPCZCfpsUnq4lpvo_YId3U' target='_blank' rel='noreferrer' >here</a>.",
     },
     {
-      question: "What is the difference between the Invictus Order Application and the Invictus Order?",
-      answer:"The Invictus Order Application is the SBT that is minted when submitting your application. The Invictus Order Application determines during which period you can mint the main collection, Invictus Order."
+      question:
+        "What is the difference between the Invictus Order Application and the Invictus Order?",
+      answer:
+        "The Invictus Order Application is the SBT that is minted when submitting your application. The Invictus Order Application determines during which period you can mint the main collection, Invictus Order.",
     },
     {
-      question: "If I mint the Invictus Order Application SBT with one wallet, can I mint my Invictus Order with a different wallet?",
-      answer:"No, your allowlist status is tied to your Invictus Order Application. You must use the same wallet that owns the Invictus Order Application to mint your Invictus Order. We recommend minting the Invictus Order Application SBT with the wallet you intend to mint your Invictus Order with."
+      question:
+        "If I mint the Invictus Order Application SBT with one wallet, can I mint my Invictus Order with a different wallet?",
+      answer:
+        "No, your allowlist status is tied to your Invictus Order Application. You must use the same wallet that owns the Invictus Order Application to mint your Invictus Order. We recommend minting the Invictus Order Application SBT with the wallet you intend to mint your Invictus Order with.",
     },
     {
       question: "How do I know if my application has been accepted?",
@@ -30,16 +34,26 @@ export default function FaqComponent() {
         "If your application has been approved, your Invictus Order Application SBT will automatically change to reflect your new status. Each of the three variations of the Invictus Order Application has different art and metadata to make it apparent whether or not you’ve been accepted. No having to ask around in Discord, fill out forms, or worry that your address isn’t on the contract; if you have an “Allowlist”  trait on your Invictus Order Application SBT, then you are good to go!",
     },
     {
-      question: "What will the Invictus Order Application SBT do after the Invictus Order mint?",
-      answer:"Maybe nothing. Maybe something. We’re not sure yet. <br/><br/>  Having the Invictus Order Application creates an interesting mechanism for us to engage holders of those particular tokens in specific ways if we want to. We might never do anything with them but it would certainly be interesting to use them in some way…"
+      question:
+        "What will the Invictus Order Application SBT do after the Invictus Order mint?",
+      answer:
+        "Maybe nothing. Maybe something. We’re not sure yet. <br/><br/>  Having the Invictus Order Application creates an interesting mechanism for us to engage holders of those particular tokens in specific ways if we want to. We might never do anything with them but it would certainly be interesting to use them in some way…",
     },
     {
       question: "Is there a supply limit on the Invictus Order Applications?",
-      answer:"No, the Invictus Order Applications are completely open edition during the application submission window. The application submission window will last no more than a few weeks. You can only mint one Invictus Order Application per wallet."
+      answer:
+        "No, the Invictus Order Applications are completely open edition during the application submission window. The application submission window will last no more than a few weeks. You can only mint one Invictus Order Application per wallet.",
     },
     {
-      question: "What will you do about the gas fees for the Invictus Order Application?",
-      answer:"Minting the Invictus Order Application SBT is completely free, however, you will still have to pay gas to mint it. Gas fees from minting the Invictus Order Application will be refunded during the mint of Invictus Order up to 0.01 ETH. The minting of your Invictus Order and the refund of the gas fees for your Invictus Order Application will all be done in the same transaction to minimize gas usage"
+      question:
+        "What will you do about the gas fees for the Invictus Order Application?",
+      answer:
+        "Minting the Invictus Order Application SBT is completely free, however, you will still have to pay gas to mint it. Gas fees from minting the Invictus Order Application will be refunded during the mint of Invictus Order up to 0.01 ETH. The minting of your Invictus Order and the refund of the gas fees for your Invictus Order Application will all be done in the same transaction to minimize gas usage",
+    },
+    {
+      question: "Will the information I share in my application be on-chain?",
+      answer:
+        "No, all of the information in your application will be stored in a secure database and will only be available to Iron Hills. Still, don’t send us any private information through the application; we don’t want to deal with that.",
     },
     {
       question: "What is the supply of Invictus Order?",
@@ -50,7 +64,7 @@ export default function FaqComponent() {
       question:
         "What distinguishes Invictus Order’s art from that of other projects?",
       answer:
-        "In the case of most PFP projects, they will use a single, static base model and then layer different attributes and traits on top of that model. There are some projects, like ours, who have gone a step further by adding multiple base models into the equation; this makes the collection as a whole significantly more complex. Because some traits might not “fit” on a certain base model, each base model needs specific traits that only work with that particular base model. Invictus Order is what we believe to be one of the most dynamic and complex collections ever created with 79 distinct base models. Each base model is completely unique and has a specific set of traits that go with it. Though the process of creating the art of Invictus Order went far beyond that of a typical NFT project, we believe that the extra time and effort has been well worth it to make every single piece in the collection feel unique and special. "
+        "In the case of most PFP projects, they will use a single, static base model and then layer different attributes and traits on top of that model. There are some projects, like ours, who have gone a step further by adding multiple base models into the equation; this makes the collection as a whole significantly more complex. Because some traits might not “fit” on a certain base model, each base model needs specific traits that only work with that particular base model. Invictus Order is what we believe to be one of the most dynamic and complex collections ever created with 79 distinct base models. Each base model is completely unique and has a specific set of traits that go with it. Though the process of creating the art of Invictus Order went far beyond that of a typical NFT project, we believe that the extra time and effort has been well worth it to make every single piece in the collection feel unique and special. ",
     },
     {
       question: "What is your relation to the online game Spiral Knights?",
@@ -72,7 +86,6 @@ export default function FaqComponent() {
       answer:
         "No worries- we’re happy to answer any questions you have over in our Discord server. You can join our Discord server <a className='text-blue-400' href='https://discord.gg/invictusorder' target='_blank' rel='noreferrer' >here</a>.",
     },
-
   ];
 
   function classNames(...classes) {
