@@ -380,8 +380,9 @@ export default function Admin() {
                               {aplication.valueLife}
                             </dd>
                             <dt className="text-base mt-8  leading-7 text-white">
-                              How would you define "success" for Invictus Order
-                              3 months from now? What about a year from now?
+                              How would you define &quot;success&quot; for
+                              Invictus Order 3 months from now? What about a
+                              year from now?
                             </dt>
                             <dd className="mt-2 ml-4 text-base leading-7 text-gray-400">
                               {aplication.successInvictus}
