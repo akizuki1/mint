@@ -15,6 +15,7 @@ import {
 } from "@heroicons/react/20/solid";
 import { GetApplicationBystatusService } from "../services/getApplicationByStatusService";
 import { GetAllApplicationService } from "../services/getAllApplicationService";
+import { GetApplicationByWalletService } from "../services/getApplicationByWalletservice";
 
 export default function Terms() {
   const [statusLogin, setStatusLogin] = useState(false);
@@ -26,10 +27,9 @@ export default function Terms() {
   }
 
   async function getApplicationsByWallet(wallet) {
-    const { status, message, data } = await GetApplicationBystatusService(
-      estado
+    const { status, message, data } = await GetApplicationByWalletService(
+      wallet
     );
-
     if (status === "success") {
       setApplications(data);
     } else {
@@ -83,6 +83,12 @@ export default function Terms() {
     handleSubmit,
     watch,
     formState: { errors },
+  } = useForm();
+
+  const {
+    register: register2,
+    handleSubmit: handleSubmit2,
+    formState: { errors: errors2 },
   } = useForm();
 
   return statusLogin === false ? (
@@ -196,21 +202,22 @@ export default function Terms() {
                   <input
                     type="text"
                     name="wallet"
-                    {...register("wallet")}
+                    {...register("wallet", { required: true })}
                     className="block w-full h-8 text-white bg-application-text-bg sm:text-sm pl-2"
                     placeholder="Find wallet"
                   />
+                  {errors.wallet?.type === "required" && (
+                    <small className="text text-blue-400">
+                      The field cannot be empty
+                    </small>
+                  )}
+                  {errors.wallet?.type === "pattern" && (
+                    <small className="text text-blue-400">
+                      Wallet format error
+                    </small>
+                  )}
                 </div>
-                {errors.wallet?.type === "required" && (
-                  <small className="text text-blue-400">
-                    The field cannot be empty
-                  </small>
-                )}
-                {errors.wallet?.type === "pattern" && (
-                  <small className="text text-blue-400">
-                    Wallet format error
-                  </small>
-                )}
+
                 <button type="submit">
                   <MagnifyingGlassIcon
                     className="ml-1.5 h-8 w-8 flex-shrink-0 hover:text-white text-buttons"
@@ -219,13 +226,13 @@ export default function Terms() {
                 </button>
               </form>
               <form
-                onSubmit={handleSubmit(filterByStatus)}
+                onSubmit={handleSubmit2(filterByStatus)}
                 className=" sm:flex sm:items-center"
               >
                 <div className="w-full h-8 sm:max-w-xs">
                   <select
                     name="status"
-                    {...register("status")}
+                    {...register2("status")}
                     className="block w-full   text-white bg-application-text-bg sm:text-sm pl-2 rounded-sm border-gray-300 py-2 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 "
                     defaultValue="pending"
                   >
@@ -283,6 +290,7 @@ export default function Terms() {
                               "https://discord.com/users/" + aplication.discorId
                             }
                             target="_blank"
+                            rel="noreferrer"
                             className="flex items-center cursor-pointer text-xl text-gray-400 hover:text-white "
                           >
                             <UserIcon
@@ -294,6 +302,7 @@ export default function Terms() {
                           <a
                             href={aplication.twitterId}
                             target="_blank"
+                            rel="noreferrer"
                             className="mt-2 flex items-center  cursor-pointer text-xl text-gray-400 hover:text-white sm:mt-0 sm:ml-6"
                           >
                             <IdentificationIcon

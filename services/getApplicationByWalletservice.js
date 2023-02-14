@@ -1,6 +1,6 @@
-export async function GetApplicationByWalletService(estado) {
+export async function GetApplicationByWalletService(wallet) {
   try {
-    console.log(estado);
+    console.log(wallet);
     const applications = [
       {
         id: 1,
