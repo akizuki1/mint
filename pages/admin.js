@@ -65,12 +65,13 @@ export default function Terms() {
       getApplicationsBystatus(data.status);
     }
   }
+
   function filterByWallet(data) {
-    getApplicationsBystatus(data.wallet);
+    getApplicationsByWallet(data.wallet);
   }
 
   useEffect(() => {
-    getApplicationsBystatus("accepted");
+    getApplicationsBystatus("pending");
   }, []);
 
   function classNames(...classes) {
@@ -84,7 +85,7 @@ export default function Terms() {
     formState: { errors },
   } = useForm();
 
-  return statusLogin !== false ? (
+  return statusLogin === false ? (
     <div className="relative isolate overflow-hidden h-screen bg-gray-900">
       <Image
         className="absolute inset-0 -z-10 h-full w-full object-cover"

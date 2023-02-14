@@ -12,7 +12,7 @@ export default function CallToActionComponent() {
           Alterians, and stay up to date with all things Invictus Order by
           joining our Discord server and following us on Twitter.
         </p>
-        <div className="flex">
+        <div className="flex gap-2">
           <a
             href="https://discord.gg/invictusorder"
             target="_blank"
@@ -28,6 +28,14 @@ export default function CallToActionComponent() {
             className="flex w-56 mt-12 mb-24 mx-auto items-center rounded-sm justify-center  border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
           >
             TWITTER
+          </a>
+          <a
+            href="https://mirror.xyz/ironhills.eth"
+            target="_blank"
+            rel="noreferrer"
+            className="flex w-56 mt-12 mb-24 mx-auto items-center rounded-sm justify-center  border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+          >
+            MIRROR
           </a>
           <a
             href="https://www.twitch.tv/invictusorder"
