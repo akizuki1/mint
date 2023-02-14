@@ -60,7 +60,6 @@ export default function Terms() {
             app.state = "rejected";
           }
         }
-        console.log(res.applications);
         setApplications(res.applications);
         setStatusLogin(true);
       }
@@ -78,6 +77,19 @@ export default function Terms() {
       authAccount(provider);
     }
   };
+
+  function csvParse(applications) {
+    const csv = [];
+    const headers = ['wallet','discordId','twitter','question1','question2','createdAt','state']
+    csv.push(headers);
+    for (const application of applications) {
+      const content = JSON.parse(JSON.stringify(application.content));
+      const state = application.state === undefined ? "pending" : application.state ? "approved" : "rejected";
+      const row = [application.wallet,content.discordID,content.twitterUrl,content.valueLife,content.successKnights,application.createdAt,state]
+      csv.push(row);
+    }
+    return csv;
+  }
 
   async function updateApplication(application, state) {
     application.state = state;
@@ -210,7 +222,7 @@ export default function Terms() {
                 </button>
               </form>{" "}
               <CSVLink
-                data={applications}
+                data={csvParse(applications)}
                 filename={"Invictus Order Applications.csv"}
                 className=" text-white"
               >
@@ -264,7 +276,7 @@ export default function Terms() {
                                     <a
                                       href={
                                         "https://discord.com/users/" +
-                                        application.content.discordId
+                                        application.content.discordID
                                       }
                                       target="_blank"
                                       rel="noreferrer"
@@ -274,7 +286,7 @@ export default function Terms() {
                                         className="mr-1.5 h-8 w-8 flex-shrink-0 "
                                         aria-hidden="true"
                                       />
-                                      {application.content.discordId}
+                                      {application.content.discordID}
                                     </a>
                                     <a
                                       href={application.content.twitterUrl}
