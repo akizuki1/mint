@@ -1,6 +1,7 @@
 import { func } from "joi";
 import Image from "next/image";
 import Link from "next/link";
+import { ethers } from "ethers";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import heroImg from "../assets/landing/badge.png";
@@ -16,63 +17,64 @@ import {
 import { GetApplicationBystatusService } from "../services/getApplicationByStatusService";
 import { GetAllApplicationService } from "../services/getAllApplicationService";
 import { GetApplicationByWalletService } from "../services/getApplicationByWalletservice";
+import { useConnectWallet, useSetChain } from "@web3-onboard/react";
+import { AdminAuthService } from "../services/authService";
+import useLocalStorage from "../hooks/useLocalStorage";
+import { UpdateApplicationService } from "../services/updateApplicationService";
+
 
 export default function Terms() {
+  const [{ wallet, connecting, connected }, connect, disconnect] =
+    useConnectWallet();
   const [statusLogin, setStatusLogin] = useState(false);
   const [applications, setApplications] = useState();
+  const [accessToken, setAccessToken] = useLocalStorage("jwtToken", null);
 
-  function login(data) {
-    console.log(data);
-    setStatusLogin(true);
-  }
+  async function authAccount(provider) {
+    const message =
+      "I am an admin";
 
-  async function getApplicationsByWallet(wallet) {
-    const { status, message, data } = await GetApplicationByWalletService(
-      wallet
-    );
-    if (status === "success") {
-      setApplications(data);
-    } else {
-      alert(status + "  " + message);
-    }
-  }
-  async function getApplicationsBystatus(estado) {
-    const { status, message, data } = await GetApplicationBystatusService(
-      estado
-    );
+    const signature = await provider
+      .getSigner(wallet.accounts[0].address)
+      .signMessage(message);
 
-    if (status === "success") {
-      setApplications(data);
-    } else {
-      alert(status + "  " + message);
-    }
-  }
-
-  async function getAllApplication() {
-    const { status, message, data } = await GetAllApplicationService();
-
-    if (status === "success") {
-      setApplications(data);
-    } else {
-      alert(status + "  " + message);
+    if (signature) {
+      const res = await AdminAuthService(
+        wallet.accounts[0].address,
+        signature,
+        message
+      );
+      if (res) {
+        setAccessToken(res.accessToken);
+        for (const app of res.applications) {
+          app.content = JSON.parse(app.content);
+          if(app.state === undefined) {
+            app.state = "pending";
+          }
+        }
+        console.log(res.applications);
+        setApplications(res.applications);
+        setStatusLogin(true);
+      }
     }
   }
 
-  function filterByStatus(data) {
-    if (data.status === "all") {
-      getAllApplication();
-    } else {
-      getApplicationsBystatus(data.status);
+  async function login() {
+    await connect();
+    if (wallet?.provider && !connecting) {
+      const provider = new ethers.providers.Web3Provider(
+        wallet.provider,
+        "any"
+      );
+
+      authAccount(provider);
     }
-  }
+  };
 
-  function filterByWallet(data) {
-    getApplicationsByWallet(data.wallet);
+  async function updateApplication(application, state) {
+    application.state = state;
+    await UpdateApplicationService(application, accessToken)
   }
-
-  useEffect(() => {
-    getApplicationsBystatus("pending");
-  }, []);
 
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
@@ -102,70 +104,19 @@ export default function Terms() {
       <div className="grid  z-0 h-screen ">
         <main className=" relative mx-auto grid place-items-center h-sc my-auto max-w-7xl z-0 ">
           <form
-            onSubmit={handleSubmit(login)}
+            onSubmit={(e) => {
+              e.preventDefault();
+              login();
+            }}
             className="space-y-6 w-96 bg-background/90 rounded-sm p-4"
           >
-            <div>
-              <label className="block text-sm font-medium text-white">
-                User
-              </label>
-
-              <div>
-                <input
-                  name="user"
-                  {...register("user", {
-                    required: true,
-                    pattern: /^\S+@\S+$/i,
-                  })}
-                  className="block w-full h-10 text-white bg-application-text-bg sm:text-sm pl-2"
-                />
-              </div>
-              {errors.user?.type === "pattern" && (
-                <small className="text text-blue-400">
-                  Email format incorrect
-                </small>
-              )}
-              {errors.user?.type === "required" && (
-                <small className="text text-blue-400">
-                  The field cannot be empty
-                </small>
-              )}
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-white">
-                Pass
-              </label>
-
-              <div>
-                <input
-                  type="password"
-                  name="pass"
-                  {...register("pass", {
-                    required: true,
-                  })}
-                  className="block w-full h-10  text-white bg-application-text-bg sm:text-sm pl-2"
-                />
-              </div>
-              {errors.pass?.type === "required" && (
-                <small className="text text-blue-400">
-                  The field cannot be empty
-                </small>
-              )}
-            </div>
-
             <div className=" max-w-sm mx-auto gap-3 mt-56">
               <button
                 type="submit"
                 className="flex w-full mx-auto items-center justify-center rounded-sm border-solid border-2 border-buttons bg-buttons px-8 py-3 text-xl font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
               >
-                SUBMIT
+                CONNECT
               </button>
-              <Link
-                href={"/"}
-                className="flex mt-4  w-full mx-auto items-center justify-center rounded-sm border-solid border-2 border-buttons  px-8 py-3 text-xl font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
-              >
-                BACK
-              </Link>
             </div>
           </form>
         </main>
@@ -195,7 +146,7 @@ export default function Terms() {
           <div className="z-50">
             <div className="flex gap-8 w-2xl bg-background p-4 mt-12 ">
               <form
-                onSubmit={handleSubmit(filterByWallet)}
+                // onSubmit={handleSubmit(filterByWallet)}
                 className=" sm:flex sm:items-center"
               >
                 <div className="w-full h-8 sm:max-w-xs">
@@ -226,7 +177,7 @@ export default function Terms() {
                 </button>
               </form>
               <form
-                onSubmit={handleSubmit2(filterByStatus)}
+                // onSubmit={handleSubmit2(filterByStatus)}
                 className=" sm:flex sm:items-center"
               >
                 <div className="w-full h-8 sm:max-w-xs">
@@ -256,30 +207,30 @@ export default function Terms() {
               role="list"
               className="divide-y divide-gray-800 mt-24  px-4 bg-background"
             >
-              {applications.map((aplication) => (
-                <li key={aplication.id}>
+              {applications.map((application) => (
+                <li key={application._id}>
                   <div className="block py-4 ">
                     <div className="px-4 py-4 sm:px-6">
                       <div className="flex items-center mb-4 justify-between">
                         <p className="truncate text-xl font-medium text-white">
-                          {aplication.wallet}
+                          {application.wallet}
                         </p>
                         <div className="ml-2 flex flex-shrink-0">
                           <p
                             className={classNames(
                               "inline-flex py-1 rounded-md  px-2 text-md font-semibold leading-5",
-                              aplication.status === "pending"
+                              application.state === undefined
                                 ? "bg-yellow-400 text-gray-900"
                                 : "",
-                              aplication.status === "accepted"
+                              application.state === "accepted"
                                 ? "bg-green-400 text-gray-900"
                                 : "",
-                              aplication.status === "refused"
+                              application.state === "refused"
                                 ? "bg-red-400 text-gray-900"
                                 : ""
                             )}
                           >
-                            {aplication.status}
+                            {application.state === undefined ? "pending" : application.state }
                           </p>
                         </div>
                       </div>
@@ -287,7 +238,7 @@ export default function Terms() {
                         <div className="sm:flex">
                           <a
                             href={
-                              "https://discord.com/users/" + aplication.discorId
+                              "https://discord.com/users/" + application.content.discordId
                             }
                             target="_blank"
                             rel="noreferrer"
@@ -297,10 +248,10 @@ export default function Terms() {
                               className="mr-1.5 h-8 w-8 flex-shrink-0 "
                               aria-hidden="true"
                             />
-                            {aplication.discorId}
+                            {application.content.discordId}
                           </a>
                           <a
-                            href={aplication.twitterId}
+                            href={application.content.twitterUrl}
                             target="_blank"
                             rel="noreferrer"
                             className="mt-2 flex items-center  cursor-pointer text-xl text-gray-400 hover:text-white sm:mt-0 sm:ml-6"
@@ -309,19 +260,20 @@ export default function Terms() {
                               className="mr-1.5 h-8 w-8 flex-shrink-0"
                               aria-hidden="true"
                             />
-                            {aplication.twitterId}
+                            {application.content.twitterUrl}
                           </a>
                         </div>
-                        {aplication.status === "pending" ? (
+                        {application.state === "pending" ? (
                           <div className="mt-2 flex items-center text-xl text-white sm:mt-0">
                             <div className="flex gap-3">
                               Application:
                               <HandThumbDownIcon
-                                onClick={() => alert("gg")}
+                                onClick={() => updateApplication(application, false)}
                                 className="mr-1.5 h-8 w-8 flex-shrink-0 hover:text-white text-buttons"
                                 aria-hidden="true"
                               />
                               <HandThumbUpIcon
+                                onClick={() => updateApplication(application, true)}
                                 className="mr-1.5 h-8 w-8 flex-shrink-0 hover:text-white text-buttons"
                                 aria-hidden="true"
                               />
