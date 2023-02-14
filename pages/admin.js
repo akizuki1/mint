@@ -16,6 +16,9 @@ import {
   ChevronDownIcon,
   ChevronUpIcon,
   DocumentArrowDownIcon,
+  CalendarIcon,
+  BarsArrowDownIcon,
+  BarsArrowUpIcon,
 } from "@heroicons/react/20/solid";
 import { Disclosure } from "@headlessui/react";
 import { GetApplicationBystatusService } from "../services/getApplicationByStatusService";
@@ -30,189 +33,10 @@ export default function Terms() {
   const [{ wallet, connecting, connected }, connect, disconnect] =
     useConnectWallet();
   const [statusLogin, setStatusLogin] = useState(false);
-  const [applications, setApplications] = useState([
-    {
-      _id: 1,
-      wallet: "2342342342342",
-      state: "pending",
-      content: {
-        discordId: "234234",
-        twitterUrl: "sdfsdfsf",
-
-        valueLife: "skdjfhskdfksbdfksbdkfs",
-        successKnights: "sdfsdfsdfsdfsd",
-      },
-    },
-    {
-      _id: 2,
-      wallet: "2342342342342",
-      state: "pending",
-      content: {
-        discordId: "234234",
-        twitterUrl: "sdfsdfsf",
-
-        valueLife: "skdjfhskdfksbdfksbdkfs",
-        successKnights: "sdfsdfsdfsdfsd",
-      },
-    },
-    {
-      _id: 3,
-      wallet: "2342342342342",
-      state: "pending",
-      content: {
-        discordId: "234234",
-        twitterUrl: "sdfsdfsf",
-
-        valueLife: "skdjfhskdfksbdfksbdkfs",
-        successKnights: "sdfsdfsdfsdfsd",
-      },
-    },
-    {
-      _id: 4,
-      wallet: "2342342342342",
-      state: "pending",
-      content: {
-        discordId: "234234",
-        twitterUrl: "sdfsdfsf",
-
-        valueLife: "skdjfhskdfksbdfksbdkfs",
-        successKnights: "sdfsdfsdfsdfsd",
-      },
-    },
-    {
-      _id: 5,
-      wallet: "2342342342342",
-      state: "pending",
-      content: {
-        discordId: "234234",
-        twitterUrl: "sdfsdfsf",
-
-        valueLife: "skdjfhskdfksbdfksbdkfs",
-        successKnights: "sdfsdfsdfsdfsd",
-      },
-    },
-    {
-      _id: 6,
-      wallet: "2342342342342",
-      state: "pending",
-      content: {
-        discordId: "234234",
-        twitterUrl: "sdfsdfsf",
-
-        valueLife: "skdjfhskdfksbdfksbdkfs",
-        successKnights: "sdfsdfsdfsdfsd",
-      },
-    },
-    {
-      _id: 7,
-      wallet: "2342342342342",
-      state: "pending",
-      content: {
-        discordId: "234234",
-        twitterUrl: "sdfsdfsf",
-
-        valueLife: "skdjfhskdfksbdfksbdkfs",
-        successKnights: "sdfsdfsdfsdfsd",
-      },
-    },
-    {
-      _id: 8,
-      wallet: "2342342342342",
-      state: "pending",
-      content: {
-        discordId: "234234",
-        twitterUrl: "sdfsdfsf",
-
-        valueLife: "skdjfhskdfksbdfksbdkfs",
-        successKnights: "sdfsdfsdfsdfsd",
-      },
-    },
-    {
-      _id: 9,
-      wallet: "2342342342342",
-      state: "pending",
-      content: {
-        discordId: "234234",
-        twitterUrl: "sdfsdfsf",
-
-        valueLife: "skdjfhskdfksbdfksbdkfs",
-        successKnights: "sdfsdfsdfsdfsd",
-      },
-    },
-    {
-      _id: 10,
-      wallet: "2342342342342",
-      state: "rejected",
-      content: {
-        discordId: "234234",
-        twitterUrl: "sdfsdfsf",
-
-        valueLife: "skdjfhskdfksbdfksbdkfs",
-        successKnights: "sdfsdfsdfsdfsd",
-      },
-    },
-
-    {
-      _id: 11,
-      wallet: "2342342342342",
-      state: "pending",
-      content: {
-        discordId: "234234",
-        twitterUrl: "sdfsdfsf",
-
-        valueLife: "skdjfhskdfksbdfksbdkfs",
-        successKnights: "sdfsdfsdfsdfsd",
-      },
-    },
-    {
-      _id: 12,
-      wallet: "2342342342342",
-      state: "pending",
-      content: {
-        discordId: "234234",
-        twitterUrl: "sdfsdfsf",
-
-        valueLife: "skdjfhskdfksbdfksbdkfs",
-        successKnights: "sdfsdfsdfsdfsd",
-      },
-    },
-    {
-      _id: 13,
-      wallet: "2342342342342",
-      state: "rejected",
-      content: {
-        discordId: "234234",
-        twitterUrl: "sdfsdfsf",
-
-        valueLife: "skdjfhskdfksbdfksbdkfs",
-        successKnights: "sdfsdfsdfsdfsd",
-      },
-    },
-    {
-      _id: 14,
-      wallet: "2342342342342",
-      state: "pending",
-      content: {
-        discordId: "234234",
-        twitterUrl: "sdfsdfsf",
-
-        valueLife: "skdjfhskdfksbdfksbdkfs",
-        successKnights: "sdfsdfsdfsdfsd",
-      },
-    },
-    {
-      _id: 15,
-      wallet: "2342342342342",
-      state: "approved",
-      content: {
-        discordId: "234234",
-        twitterUrl: "sdfsdfsf",
-
-        valueLife: "skdjfhskdfksbdfksbdkfs",
-        successKnights: "sdfsdfsdfsdfsd",
-      },
-    },
-  ]);
+  const [countApplications, setCountApllications] = useState(0);
+  const [filter, setFilter] = useState("pending");
+  const [sort, setSort] = useState("asc");
+  const [applications, setApplications] = useState([]);
   const [accessToken, setAccessToken] = useLocalStorage("jwtToken", null);
 
   async function authAccount(provider) {
@@ -260,29 +84,108 @@ export default function Terms() {
 
   function csvParse(applications) {
     const csv = [];
-    const headers = ['wallet','discordId','twitter','question1','question2','createdAt','state']
+    const headers = [
+      "wallet",
+      "discordId",
+      "twitter",
+      "question1",
+      "question2",
+      "createdAt",
+      "state",
+    ];
     csv.push(headers);
     for (const application of applications) {
       const content = JSON.parse(JSON.stringify(application.content));
-      const state = application.state === undefined ? "pending" : application.state ? "approved" : "rejected";
-      const row = [application.wallet,content.discordID,content.twitterUrl,content.valueLife,content.successInvictus,application.createdAt,state]
+      const state =
+        application.state === undefined
+          ? "pending"
+          : application.state
+          ? "approved"
+          : "rejected";
+      const row = [
+        application.wallet,
+        content.discordID,
+        content.twitterUrl,
+        content.valueLife,
+        content.successInvictus,
+        application.createdAt,
+        state,
+      ];
       csv.push(row);
     }
     return csv;
   }
 
   async function updateApplication(application, state) {
-    ap;
+    let buffer = [...applications];
+    console.log(
+      "antes " + JSON.stringify(buffer.find((a) => a._id === application._id))
+    );
     application.state = state;
     await UpdateApplicationService(application, accessToken);
-    applications.map((a) =>
+    buffer.map((a) =>
       a.wallet == application.wallet ? { ...a, state: state } : ""
     );
+    console.log(
+      "despues " + JSON.stringify(buffer.find((a) => a._id === application._id))
+    );
+    console.log(buffer.length);
+    setApplications(buffer);
   }
 
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
   }
+
+  function filterByWallet(data) {
+    setFilter(data.wallet);
+  }
+  function sortDate() {
+    console.log("llego");
+    if (sort === "asc") {
+      console.log("asc");
+      let buffer = [...applications];
+
+      let bufferDate = buffer.map((obj) => {
+        return { ...obj, date: new Date(obj.createdAt) };
+      });
+      const sortedAsc = bufferDate.sort(
+        (objA, objB) => Number(objA.date) - Number(objB.date)
+      );
+      setApplications(sortedAsc);
+    } else {
+      console.log("desc");
+      let buffer = [...applications];
+
+      let bufferDate = buffer.map((obj) => {
+        return { ...obj, date: new Date(obj.createdAt) };
+      });
+      const sortedAsc = bufferDate.sort(
+        (objA, objB) => Number(objB.date) - Number(objA.date)
+      );
+      setApplications(sortedAsc);
+    }
+  }
+
+  useEffect(() => {
+    if (filter === "all") {
+      setCountApllications(applications.length);
+    } else {
+      if (
+        filter === "approved" ||
+        filter === "rejected" ||
+        filter === "pending"
+      ) {
+        setCountApllications(
+          applications.filter((x) => x.state === filter).length
+        );
+      } else {
+        setCountApllications(
+          applications.filter((x) => x.wallet === filter).length
+        );
+      }
+    }
+  }, [filter, applications]);
 
   const {
     register,
@@ -297,7 +200,7 @@ export default function Terms() {
     formState: { errors: errors2 },
   } = useForm();
 
-  return statusLogin !== false ? (
+  return statusLogin === false ? (
     <div className="relative isolate overflow-hidden h-screen bg-gray-900">
       <Image
         className="absolute inset-0 -z-10 h-full w-full object-cover"
@@ -327,7 +230,7 @@ export default function Terms() {
       </div>
     </div>
   ) : (
-    <div className="relative isolate overflow-hidden h-screen bg-gray-900">
+    <div className="relative isolate overflow-hidden  h-screen bg-gray-900">
       <Image
         className="absolute inset-0 -z-10 h-full w-full object-cover"
         src={heroBack}
@@ -350,7 +253,7 @@ export default function Terms() {
           <div className="z-50">
             <div className="flex gap-8 w-2xl bg-background p-4 mt-12 ">
               <form
-                // onSubmit={handleSubmit(filterByWallet)}
+                onSubmit={handleSubmit(filterByWallet)}
                 className=" sm:flex sm:items-center"
               >
                 <div className="w-full h-8 sm:max-w-xs">
@@ -375,20 +278,23 @@ export default function Terms() {
 
                 <button type="submit">
                   <MagnifyingGlassIcon
-                    className="ml-1.5 h-8 w-8 flex-shrink-0 hover:text-white text-buttons"
+                    className="ml-1.5 h-6 w-6 flex-shrink-0 hover:text-white text-buttons"
                     aria-hidden="true"
                   />
                 </button>
               </form>
-              <form
+              <div
                 // onSubmit={handleSubmit2(filterByStatus)}
                 className=" sm:flex sm:items-center"
               >
                 <div className="w-full h-8 sm:max-w-xs">
                   <select
-                    name="status"
-                    {...register2("status")}
-                    className="block w-full   text-white bg-application-text-bg sm:text-sm pl-2 rounded-sm border-gray-300 py-2 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 "
+                    value={filter}
+                    onChange={(e) => setFilter(e.target.value)}
+                    className="block w-full text-white bg-application-text-bg
+                    sm:text-sm pl-2 rounded-sm border-gray-300 py-2 pr-10
+                    text-base focus:border-indigo-500 focus:outline-none
+                    focus:ring-indigo-500 "
                     defaultValue="pending"
                   >
                     <option>pending</option>
@@ -400,11 +306,39 @@ export default function Terms() {
 
                 <button type="submit">
                   <FunnelIcon
-                    className="ml-1.5 h-8 w-8 flex-shrink-0 hover:text-white text-buttons"
+                    className="ml-1.5 h-6 w-6 flex-shrink-0 hover:text-white text-buttons"
                     aria-hidden="true"
                   />
                 </button>
-              </form>{" "}
+              </div>
+              {sort === "asc" ? (
+                <div className=" sm:flex sm:items-center">
+                  <div className="w-full h-8 text-white sm:max-w-xs">
+                    Sort date desc
+                  </div>
+
+                  <button onClick={() => [setSort("desc"), sortDate()]}>
+                    <BarsArrowDownIcon
+                      className="ml-1.5 h-6 w-6 flex-shrink-0 hover:text-white text-buttons"
+                      aria-hidden="true"
+                    />
+                  </button>
+                </div>
+              ) : (
+                <div className=" sm:flex sm:items-center">
+                  <div className="w-full h-8 text-white sm:max-w-xs">
+                    Sort date asc
+                  </div>
+
+                  <button onClick={() => [setSort("asc"), sortDate()]}>
+                    <BarsArrowUpIcon
+                      className="ml-1.5 h-6 w-6 flex-shrink-0 hover:text-white text-buttons"
+                      aria-hidden="true"
+                    />
+                  </button>
+                </div>
+              )}
+
               <CSVLink
                 data={csvParse(applications)}
                 filename={"Invictus Order Applications.csv"}
@@ -412,147 +346,166 @@ export default function Terms() {
               >
                 <div className="flex">
                   <p className="my-auto align-middle"> Download csv</p>
-
                   <DocumentArrowDownIcon
-                    className="ml-1.5 h-8 w-8 flex-shrink-0 hover:text-white text-buttons"
+                    className="ml-1.5 h-6 w-6 flex-shrink-0 hover:text-white text-buttons"
                     aria-hidden="true"
                   />
                 </div>
               </CSVLink>
-              ;
+              <div className=" sm:flex sm:items-center">
+                <div className="w-full h-8 text-white sm:max-w-xs">
+                  Count Applications
+                </div>
+                <div className="h-8 ml-2 text-buttons sm:max-w-xs">
+                  {countApplications}
+                </div>
+              </div>
             </div>
 
-            <div className="divide-y divide-gray-800 mt-24   bg-background">
+            <div className="divide-y divide-gray-800 mt-14 overflow-scroll  h-1/3  bg-background">
               <div className="mx-auto  divide-y divide-white/10">
-                <dl className="mt-10 space-y-6 divide-y divide-white/10">
-                  {applications.map((application) => (
-                    <Disclosure as="div" key={application._id} className="pt-6">
-                      {({ open }) => (
-                        <>
-                          <dt>
-                            <div className="flex w-full items-start justify-between text-left text-white">
-                              <div className="px-4 py-4 w-full sm:px-6 ">
-                                <div className="flex items-center mb-4 justify-between ">
-                                  <p className="truncate text-xl font-medium text-white">
-                                    {application.wallet}
-                                  </p>
-                                  <div className="ml-2 flex flex-shrink-0">
-                                    <p
-                                      className={classNames(
-                                        "inline-flex py-1 rounded-md  px-2 text-md font-semibold leading-5",
-                                        application.state === "pending"
-                                          ? "bg-yellow-400 text-gray-900"
-                                          : "",
-                                        application.state === "approved"
-                                          ? "bg-green-400 text-gray-900"
-                                          : "",
-                                        application.state === "rejected"
-                                          ? "bg-red-400 text-gray-900"
-                                          : ""
-                                      )}
-                                    >
-                                      {application.state}
+                <dl className=" space-y-3 divide-y divide-white/10">
+                  {applications.map((application) =>
+                    application.state === filter ||
+                    filter === "all" ||
+                    application.wallet === filter ? (
+                      <Disclosure as="div" key={application._id}>
+                        {({ open }) => (
+                          <>
+                            <dt>
+                              <div className="flex w-full items-start justify-between text-left text-white">
+                                <div className="px-4 py-4 w-full sm:px-6 ">
+                                  <div className="flex items-center mb-4 justify-between ">
+                                    <p className="truncate text-xl font-medium text-white">
+                                      {application.wallet}
                                     </p>
-                                  </div>
-                                </div>
-                                <div className="mt-2 sm:flex  sm:justify-between">
-                                  <div className="sm:flex">
-                                    <a
-                                      href={
-                                        "https://discord.com/users/" +
-                                        application.content.discordID
-                                      }
-                                      target="_blank"
-                                      rel="noreferrer"
-                                      className="flex items-center cursor-pointer text-xl text-gray-400 hover:text-white "
-                                    >
-                                      <UserIcon
-                                        className="mr-1.5 h-8 w-8 flex-shrink-0 "
-                                        aria-hidden="true"
-                                      />
-                                      {application.content.discordID}
-                                    </a>
-                                    <a
-                                      href={application.content.twitterUrl}
-                                      target="_blank"
-                                      rel="noreferrer"
-                                      className="mt-2 flex items-center  cursor-pointer text-xl text-gray-400 hover:text-white sm:mt-0 sm:ml-6"
-                                    >
-                                      <IdentificationIcon
-                                        className="mr-1.5 h-8 w-8 flex-shrink-0"
-                                        aria-hidden="true"
-                                      />
-                                      {application.content.twitterUrl}
-                                    </a>
-                                  </div>
 
-                                  <div className="mt-2 flex items-center text-xl text-white sm:mt-0">
-                                    <div className="flex gap-3">
-                                      Application:
-                                      <HandThumbDownIcon
-                                        onClick={() =>
-                                          updateApplication(
-                                            application,
-                                            "approved"
-                                          )
+                                    <div className="ml-2 flex flex-shrink-0">
+                                      <p
+                                        className={classNames(
+                                          "inline-flex py-1 rounded-md  px-2 text-md font-semibold leading-5",
+                                          application.state === "pending"
+                                            ? "bg-yellow-400 text-gray-900"
+                                            : "",
+                                          application.state === "approved"
+                                            ? "bg-green-400 text-gray-900"
+                                            : "",
+                                          application.state === "rejected"
+                                            ? "bg-red-400 text-gray-900"
+                                            : ""
+                                        )}
+                                      >
+                                        {application.state}
+                                      </p>
+                                    </div>
+                                  </div>
+                                  <div className="mt-2 sm:flex sm:justify-between">
+                                    <div className="sm:flex ">
+                                      <p className="flex items-centertext-md text-white ">
+                                        <CalendarIcon
+                                          className="mr-1.5 h-6 w-6 flex-shrink-0 "
+                                          aria-hidden="true"
+                                        />
+                                        {application.createdAt}
+                                      </p>
+
+                                      <a
+                                        href={
+                                          "https://discord.com/users/" +
+                                          application.content.discordID
                                         }
-                                        className="mr-1.5 h-8 w-8 flex-shrink-0 hover:text-white text-buttons"
-                                        aria-hidden="true"
-                                      />
-                                      <HandThumbUpIcon
-                                        onClick={() =>
-                                          updateApplication(
-                                            application,
-                                            "rejected"
-                                          )
-                                        }
-                                        className="mr-1.5 h-8 w-8 flex-shrink-0 hover:text-white text-buttons"
-                                        aria-hidden="true"
-                                      />
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="mt-2 flex items-center  cursor-pointer text-md text-buttons hover:text-white sm:mt-0 sm:ml-6"
+                                      >
+                                        <UserIcon
+                                          className="mr-1.5 h-6 w-6 flex-shrink-0"
+                                          aria-hidden="true"
+                                        />
+                                        {application.content.discordID}
+                                      </a>
+                                      <a
+                                        href={application.content.twitterUrl}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="mt-2 flex items-center  cursor-pointer text-md text-buttons hover:text-white sm:mt-0 sm:ml-6"
+                                      >
+                                        <IdentificationIcon
+                                          className="mr-1.5 h-6 w-6 flex-shrink-0"
+                                          aria-hidden="true"
+                                        />
+                                        {application.content.twitterUrl}
+                                      </a>
+                                    </div>
+
+                                    <div className="mt-2 flex items-center text-md text-white sm:mt-0">
+                                      <div className="flex gap-3">
+                                        Application:
+                                        <HandThumbDownIcon
+                                          onClick={() =>
+                                            updateApplication(
+                                              application,
+                                              "rejected"
+                                            )
+                                          }
+                                          className="mr-1.5 h-6 w-6 flex-shrink-0 hover:text-white text-buttons"
+                                          aria-hidden="true"
+                                        />
+                                        <HandThumbUpIcon
+                                          onClick={() =>
+                                            updateApplication(
+                                              application,
+                                              "approved"
+                                            )
+                                          }
+                                          className="mr-1.5 h-6 w-6 flex-shrink-0 hover:text-white text-buttons"
+                                          aria-hidden="true"
+                                        />
+                                      </div>
                                     </div>
                                   </div>
                                 </div>
+                                <Disclosure.Button className="my-auto align-middle  mr-2  flex-shrink-0">
+                                  {!open ? (
+                                    <ChevronDownIcon
+                                      className="h-6 w-6 animate-bounce"
+                                      aria-hidden="true"
+                                    />
+                                  ) : (
+                                    <ChevronUpIcon
+                                      className="h-6 w-6"
+                                      aria-hidden="true"
+                                    />
+                                  )}
+                                </Disclosure.Button>
                               </div>
-                              <Disclosure.Button className="my-auto align-middle  mr-2  flex-shrink-0">
-                                {!open ? (
-                                  <ChevronDownIcon
-                                    className="h-8 w-8 animate-bounce"
-                                    aria-hidden="true"
-                                  />
-                                ) : (
-                                  <ChevronUpIcon
-                                    className="h-8 w-8"
-                                    aria-hidden="true"
-                                  />
-                                )}
-                              </Disclosure.Button>
-                            </div>
-                          </dt>
-                          <Disclosure.Panel
-                            as="dd"
-                            className="mt-2 pr-12 px-4 py-4 w-full sm:px-6 "
-                          >
-                            <dt className="text-base  leading-7 text-white">
-                              As an Invictus Order holder, what is the one thing
-                              that you would like to see Iron Hills do that
-                              would add the most value to your life?
                             </dt>
-                            <dd className="mt-2 ml-4 text-base leading-7 text-gray-400">
-                              {application.content.valueLife}
-                            </dd>
-                            <dt className="text-base mt-8  leading-7 text-white">
-                              How would you define &quot;success&quot; for
-                              Invictus Order 3 months from now? What about a
-                              year from now?
-                            </dt>
-                            <dd className="mt-2 ml-4 text-base leading-7 text-gray-400">
-                              {application.content.successInvictus}
-                            </dd>
-                          </Disclosure.Panel>
-                        </>
-                      )}
-                    </Disclosure>
-                  ))}
+                            <Disclosure.Panel
+                              as="dd"
+                              className="mt-2 pr-12 px-4 py-4 w-full sm:px-6 "
+                            >
+                              <dt className="text-base  leading-7 text-white">
+                                As an Invictus Order holder, what is the one
+                                thing that you would like to see Iron Hills do
+                                that would add the most value to your life?
+                              </dt>
+                              <dd className="mt-2 ml-4 text-base leading-7 text-gray-400">
+                                {application.content.valueLife}
+                              </dd>
+                              <dt className="text-base mt-8  leading-7 text-white">
+                                How would you define &quot;success&quot; for
+                                Invictus Order 3 months from now? What about a
+                                year from now?
+                              </dt>
+                              <dd className="mt-2 ml-4 text-base leading-7 text-gray-400">
+                                {application.content.successInvictus}
+                              </dd>
+                            </Disclosure.Panel>
+                          </>
+                        )}
+                      </Disclosure>
+                    ) : null
+                  )}
                 </dl>
               </div>
             </div>
