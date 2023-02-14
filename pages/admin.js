@@ -354,7 +354,7 @@ export default function Terms() {
               </div>
             </div>
 
-            <div className="divide-y divide-gray-800 mt-14 overflow-scroll  h-1/3  bg-background">
+            <div className="divide-y divide-gray-800 mt-14 overflow-scroll  min-h-full h-4/6  bg-background">
               <div className="mx-auto  divide-y divide-white/10">
                 <dl className=" space-y-3 divide-y divide-white/10">
                   {applications.map((application) =>
