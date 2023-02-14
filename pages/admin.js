@@ -26,17 +26,197 @@ import { AdminAuthService } from "../services/authService";
 import useLocalStorage from "../hooks/useLocalStorage";
 import { UpdateApplicationService } from "../services/updateApplicationService";
 
-
 export default function Terms() {
   const [{ wallet, connecting, connected }, connect, disconnect] =
     useConnectWallet();
   const [statusLogin, setStatusLogin] = useState(false);
-  const [applications, setApplications] = useState();
+  const [applications, setApplications] = useState([
+    {
+      _id: 1,
+      wallet: "2342342342342",
+      state: "pending",
+      content: {
+        discordId: "234234",
+        twitterUrl: "sdfsdfsf",
+
+        valueLife: "skdjfhskdfksbdfksbdkfs",
+        successKnights: "sdfsdfsdfsdfsd",
+      },
+    },
+    {
+      _id: 2,
+      wallet: "2342342342342",
+      state: "pending",
+      content: {
+        discordId: "234234",
+        twitterUrl: "sdfsdfsf",
+
+        valueLife: "skdjfhskdfksbdfksbdkfs",
+        successKnights: "sdfsdfsdfsdfsd",
+      },
+    },
+    {
+      _id: 3,
+      wallet: "2342342342342",
+      state: "pending",
+      content: {
+        discordId: "234234",
+        twitterUrl: "sdfsdfsf",
+
+        valueLife: "skdjfhskdfksbdfksbdkfs",
+        successKnights: "sdfsdfsdfsdfsd",
+      },
+    },
+    {
+      _id: 4,
+      wallet: "2342342342342",
+      state: "pending",
+      content: {
+        discordId: "234234",
+        twitterUrl: "sdfsdfsf",
+
+        valueLife: "skdjfhskdfksbdfksbdkfs",
+        successKnights: "sdfsdfsdfsdfsd",
+      },
+    },
+    {
+      _id: 5,
+      wallet: "2342342342342",
+      state: "pending",
+      content: {
+        discordId: "234234",
+        twitterUrl: "sdfsdfsf",
+
+        valueLife: "skdjfhskdfksbdfksbdkfs",
+        successKnights: "sdfsdfsdfsdfsd",
+      },
+    },
+    {
+      _id: 6,
+      wallet: "2342342342342",
+      state: "pending",
+      content: {
+        discordId: "234234",
+        twitterUrl: "sdfsdfsf",
+
+        valueLife: "skdjfhskdfksbdfksbdkfs",
+        successKnights: "sdfsdfsdfsdfsd",
+      },
+    },
+    {
+      _id: 7,
+      wallet: "2342342342342",
+      state: "pending",
+      content: {
+        discordId: "234234",
+        twitterUrl: "sdfsdfsf",
+
+        valueLife: "skdjfhskdfksbdfksbdkfs",
+        successKnights: "sdfsdfsdfsdfsd",
+      },
+    },
+    {
+      _id: 8,
+      wallet: "2342342342342",
+      state: "pending",
+      content: {
+        discordId: "234234",
+        twitterUrl: "sdfsdfsf",
+
+        valueLife: "skdjfhskdfksbdfksbdkfs",
+        successKnights: "sdfsdfsdfsdfsd",
+      },
+    },
+    {
+      _id: 9,
+      wallet: "2342342342342",
+      state: "pending",
+      content: {
+        discordId: "234234",
+        twitterUrl: "sdfsdfsf",
+
+        valueLife: "skdjfhskdfksbdfksbdkfs",
+        successKnights: "sdfsdfsdfsdfsd",
+      },
+    },
+    {
+      _id: 10,
+      wallet: "2342342342342",
+      state: "rejected",
+      content: {
+        discordId: "234234",
+        twitterUrl: "sdfsdfsf",
+
+        valueLife: "skdjfhskdfksbdfksbdkfs",
+        successKnights: "sdfsdfsdfsdfsd",
+      },
+    },
+
+    {
+      _id: 11,
+      wallet: "2342342342342",
+      state: "pending",
+      content: {
+        discordId: "234234",
+        twitterUrl: "sdfsdfsf",
+
+        valueLife: "skdjfhskdfksbdfksbdkfs",
+        successKnights: "sdfsdfsdfsdfsd",
+      },
+    },
+    {
+      _id: 12,
+      wallet: "2342342342342",
+      state: "pending",
+      content: {
+        discordId: "234234",
+        twitterUrl: "sdfsdfsf",
+
+        valueLife: "skdjfhskdfksbdfksbdkfs",
+        successKnights: "sdfsdfsdfsdfsd",
+      },
+    },
+    {
+      _id: 13,
+      wallet: "2342342342342",
+      state: "rejected",
+      content: {
+        discordId: "234234",
+        twitterUrl: "sdfsdfsf",
+
+        valueLife: "skdjfhskdfksbdfksbdkfs",
+        successKnights: "sdfsdfsdfsdfsd",
+      },
+    },
+    {
+      _id: 14,
+      wallet: "2342342342342",
+      state: "pending",
+      content: {
+        discordId: "234234",
+        twitterUrl: "sdfsdfsf",
+
+        valueLife: "skdjfhskdfksbdfksbdkfs",
+        successKnights: "sdfsdfsdfsdfsd",
+      },
+    },
+    {
+      _id: 15,
+      wallet: "2342342342342",
+      state: "approved",
+      content: {
+        discordId: "234234",
+        twitterUrl: "sdfsdfsf",
+
+        valueLife: "skdjfhskdfksbdfksbdkfs",
+        successKnights: "sdfsdfsdfsdfsd",
+      },
+    },
+  ]);
   const [accessToken, setAccessToken] = useLocalStorage("jwtToken", null);
 
   async function authAccount(provider) {
-    const message =
-      "I am an admin";
+    const message = "I am an admin";
 
     const signature = await provider
       .getSigner(wallet.accounts[0].address)
@@ -52,7 +232,7 @@ export default function Terms() {
         setAccessToken(res.accessToken);
         for (const app of res.applications) {
           app.content = JSON.parse(app.content);
-          if(app.state === undefined) {
+          if (app.state === undefined) {
             app.state = "pending";
           } else if (app.state) {
             app.state = "approved";
@@ -76,7 +256,7 @@ export default function Terms() {
 
       authAccount(provider);
     }
-  };
+  }
 
   function csvParse(applications) {
     const csv = [];
@@ -92,8 +272,12 @@ export default function Terms() {
   }
 
   async function updateApplication(application, state) {
+    ap;
     application.state = state;
-    await UpdateApplicationService(application, accessToken)
+    await UpdateApplicationService(application, accessToken);
+    applications.map((a) =>
+      a.wallet == application.wallet ? { ...a, state: state } : ""
+    );
   }
 
   function classNames(...classes) {
@@ -113,7 +297,7 @@ export default function Terms() {
     formState: { errors: errors2 },
   } = useForm();
 
-  return statusLogin === false ? (
+  return statusLogin !== false ? (
     <div className="relative isolate overflow-hidden h-screen bg-gray-900">
       <Image
         className="absolute inset-0 -z-10 h-full w-full object-cover"
@@ -246,7 +430,7 @@ export default function Terms() {
                       {({ open }) => (
                         <>
                           <dt>
-                            <Disclosure.Button className="flex w-full items-start justify-between text-left text-white">
+                            <div className="flex w-full items-start justify-between text-left text-white">
                               <div className="px-4 py-4 w-full sm:px-6 ">
                                 <div className="flex items-center mb-4 justify-between ">
                                   <p className="truncate text-xl font-medium text-white">
@@ -301,36 +485,35 @@ export default function Terms() {
                                       {application.content.twitterUrl}
                                     </a>
                                   </div>
-                                  {application.status === "pending" ? (
-                                    <div className="mt-2 flex items-center text-xl text-white sm:mt-0">
-                                      <div className="flex gap-3">
-                                        Application:
-                                        <HandThumbDownIcon
-                                          onClick={() =>
-                                            updateApplication(
-                                              application,
-                                              false
-                                            )
-                                          }
-                                          className="mr-1.5 h-8 w-8 flex-shrink-0 hover:text-white text-buttons"
-                                          aria-hidden="true"
-                                        />
-                                        <HandThumbUpIcon
-                                          onClick={() =>
-                                            updateApplication(
-                                              application,
-                                              true
-                                            )
-                                          }
-                                          className="mr-1.5 h-8 w-8 flex-shrink-0 hover:text-white text-buttons"
-                                          aria-hidden="true"
-                                        />
-                                      </div>
+
+                                  <div className="mt-2 flex items-center text-xl text-white sm:mt-0">
+                                    <div className="flex gap-3">
+                                      Application:
+                                      <HandThumbDownIcon
+                                        onClick={() =>
+                                          updateApplication(
+                                            application,
+                                            "approved"
+                                          )
+                                        }
+                                        className="mr-1.5 h-8 w-8 flex-shrink-0 hover:text-white text-buttons"
+                                        aria-hidden="true"
+                                      />
+                                      <HandThumbUpIcon
+                                        onClick={() =>
+                                          updateApplication(
+                                            application,
+                                            "rejected"
+                                          )
+                                        }
+                                        className="mr-1.5 h-8 w-8 flex-shrink-0 hover:text-white text-buttons"
+                                        aria-hidden="true"
+                                      />
                                     </div>
-                                  ) : null}
+                                  </div>
                                 </div>
                               </div>
-                              <div className="my-auto align-middle  mr-2  flex-shrink-0">
+                              <Disclosure.Button className="my-auto align-middle  mr-2  flex-shrink-0">
                                 {!open ? (
                                   <ChevronDownIcon
                                     className="h-8 w-8 animate-bounce"
@@ -342,8 +525,8 @@ export default function Terms() {
                                     aria-hidden="true"
                                   />
                                 )}
-                              </div>
-                            </Disclosure.Button>
+                              </Disclosure.Button>
+                            </div>
                           </dt>
                           <Disclosure.Panel
                             as="dd"
