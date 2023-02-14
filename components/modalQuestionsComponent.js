@@ -51,7 +51,7 @@ export default function ModalQuestionsComponent(props) {
   const [discordID, setDiscordID] = useState();
   const [twitterUrl, setTwitterUrl] = useState("https://twitter.com/");
   const [valueLife, setValueLife] = useState();
-  const [successKnights, setSuccessKnights] = useState();
+  const [successInvictus, setSuccessInvictus] = useState();
 
   const dispatch = useDispatch();
 
@@ -62,7 +62,7 @@ export default function ModalQuestionsComponent(props) {
       setDiscordID(content.discordID);
       setTwitterUrl(content.twitterUrl);
       setValueLife(content.valueLife);
-      setSuccessKnights(content.successKnights);
+      setSuccessInvictus(content.successInvictus);
       setProcess(6);
     }
     if (applicationStatus === "application success") {
@@ -195,6 +195,145 @@ export default function ModalQuestionsComponent(props) {
                                       />
                                     </div>
                                   </div>
+                                  <div className="flex max-w-sm mx-auto mt-12">
+                                    <button
+                                      type="button"
+                                      className="flex w-md mx-auto items-center justify-center rounded-sm border-solid border-2 border-buttons  px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+                                      onClick={() => changeStatusModal("none")}
+                                    >
+                                      BACK
+                                    </button>
+                                      <button
+                                        onClick={() => setProcess(2)}
+                                        className="flex w-md mx-auto items-center justify-center rounded-sm border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+                                      >
+                                        CONTINUE
+                                      </button>
+                                  </div>
+                                </div>
+                              </>
+                            );
+                          case 2:
+                            return (
+                              <>
+                                <form
+                                  className="space-y-6"
+                                  onSubmit={handleSubmit(sendApplication)}
+                                >
+                                  <div>
+                                    <label
+                                      htmlFor="email"
+                                      className="block text-sm font-medium text-white"
+                                    >
+                                      What is your Discord username (User#0001)?
+                                    </label>
+
+                                    <div>
+                                      <input
+                                        name="discordId"
+                                        {...register("discordId", {
+                                          required: true,
+                                          pattern: /^.{3,32}#[0-9]{4}$/i
+                                        })}
+                                        className="block w-full h-10 text-white bg-application-text-bg sm:text-sm pl-2"
+                                      />
+                                    </div>
+                                    {errors.discordId?.type === "pattern" && (
+                                      <small className="text text-blue-400">
+                                        Please use the correct format for
+                                        discordID
+                                      </small>
+                                    )}
+                                    {errors.discordId?.type === "required" && (
+                                      <small className="text text-blue-400">
+                                        The field cannot be empty
+                                      </small>
+                                    )}
+                                  </div>
+                                  <div>
+                                    <label
+                                      htmlFor="email"
+                                      className="block text-sm font-medium text-white"
+                                    >
+                                      What is your Twitter URL
+                                      (https://twitter.com/username)?
+                                    </label>
+
+                                    <div>
+                                      <input
+                                        name="twitterId"
+                                        {...register("twitterId", {
+                                          required: true,
+                                          pattern:
+                                            /(https:\/\/twitter.com\/(?![a-zA-Z0-9_]+\/)([a-zA-Z0-9_]+))/i
+                                        })}
+                                        className="block w-full h-10  text-white bg-application-text-bg sm:text-sm pl-2"
+                                      />
+                                    </div>
+                                    {errors.twitterId?.type === "required" && (
+                                      <small className="text text-blue-400">
+                                        The field cannot be empty
+                                      </small>
+                                    )}
+                                    {errors.twitterId?.type === "pattern" && (
+                                      <small className="text text-blue-400">
+                                        Please use the correct format for url
+                                        and twitterId
+                                      </small>
+                                    )}
+                                  </div>
+                                  <div>
+                                    <label
+                                      htmlFor="email"
+                                      className="block text-sm font-medium text-white"
+                                    >
+                                      As an Invictus Order holder, what is the
+                                      one thing that you would like to see Iron
+                                      Hills do that would add the most value to
+                                      your life?
+                                    </label>
+                                    <div>
+                                      <textarea
+                                        rows={4}
+                                        name="valueLife"
+                                        {...register("valueLife", {
+                                          required: true
+                                        })}
+                                        className="block w-full  text-white bg-application-text-bg sm:text-sm pl-2 pt-2"
+                                      />
+                                    </div>
+                                    {errors.valueLife?.type === "required" && (
+                                      <small className="text text-blue-400">
+                                        The field cannot be empty
+                                      </small>
+                                    )}
+                                  </div>
+                                  <div>
+                                    <label
+                                      htmlFor="email"
+                                      className="block text-sm font-medium text-white"
+                                    >
+                                      How would you define &quot;success&quot;
+                                      for Invictus Order 3 months from now? What
+                                      about a year from now?
+                                    </label>
+
+                                    <div>
+                                      <textarea
+                                        name="successInvictus"
+                                        {...register("successInvictus", {
+                                          required: true
+                                        })}
+                                        className="block w-full  text-white bg-application-text-bg sm:text-sm pl-2 pt-2"
+                                      />
+                                    </div>
+                                    {errors.successInvictus?.type ===
+                                      "required" && (
+                                      <small className="text text-blue-400">
+                                        The field cannot be empty
+                                      </small>
+                                    )}
+                                  </div>
                                   <div className="mx-auto max-w-7xl overflow-hidden py-12 px-4 sm:px-6 lg:px-8">
                                     <div className="mt-8 text-center text-base gap-5">
                                       <div className="relative flex justify-center">
@@ -238,153 +377,6 @@ export default function ModalQuestionsComponent(props) {
                                       </div>
                                     </div>
                                   </div>
-
-                                  <div className="flex max-w-sm mx-auto mt-12">
-                                    <button
-                                      type="button"
-                                      className="flex w-md mx-auto items-center justify-center rounded-sm border-solid border-2 border-buttons  px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
-                                      onClick={() => changeStatusModal("none")}
-                                    >
-                                      BACK
-                                    </button>
-                                    {agreeTyC === true ? (
-                                      <button
-                                        onClick={() => setProcess(4)}
-                                        className="flex w-md mx-auto items-center justify-center rounded-sm border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
-                                      >
-                                        CONTINUE
-                                      </button>
-                                    ) : (
-                                      <button className="flex w-md mx-auto items-center cursor-default justify-center rounded-sm border-solid border-2 border-gray-500/40 bg-gray-500/40 px-8 py-3 text-md font-medium text-white/50 hover:bg-blues-600 md:py-4 md:px-10 ">
-                                        CONTINUE
-                                      </button>
-                                    )}
-                                  </div>
-                                </div>
-                              </>
-                            );
-                          case 2:
-                            return (
-                              <>
-                                <form
-                                  className="space-y-6"
-                                  onSubmit={handleSubmit(sendApplication)}
-                                >
-                                  <div>
-                                    <label
-                                      htmlFor="email"
-                                      className="block text-sm font-medium text-white"
-                                    >
-                                      What is your Discord username (User#0001)?
-                                    </label>
-
-                                    <div>
-                                      <input
-                                        name="discordId"
-                                        {...register("discordId", {
-                                          required: true,
-                                          pattern: /^.{3,32}#[0-9]{4}$/i,
-                                        })}
-                                        className="block w-full h-10 text-white bg-application-text-bg sm:text-sm pl-2"
-                                      />
-                                    </div>
-                                    {errors.discordId?.type === "pattern" && (
-                                      <small className="text text-blue-400">
-                                        Please use the correct format for
-                                        discordID
-                                      </small>
-                                    )}
-                                    {errors.discordId?.type === "required" && (
-                                      <small className="text text-blue-400">
-                                        The field cannot be empty
-                                      </small>
-                                    )}
-                                  </div>
-                                  <div>
-                                    <label
-                                      htmlFor="email"
-                                      className="block text-sm font-medium text-white"
-                                    >
-                                      What is your Twitter URL
-                                      (https://twitter.com/username)?
-                                    </label>
-
-                                    <div>
-                                      <input
-                                        name="twitterId"
-                                        {...register("twitterId", {
-                                          required: true,
-                                          pattern:
-                                            /(https:\/\/twitter.com\/(?![a-zA-Z0-9_]+\/)([a-zA-Z0-9_]+))/i,
-                                        })}
-                                        className="block w-full h-10  text-white bg-application-text-bg sm:text-sm pl-2"
-                                      />
-                                    </div>
-                                    {errors.twitterId?.type === "required" && (
-                                      <small className="text text-blue-400">
-                                        The field cannot be empty
-                                      </small>
-                                    )}
-                                    {errors.twitterId?.type === "pattern" && (
-                                      <small className="text text-blue-400">
-                                        Please use the correct format for url
-                                        and twitterId
-                                      </small>
-                                    )}
-                                  </div>
-                                  <div>
-                                    <label
-                                      htmlFor="email"
-                                      className="block text-sm font-medium text-white"
-                                    >
-                                      As an Invictus Order holder, what is the
-                                      one thing that you would like to see Iron
-                                      Hills do that would add the most value to
-                                      your life?
-                                    </label>
-
-                                    <div>
-                                      <textarea
-                                        rows={4}
-                                        name="valueLife"
-                                        {...register("valueLife", {
-                                          required: true,
-                                        })}
-                                        className="block w-full  text-white bg-application-text-bg sm:text-sm pl-2 pt-2"
-                                      />
-                                    </div>
-                                    {errors.valueLife?.type === "required" && (
-                                      <small className="text text-blue-400">
-                                        The field cannot be empty
-                                      </small>
-                                    )}
-                                  </div>
-                                  <div>
-                                    <label
-                                      htmlFor="email"
-                                      className="block text-sm font-medium text-white"
-                                    >
-                                      How would you define &quot;success&quot;
-                                      for Invictus Order 3 months from now? What
-                                      about a year from now?
-                                    </label>
-
-                                    <div>
-                                      <textarea
-                                        name="successInvictus"
-                                        {...register("successInvictus", {
-                                          required: true,
-                                        })}
-                                        className="block w-full  text-white bg-application-text-bg sm:text-sm pl-2 pt-2"
-                                      />
-                                    </div>
-                                    {errors.successInvictus?.type ===
-                                      "required" && (
-                                      <small className="text text-blue-400">
-                                        The field cannot be empty
-                                      </small>
-                                    )}
-                                  </div>
                                   <div className="flex max-w-sm mx-auto mt-56">
                                     <button
                                       type="button"
@@ -393,12 +385,19 @@ export default function ModalQuestionsComponent(props) {
                                     >
                                       BACK
                                     </button>
-                                    <button
+                                    {agreeTyC ? (<button
                                       type="submit"
                                       className="flex w-md mx-auto items-center justify-center rounded-sm border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
                                     >
                                       SUBMIT
+                                    </button>) :(
+                                      <button
+                                      type="submit"
+                                      className="flex w-md mx-auto items-center cursor-default justify-center rounded-sm border-solid border-2 border-gray-500/40 bg-gray-500/40 px-8 py-3 text-md font-medium text-white/50 hover:bg-blues-600 md:py-4 md:px-10 "
+                                    >
+                                      SUBMIT
                                     </button>
+                                    )}
                                   </div>
                                 </form>
                               </>
@@ -602,7 +601,7 @@ export default function ModalQuestionsComponent(props) {
                                       htmlFor="email"
                                       className="block text-sm font-medium bg-[#626067] text-gray-800"
                                     >
-                                      {successKnights}
+                                      {successInvictus}
                                     </label>
                                   </div>
                                 </div>

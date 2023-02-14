@@ -117,7 +117,7 @@ export default function ConnectWalletComponent(props) {
             <Link
               className="text-white hover:text-white"
               href={
-                "https://testnets.opensea.io/assets/goerli/0x46Db79ad52f4AB71A7176C011Ec9C79172873fE8/" +
+                "https://testnets.opensea.io/assets/goerli/0x247d10Dd34457f1920f50DF43F7b6488767b7392/" +
                 userData.token
               }
               target={"_blank"}

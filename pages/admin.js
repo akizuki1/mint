@@ -118,18 +118,13 @@ export default function Terms() {
 
   async function updateApplication(application, state) {
     let buffer = [...applications];
-    console.log(
-      "antes " + JSON.stringify(buffer.find((a) => a._id === application._id))
-    );
+
     application.state = state;
     await UpdateApplicationService(application, accessToken);
     buffer.map((a) =>
       a.wallet == application.wallet ? { ...a, state: state } : ""
     );
-    console.log(
-      "despues " + JSON.stringify(buffer.find((a) => a._id === application._id))
-    );
-    console.log(buffer.length);
+
     setApplications(buffer);
   }
 
@@ -141,9 +136,7 @@ export default function Terms() {
     setFilter(data.wallet);
   }
   function sortDate() {
-    console.log("llego");
     if (sort === "asc") {
-      console.log("asc");
       let buffer = [...applications];
 
       let bufferDate = buffer.map((obj) => {
@@ -154,7 +147,6 @@ export default function Terms() {
       );
       setApplications(sortedAsc);
     } else {
-      console.log("desc");
       let buffer = [...applications];
 
       let bufferDate = buffer.map((obj) => {
