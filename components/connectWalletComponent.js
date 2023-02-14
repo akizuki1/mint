@@ -33,7 +33,7 @@ export default function ConnectWalletComponent(props) {
 
   async function authAccount(provider) {
     const message =
-      "Let those who would seek admission gaze deep within the glass, for therein lies the revelation of their fate.\n\nThis signature does not cost any gas";
+      "Let those who would seek admission gaze deep within the glass, for therein lies the revelation of their fate.";
 
     const signature = await provider
       .getSigner(wallet.accounts[0].address)
