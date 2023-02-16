@@ -431,7 +431,7 @@ export default function Terms() {
             <div className="relative mt-4 flex justify-center">
               <a
                 className="text-blue-400"
-                href="https://mirror.xyz/ironhills.eth/tI53g0xxPiaYu_3Vp8oZIqPCZCfpsUnq4lpvo_YId3U"
+                href={"/agreement"}
                 target="_blank"
                 rel="noreferrer"
               >
@@ -448,7 +448,7 @@ export default function Terms() {
               <Link
                 className=" max-w-sm mx-auto items-center justify-center rounded-sm border-solid border-2 border-Links bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
                 href={
-                  "https://docs.google.com/document/d/1u3qq3eji6Azq3oxpZIddeiO0LmJ_kYVpzA_MQNEao3Y/edit"
+                  "https://docs.google.com/document/d/1Oj3WA7H1TmOfg2UpcRC_DLopIX6PX-dhH1bchpZST6g"
                 }
                 target="_blank"
                 rel="noreferrer"
