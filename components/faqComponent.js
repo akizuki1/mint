@@ -77,7 +77,7 @@ export default function FaqComponent() {
         "Royalties on Invictus Order will be set at 5%. 15% of all of the revenue generated from royalties will go directly to our artist. In the future, we plan to implement dynamic royalties which we believe will promote further accountability from projects in regard to secondary royalties.",
     },
     {
-      question: "Where can I buy and sell Invictus Order?",
+      question: "Where can I buy and sell Invictus Order when it releases?",
       answer:
         "Iron Hills is happy to make Invictus Order tradeable on any marketplace that respects creator royalties. As the landscape of marketplaces and royalties changes, our stance on this will inevitably adapt based on what is best for our holders and for Iron Hills’ sustainability.",
     },

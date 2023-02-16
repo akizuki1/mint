@@ -168,23 +168,25 @@ export default function ModalQuestionsComponent(props) {
                                     </span>
                                   </div>
                                   <p className="mt-3 text-base text-gray-200 sm:mt-5 sm:text-lg">
-                                    Iron Hills was founded in January 2022 by a
-                                    team of friends with the goal of acquiring
-                                    and continuing the development of Spiral
-                                    Knights. Though that goal is out of reach at
-                                    this time, that doesn&apos;t stop us from
-                                    putting ourselves in a position to be able
-                                    to continue the development of Spiral
-                                    Knights if that day comes. In the meantime,
-                                    we will continue to push the boundaries of
-                                    tech to improve education, safety, and user
-                                    experiences within web3.
+                                    The Invictus Order Application is a free
+                                    soulbound token (SBT) that acts as on-chain
+                                    proof of your submission.
+                                    <br /> Your SBT art and metadata will
+                                    automatically update as we process
+                                    applications.
+                                    <br /> Application should take 5-10 minutes.
                                     <br />
-                                    <br /> Each member of our team has different
-                                    backgrounds, come from different places, and
-                                    carry a wide variety of skills. We believe
-                                    that these different perspectives are
-                                    crucial to long-term innovation.
+                                    Gas fees will be refunded for those who mint
+                                    their eventual Invictus Order.
+                                    <br /> For full details, click
+                                    <a
+                                      className="text-blue-400"
+                                      href="https://mirror.xyz/ironhills.eth/tI53g0xxPiaYu_3Vp8oZIqPCZCfpsUnq4lpvo_YId3U"
+                                      target="_blank"
+                                      rel="noreferrer"
+                                    >
+                                      here
+                                    </a>
                                   </p>
                                   <div className="sm:text-center md:mx-auto md:max-w-2xl flex p-8   lg:col-span-6 lg:text-left">
                                     <div className="my-auto ">
@@ -203,12 +205,12 @@ export default function ModalQuestionsComponent(props) {
                                     >
                                       BACK
                                     </button>
-                                      <button
-                                        onClick={() => setProcess(2)}
-                                        className="flex w-md mx-auto items-center justify-center rounded-sm border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
-                                      >
-                                        CONTINUE
-                                      </button>
+                                    <button
+                                      onClick={() => setProcess(2)}
+                                      className="flex w-md mx-auto items-center justify-center rounded-sm border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+                                    >
+                                      CONTINUE
+                                    </button>
                                   </div>
                                 </div>
                               </>
@@ -233,7 +235,7 @@ export default function ModalQuestionsComponent(props) {
                                         name="discordId"
                                         {...register("discordId", {
                                           required: true,
-                                          pattern: /^.{3,32}#[0-9]{4}$/i
+                                          pattern: /^.{3,32}#[0-9]{4}$/i,
                                         })}
                                         className="block w-full h-10 text-white bg-application-text-bg sm:text-sm pl-2"
                                       />
@@ -265,7 +267,7 @@ export default function ModalQuestionsComponent(props) {
                                         {...register("twitterId", {
                                           required: true,
                                           pattern:
-                                            /(https:\/\/twitter.com\/(?![a-zA-Z0-9_]+\/)([a-zA-Z0-9_]+))/i
+                                            /(https:\/\/twitter.com\/(?![a-zA-Z0-9_]+\/)([a-zA-Z0-9_]+))/i,
                                         })}
                                         className="block w-full h-10  text-white bg-application-text-bg sm:text-sm pl-2"
                                       />
@@ -297,7 +299,7 @@ export default function ModalQuestionsComponent(props) {
                                         rows={4}
                                         name="valueLife"
                                         {...register("valueLife", {
-                                          required: true
+                                          required: true,
                                         })}
                                         className="block w-full  text-white bg-application-text-bg sm:text-sm pl-2 pt-2"
                                       />
@@ -322,7 +324,7 @@ export default function ModalQuestionsComponent(props) {
                                       <textarea
                                         name="successInvictus"
                                         {...register("successInvictus", {
-                                          required: true
+                                          required: true,
                                         })}
                                         className="block w-full  text-white bg-application-text-bg sm:text-sm pl-2 pt-2"
                                       />
@@ -354,7 +356,7 @@ export default function ModalQuestionsComponent(props) {
                                             id="comments-description"
                                             className="text-white mx-auto"
                                           >
-                                            I agree to the{" "}
+                                            I agree to the
                                             <Link
                                               className="cursor-pointer text-buttons"
                                               href={"/policy"}
@@ -362,8 +364,8 @@ export default function ModalQuestionsComponent(props) {
                                               rel="noreferrer"
                                             >
                                               Privacy Policy
-                                            </Link>{" "}
-                                            &{" "}
+                                            </Link>
+                                            ,{" "}
                                             <Link
                                               className="cursor-pointer text-buttons"
                                               href={"/terms"}
@@ -372,8 +374,21 @@ export default function ModalQuestionsComponent(props) {
                                             >
                                               Terms of Service
                                             </Link>
+                                            , and Invictus Order Application
+                                            Ownership Agreement{" "}
                                           </span>
                                         </div>
+                                      </div>
+                                      <div className="relative flex justify-center">
+                                        <a
+                                          className="text-blue-400"
+                                          href="https://mirror.xyz/ironhills.eth/tI53g0xxPiaYu_3Vp8oZIqPCZCfpsUnq4lpvo_YId3U"
+                                          target="_blank"
+                                          rel="noreferrer"
+                                        >
+                                          Invictus Order Application Ownership
+                                          Agreement
+                                        </a>
                                       </div>
                                     </div>
                                   </div>
@@ -385,18 +400,20 @@ export default function ModalQuestionsComponent(props) {
                                     >
                                       BACK
                                     </button>
-                                    {agreeTyC ? (<button
-                                      type="submit"
-                                      className="flex w-md mx-auto items-center justify-center rounded-sm border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
-                                    >
-                                      SUBMIT
-                                    </button>) :(
+                                    {agreeTyC ? (
                                       <button
-                                      type="submit"
-                                      className="flex w-md mx-auto items-center cursor-default justify-center rounded-sm border-solid border-2 border-gray-500/40 bg-gray-500/40 px-8 py-3 text-md font-medium text-white/50 hover:bg-blues-600 md:py-4 md:px-10 "
-                                    >
-                                      SUBMIT
-                                    </button>
+                                        type="submit"
+                                        className="flex w-md mx-auto items-center justify-center rounded-sm border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+                                      >
+                                        SUBMIT
+                                      </button>
+                                    ) : (
+                                      <button
+                                        type="submit"
+                                        className="flex w-md mx-auto items-center cursor-default justify-center rounded-sm border-solid border-2 border-gray-500/40 bg-gray-500/40 px-8 py-3 text-md font-medium text-white/50 hover:bg-blues-600 md:py-4 md:px-10 "
+                                      >
+                                        SUBMIT
+                                      </button>
                                     )}
                                   </div>
                                 </form>
@@ -716,7 +733,7 @@ export default function ModalQuestionsComponent(props) {
                                         className="flex w-md mx-auto items-center justify-center rounded-sm border-solid border-2 border-buttons  px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
                                         onClick={() => [
                                           changeStatusModal("none"),
-                                          setProcess(9)
+                                          setProcess(9),
                                         ]}
                                       >
                                         CLOSE

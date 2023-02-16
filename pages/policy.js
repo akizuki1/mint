@@ -432,6 +432,16 @@ export default function Policy() {
                 </div>
               </div>
             </div>
+            <div className="relative mt-4 flex justify-center">
+              <a
+                className="text-blue-400"
+                href="https://mirror.xyz/ironhills.eth/tI53g0xxPiaYu_3Vp8oZIqPCZCfpsUnq4lpvo_YId3U"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Invictus Order Application Ownership Agreement
+              </a>
+            </div>
             <div className="mt-5 sm:mt-6">
               <Link
                 className="flex max-w-sm mx-auto items-center justify-center rounded-sm border-solid border-2 border-Links bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
