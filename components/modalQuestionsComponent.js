@@ -403,7 +403,7 @@ export default function ModalQuestionsComponent(props) {
                                             , and{" "}
                                             <Link
                                               className="cursor-pointer text-buttons"
-                                              href="https://mirror.xyz/ironhills.eth/tI53g0xxPiaYu_3Vp8oZIqPCZCfpsUnq4lpvo_YId3U"
+                                              href="https://docs.google.com/document/d/1u3qq3eji6Azq3oxpZIddeiO0LmJ_kYVpzA_MQNEao3Y"
                                               target="_blank"
                                               rel="noreferrer"
                                             >
