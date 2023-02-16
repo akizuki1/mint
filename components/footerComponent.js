@@ -32,7 +32,7 @@ export default function FooterComponent() {
             -{" "}
             <Link
               className="cursor-pointer"
-              href="https://docs.google.com/document/d/1u3qq3eji6Azq3oxpZIddeiO0LmJ_kYVpzA_MQNEao3Y"
+              href={"/agreement"}
               target="_blank"
               rel="noreferrer"
             >
