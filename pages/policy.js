@@ -449,16 +449,6 @@ export default function Policy() {
               >
                 BACK
               </Link>
-              <Link
-                className=" max-w-sm mx-auto items-center justify-center rounded-sm border-solid border-2 border-Links bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
-                href={
-                  "https://docs.google.com/document/d/1c1GQdqKnhhbUrsXL11lyDyZtIwj-dTEHq7qRkseQY2I"
-                }
-                target="_blank"
-                rel="noreferrer"
-              >
-                VIEW
-              </Link>
             </div>
           </div>
         </main>

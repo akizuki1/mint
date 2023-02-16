@@ -117,17 +117,7 @@ export default function Agreement() {
               >
                 BACK
               </Link>
-              <Link
-                className=" max-w-sm mx-auto items-center justify-center rounded-sm border-solid border-2 border-Links bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
-                href={
-                  "https://docs.google.com/document/d/1u3qq3eji6Azq3oxpZIddeiO0LmJ_kYVpzA_MQNEao3Y"
-                }
-                target="_blank"
-                rel="noreferrer"
-              >
-                VIEW
-              </Link>
-            </div>
+
           </div>
         </main>
       </div>

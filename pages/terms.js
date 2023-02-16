@@ -445,16 +445,6 @@ export default function Terms() {
               >
                 BACK
               </Link>
-              <Link
-                className=" max-w-sm mx-auto items-center justify-center rounded-sm border-solid border-2 border-Links bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
-                href={
-                  "https://docs.google.com/document/d/1Oj3WA7H1TmOfg2UpcRC_DLopIX6PX-dhH1bchpZST6g"
-                }
-                target="_blank"
-                rel="noreferrer"
-              >
-                VIEW
-              </Link>
             </div>
           </div>
         </main>
