@@ -20,7 +20,7 @@ export default function Terms() {
             <div>
               <div className="mt-3 fel sm:mt-5">
                 <h3 className="text-2xl font-semibold text-white">
-                  Terms of service
+                  Terms of use
                 </h3>
                 <div className="mt-2 ">
                   <div className="text-md text-white h-96 overflow-auto">
@@ -428,16 +428,7 @@ export default function Terms() {
                 </div>
               </div>
             </div>
-            <div className="relative mt-4 flex justify-center">
-              <a
-                className="text-blue-400"
-                href={"/agreement"}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Invictus Order Application Ownership Agreement
-              </a>
-            </div>
+
             <div className="mt-5  flex sm:mt-6">
               <Link
                 className=" max-w-sm mx-auto items-center justify-center rounded-sm border-solid border-2 border-Links border-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
