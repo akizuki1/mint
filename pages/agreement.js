@@ -117,7 +117,7 @@ export default function Agreement() {
               >
                 BACK
               </Link>
-
+            </div>
           </div>
         </main>
       </div>
