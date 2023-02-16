@@ -36,7 +36,7 @@ export default function FooterComponent() {
               target="_blank"
               rel="noreferrer"
             >
-              Invictus
+              Invictus Order Application Ownership Agreement
             </Link>
           </p>
           <p className="mt-10 text-center text-xs leading-5 text-gray-500">
