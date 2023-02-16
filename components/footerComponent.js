@@ -28,6 +28,15 @@ export default function FooterComponent() {
             -{" "}
             <Link className="cursor-pointer" href={"/terms"}>
               Terms of Service
+            </Link>{" "}
+            -{" "}
+            <Link
+              className="cursor-pointer"
+              href="https://mirror.xyz/ironhills.eth/tI53g0xxPiaYu_3Vp8oZIqPCZCfpsUnq4lpvo_YId3U"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Invictus Order Application Ownership Agreement
             </Link>
           </p>
           <p className="mt-10 text-center text-xs leading-5 text-gray-500">

@@ -9,7 +9,7 @@ import ModalQuestionsComponent from "../components/modalQuestionsComponent";
 import Head from "next/head";
 export default function Home() {
   return (
-    <div className="bg-background only:min-h-screen z-0 w-screen">
+    <div className="bg-background only:min-h-screen overflow-x-hidden z-0 w-screen">
       <Head>
         <title>Invictus Order by IH</title>
         <meta name="description" content="Invictus Order by Iron Hills" />
@@ -19,10 +19,7 @@ export default function Home() {
           content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1"
         />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:image"
-          content="https://invictusorder.com/og.png"
-        />
+        <meta name="twitter:image" content="https://invictusorder.com/og.png" />
         <meta name="twitter:title" content="Invictus Order by Iron Hills" />
         <meta name="twitter:site" content="@invictusorder" />
         <meta name="twitter:creator" content="@invictusorder" />
@@ -38,10 +35,7 @@ export default function Home() {
         <meta property="og:site_name" content="Invictus Order by Iron Hills" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://invictusorder.com" />
-        <meta
-          property="og:image"
-          content="https://invictusorder.com/og.png"
-        />
+        <meta property="og:image" content="https://invictusorder.com/og.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <link rel="icon" href="/favicon.png" />

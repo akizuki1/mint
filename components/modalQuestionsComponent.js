@@ -16,12 +16,17 @@ import Image from "next/image";
 import mirror from "../assets/landing/mirror.png";
 
 export default function ModalQuestionsComponent(props) {
+  const preloadedValues = {
+    twitterId: "https://twitter.com/",
+  };
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: preloadedValues,
+  });
   const [{ wallet }] = useConnectWallet();
   const [open, setOpen] = useState(false);
   const [accessToken] = useLocalStorage("jwtToken", null);
@@ -167,27 +172,48 @@ export default function ModalQuestionsComponent(props) {
                                       What is the Invictus Order Application?
                                     </span>
                                   </div>
-                                  <p className="mt-3 text-base text-gray-200 sm:mt-5 sm:text-lg">
-                                    The Invictus Order Application is a free
-                                    soulbound token (SBT) that acts as on-chain
-                                    proof of your submission.
-                                    <br /> Your SBT art and metadata will
-                                    automatically update as we process
-                                    applications.
-                                    <br /> Application should take 5-10 minutes.
-                                    <br />
-                                    Gas fees will be refunded for those who mint
-                                    their eventual Invictus Order.
-                                    <br /> For full details, click
-                                    <a
-                                      className="text-blue-400"
-                                      href="https://mirror.xyz/ironhills.eth/tI53g0xxPiaYu_3Vp8oZIqPCZCfpsUnq4lpvo_YId3U"
-                                      target="_blank"
-                                      rel="noreferrer"
-                                    >
-                                      here
-                                    </a>
-                                  </p>
+                                  <ul className="mt-3 list-disc px-4 text-base text-gray-200 sm:mt-5 sm:text-lg">
+                                    <li>
+                                      <span>
+                                        {" "}
+                                        The Invictus Order Application is a free
+                                        soulbound token (SBT) that acts as
+                                        on-chain proof of your submission.
+                                      </span>
+                                    </li>
+                                    <li>
+                                      <span>
+                                        our SBT art and metadata will
+                                        automatically update as we process
+                                        applications.
+                                      </span>
+                                    </li>
+                                    <li>
+                                      <span>
+                                        Application should take 5-10 minutes.
+                                      </span>
+                                    </li>
+                                    <li>
+                                      <span>
+                                        Gas fees will be refunded for those who
+                                        mint their eventual Invictus Order.
+                                      </span>
+                                    </li>
+                                    <li>
+                                      <span>
+                                        For full details, click{" "}
+                                        <a
+                                          className="text-blue-400"
+                                          href="https://mirror.xyz/ironhills.eth/tI53g0xxPiaYu_3Vp8oZIqPCZCfpsUnq4lpvo_YId3U"
+                                          target="_blank"
+                                          rel="noreferrer"
+                                        >
+                                          here
+                                        </a>
+                                      </span>
+                                    </li>
+                                  </ul>
+
                                   <div className="sm:text-center md:mx-auto md:max-w-2xl flex p-8   lg:col-span-6 lg:text-left">
                                     <div className="my-auto ">
                                       <Image
@@ -225,7 +251,7 @@ export default function ModalQuestionsComponent(props) {
                                   <div>
                                     <label
                                       htmlFor="email"
-                                      className="block text-sm font-medium text-white"
+                                      className="block text-md  text-white"
                                     >
                                       What is your Discord username (User#0001)?
                                     </label>
@@ -255,7 +281,7 @@ export default function ModalQuestionsComponent(props) {
                                   <div>
                                     <label
                                       htmlFor="email"
-                                      className="block text-sm font-medium text-white"
+                                      className="block text-md  text-white"
                                     >
                                       What is your Twitter URL
                                       (https://twitter.com/username)?
@@ -287,7 +313,7 @@ export default function ModalQuestionsComponent(props) {
                                   <div>
                                     <label
                                       htmlFor="email"
-                                      className="block text-sm font-medium text-white"
+                                      className="block text-md  text-white"
                                     >
                                       As an Invictus Order holder, what is the
                                       one thing that you would like to see Iron
@@ -313,7 +339,7 @@ export default function ModalQuestionsComponent(props) {
                                   <div>
                                     <label
                                       htmlFor="email"
-                                      className="block text-sm font-medium text-white"
+                                      className="block text-md  text-white"
                                     >
                                       How would you define &quot;success&quot;
                                       for Invictus Order 3 months from now? What
@@ -336,8 +362,8 @@ export default function ModalQuestionsComponent(props) {
                                       </small>
                                     )}
                                   </div>
-                                  <div className="mx-auto max-w-7xl overflow-hidden py-12 px-4 sm:px-6 lg:px-8">
-                                    <div className="mt-8 text-center text-base gap-5">
+                                  <div className="mx-auto max-w-7xl overflow-hidden py-8 px-4 sm:px-6 lg:px-8">
+                                    <div className="mt-4 text-center text-base gap-5">
                                       <div className="relative flex justify-center">
                                         <div className="flex h-5 items-center">
                                           <input
@@ -356,7 +382,7 @@ export default function ModalQuestionsComponent(props) {
                                             id="comments-description"
                                             className="text-white mx-auto"
                                           >
-                                            I agree to the
+                                            I agree to the{" "}
                                             <Link
                                               className="cursor-pointer text-buttons"
                                               href={"/policy"}
@@ -374,21 +400,18 @@ export default function ModalQuestionsComponent(props) {
                                             >
                                               Terms of Service
                                             </Link>
-                                            , and Invictus Order Application
-                                            Ownership Agreement{" "}
+                                            , and{" "}
+                                            <Link
+                                              className="cursor-pointer text-buttons"
+                                              href="https://mirror.xyz/ironhills.eth/tI53g0xxPiaYu_3Vp8oZIqPCZCfpsUnq4lpvo_YId3U"
+                                              target="_blank"
+                                              rel="noreferrer"
+                                            >
+                                              Invictus Order Application
+                                              Ownership Agreement
+                                            </Link>
                                           </span>
                                         </div>
-                                      </div>
-                                      <div className="relative flex justify-center">
-                                        <a
-                                          className="text-blue-400"
-                                          href="https://mirror.xyz/ironhills.eth/tI53g0xxPiaYu_3Vp8oZIqPCZCfpsUnq4lpvo_YId3U"
-                                          target="_blank"
-                                          rel="noreferrer"
-                                        >
-                                          Invictus Order Application Ownership
-                                          Agreement
-                                        </a>
                                       </div>
                                     </div>
                                   </div>
@@ -552,7 +575,7 @@ export default function ModalQuestionsComponent(props) {
                                 <div>
                                   <label
                                     htmlFor="email"
-                                    className="block text-sm font-medium text-gray-300"
+                                    className="block text-md  text-gray-300"
                                   >
                                     What is your Discord username?
                                   </label>
@@ -560,7 +583,7 @@ export default function ModalQuestionsComponent(props) {
                                   <div>
                                     <label
                                       htmlFor="email"
-                                      className="block text-sm font-medium bg-[#626067] text-gray-800"
+                                      className="block text-md  bg-[#626067] text-gray-800 py-4"
                                     >
                                       {discordID}
                                     </label>
@@ -569,7 +592,7 @@ export default function ModalQuestionsComponent(props) {
                                 <div>
                                   <label
                                     htmlFor="email"
-                                    className="block text-sm font-medium text-gray-300"
+                                    className="block text-md  text-gray-300"
                                   >
                                     What is your Twitter URL?
                                   </label>
@@ -577,7 +600,7 @@ export default function ModalQuestionsComponent(props) {
                                   <div>
                                     <label
                                       htmlFor="email"
-                                      className="block text-sm font-medium bg-[#626067] text-gray-800"
+                                      className="block text-md  bg-[#626067] text-gray-800 py-4"
                                     >
                                       {twitterUrl}
                                     </label>
@@ -586,7 +609,7 @@ export default function ModalQuestionsComponent(props) {
                                 <div>
                                   <label
                                     htmlFor="email"
-                                    className="block text-sm font-medium text-gray-300"
+                                    className="block text-md  text-gray-300"
                                   >
                                     As an Invictus Order holder, what is the one
                                     thing that you would like to see Iron Hills
@@ -597,7 +620,7 @@ export default function ModalQuestionsComponent(props) {
                                   <div>
                                     <label
                                       htmlFor="email"
-                                      className="block text-sm font-medium bg-[#626067] text-gray-800"
+                                      className="block text-md  bg-[#626067] text-gray-800 py-4"
                                     >
                                       {valueLife}
                                     </label>
@@ -606,7 +629,7 @@ export default function ModalQuestionsComponent(props) {
                                 <div>
                                   <label
                                     htmlFor="email"
-                                    className="block text-sm font-medium text-gray-300"
+                                    className="block text-md  text-gray-300"
                                   >
                                     How would you define &quot;success&quot; for
                                     Invictus Order 3 months from now? What about
@@ -616,7 +639,7 @@ export default function ModalQuestionsComponent(props) {
                                   <div>
                                     <label
                                       htmlFor="email"
-                                      className="block text-sm font-medium bg-[#626067] text-gray-800"
+                                      className="block text-md  bg-[#626067] text-gray-800 py-4"
                                     >
                                       {successInvictus}
                                     </label>
