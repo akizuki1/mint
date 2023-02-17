@@ -183,7 +183,7 @@ export default function ModalQuestionsComponent(props) {
                                     </li>
                                     <li>
                                       <span>
-                                        Our SBT art and metadata will
+                                        Your SBT art and metadata will
                                         automatically update as we process
                                         applications.
                                       </span>
