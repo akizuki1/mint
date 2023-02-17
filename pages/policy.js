@@ -14,7 +14,7 @@ export default function Policy() {
         alt="back iron hills"
       />
       <div className="absolute inset-0 bg-neutral-900/30 mix-blend-multiply" />
-      <div className="grid  z-0 h-screen ">
+      <div className="grid  z-0  ">
         <main className=" relative mx-auto grid place-items-center h-sc my-auto max-w-7xl z-0 ">
           <div className="relative transform overflow-hidden  bg-background px-4 pt-5 pb-4 text-left  transition-all sm:my-8 max-w-7xl  sm:p-6">
             <div>

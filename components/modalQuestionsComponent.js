@@ -399,7 +399,7 @@ export default function ModalQuestionsComponent(props) {
                                               target="_blank"
                                               rel="noreferrer"
                                             >
-                                              Terms of Service
+                                              Terms of Use
                                             </Link>
                                             , and{" "}
                                             <Link

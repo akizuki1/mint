@@ -14,20 +14,20 @@ export default function Agreement() {
         alt="back iron hills"
       />
       <div className="absolute inset-0 bg-neutral-900/30 mix-blend-multiply" />
-      <div className="grid  z-0 h-screen ">
+      <div className="grid  z-0  h-screen">
         <main className=" relative mx-auto grid place-items-center h-screen my-auto max-w-7xl z-0 ">
           <div className="relative transform overflow-hidden  bg-background px-4 pt-5 pb-4 text-left  transition-all sm:my-8 max-w-7xl  sm:p-6">
             <div>
               <div className="mt-3 fel sm:mt-5">
                 <h3 className="text-2xl font-semibold text-white">
-                  Agreement for Invictus Order Application
+                  Invictus Order Application Ownership Agreement
                 </h3>
                 <div className="mt-2 ">
                   <div className="text-md text-white h-96 overflow-auto">
                     <p>
                       <span>Last Updated: 11 FEB 2023</span>
                     </p>
-                    <p></p>
+                    <p>&nbsp;</p>
                     <p>
                       <span>
                         Definition of Personal Use: The use of the Invictus
@@ -37,7 +37,7 @@ export default function Agreement() {
                         backgrounds, and personal social media accounts.
                       </span>
                     </p>
-                    <p></p>
+                    <p>&nbsp;</p>
                     <p>
                       <span>
                         Ownership: The Artwork remains the sole property of Iron
@@ -47,12 +47,12 @@ export default function Agreement() {
                         Artwork for personal purposes.
                       </span>
                     </p>
-                    <p></p>
+                    <p>&nbsp;</p>
                     <ol>
                       <li>
                         <span>
                           {" "}
-                          Permitted Use: The Artwork may be used for personal
+                          1. Permitted Use: The Artwork may be used for personal
                           purposes only. Any use of the Artwork for commercial
                           purposes, including but not limited to, selling,
                           licensing, or distributing the Artwork, is strictly
@@ -62,7 +62,7 @@ export default function Agreement() {
                       <li>
                         <span>
                           {" "}
-                          Prohibited Use: The Artwork may not be altered,
+                          2. Prohibited Use: The Artwork may not be altered,
                           modified, or used in a way that is harmful,
                           defamatory, or obscene. The Artwork may not be used to
                           promote hate, discrimination, or illegal activities.
@@ -71,7 +71,7 @@ export default function Agreement() {
                       <li>
                         <span>
                           {" "}
-                          Attribution: When using the Artwork for personal
+                          3. Attribution: When using the Artwork for personal
                           purposes, proper credit must be given to the creator
                           of the Artwork. The credit should include the name of
                           the creator and a link to their website or social
@@ -81,7 +81,7 @@ export default function Agreement() {
                       <li>
                         <span>
                           {" "}
-                          Disclaimer: The creator of the Artwork is not
+                          4. Disclaimer: The creator of the Artwork is not
                           responsible for any loss, damage, or harm resulting
                           from the use of the Artwork for personal purposes.
                         </span>
@@ -89,13 +89,13 @@ export default function Agreement() {
                       <li>
                         <span>
                           {" "}
-                          Changes to the Terms of Use: The creator of the
+                          5. Changes to the Terms of Use: The creator of the
                           Artwork reserves the right to change these terms of
                           use at any time and without prior notice.
                         </span>
                       </li>
                     </ol>
-                    <p></p>
+                    <p>&nbsp;</p>
                     <p>
                       <span>
                         By using the Artwork for personal purposes, you agree to

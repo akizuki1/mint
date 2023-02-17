@@ -14,17 +14,18 @@ export default function Terms() {
         alt="back iron hills"
       />
       <div className="absolute inset-0 bg-neutral-900/30 mix-blend-multiply" />
-      <div className="grid  z-0 h-screen ">
+      <div className="grid  z-0 h-screen">
         <main className=" relative mx-auto grid place-items-center h-screen my-auto max-w-7xl z-0 ">
           <div className="relative transform overflow-hidden  bg-background px-4 pt-5 pb-4 text-left  transition-all sm:my-8 max-w-7xl  sm:p-6">
             <div>
               <div className="mt-3 fel sm:mt-5">
                 <h3 className="text-2xl font-semibold text-white">
-                  Terms of use
+                  Terms of Use
                 </h3>
                 <div className="mt-2 ">
                   <div className="text-md text-white h-96 overflow-auto">
                     <p>Last Updated: 11 FEB 2023</p>
+                    <p>&nbsp;</p>
                     <p>
                       Welcome to invictusorder.com (&ldquo;Site&rdquo;) operated
                       by IRON HILLS LLC (&ldquo;Company,&rdquo; &ldquo;Iron
@@ -43,7 +44,9 @@ export default function Terms() {
                       discontinue use the Site or any of the Company&rsquo;s
                       services.
                     </p>
+                    <p>&nbsp;</p>
                     <h1>Site Access &nbsp; &nbsp; &nbsp;</h1>
+                    <p>&nbsp;</p>
                     <p>
                       The Company authorizes you to use the Site for your
                       personal use. &nbsp;You may not interfere with the
@@ -52,6 +55,7 @@ export default function Terms() {
                       or copy the content contained on the Site without written
                       authorization.
                     </p>
+                    <p>&nbsp;</p>
                     <p>
                       The Site is intended for users who are at least 18 years
                       of age and capable of forming a binding contract with the
@@ -60,10 +64,12 @@ export default function Terms() {
                       are not permitted to use the Site or any of the
                       Company&rsquo;s services. &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
                     </p>
+                    <p>&nbsp;</p>
                     <p>
                       We reserve the right to deny any person the use of the
                       Site (including blocking certain IP addresses).
                     </p>
+                    <p>&nbsp;</p>
                     <p>
                       The information provided on the Site is not intended for
                       distribution to, or use by, any person or entity in any
@@ -72,13 +78,16 @@ export default function Terms() {
                       subject us to any registration requirement within such
                       jurisdiction or country.
                     </p>
+                    <p>&nbsp;</p>
                     <p>
                       The regulatory regime governing blockchain technologies
                       remains uncertain, and new regulations, law, or policy may
                       materially adversely affect the development and
                       performance of this Site.
                     </p>
+                    <p>&nbsp;</p>
                     <h1>Changes To These Terms of Use or Site</h1>
+                    <p>&nbsp;</p>
                     <p>
                       The Company, in its sole discretion, reserves the right to
                       change these Terms of Use at any time. &nbsp;Any and all
@@ -90,8 +99,11 @@ export default function Terms() {
                       you check the applicable Terms of Use every time you use
                       the Site.
                     </p>
+                    <p>&nbsp;</p>
                     <h1>Prohibited Activities</h1>
+                    <p>&nbsp;</p>
                     <p>As a user of the Site, you agree not to:</p>
+                    <p>&nbsp;</p>
                     <p>
                       1)&nbsp; &nbsp;&nbsp;Circumvent, disable, tamper, or
                       otherwise interfere with security-related features,
@@ -193,7 +205,9 @@ export default function Terms() {
                       17)&nbsp;Encourage or enable any other individual to do
                       any of the foregoing.
                     </p>
+                    <p>&nbsp;</p>
                     <h1>Intellectual Property</h1>
+                    <p>&nbsp;</p>
                     <p>
                       Iron Hills respects the intellectual property and right of
                       publicity of others. We may make available through the
@@ -204,7 +218,9 @@ export default function Terms() {
                       &ldquo;IRON HILLS,&rdquo; the Iron Hills logo, INVICTUS
                       ORDER, and Invictus Order (logo).
                     </p>
+                    <p>&nbsp;</p>
                     <h1>Disclaimer of Warranties</h1>
+                    <p>&nbsp;</p>
                     <p>
                       THIS SITE IS OFFERED &ldquo;AS IS&rdquo; TO THE GREATEST
                       EXTENT PROVIDED BY LAW. &nbsp;THE COMPANY IN NO WAY MAKES
@@ -222,6 +238,7 @@ export default function Terms() {
                       have other rights which vary from state to state or
                       jurisdiction to jurisdiction.
                     </p>
+                    <p>&nbsp;</p>
                     <p>
                       We cannot guarantee that the Site will be available at all
                       times. We may experience hardware, software, or other
@@ -238,7 +255,9 @@ export default function Terms() {
                       any corrections, updates, or releases in connection
                       therewith.
                     </p>
+                    <p>&nbsp;</p>
                     <h1>Limitation of Liability</h1>
+                    <p>&nbsp;</p>
                     <p>
                       To the greatest extent permitted by law, the Company shall
                       not be liable for any loss or damages (whether direct,
@@ -257,7 +276,9 @@ export default function Terms() {
                       damages, so the above limitations may not apply to
                       you.&nbsp;
                     </p>
+                    <p>&nbsp;</p>
                     <h1>Links to and Services via Third Parties</h1>
+                    <p>&nbsp;</p>
                     <p>
                       The Site may contain links to websites operated by third
                       parties and offer services through third parties.
@@ -273,7 +294,9 @@ export default function Terms() {
                       websites or applications. &nbsp;Providing information to
                       third-party websites or applications is at your own risk.
                     </p>
+                    <p>&nbsp;</p>
                     <h1>Indemnification</h1>
+                    <p>&nbsp;</p>
                     <p>
                       You agree to indemnify, defend, and hold harmless the
                       Company and its officers, employees, agents, shareholders,
@@ -285,7 +308,9 @@ export default function Terms() {
                       wrongful conduct) by you or any other person accessing the
                       Site using your internet account.
                     </p>
+                    <p>&nbsp;</p>
                     <h1>General Provisions and Dispute Resolution</h1>
+                    <p>&nbsp;</p>
                     <p>
                       These Terms of Use and any additional terms posted on the
                       Sites constitute the entire agreement between the parties.
@@ -297,6 +322,7 @@ export default function Terms() {
                       where applicable law prohibits arbitration of
                       disputes.&nbsp;
                     </p>
+                    <p>&nbsp;</p>
                     <p>
                       To expedite resolution and control the cost of any
                       dispute, controversy, or claim related to these Terms of
@@ -314,6 +340,7 @@ export default function Terms() {
                       Unit A7 #569 Ellicott City, MD 21042 and provide an email
                       copy to contact@ironhills.io.
                     </p>
+                    <p>&nbsp;</p>
                     <p>
                       If the Parties are unable to resolve a Dispute through
                       informal negotiations, the Dispute (except those Disputes
@@ -345,6 +372,7 @@ export default function Terms() {
                       confirm, modify, vacate, or enter judgment on the award
                       entered by the arbitrator.
                     </p>
+                    <p>&nbsp;</p>
                     <p>
                       If for any reason a Dispute proceeds in court rather than
                       arbitration, the Dispute shall be commenced or prosecuted
@@ -357,6 +385,7 @@ export default function Terms() {
                       of Goods and the Uniform Computer Information Transaction
                       Act (UCITA) is excluded from these Terms of Use.
                     </p>
+                    <p>&nbsp;</p>
                     <p>
                       In no event shall any Dispute brought by either Party
                       related in any way to the Site be commenced more than one
@@ -369,12 +398,14 @@ export default function Terms() {
                       for jurisdiction above, and the Parties agree to submit to
                       the personal jurisdiction of that court.
                     </p>
+                    <p>&nbsp;</p>
                     <p>
                       BOTH PARTIES AGREE THAT EACH MAY BRING CLAIMS AGAINST THE
                       OTHER ONLY IN YOUR OR ITS INDIVIDUAL CAPACITY AND NOT AS A
                       PLAINTIFF OR CLASS MEMBER IN ANY PURPORTED CLASS OR
                       REPRESENTATIVE PROCEEDING.
                     </p>
+                    <p>&nbsp;</p>
                     <p>
                       As limited exceptions to the above, we may both seek to
                       resolve a Dispute in small claims court, if it qualifies
@@ -382,7 +413,9 @@ export default function Terms() {
                       equitable court to prevent/enjoin the infringement or
                       misappropriation of intellectual property rights.
                     </p>
+                    <p>&nbsp;</p>
                     <h1>Severability</h1>
+                    <p>&nbsp;</p>
                     <p>
                       If for any reason a court of competent jurisdiction finds
                       that any provisions, or portion thereof, of these Terms of
@@ -391,7 +424,9 @@ export default function Terms() {
                       of these Terms of Use shall continue in full force and
                       effect. &nbsp;&nbsp;
                     </p>
+                    <p>&nbsp;</p>
                     <h1>No Waiver</h1>
+                    <p>&nbsp;</p>
                     <p>
                       Any failure by Iron Hills to enforce any right or term of
                       these Terms of Use will not be considered a waiver of such
@@ -403,7 +438,9 @@ export default function Terms() {
                       without prejudice to its other remedies under these Terms
                       or otherwise.
                     </p>
+                    <p>&nbsp;</p>
                     <h1>Questions</h1>
+                    <p>&nbsp;</p>
                     <p>
                       Thank you for visiting the Site. &nbsp;If you have any
                       questions, please contact us

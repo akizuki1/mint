@@ -1589,7 +1589,7 @@ export default function ModalPolicyTermsComponent(props) {
                         as="h3"
                         className="text-2xl font-semibold text-white"
                       >
-                        Terms of service
+                        Terms of Use
                       </Dialog.Title>
                       <div className="mt-2 ">
                         <div className="text-md text-white max-h-96 overflow-auto">
