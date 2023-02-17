@@ -21,10 +21,7 @@ import {
   BarsArrowUpIcon,
 } from "@heroicons/react/20/solid";
 import { Disclosure } from "@headlessui/react";
-import { GetApplicationBystatusService } from "../services/getApplicationByStatusService";
-import { GetAllApplicationService } from "../services/getAllApplicationService";
-import { GetApplicationByWalletService } from "../services/getApplicationByWalletservice";
-import { useConnectWallet, useSetChain } from "@web3-onboard/react";
+import { useConnectWallet } from "@web3-onboard/react";
 import { AdminAuthService } from "../services/authService";
 import useLocalStorage from "../hooks/useLocalStorage";
 import { UpdateApplicationService } from "../services/updateApplicationService";
@@ -57,13 +54,6 @@ export default function Terms() {
         setAccessToken(res.accessToken);
         for (const app of res.applications) {
           app.content = JSON.parse(app.content);
-          // if (app.state === undefined) {
-          //   app.state = "pending";
-          // } else if (app.state) {
-          //   app.state = "approved";
-          // } else {
-          //   app.state = "rejected";
-          // }
         }
         setApplications(res.applications);
         setStatusLogin(true);
