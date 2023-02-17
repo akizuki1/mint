@@ -6,16 +6,16 @@ export async function ApplicationService(
   discordID,
   twitterUrl,
   valueLife,
-  successKnights
+  successInvictus
 ) {
   try {
-    const res = await axios.post("https://knights.kfnc.net/users/apply", {
+    const res = await axios.post("https://invictus.kfnc.net/users/apply", {
         wallet,
         content: {
           discordID,
           twitterUrl,
           valueLife,
-          successKnights
+          successInvictus
         }
     }, {
       headers: {

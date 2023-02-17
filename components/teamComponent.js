@@ -44,7 +44,7 @@ const team2 = [
     nick: "SeraphofAsh",
     imageUrl: t5,
     linkUrl: "",
-    linkedinUrl: "#"
+    linkedinUrl: "#",
   },
   {
     name: "Toby Frimoth	",
@@ -52,7 +52,7 @@ const team2 = [
     nick: "Fangel",
     imageUrl: t2,
     linkUrl: "",
-    linkedinUrl: "#"
+    linkedinUrl: "#",
   },
   {
     name: "Zeneca",
@@ -60,7 +60,7 @@ const team2 = [
     nick: "",
     imageUrl: t6,
     linkUrl: "https://zeneca.xyz/",
-    linkedinUrl: "#"
+    linkedinUrl: "#",
   },
   {
     name: "Kfish n Chips",
@@ -68,8 +68,8 @@ const team2 = [
     nick: "",
     imageUrl: t7,
     linkUrl: "https://www.kfishnchips.com/",
-    linkedinUrl: "#"
-  }
+    linkedinUrl: "#",
+  },
 
   // More people...
 ];
@@ -88,7 +88,7 @@ export default function TeamComponent() {
             {team1.map((person) => (
               <li
                 key={person.name}
-                className=" bg-panel-boxes py-10 text-center  "
+                className=" bg-panel-boxes rounded-sm py-10 text-center  "
               >
                 <div className="space-y-6 xl:space-y-10 ">
                   <Image
@@ -114,7 +114,7 @@ export default function TeamComponent() {
           {team2.map((person) => (
             <li
               key={person.name}
-              className=" bg-panel-boxes py-10 text-center  "
+              className=" bg-panel-boxes py-10 rounded-sm text-center  "
             >
               <div className="space-y-6 xl:space-y-10 ">
                 <Image

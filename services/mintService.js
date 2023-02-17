@@ -1,6 +1,6 @@
 import Web3 from "web3";
 
-const CONTRACT_ADDRESS = "0x46Db79ad52f4AB71A7176C011Ec9C79172873fE8";
+const CONTRACT_ADDRESS = "0xA525eb06544E75390F71D836f6F9C9C070f8c649";
 const ABI = require("./abi.json");
 
 export async function Mint(
@@ -17,13 +17,13 @@ export async function Mint(
     pendingCallback();
     const web3 = new Web3(wallet.provider);
     const chainId = await web3.eth.getChainId();
-    // if (chainId !== 1) {
-    //   await ethereum.request({
-    //     method: "wallet_switchEthereumChain",
-    //     params: [{ chainId: "0x1" }]
-    //   });
-    // }
-    // if ((await web3.eth.getChainId()) !== 1) errorCallback();
+    if (chainId !== 1) {
+      await ethereum.request({
+        method: "wallet_switchEthereumChain",
+        params: [{ chainId: "0x1" }]
+      });
+    }
+    if ((await web3.eth.getChainId()) !== 1) errorCallback();
     const contract = new web3.eth.Contract(ABI, CONTRACT_ADDRESS);
     console.log(messageHash);
     console.log(v);

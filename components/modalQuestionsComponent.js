@@ -3,16 +3,29 @@ import { Fragment, useEffect, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocalStorage } from "../hooks/useLocalStorage";
+import { useForm } from "react-hook-form";
 import {
   launchApplication,
   modalApplication,
   mintToken,
-  updateUserData,
   getUserData,
 } from "../redux/actions/web3DataActions";
 import Link from "next/link";
+import Image from "next/image";
+import mirror from "../assets/landing/mirror.png";
 
 export default function ModalQuestionsComponent(props) {
+  const preloadedValues = {
+    twitterId: "https://twitter.com/",
+  };
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm({
+    defaultValues: preloadedValues,
+  });
   const [{ wallet }] = useConnectWallet();
   const [open, setOpen] = useState(false);
   const [accessToken] = useLocalStorage("jwtToken", null);
@@ -29,19 +42,21 @@ export default function ModalQuestionsComponent(props) {
       applicationStatus === "application success" ||
       applicationStatus === "application failed" ||
       applicationStatus === "minting" ||
-      process === 7
+      applicationStatus === "mint done" ||
+      process === 8
     ) {
       setOpen(true);
     } else setOpen(false);
   }, [applicationStatus]);
 
   const [isMinting, setIsMinting] = useState(false);
+  const [agreeTyC, setAgreeTyC] = useState(false);
   const [process, setProcess] = useState(1);
   const [tryAgain, setTryAgain] = useState(false);
   const [discordID, setDiscordID] = useState();
-  const [twitterUrl, setTwitterUrl] = useState();
+  const [twitterUrl, setTwitterUrl] = useState("https://twitter.com/");
   const [valueLife, setValueLife] = useState();
-  const [successKnights, setSuccessKnights] = useState();
+  const [successInvictus, setSuccessInvictus] = useState();
 
   const dispatch = useDispatch();
 
@@ -52,14 +67,14 @@ export default function ModalQuestionsComponent(props) {
       setDiscordID(content.discordID);
       setTwitterUrl(content.twitterUrl);
       setValueLife(content.valueLife);
-      setSuccessKnights(content.successKnights);
-      setProcess(5);
+      setSuccessInvictus(content.successInvictus);
+      setProcess(6);
     }
     if (applicationStatus === "application success") {
-      setProcess(3);
+      setProcess(4);
     }
     if (applicationStatus === "application failed") {
-      setProcess(4);
+      setProcess(5);
     }
   }, [applicationStatus]);
 
@@ -76,23 +91,23 @@ export default function ModalQuestionsComponent(props) {
   }
 
   useEffect(() => {
-    if (process === 7) {
+    if (process === 8) {
       setTimeout(() => {
         updateDataUser();
       }, 1500);
     }
   }, [process]);
 
-  const sendApplication = async () => {
-    setProcess(2);
+  const sendApplication = async (data) => {
+    setProcess(3);
     dispatch(
       launchApplication(
         wallet.accounts[0].address,
         accessToken,
-        discordID,
-        twitterUrl,
-        valueLife,
-        successKnights
+        data.discordId,
+        data.twitterId,
+        data.valueLife,
+        data.successInvictus
       )
     );
   };
@@ -137,14 +152,13 @@ export default function ModalQuestionsComponent(props) {
             >
               <Dialog.Panel className="relative transform bg-application-background px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-3xl sm:p-6">
                 <div>
-                  {process === 1 ? (
-                    <Dialog.Title
-                      as="h3"
-                      className="text-2xl font-semibold text-white"
-                    >
-                      Knights Application
-                    </Dialog.Title>
-                  ) : null}
+                  <Dialog.Title
+                    as="h3"
+                    className="text-2xl font-semibold text-white"
+                  >
+                    Invictus Order Application
+                  </Dialog.Title>
+
                   <div className="mt-3 fel sm:mt-5">
                     <div className="mt-8  ">
                       {(() => {
@@ -152,121 +166,283 @@ export default function ModalQuestionsComponent(props) {
                           case 1:
                             return (
                               <>
+                                <div className="">
+                                  <div className="text-xl font-semibold tracking-tight text-white">
+                                    <span className="block">
+                                      What is the Invictus Order Application?
+                                    </span>
+                                  </div>
+                                  <ul className="mt-3 list-disc px-4 text-base text-gray-200 sm:mt-5 sm:text-lg">
+                                    <li>
+                                      <span>
+                                        {" "}
+                                        The Invictus Order Application is a free
+                                        soulbound token (SBT) that acts as
+                                        on-chain proof of your submission.
+                                      </span>
+                                    </li>
+                                    <li>
+                                      <span>
+                                        Our SBT art and metadata will
+                                        automatically update as we process
+                                        applications.
+                                      </span>
+                                    </li>
+                                    <li>
+                                      <span>
+                                        Application should take 5-10 minutes.
+                                      </span>
+                                    </li>
+                                    <li>
+                                      <span>
+                                        Gas fees will be refunded for those who
+                                        mint their eventual Invictus Order.
+                                      </span>
+                                    </li>
+                                    <li>
+                                      <span>
+                                        For full details, click{" "}
+                                        <Link
+                                          className="text-blue-400"
+                                          href="https://mirror.xyz/ironhills.eth/tI53g0xxPiaYu_3Vp8oZIqPCZCfpsUnq4lpvo_YId3U"
+                                          target="_blank"
+                                          rel="noreferrer"
+                                        >
+                                          here.
+                                        </Link>
+                                      </span>
+                                    </li>
+                                  </ul>
+
+                                  <div className="sm:text-center md:mx-auto md:max-w-2xl flex p-8   lg:col-span-6 lg:text-left">
+                                    <div className="my-auto ">
+                                      <Image
+                                        className="h-full w-full object-fit"
+                                        src={mirror}
+                                        alt="Picture of the author"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="flex max-w-sm mx-auto mt-12">
+                                    <button
+                                      type="button"
+                                      className="flex w-md mx-auto items-center justify-center rounded-sm border-solid border-2 border-buttons  px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+                                      onClick={() => changeStatusModal("none")}
+                                    >
+                                      BACK
+                                    </button>
+                                    <button
+                                      onClick={() => setProcess(2)}
+                                      className="flex w-md mx-auto items-center justify-center rounded-sm border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+                                    >
+                                      CONTINUE
+                                    </button>
+                                  </div>
+                                </div>
+                              </>
+                            );
+                          case 2:
+                            return (
+                              <>
                                 <form
                                   className="space-y-6"
-                                  onSubmit={() => [sendApplication()]}
+                                  onSubmit={handleSubmit(sendApplication)}
                                 >
                                   <div>
                                     <label
                                       htmlFor="email"
-                                      className="block text-sm font-medium text-white"
+                                      className="block text-md  text-white"
                                     >
                                       What is your Discord username (User#0001)?
                                     </label>
 
                                     <div>
                                       <input
-                                        rows={4}
-                                        name="Q1"
-                                        id="Q1"
-                                        value={discordID}
-                                        onChange={(e) => [
-                                          setDiscordID(e.target.value)
-                                        ]}
+                                        name="discordId"
+                                        {...register("discordId", {
+                                          required: true,
+                                          pattern: /^.{3,32}#[0-9]{4}$/i,
+                                        })}
                                         className="block w-full h-10 text-white bg-application-text-bg sm:text-sm pl-2"
-                                        required={true}
                                       />
                                     </div>
+                                    {errors.discordId?.type === "pattern" && (
+                                      <small className="text text-blue-400">
+                                        Please use the correct format for
+                                        discordID
+                                      </small>
+                                    )}
+                                    {errors.discordId?.type === "required" && (
+                                      <small className="text text-blue-400">
+                                        The field cannot be empty
+                                      </small>
+                                    )}
                                   </div>
                                   <div>
                                     <label
                                       htmlFor="email"
-                                      className="block text-sm font-medium text-white"
+                                      className="block text-md  text-white"
                                     >
-                                      What is your Twitter URL?
+                                      What is your Twitter URL
+                                      (https://twitter.com/username)?
                                     </label>
 
                                     <div>
                                       <input
-                                        rows={4}
-                                        name="Q2"
-                                        id="Q2"
-                                        value={twitterUrl}
-                                        onChange={(e) => [
-                                          setTwitterUrl(e.target.value)
-                                        ]}
+                                        name="twitterId"
+                                        {...register("twitterId", {
+                                          required: true,
+                                          pattern:
+                                            /(https:\/\/twitter.com\/(?![a-zA-Z0-9_]+\/)([a-zA-Z0-9_]+))/i,
+                                        })}
                                         className="block w-full h-10  text-white bg-application-text-bg sm:text-sm pl-2"
-                                        required={true}
                                       />
                                     </div>
+                                    {errors.twitterId?.type === "required" && (
+                                      <small className="text text-blue-400">
+                                        The field cannot be empty
+                                      </small>
+                                    )}
+                                    {errors.twitterId?.type === "pattern" && (
+                                      <small className="text text-blue-400">
+                                        Please use the correct format for url
+                                        and twitterId
+                                      </small>
+                                    )}
                                   </div>
                                   <div>
                                     <label
                                       htmlFor="email"
-                                      className="block text-sm font-medium text-white"
+                                      className="block text-md  text-white"
                                     >
-                                      As a Knights holder, what is the one thing
-                                      that you would like to see Iron Hills do
-                                      that would add the most value to your
-                                      life?
+                                      As an Invictus Order holder, what is the
+                                      one thing that you would like to see Iron
+                                      Hills do that would add the most value to
+                                      your life?
                                     </label>
-
                                     <div>
                                       <textarea
                                         rows={4}
-                                        name="Q1"
-                                        id="Q1"
-                                        value={valueLife}
-                                        onChange={(e) => [
-                                          setValueLife(e.target.value)
-                                        ]}
+                                        name="valueLife"
+                                        {...register("valueLife", {
+                                          required: true,
+                                        })}
                                         className="block w-full  text-white bg-application-text-bg sm:text-sm pl-2 pt-2"
-                                        required={true}
                                       />
                                     </div>
+                                    {errors.valueLife?.type === "required" && (
+                                      <small className="text text-blue-400">
+                                        The field cannot be empty
+                                      </small>
+                                    )}
                                   </div>
                                   <div>
                                     <label
                                       htmlFor="email"
-                                      className="block text-sm font-medium text-white"
+                                      className="block text-md  text-white"
                                     >
                                       How would you define &quot;success&quot;
-                                      for Knights 6 months from now?
+                                      for Invictus Order 3 months from now? What
+                                      about a year from now?
                                     </label>
 
                                     <div>
                                       <textarea
-                                        rows={4}
-                                        name="Q1"
-                                        id="Q1"
-                                        value={successKnights}
-                                        onChange={(e) => [
-                                          setSuccessKnights(e.target.value)
-                                        ]}
+                                        name="successInvictus"
+                                        {...register("successInvictus", {
+                                          required: true,
+                                        })}
                                         className="block w-full  text-white bg-application-text-bg sm:text-sm pl-2 pt-2"
-                                        required={true}
                                       />
+                                    </div>
+                                    {errors.successInvictus?.type ===
+                                      "required" && (
+                                      <small className="text text-blue-400">
+                                        The field cannot be empty
+                                      </small>
+                                    )}
+                                  </div>
+                                  <div className="mx-auto max-w-7xl overflow-hidden py-8 px-4 sm:px-6 lg:px-8">
+                                    <div className="mt-4 text-center text-base gap-5">
+                                      <div className="relative flex justify-center">
+                                        <div className="flex h-5 items-center">
+                                          <input
+                                            aria-describedby="comments-description"
+                                            name="comments"
+                                            type="checkbox"
+                                            value={agreeTyC}
+                                            onChange={() =>
+                                              setAgreeTyC(!agreeTyC)
+                                            }
+                                            className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                                          />
+                                        </div>
+                                        <div className="ml-3 text-md flex">
+                                          <span
+                                            id="comments-description"
+                                            className="text-white mx-auto"
+                                          >
+                                            I agree to the{" "}
+                                            <Link
+                                              className="cursor-pointer text-buttons"
+                                              href={"/policy"}
+                                              target="_blank"
+                                              rel="noreferrer"
+                                            >
+                                              Privacy Policy
+                                            </Link>
+                                            ,{" "}
+                                            <Link
+                                              className="cursor-pointer text-buttons"
+                                              href={"/terms"}
+                                              target="_blank"
+                                              rel="noreferrer"
+                                            >
+                                              Terms of Use
+                                            </Link>
+                                            , and{" "}
+                                            <Link
+                                              className="cursor-pointer text-buttons"
+                                              href={"/agreement"}
+                                              target="_blank"
+                                              rel="noreferrer"
+                                            >
+                                              Invictus Order Application
+                                              Ownership Agreement
+                                            </Link>
+                                          </span>
+                                        </div>
+                                      </div>
                                     </div>
                                   </div>
                                   <div className="flex max-w-sm mx-auto mt-56">
                                     <button
                                       type="button"
-                                      className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-buttons  px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+                                      className="flex w-md mx-auto items-center justify-center rounded-sm border-solid border-2 border-buttons  px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
                                       onClick={() => changeStatusModal("none")}
                                     >
                                       BACK
                                     </button>
-                                    <button
-                                      type="submit"
-                                      className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
-                                    >
-                                      SUBMIT
-                                    </button>
+                                    {agreeTyC ? (
+                                      <button
+                                        type="submit"
+                                        className="flex w-md mx-auto items-center justify-center rounded-sm border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+                                      >
+                                        SUBMIT
+                                      </button>
+                                    ) : (
+                                      <button
+                                        type="submit"
+                                        className="flex w-md mx-auto items-center cursor-default justify-center rounded-sm border-solid border-2 border-gray-500/40 bg-gray-500/40 px-8 py-3 text-md font-medium text-white/50 hover:bg-blues-600 md:py-4 md:px-10 "
+                                      >
+                                        SUBMIT
+                                      </button>
+                                    )}
                                   </div>
                                 </form>
                               </>
                             );
-                          case 2:
+                          case 3:
                             return (
                               <>
                                 <div className="flex justify-center mt-12 p-8 ">
@@ -327,7 +503,7 @@ export default function ModalQuestionsComponent(props) {
                                 </div>
                               </>
                             );
-                          case 3:
+                          case 4:
                             return (
                               <>
                                 <div className="flex justify-center mt-12 p-8 ">
@@ -358,7 +534,7 @@ export default function ModalQuestionsComponent(props) {
                                 </div>
                               </>
                             );
-                          case 4:
+                          case 5:
                             return (
                               <>
                                 <div className="flex justify-center mt-12 p-8 ">
@@ -379,13 +555,13 @@ export default function ModalQuestionsComponent(props) {
                                 </div>
                                 <div className="flex justify-center ">
                                   <p className="mx-auto justify-self-center text-white text-2xl font-semibold">
-                                    Knights application failed
+                                    Invictus Order application failed
                                   </p>
                                 </div>
                                 <div className="flex max-w-sm mx-auto mt-8">
                                   <button
                                     type="button"
-                                    className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+                                    className="flex w-md mx-auto items-center justify-center rounded-sm border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
                                     onClick={() => setProcess(1)}
                                   >
                                     TRY AGAIN
@@ -393,13 +569,13 @@ export default function ModalQuestionsComponent(props) {
                                 </div>
                               </>
                             );
-                          case 5:
+                          case 6:
                             return (
                               <div className="space-y-6">
                                 <div>
                                   <label
                                     htmlFor="email"
-                                    className="block text-sm font-medium text-gray-300"
+                                    className="block text-md  text-gray-300"
                                   >
                                     What is your Discord username?
                                   </label>
@@ -407,7 +583,7 @@ export default function ModalQuestionsComponent(props) {
                                   <div>
                                     <label
                                       htmlFor="email"
-                                      className="block text-sm font-medium bg-[#626067] text-gray-800"
+                                      className="block text-md  bg-[#626067] text-gray-800 py-4"
                                     >
                                       {discordID}
                                     </label>
@@ -416,7 +592,7 @@ export default function ModalQuestionsComponent(props) {
                                 <div>
                                   <label
                                     htmlFor="email"
-                                    className="block text-sm font-medium text-gray-300"
+                                    className="block text-md  text-gray-300"
                                   >
                                     What is your Twitter URL?
                                   </label>
@@ -424,7 +600,7 @@ export default function ModalQuestionsComponent(props) {
                                   <div>
                                     <label
                                       htmlFor="email"
-                                      className="block text-sm font-medium bg-[#626067] text-gray-800"
+                                      className="block text-md  bg-[#626067] text-gray-800 py-4"
                                     >
                                       {twitterUrl}
                                     </label>
@@ -433,17 +609,18 @@ export default function ModalQuestionsComponent(props) {
                                 <div>
                                   <label
                                     htmlFor="email"
-                                    className="block text-sm font-medium text-gray-300"
+                                    className="block text-md  text-gray-300"
                                   >
-                                    As a Knights holder, what is one thing that
-                                    Iron Hills can do that would add the most
-                                    value to your life?
+                                    As an Invictus Order holder, what is the one
+                                    thing that you would like to see Iron Hills
+                                    do that would add the most value to your
+                                    life?
                                   </label>
 
                                   <div>
                                     <label
                                       htmlFor="email"
-                                      className="block text-sm font-medium bg-[#626067] text-gray-800"
+                                      className="block text-md  bg-[#626067] text-gray-800 py-4"
                                     >
                                       {valueLife}
                                     </label>
@@ -452,31 +629,32 @@ export default function ModalQuestionsComponent(props) {
                                 <div>
                                   <label
                                     htmlFor="email"
-                                    className="block text-sm font-medium text-gray-300"
+                                    className="block text-md  text-gray-300"
                                   >
                                     How would you define &quot;success&quot; for
-                                    Knights 6 months from now?
+                                    Invictus Order 3 months from now? What about
+                                    a year from now?
                                   </label>
 
                                   <div>
                                     <label
                                       htmlFor="email"
-                                      className="block text-sm font-medium bg-[#626067] text-gray-800"
+                                      className="block text-md  bg-[#626067] text-gray-800 py-4"
                                     >
-                                      {successKnights}
+                                      {successInvictus}
                                     </label>
                                   </div>
                                 </div>
                                 <div className="flex max-w-sm mx-auto mt-56">
                                   <button
                                     type="button"
-                                    className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-buttons  px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+                                    className="flex w-md mx-auto items-center justify-center rounded-sm border-solid border-2 border-buttons  px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
                                     onClick={() => changeStatusModal("none")}
                                   >
                                     BACK
                                   </button>
                                   <button
-                                    className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+                                    className="flex w-md mx-auto items-center justify-center rounded-sm border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
                                     onClick={() => mint()}
                                   >
                                     MINT TO FINISH
@@ -484,7 +662,7 @@ export default function ModalQuestionsComponent(props) {
                                 </div>
                               </div>
                             );
-                          case 6:
+                          case 7:
                             return (
                               <>
                                 <div className="flex justify-center mt-12 p-8 ">
@@ -545,7 +723,7 @@ export default function ModalQuestionsComponent(props) {
                                 </div>
                               </>
                             );
-                          case 7:
+                          case 8:
                             return (
                               <>
                                 <div className="flex justify-center mt-12 p-8 ">
@@ -566,8 +744,8 @@ export default function ModalQuestionsComponent(props) {
                                 </div>
                                 <div className="flex justify-center ">
                                   <p className="mx-auto justify-self-center text-white text-2xl font-semibold">
-                                    Knights Application Soulbound Token minted
-                                    successfully.
+                                    You have successfully minted your Invictus
+                                    Order soulbound token!
                                   </p>
                                 </div>
                                 <div className="flex max-w-sm mx-auto mt-8">
@@ -575,7 +753,7 @@ export default function ModalQuestionsComponent(props) {
                                     <div className="flex gap-2 mx-auto">
                                       <button
                                         type="button"
-                                        className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-buttons  px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+                                        className="flex w-md mx-auto items-center justify-center rounded-sm border-solid border-2 border-buttons  px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
                                         onClick={() => [
                                           changeStatusModal("none"),
                                           setProcess(9)
@@ -588,7 +766,7 @@ export default function ModalQuestionsComponent(props) {
                                         referrerPolicy="no-referrer"
                                         className="flex w-md mx-auto items-center  justify-center  border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10"
                                         href={
-                                          "https://testnets.opensea.io/assets/goerli/0x46Db79ad52f4AB71A7176C011Ec9C79172873fE8/" +
+                                          "https://opensea.io/assets/ethereum/0xA525eb06544E75390F71D836f6F9C9C070f8c649/" +
                                           userData.token
                                         }
                                       >
@@ -598,13 +776,13 @@ export default function ModalQuestionsComponent(props) {
                                   ) : !userData.token && tryAgain === true ? (
                                     <button
                                       type="button"
-                                      className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
-                                      onClick={() => updateUserData()}
+                                      className="flex w-md mx-auto items-center justify-center rounded-sm border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+                                      onClick={() => updateDataUser()}
                                     >
                                       RELOAD TOKEN
                                     </button>
                                   ) : (
-                                    <button className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 ">
+                                    <button className="flex w-md mx-auto items-center justify-center rounded-sm border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 ">
                                       <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="2em"
@@ -657,7 +835,7 @@ export default function ModalQuestionsComponent(props) {
                                 </div>
                               </>
                             );
-                          case 8:
+                          case 9:
                             return (
                               <>
                                 <div className="flex justify-center mt-12 p-8 ">
@@ -684,7 +862,7 @@ export default function ModalQuestionsComponent(props) {
                                 <div className="flex max-w-sm mx-auto mt-8">
                                   <button
                                     type="button"
-                                    className="flex w-md mx-auto items-center justify-center  border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+                                    className="flex w-md mx-auto items-center justify-center rounded-sm border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
                                     onClick={() => mint()}
                                   >
                                     TRY AGAIN

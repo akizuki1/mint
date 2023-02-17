@@ -8,13 +8,6 @@ import heroBack from "../assets/landing/bgHero.png";
 
 import heroMessage from "../assets/landing/message.png";
 
-const navigation = [
-  { name: "Product", href: "#" },
-  { name: "Features", href: "#" },
-  { name: "Marketplace", href: "#" },
-  { name: "Company", href: "#" },
-];
-
 export default function HeroComponent() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -42,7 +35,9 @@ export default function HeroComponent() {
                 />
                 <div className="mt-10 sm:mt-12">
                   <div className="mt-10 sm:flex sm:justify-center lg:justify-start gap-3">
-                    <div className=""></div>
+                    <div className="">
+                      <ConnectWalletComponent />
+                    </div>
                   </div>
                 </div>
               </div>
