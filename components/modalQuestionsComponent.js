@@ -8,7 +8,6 @@ import {
   launchApplication,
   modalApplication,
   mintToken,
-  updateUserData,
   getUserData,
 } from "../redux/actions/web3DataActions";
 import Link from "next/link";
@@ -757,7 +756,7 @@ export default function ModalQuestionsComponent(props) {
                                         className="flex w-md mx-auto items-center justify-center rounded-sm border-solid border-2 border-buttons  px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
                                         onClick={() => [
                                           changeStatusModal("none"),
-                                          setProcess(9),
+                                          setProcess(9)
                                         ]}
                                       >
                                         CLOSE
@@ -767,7 +766,7 @@ export default function ModalQuestionsComponent(props) {
                                         referrerPolicy="no-referrer"
                                         className="flex w-md mx-auto items-center  justify-center  border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10"
                                         href={
-                                          "https://testnets.opensea.io/assets/goerli/0x247d10Dd34457f1920f50DF43F7b6488767b7392/" +
+                                          "https://opensea.io/assets/ethereum/0xA525eb06544E75390F71D836f6F9C9C070f8c649/" +
                                           userData.token
                                         }
                                       >
@@ -778,7 +777,7 @@ export default function ModalQuestionsComponent(props) {
                                     <button
                                       type="button"
                                       className="flex w-md mx-auto items-center justify-center rounded-sm border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
-                                      onClick={() => updateUserData()}
+                                      onClick={() => updateDataUser()}
                                     >
                                       RELOAD TOKEN
                                     </button>
