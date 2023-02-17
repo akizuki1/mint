@@ -42,7 +42,6 @@ export default function ModalQuestionsComponent(props) {
       applicationStatus === "application success" ||
       applicationStatus === "application failed" ||
       applicationStatus === "minting" ||
-      applicationStatus === "mint done" ||
       process === 8
     ) {
       setOpen(true);
@@ -745,7 +744,7 @@ export default function ModalQuestionsComponent(props) {
                                 <div className="flex justify-center ">
                                   <p className="mx-auto justify-self-center text-white text-2xl font-semibold">
                                     You have successfully minted your Invictus
-                                    Order soulbound token!
+                                    Order Application!
                                   </p>
                                 </div>
                                 <div className="flex max-w-sm mx-auto mt-8">
