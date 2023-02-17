@@ -205,15 +205,15 @@ export default function Terms() {
   } = useForm();
 
   return statusLogin === false ? (
-    <div className="relative isolate overflow-hidden  bg-gray-900">
+    <div className="relative isolate overflow-hidden h-screen bg-gray-900">
       <Image
         className="absolute inset-0 -z-10 h-full w-full object-cover"
         src={heroBack}
         alt="back iron hills"
       />
       <div className="absolute inset-0 bg-neutral-900/30 mix-blend-multiply" />
-      <div className="grid  z-0  ">
-        <main className=" relative mx-auto grid place-items-center h-sc my-auto max-w-7xl z-0 ">
+      <div className="grid  z-0 h-screen ">
+        <main className=" relative mx-auto grid place-items-center h-screen my-auto max-w-7xl z-0 ">
           <form
             onSubmit={(e) => {
               e.preventDefault();

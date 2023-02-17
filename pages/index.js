@@ -9,7 +9,7 @@ import ModalQuestionsComponent from "../components/modalQuestionsComponent";
 import Head from "next/head";
 export default function Home() {
   return (
-    <div className="bg-background only:min- overflow-x-hidden z-0 w-screen">
+    <div className="bg-background only:min-h-screen overflow-x-hidden z-0 w-screen">
       <Head>
         <title>Invictus Order by IH</title>
         <meta name="description" content="Invictus Order by Iron Hills" />
