@@ -43,7 +43,8 @@ export default function ModalQuestionsComponent(props) {
       applicationStatus === "application success" ||
       applicationStatus === "application failed" ||
       applicationStatus === "minting" ||
-      process === 7
+      applicationStatus === "mint done" ||
+      process === 8
     ) {
       setOpen(true);
     } else setOpen(false);
@@ -183,7 +184,7 @@ export default function ModalQuestionsComponent(props) {
                                     </li>
                                     <li>
                                       <span>
-                                        our SBT art and metadata will
+                                        Our SBT art and metadata will
                                         automatically update as we process
                                         applications.
                                       </span>
@@ -202,14 +203,14 @@ export default function ModalQuestionsComponent(props) {
                                     <li>
                                       <span>
                                         For full details, click{" "}
-                                        <a
+                                        <Link
                                           className="text-blue-400"
                                           href="https://mirror.xyz/ironhills.eth/tI53g0xxPiaYu_3Vp8oZIqPCZCfpsUnq4lpvo_YId3U"
                                           target="_blank"
                                           rel="noreferrer"
                                         >
-                                          here
-                                        </a>
+                                          here.
+                                        </Link>
                                       </span>
                                     </li>
                                   </ul>
@@ -403,7 +404,7 @@ export default function ModalQuestionsComponent(props) {
                                             , and{" "}
                                             <Link
                                               className="cursor-pointer text-buttons"
-                                              href="https://docs.google.com/document/d/1u3qq3eji6Azq3oxpZIddeiO0LmJ_kYVpzA_MQNEao3Y"
+                                              href={"/agreement"}
                                               target="_blank"
                                               rel="noreferrer"
                                             >

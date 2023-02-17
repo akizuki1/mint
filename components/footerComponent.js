@@ -22,11 +22,21 @@ export default function FooterComponent() {
       <footer className="">
         <div className="mx-auto max-w-7xl overflow-hidden py-12 px-4 sm:px-6 lg:px-8">
           <p className="mt-8 text-center text-base text-gray-400">
-            <Link className="cursor-pointer" href={"/policy"}>
+            <Link
+              className="cursor-pointer"
+              href={"/policy"}
+              target="_blank"
+              rel="noreferrer"
+            >
               Privacy Policy
             </Link>{" "}
             -{" "}
-            <Link className="cursor-pointer" href={"/terms"}>
+            <Link
+              className="cursor-pointer"
+              href={"/terms"}
+              target="_blank"
+              rel="noreferrer"
+            >
               Terms of Service
             </Link>{" "}
             -{" "}

@@ -432,15 +432,6 @@ export default function Policy() {
                 </div>
               </div>
             </div>
-
-            <div className="mt-5  flex sm:mt-6">
-              <Link
-                className=" max-w-sm mx-auto items-center justify-center rounded-sm border-solid border-2 border-Links border-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
-                href={"/"}
-              >
-                BACK
-              </Link>
-            </div>
           </div>
         </main>
       </div>
