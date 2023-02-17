@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }) {
     <>
       <Web3OnboardProvider web3Onboard={web3Onboard}>
         <Head>
-          <title>Invictus Order by IH</title>
+          <title>Invictus Order</title>
           <meta name="description" content="Invictus Order by Iron Hills" />
           <meta charset="UTF-8" />
           <meta
