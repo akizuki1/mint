@@ -22,6 +22,7 @@ export default function ConnectWalletComponent(props) {
   const [ethersProvider, setProvider] = useState(undefined);
   const [user, setUser] = useLocalStorage("user", null);
   const [accessToken, setAccessToken] = useLocalStorage("jwtToken", null);
+  const [authenticating, setAuthenticating] = useState(false);
   const [
     {
       chains, // the list of chains that web3-onboard was initialized with
@@ -32,6 +33,7 @@ export default function ConnectWalletComponent(props) {
   ] = useSetChain();
 
   async function authAccount(provider) {
+    setAuthenticating(true);
     const message =
       "Let those who would seek admission gaze deep within the glass, for therein lies the revelation of their fate.";
 
@@ -49,6 +51,9 @@ export default function ConnectWalletComponent(props) {
         setUser(res.user);
         setAccessToken(res.accessToken);
         dispatch(getUserData(wallet.accounts[0].address, res.accessToken));
+        setTimeout(() => {
+          setAuthenticating(false);
+        }, 1000);
       }
     }
   }
@@ -221,7 +226,7 @@ export default function ConnectWalletComponent(props) {
     );
   };
 
-  if (connecting) {
+  if (connecting || authenticating) {
     return <Connecting />;
   }
   if (props.nav === true) {
@@ -232,7 +237,7 @@ export default function ConnectWalletComponent(props) {
     }
   }
 
-  if (wallet && applicationStatus !== "mint done") {
+  if (wallet && !authenticating && applicationStatus !== "mint done") {
     return <Application />;
   }
 
