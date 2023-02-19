@@ -29,7 +29,6 @@ export async function AdminAuthService(account, signature, message) {
       wallet: account,
       signature
     });
-    console.log(res);
     const accessToken = res.data.access_token;
     const applications = res.data.applications;
     return { applications, accessToken };

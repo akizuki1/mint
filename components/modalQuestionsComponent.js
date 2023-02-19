@@ -79,7 +79,6 @@ export default function ModalQuestionsComponent(props) {
 
   useEffect(() => {
     if (mintStatus !== 0) {
-      console.log(mintStatus);
       setProcess(mintStatus);
     }
   }, [mintStatus]);
@@ -116,6 +115,9 @@ export default function ModalQuestionsComponent(props) {
   }
 
   function changeStatusModal(status) {
+    if(status === "none") {
+      setAgreeTyC(false);
+    }
     dispatch(modalApplication(status, applicationStatus));
   }
 
@@ -260,7 +262,7 @@ export default function ModalQuestionsComponent(props) {
                                         name="discordId"
                                         {...register("discordId", {
                                           required: true,
-                                          pattern: /^.{3,32}#[0-9]{4}$/i,
+                                          pattern: /^.{3,32}#[0-9]{4}$/i
                                         })}
                                         className="block w-full h-10 text-white bg-application-text-bg sm:text-sm pl-2"
                                       />
@@ -292,7 +294,7 @@ export default function ModalQuestionsComponent(props) {
                                         {...register("twitterId", {
                                           required: true,
                                           pattern:
-                                            /(https:\/\/twitter.com\/(?![a-zA-Z0-9_]+\/)([a-zA-Z0-9_]+))/i,
+                                            /(https:\/\/twitter.com\/(?![a-zA-Z0-9_]+\/)([a-zA-Z0-9_]+))/i
                                         })}
                                         className="block w-full h-10  text-white bg-application-text-bg sm:text-sm pl-2"
                                       />
@@ -324,7 +326,7 @@ export default function ModalQuestionsComponent(props) {
                                         rows={4}
                                         name="valueLife"
                                         {...register("valueLife", {
-                                          required: true,
+                                          required: true
                                         })}
                                         className="block w-full  text-white bg-application-text-bg sm:text-sm pl-2 pt-2"
                                       />
@@ -349,7 +351,7 @@ export default function ModalQuestionsComponent(props) {
                                       <textarea
                                         name="successInvictus"
                                         {...register("successInvictus", {
-                                          required: true,
+                                          required: true
                                         })}
                                         className="block w-full  text-white bg-application-text-bg sm:text-sm pl-2 pt-2"
                                       />
@@ -424,6 +426,7 @@ export default function ModalQuestionsComponent(props) {
                                     </button>
                                     {agreeTyC ? (
                                       <button
+                                        disabled={!agreeTyC}
                                         type="submit"
                                         className="flex w-md mx-auto items-center justify-center rounded-sm border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
                                       >
@@ -431,6 +434,7 @@ export default function ModalQuestionsComponent(props) {
                                       </button>
                                     ) : (
                                       <button
+                                        disabled={!agreeTyC}
                                         type="submit"
                                         className="flex w-md mx-auto items-center cursor-default justify-center rounded-sm border-solid border-2 border-gray-500/40 bg-gray-500/40 px-8 py-3 text-md font-medium text-white/50 hover:bg-blues-600 md:py-4 md:px-10 "
                                       >
@@ -763,7 +767,7 @@ export default function ModalQuestionsComponent(props) {
                                       <Link
                                         target={"_blank"}
                                         referrerPolicy="no-referrer"
-                                        className="flex w-md mx-auto items-center  justify-center  border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10"
+                                        className="flex w-md mx-auto items-center justify-center border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10"
                                         href={
                                           "https://opensea.io/assets/ethereum/0xA525eb06544E75390F71D836f6F9C9C070f8c649/" +
                                           userData.token

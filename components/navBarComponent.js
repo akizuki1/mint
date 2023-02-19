@@ -6,7 +6,7 @@ import logoIco from "../assets/img/iron_ico.png";
 import Link from "next/link";
 import ConnectWalletComponent from "./connectWalletComponent";
 
-export default function NavBarComponent() {
+export default function NavBarComponent(props) {
   return (
     <Disclosure as="nav" className=" z-10">
       {({ open }) => (
@@ -104,7 +104,20 @@ export default function NavBarComponent() {
                       />
                     </svg>
                   </Link>
-                  <ConnectWalletComponent nav={true} />
+                  <ConnectWalletComponent
+                    nav={true}
+                    authenticating={props.authenticating}
+                    authenticated={props.authenticated}
+                    getUserData={props.getUserData}
+                    connecting={props.connecting}
+                    ethersProvider={props.ethersProvider}
+                    applicationStatus={props.applicationStatus}
+                    authAccount={props.authAccount}
+                    connect={props.connect}
+                    disconnect={props.disconnect}
+                    wallet={props.wallet}
+                    userData={props.userData}
+                  />
                 </div>
               </div>
               <div className="-mr-2 flex sm:hidden">
@@ -201,7 +214,20 @@ export default function NavBarComponent() {
                   </svg>
                 </Link>
               </div>
-              <ConnectWalletComponent nav={true} />
+              <ConnectWalletComponent
+                nav={true}
+                authenticating={props.authenticating}
+                authenticated={props.authenticated}
+                getUserData={props.getUserData}
+                connecting={props.connecting}
+                ethersProvider={props.ethersProvider}
+                applicationStatus={props.applicationStatus}
+                authAccount={props.authAccount}
+                connect={props.connect}
+                disconnect={props.disconnect}
+                wallet={props.wallet}
+                userData={props.userData}
+              />
             </div>
           </Disclosure.Panel>
         </>
