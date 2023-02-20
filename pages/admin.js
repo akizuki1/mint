@@ -124,7 +124,7 @@ export default function Terms() {
   }
 
   function filterByWallet(data) {
-    setFilter(data.wallet);
+    setFilter(data.wallet.toLowerCase());
   }
   function filterByState(value) {
     if (value === "rejected") {
