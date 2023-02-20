@@ -92,7 +92,7 @@ export default function ModalQuestionsComponent(props) {
     if (process === 8) {
       setTimeout(() => {
         updateDataUser();
-      }, 1500);
+      }, 3000);
     }
   }, [process]);
 
