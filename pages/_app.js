@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }) {
       <Web3OnboardProvider web3Onboard={web3Onboard}>
         <Head>
           <title>Invictus Order</title>
-          <meta name="description" content="Invictus Order by Iron Hills" />
+          <meta name="description" content="Invictus Order" />
           <meta charset="UTF-8" />
           <meta
             name="viewport"
@@ -21,21 +21,21 @@ function MyApp({ Component, pageProps }) {
             name="twitter:image"
             content="https://invictusorder.com/og.png"
           />
-          <meta name="twitter:title" content="Invictus Order by Iron Hills" />
+          <meta name="twitter:title" content="Invictus Order" />
           <meta name="twitter:site" content="@invictusorder" />
           <meta name="twitter:creator" content="@invictusorder" />
           <meta
             name="twitter:description"
-            content="The Sector Task for has begun to assemble to discover the mystery of The Altar. Only Prismatians with a reflection will be enlisted into the Sector Task Force. The Invictus Order Application is a soulbound token that acts as your on-chain proof of submission and it will dynamically change if your application is accepted. To submit an application to join the Invictus Order, go to https://www.invictusorder.com/. For more information about the allowlist and SBT, go to https://mirror.xyz/ironhills.eth/tI53g0xxPiaYu_3Vp8oZIqPCZCfpsUnq4lpvo_YId3U."
+            content="The Sector Task Force has begun to assemble to discover the mystery of The Altar. Only Prismatians with a reflection will be enlisted in the Sector Task Force."
           />
-          <meta property="og:title" content="Invictus Order by Iron Hills" />
+          <meta property="og:title" content="Invictus Order" />
           <meta
             property="og:description"
-            content="The Sector Task for has begun to assemble to discover the mystery of The Altar. Only Prismatians with a reflection will be enlisted into the Sector Task Force. The Invictus Order Application is a soulbound token that acts as your on-chain proof of submission and it will dynamically change if your application is accepted. To submit an application to join the Invictus Order, go to https://www.invictusorder.com/. For more information about the allowlist and SBT, go to https://mirror.xyz/ironhills.eth/tI53g0xxPiaYu_3Vp8oZIqPCZCfpsUnq4lpvo_YId3U."
+            content="The Sector Task Force has begun to assemble to discover the mystery of The Altar. Only Prismatians with a reflection will be enlisted in the Sector Task Force."
           />
           <meta
             property="og:site_name"
-            content="Invictus Order by Iron Hills"
+            content="Invictus Order"
           />
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://invictusorder.com" />
