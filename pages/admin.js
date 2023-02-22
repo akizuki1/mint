@@ -1,4 +1,4 @@
-import { CSVLink, CSVDownload } from "react-csv";
+import { CSVLink } from "react-csv";
 import Image from "next/image";
 import Link from "next/link";
 import { ethers } from "ethers";
@@ -36,6 +36,15 @@ export default function Terms() {
   const [sort, setSort] = useState("asc");
   const [applications, setApplications] = useState([]);
   const [accessToken, setAccessToken] = useLocalStorage("jwtToken", null);
+  const headers = [
+    "wallet",
+    "discordId",
+    "twitter",
+    "question1",
+    "question2",
+    "createdAt",
+    "state",
+  ];
 
   async function authAccount(provider) {
     const message = "I am an admin";
@@ -75,16 +84,6 @@ export default function Terms() {
 
   function csvParse(applications) {
     const csv = [];
-    const headers = [
-      "wallet",
-      "discordId",
-      "twitter",
-      "question1",
-      "question2",
-      "createdAt",
-      "state",
-    ];
-    csv.push(headers);
     for (const application of applications) {
       const content = JSON.parse(JSON.stringify(application.content));
       const state =
@@ -94,13 +93,13 @@ export default function Terms() {
           ? "approved"
           : "rejected";
       const row = [
-        application.wallet,
-        content.discordID,
-        content.twitterUrl,
-        content.valueLife,
-        content.successInvictus,
-        application.createdAt,
-        state,
+        application.wallet.replace(/(\r\n|\n|\r)/gm, ""),
+         content.discordID.replace(/(\r\n|\n|\r)/gm, ""),
+         content.twitterUrl.replace(/(\r\n|\n|\r)/gm, ""),
+         content.valueLife.replace(/(\r\n|\n|\r)/gm, ""),
+         content.successInvictus.replace(/(\r\n|\n|\r)/gm, ""),
+         application.createdAt.replace(/(\r\n|\n|\r)/gm, ""),
+         state.replace(/(\r\n|\n|\r)/gm, "")
       ];
       csv.push(row);
     }
@@ -286,7 +285,7 @@ export default function Terms() {
                     value={aliasFilter}
                     onChange={(e) => [
                       filterByState(e.target.value),
-                      setAliasFilter(e.target.value),
+                      setAliasFilter(e.target.value)
                     ]}
                     className="block w-full text-white bg-application-text-bg
                     sm:text-sm pl-2 rounded-sm border-gray-300 py-2 pr-10
@@ -337,7 +336,9 @@ export default function Terms() {
 
               <CSVLink
                 data={csvParse(applications)}
-                filename={"Invictus Order Applications.csv"}
+                headers={headers}
+                separator="╪"
+                target="_blank"
                 className=" text-white"
               >
                 <div className="flex">
