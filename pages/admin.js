@@ -94,10 +94,10 @@ export default function Terms() {
           : "rejected";
       const row = [
         application.wallet.replace(/(\r\n|\n|\r)/gm, ""),
-         content.discordID.replace(/(\r\n|\n|\r)/gm, ""),
-         content.twitterUrl.replace(/(\r\n|\n|\r)/gm, ""),
-         content.valueLife.replace(/(\r\n|\n|\r)/gm, ""),
-         content.successInvictus.replace(/(\r\n|\n|\r)/gm, ""),
+         content.discordID ? content.discordID.replace(/(\r\n|\n|\r)/gm, "") : "",
+         content.twitterUrl ? content.twitterUrl.replace(/(\r\n|\n|\r)/gm, "") : "",
+         content.valueLife ? content.valueLife.replace(/(\r\n|\n|\r)/gm, "") : "",
+         content.successInvictus ? content.successInvictus.replace(/(\r\n|\n|\r)/gm, "") : "",
          application.createdAt.replace(/(\r\n|\n|\r)/gm, ""),
          state.replace(/(\r\n|\n|\r)/gm, "")
       ];
