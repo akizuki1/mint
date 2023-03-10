@@ -82,7 +82,7 @@ export default function ConnectWalletComponent(props) {
             onClick={() => connect()}
             className="flex w-full items-center justify-center rounded-sm  border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
           >
-            {props.nav === true ? "CONNECT" : "APPLY NOW"}
+            {props.nav === true ? "CONNECT" : "CONNECT"}
           </button>
         </div>
       </div>
@@ -97,7 +97,7 @@ export default function ConnectWalletComponent(props) {
             onClick={() => connect()}
             className="flex w-full items-center justify-center rounded-sm  border-solid border-2 border-buttons bg-buttons px-4 py-1 text-md font-medium text-white hover:bg-blues-600  "
           >
-            {props.nav === true ? "CONNECT" : "APPLY NOW"}
+            {props.nav === true ? "CONNECT" : "CONNECT"}
           </button>
         </div>
       </div>
