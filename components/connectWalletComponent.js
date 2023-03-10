@@ -115,7 +115,7 @@ export default function ConnectWalletComponent(props) {
         <div className=" ">
           <div className="flex w-full items-center justify-center rounded-sm bg-buttons  px-8 py-3 text-md font-medium  ">
             <Link
-              className="text-white hover:text-white"
+              className="text-white"
               href={
                 "https://opensea.io/assets/ethereum/0xA525eb06544E75390F71D836f6F9C9C070f8c649/" +
                 userData.token
