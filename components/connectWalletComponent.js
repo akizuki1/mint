@@ -133,13 +133,8 @@ export default function ConnectWalletComponent(props) {
   const Application = () => {
     return (
       <div>
-        <div
-          onClick={() =>
-            dispatch(getUserData(wallet.accounts[0].address, accessToken))
-          }
-          className="flex cursor-pointer w-full items-center justify-center rounded-sm  border-solid bg-buttons border-2 border-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
-        >
-          CONTINUE APPLICATION
+        <div className="flex uppercase w-full items-center justify-center rounded-sm  border-solid  border-2 border-white px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 ">
+          Application time is over
         </div>
       </div>
     );
