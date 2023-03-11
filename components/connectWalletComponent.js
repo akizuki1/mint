@@ -15,7 +15,7 @@ export default function ConnectWalletComponent(props) {
             }}
             className="flex w-full items-center justify-center rounded-sm  border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
           >
-            {props.nav === true ? "CONNECT" : "APPLY NOW"}
+            {props.nav === true ? "CONNECT" : "CONNECT"}
           </button>
         </div>
       </div>
@@ -36,7 +36,7 @@ export default function ConnectWalletComponent(props) {
             }}
             className="flex w-full items-center justify-center rounded-sm  border-solid border-2 border-buttons bg-buttons px-4 py-1 text-md font-medium text-white hover:bg-blues-600  "
           >
-            {props.nav === true ? "CONNECT" : "APPLY NOW"}
+            {props.nav === true ? "CONNECT" : "CONNECT"}
           </button>
         </div>
       </div>
@@ -49,7 +49,7 @@ export default function ConnectWalletComponent(props) {
         <div className=" ">
           <div className="flex w-full items-center justify-center rounded-sm bg-buttons  px-8 py-3 text-md font-medium  ">
             <Link
-              className="text-white hover:text-white"
+              className="text-white"
               href={
                 "https://opensea.io/assets/ethereum/0xA525eb06544E75390F71D836f6F9C9C070f8c649/" +
                 props.userData.token
@@ -67,13 +67,8 @@ export default function ConnectWalletComponent(props) {
   const Application = () => {
     return (
       <div>
-        <div
-          onClick={() =>
-            props.getUserData()
-          }
-          className="flex cursor-pointer w-full items-center justify-center rounded-sm  border-solid bg-buttons border-2 border-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
-        >
-          CONTINUE APPLICATION
+        <div className="flex uppercase w-full items-center justify-center rounded-sm  border-solid  border-2 border-white px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 ">
+          Application time is over
         </div>
       </div>
     );

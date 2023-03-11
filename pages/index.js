@@ -134,7 +134,7 @@ export default function Home() {
       <FaqComponent />
       <CallToActionComponent />
       <FooterComponent />
-      <ModalQuestionsComponent />
+      {/* <ModalQuestionsComponent />*/}
     </div>
   );
 }
