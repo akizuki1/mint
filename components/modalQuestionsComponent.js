@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import {
   launchApplication,
   modalApplication,
-  mintToken,
+  soulboundToken,
   getUserData,
 } from "../redux/actions/web3DataActions";
 import Link from "next/link";
@@ -34,7 +34,9 @@ export default function ModalQuestionsComponent(props) {
     (store) => store.web3Data.applicationStatus
   );
   const userData = useSelector((store) => store.web3Data.userData);
-  const mintStatus = useSelector((store) => store.web3Data.mintStatus);
+  const soulboundStatus = useSelector(
+    (store) => store.web3Data.soulboundStatus
+  );
   useEffect(() => {
     if (
       applicationStatus === "application pending" ||
@@ -79,11 +81,11 @@ export default function ModalQuestionsComponent(props) {
   }, [applicationStatus]);
 
   useEffect(() => {
-    if (mintStatus !== 0) {
-      console.log(mintStatus);
-      setProcess(mintStatus);
+    if (soulboundStatus !== 0) {
+      console.log(soulboundStatus);
+      setProcess(soulboundStatus);
     }
-  }, [mintStatus]);
+  }, [soulboundStatus]);
 
   function updateDataUser() {
     dispatch(getUserData(wallet.accounts[0].address, accessToken));
@@ -113,7 +115,7 @@ export default function ModalQuestionsComponent(props) {
   };
 
   function mint() {
-    dispatch(mintToken(wallet, userData));
+    dispatch(soulboundToken(wallet, userData));
   }
 
   function changeStatusModal(status) {
@@ -756,7 +758,7 @@ export default function ModalQuestionsComponent(props) {
                                         className="flex w-md mx-auto items-center justify-center rounded-sm border-solid border-2 border-buttons  px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
                                         onClick={() => [
                                           changeStatusModal("none"),
-                                          setProcess(9)
+                                          setProcess(9),
                                         ]}
                                       >
                                         CLOSE

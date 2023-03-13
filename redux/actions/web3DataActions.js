@@ -1,11 +1,12 @@
 import {
   GET_DATA_USER,
   APPLICATION_STATUS,
+  SOULBOUND_PROCESS,
   MINT_PROCESS,
 } from "../reducers/web3DataReducer";
 import { GetUserService } from "../../services/getUserService";
 import { ApplicationService } from "../../services/applicationService";
-import { Mint } from "../../services/mintService";
+import { Soulbound } from "../../services/soulboundService";
 
 export const getUserData = (address, token) => async (dispatch) => {
   let status = "";
@@ -92,6 +93,53 @@ export const launchApplication =
     }
   };
 
+export const soulboundToken = (wallet, userData) => async (dispatch) => {
+  try {
+    Soulbound(
+      wallet,
+      userData.application.messageHash,
+      userData.application.v,
+      userData.application.r,
+      userData.application.s,
+      () => {
+        dispatch({
+          type: SOULBOUND_PROCESS,
+          payload: ["pending", 7],
+        });
+      },
+      () => {
+        dispatch({
+          type: SOULBOUND_PROCESS,
+          payload: ["success", 8],
+        });
+      },
+      () => {
+        dispatch({
+          type: SOULBOUND_PROCESS,
+          payload: ["error", 9],
+        });
+      }
+    );
+  } catch (error) {
+    console.log("error minting");
+    dispatch({
+      type: SOULBOUND_PROCESS,
+      payload: ["error", 3],
+    });
+  }
+};
+
+export const closeModal = () => async (dispatch) => {
+  try {
+    dispatch({
+      type: SOULBOUND_PROCESS,
+      payload: [false, 0],
+    });
+  } catch (error) {
+    console.log("error close modal");
+  }
+};
+
 export const mintToken = (wallet, userData) => async (dispatch) => {
   try {
     Mint(
@@ -103,38 +151,26 @@ export const mintToken = (wallet, userData) => async (dispatch) => {
       () => {
         dispatch({
           type: MINT_PROCESS,
-          payload: ["pending", 7],
+          payload: "pending",
         });
       },
       () => {
         dispatch({
           type: MINT_PROCESS,
-          payload: ["success", 8],
+          payload: "success",
         });
       },
       () => {
         dispatch({
           type: MINT_PROCESS,
-          payload: ["error", 9],
+          payload: "error",
         });
       }
     );
   } catch (error) {
-    console.log("error minting");
     dispatch({
       type: MINT_PROCESS,
-      payload: ["error", 3],
+      payload: "error",
     });
-  }
-};
-
-export const closeModal = () => async (dispatch) => {
-  try {
-    dispatch({
-      type: MINT_PROCESS,
-      payload: [false, 0],
-    });
-  } catch (error) {
-    console.log("error close modal");
   }
 };

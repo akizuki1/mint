@@ -16,37 +16,10 @@ import MyApplicationTypeComponent from "../components/myApplicationTypeComponent
 export default function Terms() {
   const [{ wallet, connecting, connected }, connect, disconnect] =
     useConnectWallet();
-  const [statusLogin, setStatusLogin] = useState(false);
-  const [countApplications, setCountApplications] = useState(0);
-  const [filter, setFilter] = useState(undefined);
-  const [aliasFilter, setAliasFilter] = useState("pending");
-  const [sort, setSort] = useState("asc");
+
+  const [phase, setPhase] = useState(0);
   const [application, setApplication] = useState();
   const [accessToken, setAccessToken] = useLocalStorage("jwtToken", null);
-
-  async function authAccount(provider) {
-    const message = "I am an admin";
-
-    const signature = await provider
-      .getSigner(wallet.accounts[0].address)
-      .signMessage(message);
-
-    if (signature) {
-      const res = await AdminAuthService(
-        wallet.accounts[0].address,
-        signature,
-        message
-      );
-      if (res) {
-        setAccessToken(res.accessToken);
-        for (const app of res.applications) {
-          app.content = JSON.parse(app.content);
-        }
-        setApplications(res.applications);
-        setStatusLogin(true);
-      }
-    }
-  }
 
   async function login() {
     await connect();
@@ -55,8 +28,6 @@ export default function Terms() {
         wallet.provider,
         "any"
       );
-
-      authAccount(provider);
     }
   }
 
@@ -68,10 +39,15 @@ export default function Terms() {
     setApplication(user);
   }
 
+  async function getPhase() {
+    setPhase(2);
+  }
+
   useEffect(() => {
     if (wallet) {
       console.log(wallet.accounts[0].address);
       getUserApplication();
+      getPhase();
     }
   }, [wallet]);
 
@@ -113,7 +89,10 @@ export default function Terms() {
           </div>
           {application !== undefined ? (
             <>
-              <MyApplicationTypeComponent application={application} />
+              <MyApplicationTypeComponent
+                application={application}
+                phase={phase}
+              />
             </>
           ) : (
             <p>loading</p>

@@ -1,14 +1,16 @@
 import { HYDRATE } from "next-redux-wrapper";
 
 const dataInicial = {
-  mintProcess: false,
-  mintStatus: 0,
+  soulboundProcess: false,
+  soulboundStatus: 0,
   applicationStatus: "none",
-  userData: {}
+  mintProcess: "success",
+  userData: {},
 };
 
 export const GET_DATA_USER = "GET_DATA_USER";
 export const APPLICATION_STATUS = "APPLICATION_STATUS";
+export const SOULBOUND_PROCESS = "SOULBOUND_PROCESS";
 export const MINT_PROCESS = "MINT_PROCESS";
 
 export const web3DataReducer = (state = dataInicial, action) => {
@@ -28,12 +30,17 @@ export const web3DataReducer = (state = dataInicial, action) => {
         ...state,
         userData: action.payload,
       };
+    case SOULBOUND_PROCESS:
+      return {
+        ...state,
+        soulboundProcess: action.payload[0],
+        soulboundStatus: action.payload[1],
+      };
     case MINT_PROCESS:
       return {
         ...state,
-        mintProcess: action.payload[0],
-        mintStatus: action.payload[1]
-      }
+        mintProcess: action.payload,
+      };
     default:
       return state;
   }
