@@ -3,11 +3,15 @@ import { Fragment, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import { useSelector, useDispatch } from "react-redux";
-import { allowlistMint, publicMint, waitlistMint } from "../redux/actions/web3DataActions";
+import {
+  allowlistMint,
+  publicMint,
+  waitlistMint,
+} from "../redux/actions/web3DataActions";
 import { useConnectWallet } from "@web3-onboard/react";
+import Countdown from "react-countdown";
 
 export default function MintComponent(props) {
-
   const mintProcess = useSelector((store) => store.web3Data.mintProcess);
 
   const FollowButtons = () => {
@@ -75,17 +79,21 @@ export default function MintComponent(props) {
     );
   };
 
-  const UnstartedMint = () => {
-    return (
-      <div>
+  const UnstartedMint = ({ hours, minutes, seconds, completed }) => {
+    if (completed) {
+      return <Mint />;
+    } else {
+      return (
         <div>
-          <div className="flex w-full uppercase items-center justify-center rounded-sm  border-solid b border-2  px-8 py-3 text-md font-medium text-white  md:py-4 md:px-10 ">
-            Unstarted Mint
+          <div>
+            <div className="flex w-full uppercase items-center justify-center rounded-sm  border-solid b border-2  px-8 py-3 text-md font-medium text-white  md:py-4 md:px-10 ">
+              Mint start in {hours}h:{minutes}m:{seconds}s
+            </div>
           </div>
+          <FollowButtons />
         </div>
-        <FollowButtons />
-      </div>
-    );
+      );
+    }
   };
 
   const MaxMint = () => {
@@ -119,7 +127,7 @@ export default function MintComponent(props) {
 
   const Mint = () => {
     const dispatch = useDispatch();
-    const [{wallet}] = useConnectWallet();
+    const [{ wallet }] = useConnectWallet();
     const amountMint = [
       { quantity: 1, name: "1 Token" },
       { quantity: 2, name: "2 Tokens" },
@@ -349,7 +357,7 @@ export default function MintComponent(props) {
   }
 
   if (props.phase === 0) {
-    return <UnstartedMint />;
+    return <Countdown date={Date.now() + 150000} renderer={UnstartedMint} />;
   }
 
   if (props.phase < props.application.type) {
