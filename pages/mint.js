@@ -67,7 +67,7 @@ export default function Terms() {
         const allowance = await AllowanceService(wallet);
         const user = {
           wallet: wallet.accounts[0].address,
-          type: 1,
+          type: 3,
           allowance: allowance,
         };
         setApplication(user);
