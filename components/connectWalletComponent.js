@@ -1,85 +1,18 @@
-import { useConnectWallet, useSetChain } from "@web3-onboard/react";
-import { ethers } from "ethers";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { AuthService } from "../services/authService";
-import useLocalStorage from "../hooks/useLocalStorage";
-import {
-  getUserData,
-  modalApplication,
-} from "../redux/actions/web3DataActions";
 import Link from "next/link";
 
 export default function ConnectWalletComponent(props) {
-  const dispatch = useDispatch();
-  const [{ wallet, connecting, connected }, connect, disconnect] =
-    useConnectWallet();
-  const applicationStatus = useSelector(
-    (store) => store.web3Data.applicationStatus
-  );
-  const userData = useSelector((store) => store.web3Data.userData);
-
-  const [ethersProvider, setProvider] = useState(undefined);
-  const [user, setUser] = useLocalStorage("user", null);
-  const [accessToken, setAccessToken] = useLocalStorage("jwtToken", null);
-  const [
-    {
-      chains, // the list of chains that web3-onboard was initialized with
-      connectedChain, // the current chain the user's wallet is connected to
-      settingChain, // boolean indicating if the chain is in the process of being set
-    },
-    setChain, // function to call to initiate user to switch chains in their wallet
-  ] = useSetChain();
-
-  async function authAccount(provider) {
-    const message =
-      "Let those who would seek admission gaze deep within the glass, for therein lies the revelation of their fate.";
-
-    const signature = await provider
-      .getSigner(wallet.accounts[0].address)
-      .signMessage(message);
-
-    if (signature) {
-      const res = await AuthService(
-        wallet.accounts[0].address,
-        signature,
-        message
-      );
-      if (res) {
-        setUser(res.user);
-        setAccessToken(res.accessToken);
-        dispatch(getUserData(wallet.accounts[0].address, res.accessToken));
-      }
-    }
-  }
-
-  useEffect(() => {
-    if (wallet?.provider && !connecting) {
-      const provider = new ethers.providers.Web3Provider(
-        wallet.provider,
-        "any"
-      );
-
-      authAccount(provider);
-    }
-  }, [wallet]);
-
-  useEffect(() => {
-    if (wallet && connectedChain.id !== "0x01") {
-      setChain({ chainId: "0x1" }).then((changed) => {
-        if (changed) {
-          chains[0].rpcUrl = wallet.provider;
-        }
-      });
-    }
-  }, [connectedChain, wallet, setChain, chains]);
-
   const Connect = () => {
     return (
       <div>
         <div>
           <button
-            onClick={() => connect()}
+            onClick={() => {
+              if (!props.wallet) {
+                props.connect();
+              } else {
+                props.authAccount();
+              }
+            }}
             className="flex w-full items-center justify-center rounded-sm  border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
           >
             {props.nav === true ? "CONNECT" : "CONNECT"}
@@ -94,7 +27,13 @@ export default function ConnectWalletComponent(props) {
       <div>
         <div>
           <button
-            onClick={() => connect()}
+            onClick={async () => {
+              if(!props.wallet) {
+                props.connect();
+              } else {
+                props.authAccount();
+              }
+            }}
             className="flex w-full items-center justify-center rounded-sm  border-solid border-2 border-buttons bg-buttons px-4 py-1 text-md font-medium text-white hover:bg-blues-600  "
           >
             {props.nav === true ? "CONNECT" : "CONNECT"}
@@ -107,23 +46,18 @@ export default function ConnectWalletComponent(props) {
   const Done = () => {
     return (
       <div className="flex">
-        {/* <div className=" ">
-          <div className="flex w-full items-center justify-center rounded-sm  px-8 py-3 text-md font-medium text-white  ">
-            ALREADY APPLIED
-          </div>
-        </div> */}
         <div className=" ">
           <div className="flex w-full items-center justify-center rounded-sm bg-buttons  px-8 py-3 text-md font-medium  ">
             <Link
               className="text-white"
               href={
                 "https://opensea.io/assets/ethereum/0xA525eb06544E75390F71D836f6F9C9C070f8c649/" +
-                userData.token
+                props.userData.token
               }
               target={"_blank"}
               rel="noreferrer"
             >
-              VIEW ON OPENSEA
+              CHECK APPLICATION STATUS
             </Link>
           </div>
         </div>
@@ -144,7 +78,7 @@ export default function ConnectWalletComponent(props) {
     return (
       <div>
         <button
-          onClick={() => disconnect({ label: wallet.label })}
+          onClick={() => props.disconnect()}
           className="flex cursor-pointer w-full items-center justify-center rounded-sm  border-solid bg-buttons border-2 border-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
         >
           DISCONNECT
@@ -156,7 +90,7 @@ export default function ConnectWalletComponent(props) {
     return (
       <div>
         <button
-          onClick={() => disconnect({ label: wallet.label })}
+          onClick={() => props.disconnect()}
           className="flex cursor-pointer w-full items-center justify-center rounded-sm  border-solid bg-buttons border-2 border-buttons px-4 py-1 text-md font-medium text-white hover:bg-blues-600  "
         >
           DISCONNECT
@@ -215,26 +149,25 @@ export default function ConnectWalletComponent(props) {
       </div>
     );
   };
-
-  if (connecting) {
+  if (props.connecting || props.authenticating) {
     return <Connecting />;
   }
   if (props.nav === true) {
-    if (!wallet) {
+    if (!props.authenticated) {
       return <ConnectNav />;
     } else {
       return <DisconnectNav />;
     }
   }
 
-  if (wallet && applicationStatus !== "mint done") {
+  if (props.authenticated && !props.authenticating && props.applicationStatus !== "mint done") {
     return <Application />;
   }
 
-  if (wallet && applicationStatus === "mint done") {
+  if (props.authenticated && props.applicationStatus === "mint done") {
     return <Done />;
   }
-  if (!wallet) {
+  if (!props.authenticated) {
     return <Connect />;
   }
 }

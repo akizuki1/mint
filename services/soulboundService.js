@@ -25,10 +25,6 @@ export async function Soulbound(
     }
     if ((await web3.eth.getChainId()) !== 1) errorCallback();
     const contract = new web3.eth.Contract(ABI, CONTRACT_ADDRESS);
-    console.log(messageHash);
-    console.log(v);
-    console.log(r);
-    console.log(s);
     const gasEstimate = await contract.methods
       .mint(messageHash, v, r, s)
       .estimateGas({

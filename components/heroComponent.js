@@ -8,7 +8,7 @@ import heroBack from "../assets/landing/bgHero.png";
 
 import heroMessage from "../assets/landing/message.png";
 
-export default function HeroComponent() {
+export default function HeroComponent(props) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
@@ -21,7 +21,19 @@ export default function HeroComponent() {
       <div className="absolute inset-0 bg-neutral-900/30 mix-blend-multiply" />
       <div className="grid  z-0 ">
         <div className="z-20">
-          <NavBarComponent />
+          <NavBarComponent
+            authenticating={props.authenticating}
+            authenticated={props.authenticated}
+            getUserData={props.getUserData}
+            connecting={props.connecting}
+            ethersProvider={props.ethersProvider}
+            applicationStatus={props.applicationStatus}
+            authAccount={props.authAccount}
+            connect={props.connect}
+            disconnect={props.disconnect}
+            wallet={props.wallet}
+            userData={props.userData}
+          />
         </div>
 
         <main className=" relative mx-auto grid place-items-center h-screen my-auto max-w-7xl px-4 z-0 ">
@@ -36,7 +48,19 @@ export default function HeroComponent() {
                 <div className="mt-10 sm:mt-12">
                   <div className="mt-10 sm:flex sm:justify-center lg:justify-start gap-3">
                     <div className="">
-                      <ConnectWalletComponent />
+                      <ConnectWalletComponent
+                        authenticating={props.authenticating}
+                        authenticated={props.authenticated}
+                        getUserData={props.getUserData}
+                        connecting={props.connecting}
+                        ethersProvider={props.ethersProvider}
+                        applicationStatus={props.applicationStatus}
+                        authAccount={props.authAccount}
+                        connect={props.connect}
+                        disconnect={props.disconnect}
+                        wallet={props.wallet}
+                        userData={props.userData}
+                      />
                     </div>
                   </div>
                 </div>

@@ -10,12 +10,7 @@ import p8 from "../assets/landing/scroll/Qilin Sample.png";
 import p9 from "../assets/landing/scroll/Shimmering Samuarai Sample.png";
 import p10 from "../assets/landing/scroll/Sheriff Sample.png";
 import about from "../assets/landing/about.png";
-import ConnectWalletComponent from "./connectWalletComponent";
 export default function AboutComponent() {
-  const images = [
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5,
-    6, 7, 8, 9, 10,
-  ];
 
   const features = [
     {

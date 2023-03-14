@@ -64,7 +64,6 @@ export const changeProcessMint = (status) => async (dispatch) => {
 export const launchApplication =
   (wallet, jwtToken, discordID, twitterUrl, valueLife, successInvictus) =>
   async (dispatch) => {
-    console.log(successInvictus);
     try {
       const data = await ApplicationService(
         wallet,

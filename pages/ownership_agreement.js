@@ -30,11 +30,11 @@ export default function OwnershipAgreement() {
                         unique collection of digital images (“Invictus Order™
                         Artwork”) represented by NFTs minted by the smart
                         contract deployed at the following Ethereum blockchain
-                        address: ETHEREUM_ADDRESS (“Invictus Order™ Smart
-                        Contract”). The Invictus Order™ Smart Contract
-                        associates each Invictus Order™ NFT with the Invictus
-                        Order™ Artwork and is exclusively owned by IRON HILLS
-                        LLC (“Iron Hills,” “we,” “our,” or “us”).
+                        address: 0xBb9B0568D5C7E57b801E41E645539CC1888CB960
+                        (“Invictus Order™ Smart Contract”). The Invictus Order™
+                        Smart Contract associates each Invictus Order™ NFT with
+                        the Invictus Order™ Artwork and is exclusively owned by
+                        IRON HILLS LLC (“Iron Hills,” “we,” “our,” or “us”).
                       </span>
                     </p>
                     <p>&nbsp;</p>
