@@ -83,9 +83,6 @@ export default function MintComponent(props) {
             Unstarted Mint
           </div>
         </div>
-        <p className="mt-6 text-base leading-7 text-gray-300 ">
-          Our minting process starts soon. follow for more
-        </p>
         <FollowButtons />
       </div>
     );
@@ -115,9 +112,6 @@ export default function MintComponent(props) {
             Wait your turn
           </div>
         </div>
-        <p className="mt-6 text-base leading-7 text-gray-300 ">
-          The mint will be enabled when your phase is active. follow for news
-        </p>
         <FollowButtons />
       </div>
     );
@@ -133,6 +127,17 @@ export default function MintComponent(props) {
     const [selectedAmount, setSelectedAmount] = useState(amountMint[0]);
     function classNames(...classes) {
       return classes.filter(Boolean).join(" ");
+    }
+
+    function getPrice() {
+      switch (props.phase) {
+        case 1:
+          return (0.06 * selectedAmount.quantity).toString();
+        case 2:
+          return (0.07 * selectedAmount.quantity).toString();
+        case 3:
+          return (0.08 * selectedAmount.quantity).toString();
+      }
     }
 
     function mint() {
@@ -242,7 +247,7 @@ export default function MintComponent(props) {
               onClick={() => mint()}
               className="flex w-4/5 uppercase items-center justify-center rounded-sm  border-solid  cursor-pointer border-buttons bg-buttons  border-2  px-8 py-3 text-md font-medium text-white  md:py-4 md:px-10 "
             >
-              Mint
+              Mint {"  "} {getPrice()} ETH
             </div>
           </div>
         ) : null}
@@ -334,9 +339,6 @@ export default function MintComponent(props) {
             Mint failed
           </div>
         ) : null}
-        <p className="mt-6 text-base leading-7 text-gray-300 ">
-          Get your tokens now. follow for more
-        </p>
         <FollowButtons />
       </div>
     );

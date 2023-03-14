@@ -20,26 +20,23 @@ export default function MyApplicationTypeComponent(props) {
         </div>
         <div className="relative mx-auto max-w-7xl py-20 sm:py-28 lg:py-36 lg:px-8 ">
           <div className=" ml-auto w-1/2  lg:w-1/2 lg:pl-12 lg:pr-0 xl:pl-20">
-            {/* <h2 className="text-base font-semibold leading-7 text-team-titles">
-              You qualify for
-            </h2> */}
             <p className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">
               {props.application.type === 1
-                ? "Allowlisted"
+                ? "You are Allowlisted!"
                 : props.application.type === 2
-                ? "Waitlisted"
+                ? "You are Waitlisted!"
                 : props.application.type === 3
                 ? "Public Sale"
                 : null}
             </p>
             <p className="mt-6 text-base leading-7 text-gray-300 ">
               {props.phase === 0
-                ? "The minting process has not yet started. Follow us on our networks to stay up to date with the news."
+                ? "Allowlist mint is starting soon! Make sure to follow us on our socials below for updates and more information."
                 : props.phase === 1
-                ? "The minting process is active for those who entered the ALLOW LIST during Soulbound."
+                ? "Mint is now live for the Allowlist. If you are on the Allowlist, you can mint up to 2 per Allowlisted wallet."
                 : props.phase === 2
-                ? "The minting process is active for those who entered the ALLOW LIST or WAIT LIST during Soulbound."
-                : "Mint open to the public. Mint and join the invictus order!"}
+                ? "Mint is now live for the Waitlist. If you are on the Waitlist, you can mint up to 2 per Waitlisted wallet. If you are on the Allowlist and did not mint your full allocation during the Allowlist phase, you can mint the remainder of that allocation now."
+                : "Mint is now open to everyone! You can mint up to 2 per wallet. If you are on the Allowlist or Waitlist, you can mint an additional 1."}
             </p>
             <div className="mt-8">
               <MintComponent

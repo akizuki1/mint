@@ -36,7 +36,6 @@ export default function Terms() {
   async function getUserApplication() {
     if (phase < 2) {
       const user = await AllowlistService(wallet.accounts[0].address);
-      console.log(user);
       if (user !== undefined) {
         const allowance = await AllowanceService(wallet);
         const newUser = { ...user, type: 1, allowance: allowance };
@@ -77,7 +76,7 @@ export default function Terms() {
 
   async function getPhase() {
     const phase = await PhaseService(wallet);
-    setPhase(phase);
+    setPhase(0);
     getUserApplication();
   }
   async function getSold() {
@@ -139,7 +138,6 @@ export default function Terms() {
         <div className="grid  z-0  max-w-7xl mx-auto">
           <div className="pt-24 flex">
             <h1 className="text-4xl font-semibold tracking-tight text-white  sm:text-6xl lg:mt-6 xl:text-6xl">
-              <span className="block">MINT</span>
             </h1>
           </div>
           {application !== undefined ? (
