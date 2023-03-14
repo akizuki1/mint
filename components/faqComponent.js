@@ -69,7 +69,7 @@ export default function FaqComponent() {
     {
       question: "What is your relation to the online game Spiral Knights?",
       answer:
-        "Our team met each other long ago through the Spiral Knights community and we all share a deep passion for it. While the art of Invictus Order is inspired by Spiral Knights, Iron Hills has no official relationship to the owners of Spiral Knights and Invictus Order has no planned interoperability with the game at this time. That being said, the ultimate goal of Iron Hills is to continue the development of Spiral Knights and explore how NFT technology can be thoughtfully applied to video games. We will continue to put ourselves in a position where we can acquire Spiral Knights or be involved with it in an official capacity but we never want to promise something that we can’t guarantee."
+        "Our team met each other long ago through the Spiral Knights community and we all share a deep passion for it. While the art of Invictus Order is inspired by Spiral Knights, Iron Hills has no official relationship to the owners of Spiral Knights and Invictus Order has no planned interoperability with the game at this time. That being said, the ultimate goal of Iron Hills is to explore how NFT technology can be thoughtfully applied to video games. We will continue to put ourselves in a position where we can hopefully acquire Spiral Knights or be involved with it in an official capacity but we never want to promise something that we can’t guarantee."
     },
     {
       question: "How will Invictus Order’s royalties be structured?",
