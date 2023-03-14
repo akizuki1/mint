@@ -80,14 +80,9 @@ export default function ModalQuestionsComponent(props) {
   }, [applicationStatus]);
 
   useEffect(() => {
-<<<<<<< HEAD
     if (soulboundStatus !== 0) {
       console.log(soulboundStatus);
       setProcess(soulboundStatus);
-=======
-    if (mintStatus !== 0) {
-      setProcess(mintStatus);
->>>>>>> master
     }
   }, [soulboundStatus]);
 
