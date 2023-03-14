@@ -50,6 +50,16 @@ export const modalApplication = (status) => async (dispatch) => {
     console.log("error on status modal");
   }
 };
+export const changeProcessMint = (status) => async (dispatch) => {
+  try {
+    dispatch({
+      type: MINT_PROCESS,
+      payload: status,
+    });
+  } catch (error) {
+    console.log("error on change process mint");
+  }
+};
 
 export const launchApplication =
   (wallet, jwtToken, discordID, twitterUrl, valueLife, successInvictus) =>
@@ -184,26 +194,26 @@ export const allowlistMint = (wallet, proof, quantity) => async (dispatch) => {
       () => {
         dispatch({
           type: MINT_PROCESS,
-          payload: "pending"
+          payload: "pending",
         });
       },
       () => {
         dispatch({
           type: MINT_PROCESS,
-          payload: "success"
+          payload: "success",
         });
       },
       () => {
         dispatch({
           type: MINT_PROCESS,
-          payload: "error"
+          payload: "error",
         });
       }
     );
   } catch (error) {
     dispatch({
       type: MINT_PROCESS,
-      payload: "error"
+      payload: "error",
     });
   }
 };
@@ -217,26 +227,26 @@ export const waitlistMint = (wallet, proof, quantity) => async (dispatch) => {
       () => {
         dispatch({
           type: MINT_PROCESS,
-          payload: "pending"
+          payload: "pending",
         });
       },
       () => {
         dispatch({
           type: MINT_PROCESS,
-          payload: "success"
+          payload: "success",
         });
       },
       () => {
         dispatch({
           type: MINT_PROCESS,
-          payload: "error"
+          payload: "error",
         });
       }
     );
   } catch (error) {
     dispatch({
       type: MINT_PROCESS,
-      payload: "error"
+      payload: "error",
     });
   }
 };

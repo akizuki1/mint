@@ -8,15 +8,6 @@ import MintComponent from "./mintComponent";
 export default function MyApplicationTypeComponent(props) {
   const mirrors = [mirror1, mirror2, mirror3];
 
-  const dispatch = useDispatch();
-  async function buyToken() {
-    alert("comprando");
-  }
-
-  async function soulboundToken() {
-    alert("mintitng");
-  }
-
   return (
     <div className="mt-24 flex ">
       <div className="relative mx-auto bg-neutral-900/50 w-full">

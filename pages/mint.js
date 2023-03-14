@@ -1,22 +1,17 @@
-import { CSVLink, CSVDownload } from "react-csv";
 import Image from "next/image";
-import Link from "next/link";
 import { ethers } from "ethers";
 import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import mintImg from "../assets/landing/mirror1.png";
 import heroBack from "../assets/landing/bgHero.png";
 
 import { useConnectWallet } from "@web3-onboard/react";
-import { AdminAuthService } from "../services/authService";
-import useLocalStorage from "../hooks/useLocalStorage";
-import { GetApplicationService } from "../services/getUserApplicationService";
 import MyApplicationComponent from "../components/myApplicationComponent";
 import { PhaseService } from "../services/phaseService";
 import { AllowlistService } from "../services/allowlistService";
 import { WaitlistService } from "../services/waitlistService";
 import { AllowanceService } from "../services/allowanceService";
 import { TotalMintedService } from "../services/totalMintedService";
+import { useSelector, useDispatch } from "react-redux";
+import { changeProcessMint } from "../redux/actions/web3DataActions";
 
 export default function Terms() {
   const [{ wallet, connecting, connected }, connect, disconnect] =
@@ -25,6 +20,8 @@ export default function Terms() {
   const [phase, setPhase] = useState(0);
   const [application, setApplication] = useState();
   const [totalSold, setTotalSold] = useState();
+  const mintProcess = useSelector((store) => store.web3Data.mintProcess);
+  const dispatch = useDispatch();
 
   async function login() {
     await connect();
@@ -98,6 +95,20 @@ export default function Terms() {
       getSold();
     }
   }, [wallet]);
+
+  useEffect(() => {
+    if (mintProcess === "success") {
+      setTimeout(function () {
+        getUserApplication();
+        dispatch(changeProcessMint("none"));
+      }, 3000);
+    }
+    if (mintProcess === "error") {
+      setTimeout(function () {
+        dispatch(changeProcessMint("none"));
+      }, 3000);
+    }
+  }, [mintProcess]);
 
   return (
     <div className="relative isolate min-h-screen bg-gray-900">
