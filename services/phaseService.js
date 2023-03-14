@@ -11,7 +11,7 @@ export async function PhaseService(wallet) {
     const phase = await contract.methods
       .phase()
       .call()
-    return phase;
+    return typeof(phase) === 'string' ? parseInt(phase) : phase;
   } catch (error) {
     console.log(error);
     return 0;

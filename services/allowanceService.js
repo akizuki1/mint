@@ -11,7 +11,7 @@ export async function AllowanceService(wallet) {
     const allowance = await contract.methods
       .allowanceOf(wallet.accounts[0].address)
       .call();
-    return allowance;
+    return typeof(allowance) === 'string' ? parseInt(allowance) : allowance;
   } catch (error) {
     console.log(error);
     return 0;

@@ -20,14 +20,14 @@ export default function MyApplicationTypeComponent(props) {
         </div>
         <div className="relative mx-auto max-w-7xl py-20 sm:py-28 lg:py-36 lg:px-8 ">
           <div className=" ml-auto w-1/2  lg:w-1/2 lg:pl-12 lg:pr-0 xl:pl-20">
-            <h2 className="text-base font-semibold leading-7 text-team-titles">
-              You soulbound result
-            </h2>
+            {/* <h2 className="text-base font-semibold leading-7 text-team-titles">
+              You qualify for
+            </h2> */}
             <p className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">
               {props.application.type === 1
-                ? "Allow List"
+                ? "Allowlisted"
                 : props.application.type === 2
-                ? "Wait List"
+                ? "Waitlisted"
                 : props.application.type === 3
                 ? "Public Sale"
                 : null}

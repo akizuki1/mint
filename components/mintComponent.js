@@ -3,9 +3,10 @@ import { Fragment, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import { useSelector, useDispatch } from "react-redux";
+import { allowlistMint, publicMint, waitlistMint } from "../redux/actions/web3DataActions";
+import { useConnectWallet } from "@web3-onboard/react";
 
 export default function MintComponent(props) {
-  const faselocal = 4;
 
   const mintProcess = useSelector((store) => store.web3Data.mintProcess);
 
@@ -106,7 +107,7 @@ export default function MintComponent(props) {
     );
   };
 
-  const WhaitPhaseMint = () => {
+  const WaitlistPhaseMint = () => {
     return (
       <div>
         <div>
@@ -123,6 +124,8 @@ export default function MintComponent(props) {
   };
 
   const Mint = () => {
+    const dispatch = useDispatch();
+    const [{wallet}] = useConnectWallet();
     const amountMint = [
       { quantity: 1, name: "1 Token" },
       { quantity: 2, name: "2 Tokens" },
@@ -133,11 +136,20 @@ export default function MintComponent(props) {
     }
 
     function mint() {
-      const wallet = props.application.wallet;
       const proof = props.application.proof;
       const quantity = selectedAmount.quantity;
 
-      //ponga aca el minteo
+      switch (props.phase) {
+        case 1:
+          dispatch(allowlistMint(wallet, proof, quantity));
+          break;
+        case 2:
+          dispatch(waitlistMint(wallet, proof, quantity));
+          break;
+        case 3:
+          dispatch(publicMint(wallet, quantity));
+          break;
+      }
     }
     return (
       <div>
@@ -339,7 +351,7 @@ export default function MintComponent(props) {
   }
 
   if (props.phase < props.application.type) {
-    return <WhaitPhaseMint />;
+    return <WaitlistPhaseMint />;
   }
   if (
     props.application.allowance > 0 &&

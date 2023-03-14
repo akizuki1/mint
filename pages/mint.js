@@ -36,21 +36,22 @@ export default function Terms() {
   async function getUserApplication() {
     if (phase < 2) {
       const user = await AllowlistService(wallet.accounts[0].address);
+      console.log(user);
       if (user !== undefined) {
-        const allowance = await AllowanceService(wallet.accounts[0].address);
-        const newUser = { ...user, type: 0, allowance: allowance };
+        const allowance = await AllowanceService(wallet);
+        const newUser = { ...user, type: 1, allowance: allowance };
         setApplication(newUser);
       } else {
         const user = await WaitlistService(wallet.accounts[0].address);
         if (user !== undefined) {
-          const allowance = await AllowanceService(wallet.accounts[0].address);
-          const newUser = { ...user, type: 1, allowance: allowance };
+          const allowance = await AllowanceService(wallet);
+          const newUser = { ...user, type: 2, allowance: allowance };
           setApplication(newUser);
         } else {
-          const allowance = await AllowanceService(wallet.accounts[0].address);
+          const allowance = await AllowanceService(wallet);
           const user = {
             wallet: wallet.accounts[0].address,
-            type: 1,
+            type: 3,
             allowance: allowance,
           };
           setApplication(user);
@@ -59,11 +60,11 @@ export default function Terms() {
     } else {
       const user = await WaitlistService(wallet.accounts[0].address);
       if (user !== undefined) {
-        const allowance = await AllowanceService(wallet.accounts[0].address);
+        const allowance = await AllowanceService(wallet);
         const newUser = { ...user, type: 1, allowance: allowance };
         setApplication(newUser);
       } else {
-        const allowance = await AllowanceService(wallet.accounts[0].address);
+        const allowance = await AllowanceService(wallet);
         const user = {
           wallet: wallet.accounts[0].address,
           type: 1,
@@ -76,17 +77,12 @@ export default function Terms() {
 
   async function getPhase() {
     const phase = await PhaseService(wallet);
-    if (phase) {
-      setPhase(phase);
-      getUserApplication();
-    }
+    setPhase(phase);
+    getUserApplication();
   }
   async function getSold() {
     const sold = await TotalMintedService(wallet);
-
-    if (sold) {
-      setTotalSold(sold);
-    }
+    setTotalSold(sold);
   }
 
   useEffect(() => {
@@ -133,7 +129,7 @@ export default function Terms() {
                   type="submit"
                   className="flex w-full mx-auto items-center justify-center rounded-sm border-solid border-2 border-buttons bg-buttons px-8 py-3 text-xl font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
                 >
-                  CONNECT TO MINT
+                  CONNECT WALLET
                 </button>
               </div>
             </form>

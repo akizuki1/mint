@@ -9,7 +9,7 @@ export async function GetBalanceService(wallet) {
     const contract = new web3.eth.Contract(ABI, CONTRACT_ADDRESS);
 
     const balance = await contract.methods.balanceOf(wallet.accounts[0].address).call();
-    return balance;
+    return typeof(balance) === 'string' ? parseInt(balance) : balance;
   } catch (error) {
     console.log(error);
     return 0;

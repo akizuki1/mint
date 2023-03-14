@@ -1,5 +1,5 @@
 
-const allowlist = require('./invictus_al.json');
+const allowlist = require('./test_al.json');
 
 export async function AllowlistService(wallet) {
     const result = allowlist.filter((x) => x.address.toLowerCase() === wallet.toLowerCase());

@@ -9,7 +9,7 @@ export async function TotalMintedService(wallet) {
     const contract = new web3.eth.Contract(ABI, CONTRACT_ADDRESS);
 
     const totalMinted = await contract.methods.totalMinted().call();
-    return totalMinted;
+    return typeof(totalMinted) === 'string' ? parseInt(totalMinted) : totalMinted;
   } catch (error) {
     console.log(error);
     return 0;
