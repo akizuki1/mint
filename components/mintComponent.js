@@ -79,15 +79,24 @@ export default function MintComponent(props) {
     );
   };
 
-  const UnstartedMint = ({ hours, minutes, seconds, completed }) => {
+  const UnstartedMint = ({ days, hours, minutes, seconds, completed }) => {
     if (completed) {
-      return <Mint />;
+      return (
+      <div>
+        <div>
+          <div className="flex w-full uppercase items-center justify-center rounded-sm  border-solid b border-2  px-8 py-3 text-md font-medium text-white  md:py-4 md:px-10 ">
+            Mint starting soon.
+          </div>
+        </div>
+        <FollowButtons />
+      </div>
+      );
     } else {
       return (
         <div>
           <div>
             <div className="flex w-full uppercase items-center justify-center rounded-sm  border-solid b border-2  px-8 py-3 text-md font-medium text-white  md:py-4 md:px-10 ">
-              Mint start in {hours}h:{minutes}m:{seconds}s
+              Mint starts in {days}d {hours}h:{minutes}m:{seconds}s
             </div>
           </div>
           <FollowButtons />
@@ -102,22 +111,6 @@ export default function MintComponent(props) {
         <div>
           <div className="flex w-full uppercase items-center justify-center rounded-sm  border-solid b border-2  px-8 py-3 text-md font-medium text-white  md:py-4 md:px-10 ">
             Max mint reached
-          </div>
-        </div>
-        <p className="mt-6 text-base leading-7 text-gray-300 ">
-          Attentive to next phases for more mint. follow for news
-        </p>
-        <FollowButtons />
-      </div>
-    );
-  };
-
-  const WaitlistPhaseMint = () => {
-    return (
-      <div>
-        <div>
-          <div className="flex w-full uppercase items-center justify-center rounded-sm  border-solid b border-2  px-8 py-3 text-md font-medium text-white  md:py-4 md:px-10 ">
-            Wait your turn
           </div>
         </div>
         <FollowButtons />
@@ -140,11 +133,11 @@ export default function MintComponent(props) {
     function getPrice() {
       switch (props.phase) {
         case 1:
-          return (0.06 * selectedAmount.quantity).toString();
+          return (0.06 * selectedAmount.quantity).toString() + " ETH";
         case 2:
-          return (0.07 * selectedAmount.quantity).toString();
+          return (0.07 * selectedAmount.quantity).toString() + " ETH";
         case 3:
-          return (0.08 * selectedAmount.quantity).toString();
+          return (0.08 * selectedAmount.quantity).toString() + " ETH";
       }
     }
 
@@ -255,7 +248,7 @@ export default function MintComponent(props) {
               onClick={() => mint()}
               className="flex w-4/5 uppercase items-center justify-center rounded-sm  border-solid  cursor-pointer border-buttons bg-buttons  border-2  px-8 py-3 text-md font-medium text-white  md:py-4 md:px-10 "
             >
-              Mint {"  "} {getPrice()} ETH
+              Mint {"  "} {getPrice()}
             </div>
           </div>
         ) : null}
@@ -351,17 +344,36 @@ export default function MintComponent(props) {
       </div>
     );
   };
-
+  console.log(props.phase);
   if (props.totalSold > 5000) {
     return <SoldOut />;
   }
 
-  if (props.phase === 0) {
-    return <Countdown date={Date.now() + 150000} renderer={UnstartedMint} />;
+  if (props.phase === 0 && props.application.type === 1) {
+    return (
+      <Countdown
+        date={Date.parse("March 14 2023 15:00:00 UTC")}
+        renderer={UnstartedMint}
+      />
+    );
   }
 
-  if (props.phase < props.application.type) {
-    return <WaitlistPhaseMint />;
+  if (props.phase < 2 && props.application.type === 2) {
+    return (
+      <Countdown
+        date={Date.parse("March 15 2023 15:00:00 UTC")}
+        renderer={UnstartedMint}
+      />
+    );
+  }
+
+  if (props.phase < 3 && props.application.type === 3) {
+    return (
+      <Countdown
+        date={Date.parse("March 16 2023 15:00:00 UTC")}
+        renderer={UnstartedMint}
+      />
+    );
   }
   if (
     props.application.allowance > 0 &&
@@ -369,7 +381,7 @@ export default function MintComponent(props) {
   ) {
     return <Mint />;
   }
-  if (props.application.allowance === 0) {
+  if (props.phase > 0 && props.application.allowance === 0) {
     return <MaxMint />;
   }
 }

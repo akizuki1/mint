@@ -60,7 +60,7 @@ export default function Terms() {
       const user = await WaitlistService(wallet.accounts[0].address);
       if (user !== undefined) {
         const allowance = await AllowanceService(wallet);
-        const newUser = { ...user, type: 1, allowance: allowance };
+        const newUser = { ...user, type: 2, allowance: allowance };
         setApplication(newUser);
       } else {
         const allowance = await AllowanceService(wallet);
@@ -76,7 +76,7 @@ export default function Terms() {
 
   async function getPhase() {
     const phase = await PhaseService(wallet);
-    setPhase(0);
+    setPhase(phase);
     getUserApplication();
   }
   async function getSold() {

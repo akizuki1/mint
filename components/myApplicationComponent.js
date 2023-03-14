@@ -26,7 +26,7 @@ export default function MyApplicationTypeComponent(props) {
                 : props.application.type === 2
                 ? "You are Waitlisted!"
                 : props.application.type === 3
-                ? "Public Sale"
+                ? "You are in the Public Sale!"
                 : null}
             </p>
             <p className="mt-6 text-base leading-7 text-gray-300 ">
