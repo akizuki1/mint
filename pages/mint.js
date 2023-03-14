@@ -106,16 +106,16 @@ export default function Terms() {
   }, [mintProcess]);
 
   return (
-    <div className="relative isolate min-h-screen bg-gray-900">
+    <div className="relative isolate min-h-screen  bg-gray-900">
       <Image
         className="absolute inset-0 -z-10 h-full w-full object-cover"
         src={heroBack}
         alt="back iron hills"
       />
-      <div className="absolute inset-0 bg-neutral-900/30 mix-blend-multiply" />
+
       {!wallet ? (
-        <div className="grid  z-0 h-screen ">
-          <main className=" relative mx-auto grid place-items-center h-screen my-auto max-w-7xl z-0 ">
+        <div class="flex h-screen">
+          <div class="m-auto">
             <form
               onSubmit={(e) => {
                 e.preventDefault();
@@ -132,25 +132,23 @@ export default function Terms() {
                 </button>
               </div>
             </form>
-          </main>
+          </div>
         </div>
       ) : (
-        <div className="grid  z-0  max-w-7xl mx-auto">
-          <div className="pt-24 flex">
-            <h1 className="text-4xl font-semibold tracking-tight text-white  sm:text-6xl lg:mt-6 xl:text-6xl">
-            </h1>
+        <div class="flex w-screen h-screen">
+          <div class="m-auto bg-black/80">
+            {application !== undefined ? (
+              <>
+                <MyApplicationComponent
+                  application={application}
+                  phase={phase}
+                  totalSold={totalSold}
+                />
+              </>
+            ) : (
+              <p>loading</p>
+            )}
           </div>
-          {application !== undefined ? (
-            <>
-              <MyApplicationComponent
-                application={application}
-                phase={phase}
-                totalSold={totalSold}
-              />
-            </>
-          ) : (
-            <p>loading</p>
-          )}
         </div>
       )}
     </div>
