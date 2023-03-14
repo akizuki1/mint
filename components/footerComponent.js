@@ -47,6 +47,15 @@ export default function FooterComponent() {
               rel="noreferrer"
             >
               Invictus Order Application Ownership Agreement
+            </Link>{" "}
+            -{" "}
+            <Link
+              className="cursor-pointer"
+              href={"/ownership_agreement"}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Invictus Order Ownership Agreement
             </Link>
           </p>
           <p className="mt-10 text-center text-xs leading-5 text-gray-500">
