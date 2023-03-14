@@ -28,7 +28,7 @@ export default function ConnectWalletComponent(props) {
         <div>
           <button
             onClick={async () => {
-              if(!props.wallet) {
+              if (!props.wallet) {
                 props.connect();
               } else {
                 props.authAccount();
@@ -48,16 +48,8 @@ export default function ConnectWalletComponent(props) {
       <div className="flex">
         <div className=" ">
           <div className="flex w-full items-center justify-center rounded-sm bg-buttons  px-8 py-3 text-md font-medium  ">
-            <Link
-              className="text-white"
-              href={
-                "https://opensea.io/assets/ethereum/0xA525eb06544E75390F71D836f6F9C9C070f8c649/" +
-                props.userData.token
-              }
-              target={"_blank"}
-              rel="noreferrer"
-            >
-              CHECK APPLICATION STATUS
+            <Link className="text-white" href={"/mint"} rel="noreferrer">
+              MINT
             </Link>
           </div>
         </div>
@@ -160,8 +152,12 @@ export default function ConnectWalletComponent(props) {
     }
   }
 
-  if (props.authenticated && !props.authenticating && props.applicationStatus !== "mint done") {
-    return <Application />;
+  if (
+    props.authenticated &&
+    !props.authenticating &&
+    props.applicationStatus !== "mint done"
+  ) {
+    return <Done />;
   }
 
   if (props.authenticated && props.applicationStatus === "mint done") {

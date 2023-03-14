@@ -100,14 +100,14 @@ export default function MintComponent(props) {
   const UnstartedMint = ({ days, hours, minutes, seconds, completed }) => {
     if (completed) {
       return (
-      <div>
         <div>
-          <div className="flex w-full uppercase items-center justify-center rounded-sm  border-solid b border-2  px-8 py-3 text-md font-medium text-white  md:py-4 md:px-10 ">
-            Mint starting soon.
+          <div>
+            <div className="flex w-full uppercase items-center justify-center rounded-sm  border-solid b border-2  px-8 py-3 text-md font-medium text-white  md:py-4 md:px-10 ">
+              Mint starting soon.
+            </div>
           </div>
+          <FollowButtons />
         </div>
-        <FollowButtons />
-      </div>
       );
     } else {
       return (
@@ -144,6 +144,7 @@ export default function MintComponent(props) {
       { quantity: 2, name: "2 Tokens" },
     ];
     const [selectedAmount, setSelectedAmount] = useState(amountMint[0]);
+    const [agreeTyC, setAgreeTyC] = useState(false);
     function classNames(...classes) {
       return classes.filter(Boolean).join(" ");
     }
@@ -178,95 +179,155 @@ export default function MintComponent(props) {
     return (
       <div>
         {mintProcess === "none" ? (
-          <div className="flex gap-3">
-            <div className=" w-1/5 uppercase items-center justify-center  ">
-              {props.application.allowance > 1 ? (
-                <Listbox value={selectedAmount} onChange={setSelectedAmount}>
-                  {({ open }) => (
-                    <>
-                      <div className="relative">
-                        <Listbox.Button className="relative w-full cursor-default rounded-sm  border-solid border-2 md:py-4 pl-3 pr-1 text-left text-gray-300  sm:text-sm sm:leading-6">
-                          <span className="block truncate">
-                            {selectedAmount.name}
-                          </span>
-                          <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                            <ChevronUpDownIcon
-                              className="h-5 w-5 text-buttons"
-                              aria-hidden="true"
-                            />
-                          </span>
-                        </Listbox.Button>
+          <div className="">
+            <div className="relative flex justify-center my-4">
+              <div className="flex h-5 items-center">
+                <input
+                  aria-describedby="comments-description"
+                  name="comments"
+                  type="checkbox"
+                  value={agreeTyC}
+                  onChange={() => setAgreeTyC(!agreeTyC)}
+                  className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                />
+              </div>
+              <div className="ml-3 text-sm flex">
+                <span id="comments-description" className="text-white mx-auto">
+                  I agree to the{" "}
+                  <Link
+                    className="cursor-pointer text-buttons"
+                    href={"/policy"}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Privacy Policy
+                  </Link>
+                  ,{" "}
+                  <Link
+                    className="cursor-pointer text-buttons"
+                    href={"/terms"}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Terms of Use
+                  </Link>
+                  ,
+                  <Link
+                    className="cursor-pointer text-buttons"
+                    href={"/agreement"}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Invictus Order Application Ownership Agreement
+                  </Link>
+                  , and{" "}
+                  <Link
+                    className="cursor-pointer text-buttons"
+                    href={"/ownership_agreement"}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Ownership Agreement
+                  </Link>
+                </span>
+              </div>
+            </div>
+            <div className="flex gap-3 h-full">
+              <div className=" w-1/5 uppercase items-center justify-center  ">
+                {props.application.allowance > 1 ? (
+                  <Listbox value={selectedAmount} onChange={setSelectedAmount}>
+                    {({ open }) => (
+                      <>
+                        <div className="relative">
+                          <Listbox.Button className="relative w-full cursor-default rounded-sm  border-solid border-2 md:py-4 pl-3 pr-1 text-left text-gray-300  sm:text-sm sm:leading-6">
+                            <span className="block truncate">
+                              {selectedAmount.name}
+                            </span>
+                            <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+                              <ChevronUpDownIcon
+                                className="h-5 w-5 text-buttons"
+                                aria-hidden="true"
+                              />
+                            </span>
+                          </Listbox.Button>
 
-                        <Transition
-                          show={open}
-                          as={Fragment}
-                          leave="transition ease-in duration-100"
-                          leaveFrom="opacity-100"
-                          leaveTo="opacity-0"
-                        >
-                          <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto  rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                            {amountMint.map((amount) => (
-                              <Listbox.Option
-                                key={amount.quantity}
-                                className={({ active }) =>
-                                  classNames(
-                                    active
-                                      ? "bg-buttons text-white"
-                                      : "text-gray-900",
-                                    "relative cursor-default select-none py-2 pl-3 pr-9"
-                                  )
-                                }
-                                value={amount}
-                              >
-                                {({ selected, active }) => (
-                                  <>
-                                    <span
-                                      className={classNames(
-                                        selected
-                                          ? "font-semibold"
-                                          : "font-normal",
-                                        "block truncate"
-                                      )}
-                                    >
-                                      {amount.quantity}
-                                    </span>
-
-                                    {selected ? (
+                          <Transition
+                            show={open}
+                            as={Fragment}
+                            leave="transition ease-in duration-100"
+                            leaveFrom="opacity-100"
+                            leaveTo="opacity-0"
+                          >
+                            <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto  rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                              {amountMint.map((amount) => (
+                                <Listbox.Option
+                                  key={amount.quantity}
+                                  className={({ active }) =>
+                                    classNames(
+                                      active
+                                        ? "bg-buttons text-white"
+                                        : "text-gray-900",
+                                      "relative cursor-default select-none py-2 pl-3 pr-9"
+                                    )
+                                  }
+                                  value={amount}
+                                >
+                                  {({ selected, active }) => (
+                                    <>
                                       <span
                                         className={classNames(
-                                          active
-                                            ? "text-white"
-                                            : "text-indigo-600",
-                                          "absolute inset-y-0 right-0 flex items-center pr-4"
+                                          selected
+                                            ? "font-semibold"
+                                            : "font-normal",
+                                          "block truncate"
                                         )}
                                       >
-                                        <CheckIcon
-                                          className="h-5 w-5"
-                                          aria-hidden="true"
-                                        />
+                                        {amount.quantity}
                                       </span>
-                                    ) : null}
-                                  </>
-                                )}
-                              </Listbox.Option>
-                            ))}
-                          </Listbox.Options>
-                        </Transition>
-                      </div>
-                    </>
-                  )}
-                </Listbox>
+
+                                      {selected ? (
+                                        <span
+                                          className={classNames(
+                                            active
+                                              ? "text-white"
+                                              : "text-indigo-600",
+                                            "absolute inset-y-0 right-0 flex items-center pr-4"
+                                          )}
+                                        >
+                                          <CheckIcon
+                                            className="h-5 w-5"
+                                            aria-hidden="true"
+                                          />
+                                        </span>
+                                      ) : null}
+                                    </>
+                                  )}
+                                </Listbox.Option>
+                              ))}
+                            </Listbox.Options>
+                          </Transition>
+                        </div>
+                      </>
+                    )}
+                  </Listbox>
+                ) : (
+                  <div className="relative w-full rounded-sm  flex border-solid border-2 md:py-4 text-left text-gray-300  sm:text-sm sm:leading-6">
+                    <span className="block truncate mx-auto">1 Token</span>
+                  </div>
+                )}
+              </div>
+              {agreeTyC ? (
+                <div
+                  onClick={() => mint()}
+                  className="flex w-4/5 uppercase items-center justify-center rounded-sm  border-solid  cursor-pointer border-buttons bg-buttons  border-2  px-8 py-3 text-md font-medium text-white  md:py-4 md:px-10 "
+                >
+                  Mint {"  "} {getPrice()}
+                </div>
               ) : (
-                <div className="relative w-full rounded-sm  flex border-solid border-2 md:py-4 text-left text-gray-300  sm:text-sm sm:leading-6">
-                  <span className="block truncate mx-auto">1 Token</span>
+                <div className="flex w-4/5 uppercase items-center justify-center rounded-sm  border-solid   border-gray-600 bg-gray-600  border-2  px-8 py-3 text-md font-medium text-white  md:py-4 md:px-10 ">
+                  Mint {"  "} {getPrice()}
                 </div>
               )}
-            </div>
-            <div
-              onClick={() => mint()}
-              className="flex w-4/5 uppercase items-center justify-center rounded-sm  border-solid  cursor-pointer border-buttons bg-buttons  border-2  px-8 py-3 text-md font-medium text-white  md:py-4 md:px-10 "
-            >
-              Mint {"  "} {getPrice()}
             </div>
           </div>
         ) : null}
