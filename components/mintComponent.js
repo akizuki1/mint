@@ -131,6 +131,14 @@ export default function MintComponent(props) {
     function classNames(...classes) {
       return classes.filter(Boolean).join(" ");
     }
+
+    function mint() {
+      const wallet = props.application.wallet;
+      const proof = props.application.proof;
+      const quantity = selectedAmount.quantity;
+
+      //ponga aca el minteo
+    }
     return (
       <div>
         {mintProcess === "none" ? (
@@ -218,7 +226,10 @@ export default function MintComponent(props) {
                 </div>
               )}
             </div>
-            <div className="flex w-4/5 uppercase items-center justify-center rounded-sm  border-solid  cursor-pointer border-buttons bg-buttons  border-2  px-8 py-3 text-md font-medium text-white  md:py-4 md:px-10 ">
+            <div
+              onClick={() => mint()}
+              className="flex w-4/5 uppercase items-center justify-center rounded-sm  border-solid  cursor-pointer border-buttons bg-buttons  border-2  px-8 py-3 text-md font-medium text-white  md:py-4 md:px-10 "
+            >
               Mint
             </div>
           </div>
