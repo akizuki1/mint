@@ -7,6 +7,9 @@ import {
 import { GetUserService } from "../../services/getUserService";
 import { ApplicationService } from "../../services/applicationService";
 import { Soulbound } from "../../services/soulboundService";
+import { PublicMintService } from "../../services/publicMintService";
+import { AllowlistMintService } from "../../services/allowlistMintService";
+import { WaitlistMintService } from "../../services/waitlistMintService";
 
 export const getUserData = (address, token) => async (dispatch) => {
   let status = "";
@@ -140,14 +143,11 @@ export const closeModal = () => async (dispatch) => {
   }
 };
 
-export const mintToken = (wallet, userData) => async (dispatch) => {
+export const publicMint = (wallet, quantity) => async (dispatch) => {
   try {
-    Mint(
+    PublicMintService(
       wallet,
-      userData.application.messageHash,
-      userData.application.v,
-      userData.application.r,
-      userData.application.s,
+      quantity,
       () => {
         dispatch({
           type: MINT_PROCESS,
@@ -171,6 +171,72 @@ export const mintToken = (wallet, userData) => async (dispatch) => {
     dispatch({
       type: MINT_PROCESS,
       payload: "error",
+    });
+  }
+};
+
+export const allowlistMint = (wallet, proof, quantity) => async (dispatch) => {
+  try {
+    AllowlistMintService(
+      wallet,
+      proof,
+      quantity,
+      () => {
+        dispatch({
+          type: MINT_PROCESS,
+          payload: "pending"
+        });
+      },
+      () => {
+        dispatch({
+          type: MINT_PROCESS,
+          payload: "success"
+        });
+      },
+      () => {
+        dispatch({
+          type: MINT_PROCESS,
+          payload: "error"
+        });
+      }
+    );
+  } catch (error) {
+    dispatch({
+      type: MINT_PROCESS,
+      payload: "error"
+    });
+  }
+};
+
+export const waitlistMint = (wallet, proof, quantity) => async (dispatch) => {
+  try {
+    WaitlistMintService(
+      wallet,
+      proof,
+      quantity,
+      () => {
+        dispatch({
+          type: MINT_PROCESS,
+          payload: "pending"
+        });
+      },
+      () => {
+        dispatch({
+          type: MINT_PROCESS,
+          payload: "success"
+        });
+      },
+      () => {
+        dispatch({
+          type: MINT_PROCESS,
+          payload: "error"
+        });
+      }
+    );
+  } catch (error) {
+    dispatch({
+      type: MINT_PROCESS,
+      payload: "error"
     });
   }
 };
