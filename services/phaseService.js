@@ -1,6 +1,6 @@
 import Web3 from "web3";
 
-const CONTRACT_ADDRESS = "0x6337e65Ac6Acf114Bb0BEe793282f1062D92A0e4";
+const CONTRACT_ADDRESS = "0xb92D3989a651CD2AbcB6611d324B1B797bc99187";
 const ABI = require("./iom_abi.json");
 
 export async function PhaseService(wallet) {

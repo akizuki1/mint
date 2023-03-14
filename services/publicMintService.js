@@ -1,6 +1,6 @@
 import Web3 from "web3";
 
-const CONTRACT_ADDRESS = "0x6337e65Ac6Acf114Bb0BEe793282f1062D92A0e4";
+const CONTRACT_ADDRESS = "0xb92D3989a651CD2AbcB6611d324B1B797bc99187";
 const ABI = require("./iom_abi.json");
 
 export async function PublicMintService(
@@ -14,13 +14,13 @@ export async function PublicMintService(
     pendingCallback();
     const web3 = new Web3(wallet.provider);
     const chainId = await web3.eth.getChainId();
-    // if (chainId !== 1) {
-    //   await ethereum.request({
-    //     method: "wallet_switchEthereumChain",
-    //     params: [{ chainId: "0x1" }],
-    //   });
-    // }
-    // if ((await web3.eth.getChainId()) !== 1) errorCallback();
+    if (chainId !== 1) {
+      await ethereum.request({
+        method: "wallet_switchEthereumChain",
+        params: [{ chainId: "0x1" }],
+      });
+    }
+    if ((await web3.eth.getChainId()) !== 1) errorCallback();
     const contract = new web3.eth.Contract(ABI, CONTRACT_ADDRESS);
 
     const gasEstimate = await contract.methods
