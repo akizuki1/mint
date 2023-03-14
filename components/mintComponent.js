@@ -211,15 +211,6 @@ export default function MintComponent(props) {
                   >
                     Terms of Use
                   </Link>
-                  ,
-                  <Link
-                    className="cursor-pointer text-buttons"
-                    href={"/agreement"}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Invictus Order Application Ownership Agreement
-                  </Link>
                   , and{" "}
                   <Link
                     className="cursor-pointer text-buttons"
@@ -227,7 +218,7 @@ export default function MintComponent(props) {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    Ownership Agreement
+                    Invictus Order Ownership Agreement
                   </Link>
                 </span>
               </div>

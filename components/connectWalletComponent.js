@@ -5,18 +5,12 @@ export default function ConnectWalletComponent(props) {
     return (
       <div>
         <div>
-          <button
-            onClick={() => {
-              if (!props.wallet) {
-                props.connect();
-              } else {
-                props.authAccount();
-              }
-            }}
+          <Link
             className="flex w-full items-center justify-center rounded-sm  border-solid border-2 border-buttons bg-buttons px-8 py-3 text-md font-medium text-white hover:bg-blues-600 md:py-4 md:px-10 "
+            href={'/mint'}
           >
-            {props.nav === true ? "CONNECT" : "CONNECT"}
-          </button>
+            MINT
+          </Link>
         </div>
       </div>
     );
