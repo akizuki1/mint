@@ -11,7 +11,12 @@ import { useConnectWallet } from "@web3-onboard/react";
 import { AdminAuthService } from "../services/authService";
 import useLocalStorage from "../hooks/useLocalStorage";
 import { GetApplicationService } from "../services/getUserApplicationService";
-import MyApplicationTypeComponent from "../components/myApplicationTypeComponent";
+import MyApplicationComponent from "../components/myApplicationComponent";
+import { PhaseService } from "../services/phaseService";
+import { AllowlistService } from "../services/allowlistService";
+import { WaitlistService } from "../services/waitlistService";
+import { AllowanceService } from "../services/allowanceService";
+import { TotalMintedService } from "../services/totalMintedService";
 
 export default function Terms() {
   const [{ wallet, connecting, connected }, connect, disconnect] =
@@ -19,7 +24,7 @@ export default function Terms() {
 
   const [phase, setPhase] = useState(0);
   const [application, setApplication] = useState();
-  const [accessToken, setAccessToken] = useLocalStorage("jwtToken", null);
+  const [totalSold, setTotalSold] = useState();
 
   async function login() {
     await connect();
@@ -32,22 +37,65 @@ export default function Terms() {
   }
 
   async function getUserApplication() {
-    const user = await GetApplicationService(
-      wallet.accounts[0].address,
-      accessToken
-    );
-    setApplication(user);
+    if (phase < 2) {
+      const user = await AllowlistService(wallet.accounts[0].address);
+      if (user !== undefined) {
+        const allowance = await AllowanceService(wallet.accounts[0].address);
+        const newUser = { ...user, type: 0, allowance: allowance };
+        setApplication(newUser);
+      } else {
+        const user = await WaitlistService(wallet.accounts[0].address);
+        if (user !== undefined) {
+          const allowance = await AllowanceService(wallet.accounts[0].address);
+          const newUser = { ...user, type: 1, allowance: allowance };
+          setApplication(newUser);
+        } else {
+          const allowance = await AllowanceService(wallet.accounts[0].address);
+          const user = {
+            wallet: wallet.accounts[0].address,
+            type: 1,
+            allowance: allowance,
+          };
+          setApplication(user);
+        }
+      }
+    } else {
+      const user = await WaitlistService(wallet.accounts[0].address);
+      if (user !== undefined) {
+        const allowance = await AllowanceService(wallet.accounts[0].address);
+        const newUser = { ...user, type: 1, allowance: allowance };
+        setApplication(newUser);
+      } else {
+        const allowance = await AllowanceService(wallet.accounts[0].address);
+        const user = {
+          wallet: wallet.accounts[0].address,
+          type: 1,
+          allowance: allowance,
+        };
+        setApplication(user);
+      }
+    }
   }
 
   async function getPhase() {
-    setPhase(2);
+    const phase = await PhaseService(wallet);
+    if (phase) {
+      setPhase(phase);
+      getUserApplication();
+    }
+  }
+  async function getSold() {
+    const sold = await TotalMintedService(wallet);
+
+    if (sold) {
+      setTotalSold(sold);
+    }
   }
 
   useEffect(() => {
     if (wallet) {
-      console.log(wallet.accounts[0].address);
-      getUserApplication();
       getPhase();
+      getSold();
     }
   }, [wallet]);
 
@@ -89,9 +137,10 @@ export default function Terms() {
           </div>
           {application !== undefined ? (
             <>
-              <MyApplicationTypeComponent
+              <MyApplicationComponent
                 application={application}
                 phase={phase}
+                totalSold={totalSold}
               />
             </>
           ) : (

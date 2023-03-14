@@ -4,7 +4,7 @@ const dataInicial = {
   soulboundProcess: false,
   soulboundStatus: 0,
   applicationStatus: "none",
-  mintProcess: "success",
+  mintProcess: "none",
   userData: {},
 };
 

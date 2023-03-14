@@ -124,8 +124,8 @@ export default function MintComponent(props) {
 
   const Mint = () => {
     const amountMint = [
-      { id: 1, name: "1 Token" },
-      { id: 2, name: "2 Tokens" },
+      { quantity: 1, name: "1 Token" },
+      { quantity: 2, name: "2 Tokens" },
     ];
     const [selectedAmount, setSelectedAmount] = useState(amountMint[0]);
     function classNames(...classes) {
@@ -136,7 +136,7 @@ export default function MintComponent(props) {
         {mintProcess === "none" ? (
           <div className="flex gap-3">
             <div className=" w-1/5 uppercase items-center justify-center  ">
-              {2 < 1 ? (
+              {props.application.allowance > 1 ? (
                 <Listbox value={selectedAmount} onChange={setSelectedAmount}>
                   {({ open }) => (
                     <>
@@ -163,7 +163,7 @@ export default function MintComponent(props) {
                           <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto  rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                             {amountMint.map((amount) => (
                               <Listbox.Option
-                                key={amount.id}
+                                key={amount.quantity}
                                 className={({ active }) =>
                                   classNames(
                                     active
@@ -184,7 +184,7 @@ export default function MintComponent(props) {
                                         "block truncate"
                                       )}
                                     >
-                                      {amount.id}
+                                      {amount.quantity}
                                     </span>
 
                                     {selected ? (
@@ -319,7 +319,7 @@ export default function MintComponent(props) {
     );
   };
 
-  if (5 < 4) {
+  if (props.totalSold > 5000) {
     return <SoldOut />;
   }
 
@@ -327,13 +327,16 @@ export default function MintComponent(props) {
     return <UnstartedMint />;
   }
 
-  if (props.application.items >= 3) {
-    return <MaxMint />;
-  }
   if (props.phase < props.application.type) {
     return <WhaitPhaseMint />;
   }
-  if (props.application.items < 3 && props.phase >= props.application.type) {
+  if (
+    props.application.allowance > 0 &&
+    props.phase >= props.application.type
+  ) {
     return <Mint />;
+  }
+  if (props.application.allowance === 0) {
+    return <MaxMint />;
   }
 }
