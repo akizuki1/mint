@@ -422,7 +422,7 @@ export default function MintComponent(props) {
   if (props.phase === 0 && props.application.type === 1) {
     return (
       <Countdown
-        date={Date.parse("March 14 2023 15:00:00 UTC")}
+        date={Date.parse("March 15 2023 15:00:00 UTC")}
         renderer={UnstartedMint}
       />
     );
@@ -431,7 +431,7 @@ export default function MintComponent(props) {
   if (props.phase < 2 && props.application.type === 2) {
     return (
       <Countdown
-        date={Date.parse("March 15 2023 15:00:00 UTC")}
+        date={Date.parse("March 16 2023 15:00:00 UTC")}
         renderer={UnstartedMint}
       />
     );
@@ -440,7 +440,7 @@ export default function MintComponent(props) {
   if (props.phase < 3 && props.application.type === 3) {
     return (
       <Countdown
-        date={Date.parse("March 16 2023 15:00:00 UTC")}
+        date={Date.parse("March 17 2023 15:00:00 UTC")}
         renderer={UnstartedMint}
       />
     );
