@@ -152,11 +152,11 @@ export default function MintComponent(props) {
     function getPrice() {
       switch (props.phase) {
         case 1:
-          return (0.01 * selectedAmount.quantity).toString() + " ETH";
+          return (0.015 * selectedAmount.quantity).toString() + " ETH";
         case 2:
-          return (0.01 * selectedAmount.quantity).toString() + " ETH";
+          return (0.015 * selectedAmount.quantity).toString() + " ETH";
         case 3:
-          return (0.01 * selectedAmount.quantity).toString() + " ETH";
+          return (0.015 * selectedAmount.quantity).toString() + " ETH";
       }
     }
 

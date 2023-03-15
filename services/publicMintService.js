@@ -27,14 +27,14 @@ export async function PublicMintService(
       .mint(quantity)
       .estimateGas({
         from: wallet.accounts[0].address,
-        value: web3.utils.toWei((quantity * 0.01).toString(), 'ether'),
+        value: web3.utils.toWei((quantity * 0.015).toString(), 'ether'),
       });
     contract.methods
       .mint(quantity)
       .send({
         from: wallet.accounts[0].address,
         gas: gasEstimate + 10000,
-        value: web3.utils.toWei((quantity * 0.01).toString(), "ether"),
+        value: web3.utils.toWei((quantity * 0.015).toString(), "ether"),
       })
       .once("receipt", (receipt) => successCallback())
       .on("error", (error) => errorCallback());
