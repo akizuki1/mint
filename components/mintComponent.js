@@ -440,7 +440,7 @@ export default function MintComponent(props) {
   if (props.phase < 3 && props.application.type === 3) {
     return (
       <Countdown
-        date={Date.parse("March 17 2023 15:00:00 UTC")}
+        date={Date.parse("March 16 2023 15:00:00 UTC")}
         renderer={UnstartedMint}
       />
     );
