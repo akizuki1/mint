@@ -421,36 +421,34 @@ export default function MintComponent(props) {
     return <SoldOut />;
   }
 
-  if (props.phase === 0 && props.application.type === 1) {
-    return (
-      <Countdown
-        date={Date.parse("March 15 2023 15:00:00 UTC")}
-        renderer={UnstartedMint}
-      />
-    );
-  }
+  // if (props.phase === 0 && props.application.type === 1) {
+  //   return (
+  //     <Countdown
+  //       date={Date.parse("March 15 2023 15:00:00 UTC")}
+  //       renderer={UnstartedMint}
+  //     />
+  //   );
+  // }
 
-  if (props.phase < 2 && props.application.type === 2) {
-    return (
-      <Countdown
-        date={Date.parse("March 16 2023 15:00:00 UTC")}
-        renderer={UnstartedMint}
-      />
-    );
-  }
+  // if (props.phase < 2 && props.application.type === 2) {
+  //   return (
+  //     <Countdown
+  //       date={Date.parse("March 16 2023 15:00:00 UTC")}
+  //       renderer={UnstartedMint}
+  //     />
+  //   );
+  // }
 
-  if (props.phase < 3 && props.application.type === 3) {
-    return (
-      <Countdown
-        date={Date.parse("March 16 2023 15:00:00 UTC")}
-        renderer={UnstartedMint}
-      />
-    );
-  }
+  // if (props.phase < 3 && props.application.type === 3) {
+  //   return (
+  //     <Countdown
+  //       date={Date.parse("March 16 2023 15:00:00 UTC")}
+  //       renderer={UnstartedMint}
+  //     />
+  //   );
+  // }
   if (
-    props.application.allowance > 0 &&
-    props.phase >= props.application.type
-  ) {
+    props.application.allowance > 0) {
     return <Mint />;
   }
   if (props.phase > 0 && props.application.allowance === 0) {
