@@ -141,8 +141,10 @@ export default function MintComponent(props) {
     const [{ wallet }] = useConnectWallet();
     const amountMint = [
       { quantity: 1, name: "1 Token" },
-      { quantity: 2, name: "2 Tokens" },
     ];
+    for (let i = 1; i < 100; i++) {
+      amountMint.push({ quantity: i+1, name: `${i+1} Tokens`});
+    }
     const [selectedAmount, setSelectedAmount] = useState(amountMint[0]);
     const [agreeTyC, setAgreeTyC] = useState(false);
     function classNames(...classes) {
