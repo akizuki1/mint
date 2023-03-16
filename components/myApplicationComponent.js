@@ -35,7 +35,7 @@ export default function MyApplicationTypeComponent(props) {
                 ? "Mint is now live for the Allowlist. If you are on the Allowlist, you can mint up to 2 per Allowlisted wallet."
                 : props.phase === 2
                 ? "Mint is now live for the Waitlist. If you are on the Waitlist, you can mint up to 2 per Waitlisted wallet. If you are on the Allowlist and did not mint your full allocation during the Allowlist phase, you can mint the remainder of that allocation now."
-                : "Mint is now open to everyone! You can mint up to 2 per wallet. If you are on the Allowlist or Waitlist, you can mint an additional 1."}
+                : "Mint is now open to everyone! There is no maximum amount per wallet that you can mint. Art is instant reveal."}
             </p>
             <div className="mt-8">
               <MintComponent
